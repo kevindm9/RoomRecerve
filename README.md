@@ -24,6 +24,18 @@ VISTA DE SERVER.
 ![Diagrama modulos Server](docs/Uml/Diagrama%20modulos%20Server.png)
 VISTA DE CLIENTE.
 ![Diagrama modulos cliente](docs/Uml/Diagrama%20modulos%20cliente.png)
+VISTA DE IMPLEMENTACIÓN(MAVEN,UML).
+![Untitled Diagram-Implementacion .drawio](docs/Uml/Untitled%20Diagram-Implementacion .drawio.png)
+# VISTA DE INSTALACIÓN(Allocation, UML).
+![Untitled Diagram-Instalacion.drawio](docs/Uml/Untitled%20Diagram-Instalacion.drawio.png)
+DIAGRAMA DE CLASES (UML).
+HOTEL-SERVER
+![server-hotel](docs/Uml/server-hotel.png)
+HOTEL-CLIENTE
+![Cliente](docs/Uml/Cliente.png)
+HOTEL-COMMONS
+![Diagrama de clases](docs/Uml/Diagrama%20de%20clases.png)
+Untitled Diagram-Instalacion.drawio.png
 # VISTA DE DATOS (MODELO ENTIDAD-RELACIÓN).
 ![E-R_hotel](docs/Uml/E-R_hotel.png)
 
