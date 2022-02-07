@@ -1,0 +1,9 @@
+co\mycompany\hotel\commons\domain\Administrador.class
+co\mycompany\hotel\commons\infra\Parameter.class
+co\mycompany\hotel\commons\infra\Protocol.class
+co\mycompany\hotel\commons\domain\Habitacion.class
+co\mycompany\hotel\commons\infra\JsonError.class
+co\mycompany\hotel\commons\infra\Utilities.class
+co\mycompany\hotel\commons\domain\DiaSemana.class
+co\mycompany\hotel\commons\domain\TipoHabitacion.class
+co\mycompany\hotel\commons\domain\Hotel.class

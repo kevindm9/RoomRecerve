@@ -1,0 +1,7 @@
+co\mycompany\hotel\server\access\HotelRepositoryImplMysql.class
+co\mycompany\hotel\server\app\HotelApplication.class
+co\mycompany\hotel\server\access\HotelRepositoryImplArrays.class
+co\mycompany\hotel\server\infra\HotelServerSocket.class
+co\mycompany\hotel\server\access\Factory.class
+co\mycompany\hotel\server\access\IHotelRepository.class
+co\mycompany\hotel\server\domain\services\HotelService.class
