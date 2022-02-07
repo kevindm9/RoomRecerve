@@ -5,3 +5,5 @@ Vista de componentes y conectores(uml)
 ![Diagrama Conectores](docs/Uml/Diagrama%20Conectores.jpg)
 
 La arquitectura utilizada fue la de cliente-servidor por medio del estilo arquitectónico de capas
+#MODELO DE CONTEXTO(C4).
+![C4 -Nivel 1](docs/C4/C4%20-Nivel%201.jpg)
