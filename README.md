@@ -6,9 +6,9 @@ Vista de componentes y conectores(uml)
 
 La arquitectura utilizada fue la de cliente-servidor por medio del estilo arquitectónico de capas.
 
-#MODELO DE CONTEXTO(C4).
+# MODELO DE CONTEXTO(C4).
 ![C4 -Nivel 1](docs/C4/C4%20-Nivel%201.jpg)
-#VISTA DE CONTENEDORES Y COMPONENTES(C4)
+# VISTA DE CONTENEDORES Y COMPONENTES(C4)
 ![C4 -Nivel 2](docs/C4/C4%20-Nivel%202.jpg)
 ![C4 -Nivel 3](docs/C4/C4%20-Nivel%203.jpg)
 
