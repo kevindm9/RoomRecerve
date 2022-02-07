@@ -3,4 +3,5 @@ El proyecto busca desarrollar una aplicación que permita a los  usuarios hacer 
 # Components
 Vista de componentes y conectores(uml)
 ![Diagrama Conectores](docs/Uml/Diagrama%20Conectores.jpg)
+
 La arquitectura utilizada fue la de cliente-servidor por medio del estilo arquitectónico de capas
