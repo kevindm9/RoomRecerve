@@ -4,6 +4,12 @@ El proyecto busca desarrollar una aplicación que permita a los  usuarios hacer 
 Vista de componentes y conectores(uml)
 ![Diagrama Conectores](docs/Uml/Diagrama%20Conectores.jpg)
 
-La arquitectura utilizada fue la de cliente-servidor por medio del estilo arquitectónico de capas
+La arquitectura utilizada fue la de cliente-servidor por medio del estilo arquitectónico de capas.
+
 #MODELO DE CONTEXTO(C4).
 ![C4 -Nivel 1](docs/C4/C4%20-Nivel%201.jpg)
+#VISTA DE CONTENEDORES Y COMPONENTES(C4)
+![C4 -Nivel 2](docs/C4/C4%20-Nive2%201.jpg)
+![C4 -Nivel 3](docs/C4/C4%20-Nive3%201.jpg)
+
+
