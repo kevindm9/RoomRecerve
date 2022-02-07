@@ -11,5 +11,10 @@ La arquitectura utilizada fue la de cliente-servidor por medio del estilo arquit
 # VISTA DE CONTENEDORES Y COMPONENTES(C4)
 ![C4 -Nivel 2](docs/C4/C4%20-Nivel%202.jpg)
 ![C4 -Nivel 3](docs/C4/C4%20-Nivel%203.jpg)
+# VISTA DE MÓDULOS (UML).
+VISTA DE SERVER.
+![Diagrama modulos Server](docs/Uml/Diagrama%20modulos%20Server.png)
+VISTA DE CLIENTE.
+![Diagrama modulos cliente](docs/Uml/Diagrama%20modulos%20cliente.png)
 
 
