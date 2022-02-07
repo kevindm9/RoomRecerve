@@ -24,7 +24,7 @@ VISTA DE SERVER.
 ![Diagrama modulos Server](docs/Uml/Diagrama%20modulos%20Server.png)
 VISTA DE CLIENTE.
 ![Diagrama modulos cliente](docs/Uml/Diagrama%20modulos%20cliente.png)
-VISTA DE IMPLEMENTACIÓN(MAVEN,UML).
+# VISTA DE IMPLEMENTACIÓN(MAVEN,UML).
 ![Untitled Diagram-Implementacion .drawio](docs/Uml/Untitled%20Diagram-Implementacion%20.drawio.png)
 # VISTA DE INSTALACIÓN(Allocation, UML).
 ![Untitled Diagram-Instalacion.drawio](docs/Uml/Untitled%20Diagram-Instalacion.drawio.png)
