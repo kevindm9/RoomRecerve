@@ -28,7 +28,7 @@ VISTA DE IMPLEMENTACIÓN(MAVEN,UML).
 ![Untitled Diagram-Implementacion .drawio](docs/Uml/Untitled%20Diagram-Implementacion .drawio.png)
 # VISTA DE INSTALACIÓN(Allocation, UML).
 ![Untitled Diagram-Instalacion.drawio](docs/Uml/Untitled%20Diagram-Instalacion.drawio.png)
-DIAGRAMA DE CLASES (UML).
+# DIAGRAMA DE CLASES (UML).
 HOTEL-SERVER
 ![server-hotel](docs/Uml/server-hotel.png)
 HOTEL-CLIENTE
