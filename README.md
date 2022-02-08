@@ -40,7 +40,7 @@ Untitled Diagram-Instalacion.drawio.png
 ![E-R_hotel](docs/Uml/E-R_hotel.png)
 # DIAGRAMA DE SECUENCIA(UML).
 RESERVAR
-![Secuencia Diagrama-Reservar.drawio](docs/Uml/Secuencia&20Diagrama-Reservar.drawio.png)
+![Secuencia Diagrama-Reservar.drawio](docs/Uml/Secuencia%20Diagrama-Reservar.drawio.png)
 LOGIN
 ![Secuencia Diagrama-Login.drawio](docs/Uml/Secuencia%20Diagrama-Login.drawio.png)
 AGREGAR HABITACION
