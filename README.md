@@ -8,6 +8,8 @@ El proyecto busca desarrollar una aplicación que permita a los  usuarios hacer 
 
 # Componentes
 Vista de componentes y conectores(uml)
+
+
 ![Diagrama Conectores](docs/Uml/Diagrama%20Conectores.jpg)
 
 # REPRESENTACIÓN DE LA ARQUITECTURA. 
@@ -39,11 +41,14 @@ Untitled Diagram-Instalacion.drawio.png
 # VISTA DE DATOS (MODELO ENTIDAD-RELACIÓN).
 ![E-R_hotel](docs/Uml/E-R_hotel.png)
 # DIAGRAMA DE SECUENCIA(UML).
-RESERVAR
+RESERVAR              
+
 ![Secuencia Diagrama-Reservar.drawio](docs/Uml/Secuencia%20Diagrama-Reservar.drawio.png)
-LOGIN
+LOGIN              
+
 ![Secuencia Diagrama-Login.drawio](docs/Uml/Secuencia%20Diagrama-Login.drawio.png)
-AGREGAR HABITACION
+AGREGAR HABITACION           
+
 ![Secuencia Diagrama-Agregar Habitacion.drawio.png](docs/Uml/Secuencia%20Diagrama-Agregar%20Habitacion.drawio.png)
 
 # RESUMEN DE LAS DECISIONES DE ARQUITECTURA Y SU JUSTIFICACIÓN.
