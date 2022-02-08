@@ -44,9 +44,11 @@ Untitled Diagram-Instalacion.drawio.png
 RESERVAR              
 
 ![Secuencia Diagrama-Reservar.drawio](docs/Uml/Secuencia%20Diagrama-Reservar.drawio.png)
+
 LOGIN              
 
 ![Secuencia Diagrama-Login.drawio](docs/Uml/Secuencia%20Diagrama-Login.drawio.png)
+
 AGREGAR HABITACION           
 
 ![Secuencia Diagrama-Agregar Habitacion.drawio.png](docs/Uml/Secuencia%20Diagrama-Agregar%20Habitacion.drawio.png)
