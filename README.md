@@ -38,7 +38,15 @@ HOTEL-COMMONS
 Untitled Diagram-Instalacion.drawio.png
 # VISTA DE DATOS (MODELO ENTIDAD-RELACIÓN).
 ![E-R_hotel](docs/Uml/E-R_hotel.png)
+# DIAGRAMA DE SECUENCIA(UML).
+RESERVAR
+![Secuencia Diagrama-Reservar.drawio](docs/Uml/Secuencia&20Diagrama-Reservar.drawio.png)
+LOGIN
+![Secuencia Diagrama-Login.drawio](docs/Uml/Secuencia%20Diagrama-Login.drawio.png)
+AGREGAR HABITACION
+![Secuencia Diagrama-Agregar Habitacion.drawio.png](docs/Uml/Secuencia%20Diagrama-Agregar%20Habitacion.drawio.png)
 
 # RESUMEN DE LAS DECISIONES DE ARQUITECTURA Y SU JUSTIFICACIÓN.
 Para esta aplicación se ha optado por una aplicación de escritorio con posible migración (en un reléase superior) a aplicaciones móviles o web – Tomando como opción  idónea la solución "Cliente - Servidor" para la primera iteración, esto debido a que solución "Cliente - Servidor" posee grandes ventajas que ayudarán al desarrollo de esta aplicación, como lo es el facilitar la integración con otros sistemas (característica necesaria para los pagos en línea, el envío de mensajes vía email y la utilización del GPS), además de garantizar una modularidad y escalabilidad del sistema (buscando ampliar las funcionalidades y aportar valor al cliente en cada iteración).Por su parte, como decisión de lenguaje de programación para trabajar, el equipo se inclina hacia el uso de "Java" debido a que, además de ser uno de los lenguajes más populares hoy en día, de acuerdo con el TIOBE índex, el cual se puede encontrar en el siguiente enlace: https://www.tiobe.com/tiobe-index/, es un lenguaje de fácil comprensión, seguro y permite ser compilado en cualquier plataforma (gracias a la máquina virtual de Java "JVM"), otorgando al equipo y al producto final, el poder acoger una mayor cantidad de clientes (Clientes usuarios de Windows, clientes usuarios de Linux, clientes usuarios de MacOS, entre otros. Ademas la Tecnología multi-thread & sockets tcp: Esto nos permite recibir múltiples peticiones sin que el servidor colapse.Api swing java:nos permite crear interfaces gráficas las cuales son visualizables para el cliente, además favorece la usabilidad, y Mysql: Nos permite el registro de datos requeridos por la aplicación,incluyendo las búsquedas 
+
 
