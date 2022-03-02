@@ -54,7 +54,7 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
-        lbMainAdministrar.setText("Administrar");
+        lbMainAdministrar.setText("Login");
         lbMainAdministrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbMainAdministrarMouseClicked(evt);
