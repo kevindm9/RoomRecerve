@@ -52,8 +52,8 @@ public class HotelService extends Subject {
      * @param dia
      * @return
      */
-    public ArrayList<Habitacion> getDiaHabitaciones(int idPersona) {
-        return service.getDiaHabitaciones(idPersona);
+    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel, DiaSemana dia) {
+        return service.getDiaHabitaciones(idHotel, dia);
     }
 
     /**
@@ -111,9 +111,7 @@ public class HotelService extends Subject {
     public String addHotel(Hotel hotel) {
         return service.addHotel(hotel);
     }
-    public String getSecionTipo(String usuario) {
-        return service.getSecionTipo(usuario);
-    }
+
     /**
      * obtiene la clave del administrador en caso de existir
      *
@@ -125,8 +123,5 @@ public class HotelService extends Subject {
     }
     public Persona getPersona(String usuario) {
         return service.getPersona(usuario);
-    }
-    public ArrayList<Integer> getReserva(){
-        return service.getReserva();
     }
 }

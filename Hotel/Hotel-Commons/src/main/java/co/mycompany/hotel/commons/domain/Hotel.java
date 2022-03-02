@@ -88,9 +88,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel{" + "id=" + id + ", nombre=" + nombre + ", direcccion=" + direcccion + ", ciudad=" + ciudad + ", telefono=" + telefono + ", foto=" + foto + ", habitaciones=" + habitaciones + '}';
+        return "Restaurante{" + "id=" + id + ", nombre=" + nombre + ", direcccion=" + direcccion + ", ciudad=" + ciudad + ", telefono=" + telefono + ", foto=" + foto + ", habitaciones=" + habitaciones + '}';
     }
-
-
 
 }

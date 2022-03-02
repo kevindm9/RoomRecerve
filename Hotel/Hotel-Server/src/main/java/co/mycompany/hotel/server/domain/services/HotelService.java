@@ -30,8 +30,8 @@ public class HotelService {
         this.repo = repo;
     }
 
-    public ArrayList<Habitacion> getDiaHabitaciones(int id_Persona) {
-        return repo.getDiaHabitaciones(id_Persona);
+    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel, DiaSemana dia) {
+        return repo.getDiaHabitaciones(idHotel, dia);
     }
 
     public ArrayList<Hotel> getHoteles() {
@@ -54,15 +54,10 @@ public class HotelService {
     public Persona getPersona(String usuario) {
         return repo.getPersona(usuario);
     }
-    public String getSesionTipo(String usuario){
-         return repo.getSesionTipo(usuario);
-    }
     public String getSesionClave(String usuario) {
         return repo.getSesionClave(usuario);
     }
-    public ArrayList<Integer> getReserva(){
-    return repo.getReserva();
-    }
+
     public String addReserva(int idHotel, Habitacion habitacion,LocalDate fecha_inicio,LocalDate fecha_fin,Persona sesion) {
         return repo.addReserva(idHotel, habitacion, fecha_inicio,fecha_fin,sesion);
     }
