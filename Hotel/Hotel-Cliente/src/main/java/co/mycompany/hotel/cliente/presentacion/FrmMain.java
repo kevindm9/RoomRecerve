@@ -15,11 +15,11 @@ public class FrmMain extends javax.swing.JFrame {
     /**
      * Creates new form frmMain
      */
-    public FrmMain(HotelService service) {
-        this.service = service;
+    public FrmMain() {
+        service = new HotelService();
         initComponents();
         mostrarSucursales();
-        //cargarAdministrador();
+        
     }
 
     
@@ -182,7 +182,7 @@ public class FrmMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmMain(null).setVisible(true);
+                new FrmMain().setVisible(true);
             }
         });
     }

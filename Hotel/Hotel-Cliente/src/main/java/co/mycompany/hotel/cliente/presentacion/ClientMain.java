@@ -29,7 +29,7 @@ public class ClientMain {
 //         i=service.getReserva();         
 //        // System.out.println(i.get(0));
 //         System.out.println(service.getSecionTipo("kevindm"));
-        formPrincipal = new FrmMain(service);
+        formPrincipal = new FrmMain();
         formPrincipal.setVisible(true);
     }
 }
