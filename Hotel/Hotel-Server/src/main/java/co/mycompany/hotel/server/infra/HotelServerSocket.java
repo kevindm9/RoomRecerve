@@ -179,7 +179,7 @@ public class HotelServerSocket implements Runnable {
 
                 break;
             case "habitaciones":
-                if (protocolRequest.getAction().equals("getMenu")) {
+                if (protocolRequest.getAction().equals("getReserva")) {
                     //{"resource":"componentes","action":"get","parameters":[{"name":"rest_id","value":"1"},{"name":"dia","value":"LUNES"}]}
                     processGetDiaHabitaciones(protocolRequest);
                 } else if (protocolRequest.getAction().equals("get")) {
@@ -190,12 +190,16 @@ public class HotelServerSocket implements Runnable {
             case "login":
                 processGetSesionClave(protocolRequest);
                 break;
-
+            case "tipoSesion":
+                processGetSesionTipo(protocolRequest);
+                break;
             case "habitacionReserva":
                 if (protocolRequest.getAction().equals("delete")) {
                     processDeleteHabitacionSemanal(protocolRequest);
                 } else if (protocolRequest.getAction().equals("set")) {
                     processSetHabitacionReserva(protocolRequest);
+                } else if (protocolRequest.getAction().equals("get")) {
+                    processGetReserva(protocolRequest);
                 }
             case "Persona":
                 if (protocolRequest.getAction().equals("set")){
@@ -274,14 +278,24 @@ public class HotelServerSocket implements Runnable {
         String response = objectCompToJSON(habitacion);
         output.println(response);
     }
-
+    private void processGetReserva(Protocol protocolRequest) {
+         ArrayList<Integer> idHabitaciones = service.getReserva();
+        String response = objectIdHabtToJSON(idHabitaciones);
+        output.println(response);
+    }
+    private String objectIdHabtToJSON(ArrayList<Integer> idHabitaciones) {
+        Gson gson = new Gson();
+        String strObject = gson.toJson(idHabitaciones);
+        return strObject;
+    }
+    
     /**
      * Procesa la solicitud de agregar un Habitacion
      *
      * @param protocolRequest Protocolo de la solicitud
      */
     private void processGetDiaHabitaciones(Protocol protocolRequest) {
-        ArrayList<Habitacion> habitacion = service.getDiaHabitaciones(Integer.parseInt(protocolRequest.getParameters().get(0).getValue()), DiaSemana.valueOf(protocolRequest.getParameters().get(1).getValue()));
+        ArrayList<Habitacion> habitacion = service.getDiaHabitaciones(Integer.parseInt(protocolRequest.getParameters().get(0).getValue()));
         String response = objectCompToJSON(habitacion);
         output.println(response);
     }
@@ -301,6 +315,12 @@ public class HotelServerSocket implements Runnable {
         String strObject = gson.toJson(p);
         return strObject;
     }
+       
+    private void processGetSesionTipo(Protocol protocolRequest) {
+        String tipo = service.getSesionTipo(protocolRequest.getParameters().get(0).getValue());
+        output.println(tipo);
+    }
+
     private void processGetSesionClave(Protocol protocolRequest) {
         String clave = service.getSesionClave(protocolRequest.getParameters().get(0).getValue());
         output.println(clave);
@@ -398,6 +418,7 @@ public class HotelServerSocket implements Runnable {
         String strObject = gson.toJson(hoteles);
         return strObject;
     }
+
 
 
 

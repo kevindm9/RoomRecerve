@@ -42,7 +42,7 @@ public interface IHotelAccess {
      * @param dia
      * @return
      */
-    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel, DiaSemana dia);
+    public ArrayList<Habitacion> getDiaHabitaciones(int idPersona);
 
     /**
      * Adiciona un habitacion en un hotel determinado y dia determinado
@@ -78,6 +78,7 @@ public interface IHotelAccess {
      * @return
      */
     public String getSecionClave(String usuario);
+      public String getSecionTipo(String usuario);
 
     public String addHotel(Hotel hotel);
 
@@ -89,4 +90,6 @@ public interface IHotelAccess {
      * @return
      */
     public String addPersona(Persona persona, String tipo);
+    
+    public ArrayList<Integer> getReserva();
 }

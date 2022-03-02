@@ -166,7 +166,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         
         
         habitaciones.clear();
-        habitaciones = service.getDiaHabitaciones(id_hotel,dias[cbxUsuHabDias.getSelectedIndex()]);
+       // habitaciones = service.getDiaHabitaciones(id_hotel,dias[cbxUsuHabDias.getSelectedIndex()]);
         tabUsuHabitaciones.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel dt = new DefaultTableModel() {
             @Override

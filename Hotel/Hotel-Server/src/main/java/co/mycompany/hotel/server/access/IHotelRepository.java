@@ -27,11 +27,10 @@ public interface IHotelRepository {
     public ArrayList<Habitacion> getHabitaciones();
     /**
      * Obtiene las habitaciones en un Hotel y Fecha determinada
-     * @param idRestaurante
-     * @param dia
+     * @param id_persona
      * @return 
      */
-    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel,DiaSemana dia);
+    public ArrayList<Habitacion> getDiaHabitaciones(int id_persona);
     /**
      * Adiciona un componente en un restuarante determinado y dia determinado
      * @param idHotel
@@ -62,6 +61,7 @@ public interface IHotelRepository {
      * @return 
      */
     public String getSesionClave(String usuario);
+    public String getSesionTipo(String usuario);
         /**
      * Adiciona un componenete a la base de datos
      * @param hotel
@@ -78,5 +78,11 @@ public interface IHotelRepository {
     public String addPersona(Persona persona,String tipo);
    
     public Persona getPersona(String usuario);
-    
+
+    /**
+     *
+     *
+     * @return 
+     */
+    public ArrayList<Integer> getReserva();
 }
