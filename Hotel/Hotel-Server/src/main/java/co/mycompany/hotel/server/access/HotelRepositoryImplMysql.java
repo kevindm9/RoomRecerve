@@ -38,15 +38,14 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     }
 
     @Override
-    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel, DiaSemana dia) {
+    public ArrayList<Habitacion> getDiaHabitaciones(int idPersona) {
         ArrayList<Habitacion> menu = new ArrayList();
         try {
             this.connect();
 
-            String sql = "select * from hotelhabt natural join habitacion where hotel_id=? and dia=?";
+            String sql = "select * from reserva natural join habitacion where persona_id=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, Integer.toString(idHotel));
-            pstmt.setString(2, dia.name());
+            pstmt.setString(1, Integer.toString(idPersona));
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
                 Habitacion habitacion = new Habitacion();
@@ -146,6 +145,26 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Habitacion añadido correctamente";
     }
+    @Override
+    public ArrayList<Integer> getReserva() {
+         ArrayList<Integer> idHabitaciones = new ArrayList();
+        try {
+            this.connect();
+            String sql = "SELECT * from hotel";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet res = pstmt.executeQuery();
+            while (res.next()) {
+                int aux;
+                aux=Integer.parseInt(res.getString("habt_id"));
+                idHabitaciones.add(aux);
+            }
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
+        }
+        return idHabitaciones;
+    }
 
     @Override
     public String deleteHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia) {
@@ -190,7 +209,25 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return p;
     }
-
+    @Override
+    public String getSesionTipo(String usuario) {
+         String tipo = null;
+        try {
+            this.connect();
+            String sql = "select * from sesion where ses_usuario=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, usuario);
+            ResultSet res = pstmt.executeQuery();
+            while (res.next()) {
+                tipo = res.getString("ses_rango");
+            }
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar getMenuDia de la base de datos", ex);
+        }
+        return tipo;
+    }
     @Override
     public String getSesionClave(String usuario) {
         String clave = null;
@@ -265,6 +302,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
 
         return "Hotel añadido correctamente";
     }
+ 
 
     @Override
     public String addPersona(Persona persona, String tipo) {
@@ -338,6 +376,11 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
     }
+
+
+
+
+
 
 
 }

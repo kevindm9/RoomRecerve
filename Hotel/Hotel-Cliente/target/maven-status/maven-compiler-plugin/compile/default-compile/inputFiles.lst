@@ -1,20 +1,23 @@
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\IHotelAccess.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\User.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdmHabModificar.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Messages.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\FrmMain.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\HotelAccessImplSockets.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\SocketHotel.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdmHabAdd.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Security.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\Factory.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlLogin.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlUsuSucursales.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\services\UserService.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\ClientMain.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdmHabEliminar.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdministrador.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\imgTabla.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Observer.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\services\HotelService.java
-D:\Usuarios\Jose Ricardo\Desktop\Sotf 2\Jueves\HotelHastaTabla\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Subject.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Messages.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\FrmMain.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\imgTabla.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlLogin.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\Factory.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\services\UserService.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\User.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\ClientMain.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdministrador.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlUsuSucursales.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\SocketHotel.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Subject.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\Render.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\HotelAccessImplSockets.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\IHotelAccess.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\services\HotelService.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Security.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Observer.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdmHabAdd.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdmHabEliminar.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlVistaHabitaciones.java
+D:\Users\AIM\Documents\proyectos\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlAdmHabModificar.java
