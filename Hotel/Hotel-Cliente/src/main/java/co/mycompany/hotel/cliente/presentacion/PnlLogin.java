@@ -112,17 +112,26 @@ public class PnlLogin extends javax.swing.JPanel {
 
     private void btnLogIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogIniciarActionPerformed
         // TODO add your handling code here:
-        try {
-            String usuario = txtLogUsuario.getText();
-            String password = txtLogPassword.getText();
-            String tipo="Master";
-            if (UserService.autenticacion(tipo,usuario, password)) {
-                System.out.println("Logeado");
-                panel.cargarAdministrador();
-            }
-        } catch (Exception e) {
-            System.out.println("Error al conectar a la base de datos");
+
+        String usuario = txtLogUsuario.getText();
+        String password = txtLogPassword.getText();
+        String tipo = UserService.autenticacion(usuario, password);
+        switch (tipo) {
+            case "Master":
+                panel.cargarAdmMaster();
+                break;
+            case "Junior":
+                panel.cargarAdmJunior();
+                break;
+            case "Cliente":
+                panel.cargarCliente();
+                break;
+            default:
+                panel.cargarCliente();
+                System.out.println("No se pudo conectar");
+
         }
+
     }//GEN-LAST:event_btnLogIniciarActionPerformed
 
 

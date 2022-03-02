@@ -33,11 +33,11 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     /**
      * Creates new form PnlVistaHabitaciones
      */
-    public PnlUsuHabitaciones(FrmMain panel,HotelService service, int id_hotel) {
+    public PnlUsuHabitaciones(FrmMain panel, int id_hotel) {
         this.panel = panel;
         this.id_hotel = id_hotel;
         habitaciones = new ArrayList<>();
-        this.service = service;
+        this.service = new HotelService();
         initComponents();
         this.modelo = (DefaultTableModel) tabUsuHabitaciones.getModel();
         lanzar();

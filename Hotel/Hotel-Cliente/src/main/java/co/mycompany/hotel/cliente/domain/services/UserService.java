@@ -17,28 +17,30 @@ public class UserService {
      * @param password constraseña
      * @return true si inicio seccion, false si no inicio seccion
      */
-    public static boolean autenticacion(String tipo,String login, String password) {
-        if (login.equals("Master") && password.equals("123456")) {
-            Security.usuario = new User(tipo, login, password);
-          successMessage("Master autenticado correctamente.", "Atención");
-            return true;
-        }
-        HotelService hotelService =new HotelService();
-        String clave= "";
+    public static String autenticacion(String login, String password) {
+        String validar = "";
+        HotelService hotelService =new HotelService();       
         try {
-            clave = hotelService.getSecionClave(login);
+            String clave = hotelService.getSecionClave(login);
+            if (clave.equals("null")){
+                successMessage("Username no existe.", "Atención");
+
+            }
+            else{
+                if(clave.equals(password)){
+                    String tipo = hotelService.getSecionTipo(login);
+                    successMessage("Inicio de seccion valido Bienvenido "+login, "Atención");
+                    validar = tipo;
+                }
+                else{
+                    successMessage("Contraseña Incorrecta.", "Atención");
+                }
+            }
+         
         } catch (Exception e) {
+            successMessage("Error al conectar con el servidor.", "Error");
         }
-        if (clave.equals("null")) {
-            successMessage("Username no existe.", "Atención");
-        }else if(clave.equals(password)){
-            Security.usuario = new User(tipo, login, password);
-            successMessage(tipo+" autenticado correctamente.", "Atención");
-            return true;
-        }else{
-            successMessage("Contraseña Incorrecta.", "Atención");
-        }
-        return false;
+        return validar;
     }
     
 }
