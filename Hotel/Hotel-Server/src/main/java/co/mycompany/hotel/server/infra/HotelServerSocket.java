@@ -4,6 +4,7 @@ import co.mycompany.hotel.server.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
+import co.mycompany.hotel.commons.domain.Persona;
 import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import co.mycompany.hotel.commons.infra.JsonError;
 import co.mycompany.hotel.commons.infra.Protocol;
@@ -20,7 +21,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import co.mycompany.hotel.server.access.IHotelRepository;
-
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * Servidor Socket que está escuchando permanentemente solicitudes de los
@@ -185,38 +187,63 @@ public class HotelServerSocket implements Runnable {
                 }
 
                 break;
-            case "administrador":
-                processGetAdministrador(protocolRequest);
+            case "login":
+                processGetSesionClave(protocolRequest);
                 break;
 
-            case "habitacionSemanal":
+            case "habitacionReserva":
                 if (protocolRequest.getAction().equals("delete")) {
                     processDeleteHabitacionSemanal(protocolRequest);
                 } else if (protocolRequest.getAction().equals("set")) {
-                    processSetHabitacionSemanal(protocolRequest);
+                    processSetHabitacionReserva(protocolRequest);
+                }
+            case "Persona":
+                if (protocolRequest.getAction().equals("set")){
+                    processSetPersona(protocolRequest);
+                } else if (protocolRequest.getAction().equals("get")) {
+                    processGetPersona(protocolRequest);
                 }
         }
 
     }
-
+    
+    private void processSetPersona(Protocol protocolRequest) {
+        Persona persona=new Persona();
+        String tipo;
+        int cont=0;
+        persona.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
+        persona.setNombre(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setTelefono(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setDireccion(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setUsuario(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setClave(protocolRequest.getParameters().get(cont++).getValue());
+        tipo=protocolRequest.getParameters().get(cont++).getValue();
+        String response = service.addPersona(persona,tipo);
+        output.println(response);
+    }
     /**
      * Procesa la solicitud de agregar un Habitacion
      *
      * @param protocolRequest Protocolo de la solicitud
      */
-    private void processSetHabitacionSemanal(Protocol protocolRequest) {
+    private void processSetHabitacionReserva(Protocol protocolRequest) {
         //Protocol{resource=habitacion, action=set, 
         //parameters=[Parameter{name=Id, value=12}, Parameter{name=Nombre, value=jugo de lulo}, Parameter{name=Tipo, value=BEBIDA}]}
         Habitacion habitacion = new Habitacion();
+        Persona sesion = new Persona();
+        LocalDate fecha_inicio;
+        LocalDate fecha_fin;
         int cont = 0;
         int idHotel = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
-        DiaSemana dia = DiaSemana.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         habitacion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         habitacion.setPrecio(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         habitacion.setDescripcion(protocolRequest.getParameters().get(cont++).getValue());
-        
         habitacion.setTipo(TipoHabitacion.valueOf(protocolRequest.getParameters().get(cont).getValue()));
-        String response = service.addHabitacionSemanal(idHotel, habitacion, dia);
+        sesion.setUsuario(protocolRequest.getParameters().get(cont++).getValue());
+        sesion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
+        fecha_inicio = LocalDate.parse(protocolRequest.getParameters().get(cont++).getValue());
+        fecha_fin = LocalDate.parse(protocolRequest.getParameters().get(cont++).getValue());
+        String response = service.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
         output.println(response);
     }
 
@@ -264,9 +291,18 @@ public class HotelServerSocket implements Runnable {
         String strObject = gson.toJson(habitacion);
         return strObject;
     }
-
-    private void processGetAdministrador(Protocol protocolRequest) {
-        String clave = service.getAdministrador(protocolRequest.getParameters().get(0).getValue());
+    
+    private void processGetPersona(Protocol protocolRequest) {
+        Persona persona=service.getPersona(protocolRequest.getParameters().get(0).getValue());
+        output.println(objectPersToJSON(persona));
+    }
+       private String objectPersToJSON(Persona p) {
+        Gson gson = new Gson();
+        String strObject = gson.toJson(p);
+        return strObject;
+    }
+    private void processGetSesionClave(Protocol protocolRequest) {
+        String clave = service.getSesionClave(protocolRequest.getParameters().get(0).getValue());
         output.println(clave);
     }
 
@@ -278,11 +314,9 @@ public class HotelServerSocket implements Runnable {
     private void processSetHabitacion(Protocol protocolRequest) {
         //Protocol{resource=habitacion, action=set, 
         //parameters=[Parameter{name=Id, value=12}, Parameter{name=Nombre, value=jugo de lulo}, Parameter{name=Tipo, value=BEBIDA}]}
-       
-        
+
         Habitacion habitacion = new Habitacion();
-        
-        
+
         int cont = 0;
         habitacion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont).getValue()));
         cont++;
@@ -293,8 +327,6 @@ public class HotelServerSocket implements Runnable {
         habitacion.setFoto(protocolRequest.getParameters().get(cont).getValue());
         cont++;
 
-        
-        
         habitacion.setTipo(TipoHabitacion.valueOf(protocolRequest.getParameters().get(cont).getValue()));
         String response = service.addHabitacion(habitacion);
         output.println(response);
@@ -366,5 +398,9 @@ public class HotelServerSocket implements Runnable {
         String strObject = gson.toJson(hoteles);
         return strObject;
     }
+
+
+
+
 
 }

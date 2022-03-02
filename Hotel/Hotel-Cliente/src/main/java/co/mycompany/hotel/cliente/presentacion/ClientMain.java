@@ -7,6 +7,7 @@ package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.Hotel;
+import co.mycompany.hotel.commons.domain.Persona;
 
 /**
  *
@@ -20,9 +21,10 @@ public class ClientMain {
     public static void main(String[] args) {
         // TODO code application logic here
         HotelService service = new HotelService();
-        //Hotel h=new Hotel(5,"sucu","calle 4","popayan","3213412");
-        //System.out.println(service.addHotel(h));
-        formPrincipal = new FrmMain(service);
-        formPrincipal.setVisible(true);
+         Persona p1=new Persona();
+         p1=service.getPersona("kevindm");
+         System.out.println(p1.getNombre());
+//        formPrincipal = new FrmMain(service);
+//        formPrincipal.setVisible(true);
     }
 }

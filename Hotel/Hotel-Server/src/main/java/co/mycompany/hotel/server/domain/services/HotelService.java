@@ -3,8 +3,11 @@ package co.mycompany.hotel.server.domain.services;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
+import co.mycompany.hotel.commons.domain.Persona;
 import java.util.ArrayList;
 import co.mycompany.hotel.server.access.IHotelRepository;
+import java.sql.Date;
+import java.time.LocalDate;
 
 /**
  * Servicio de clientes. Da acceso a la lógica de negocio
@@ -42,17 +45,21 @@ public class HotelService {
     public String addHotel(Hotel hotel) {
         return repo.addHotel(hotel);
     }
-
+  public String addPersona(Persona persona,String tipo){
+      return repo.addPersona(persona, tipo);  
+  }
     public ArrayList<Habitacion> getHabitaciones() {
         return repo.getHabitaciones();
     }
-
-    public String getAdministrador(String usuario) {
-        return repo.getAdministrador(usuario);
+    public Persona getPersona(String usuario) {
+        return repo.getPersona(usuario);
+    }
+    public String getSesionClave(String usuario) {
+        return repo.getSesionClave(usuario);
     }
 
-    public String addHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia) {
-        return repo.addHabitacionSemanal(idHotel, habitacion, dia);
+    public String addReserva(int idHotel, Habitacion habitacion,LocalDate fecha_inicio,LocalDate fecha_fin,Persona sesion) {
+        return repo.addReserva(idHotel, habitacion, fecha_inicio,fecha_fin,sesion);
     }
 
     public String deleteHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia) {

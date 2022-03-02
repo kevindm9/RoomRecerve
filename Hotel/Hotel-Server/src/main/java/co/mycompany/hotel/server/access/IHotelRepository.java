@@ -1,11 +1,12 @@
 package co.mycompany.hotel.server.access;
 
-import co.mycompany.hotel.commons.domain.Administrador;
+import co.mycompany.hotel.commons.domain.Persona;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import co.mycompany.hotel.commons.infra.Utilities;
+import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  * Interface del respositorio de clientes
@@ -25,7 +26,7 @@ public interface IHotelRepository {
      */
     public ArrayList<Habitacion> getHabitaciones();
     /**
-     * Obtiene el menu de las habitaciones en un restaurante y dia determinado
+     * Obtiene las habitaciones en un Hotel y Fecha determinada
      * @param idRestaurante
      * @param dia
      * @return 
@@ -33,12 +34,14 @@ public interface IHotelRepository {
     public ArrayList<Habitacion> getDiaHabitaciones(int idHotel,DiaSemana dia);
     /**
      * Adiciona un componente en un restuarante determinado y dia determinado
-     * @param idRestaurante
-     * @param componente
-     * @param dia
+     * @param idHotel
+     * @param habitacion
+     * @param fecha_inicio
+     * @param fecha_fin
+     * @param sesion
      * @return
      */
-    public String addHabitacionSemanal(int idiHotel,Habitacion habitacion,DiaSemana dia);
+    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio,LocalDate fecha_fin,Persona sesion);
     /**
      * Elimina un componente de un restaurante determinado en un dia determinado
      * @param idHotel
@@ -58,11 +61,22 @@ public interface IHotelRepository {
      * @param usuario
      * @return 
      */
-    public String getAdministrador(String usuario);
+    public String getSesionClave(String usuario);
         /**
      * Adiciona un componenete a la base de datos
      * @param hotel
      * @return
      */
     public String addHotel(Hotel hotel);
+    
+    /**
+     *Adicionar una nueva persona a la base de datos
+     * @param persona
+     * @param tipo
+     * @return
+     */
+    public String addPersona(Persona persona,String tipo);
+   
+    public Persona getPersona(String usuario);
+    
 }

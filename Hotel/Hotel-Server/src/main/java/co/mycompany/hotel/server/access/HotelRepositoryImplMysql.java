@@ -1,6 +1,6 @@
 package co.mycompany.hotel.server.access;
 
-import co.mycompany.hotel.commons.domain.Administrador;
+import co.mycompany.hotel.commons.domain.Persona;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
@@ -14,6 +14,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -121,18 +122,22 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     }
 
     @Override
-    public String addHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia) {
+    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion) {
         try {
             this.connect();
             int cont;
-            String sql = "insert into hotelhabt values(?,?,?)";
+            String sql = "insert into reserva values(?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
             pstmt.setInt(cont, idHotel);
             cont++;
             pstmt.setInt(cont, habitacion.getId());
             cont++;
-            pstmt.setString(cont, dia.name());
+            pstmt.setInt(cont, sesion.getId());
+            cont++;
+            pstmt.setString(cont, fecha_inicio.toString());
+            cont++;
+            pstmt.setString(cont, fecha_fin.toString());
             pstmt.executeUpdate();
             pstmt.close();
             this.disconnect();
@@ -163,18 +168,40 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Habitacion se ha reservado correctamente";
     }
-
     @Override
-    public String getAdministrador(String usuario) {
-        String clave = null;
+    public Persona getPersona(String usuario) {
+        Persona p=new Persona();
         try {
             this.connect();
-            String sql = "select * from administrador where adm_usuario=?";
+            String sql = "SELECT * from persona inner join sesion on persona.persona_id=sesion.persona_id where sesion.ses_usuario=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, usuario);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
-                clave = res.getString("adm_clave");
+                p.setId(res.getInt("persona_id"));
+                p.setNombre(res.getString("persona_nombre"));
+                p.setTelefono(res.getString("persona_tel"));
+                p.setDireccion(res.getString("persona_dir"));
+            }
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar getMenuDia de la base de datos", ex);
+        }
+        return p;
+    }
+
+    @Override
+    public String getSesionClave(String usuario) {
+        String clave = null;
+        try {
+            this.connect();
+            String sql = "select * from sesion where ses_usuario=?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, usuario);
+            ResultSet res = pstmt.executeQuery();
+            while (res.next()) {
+                clave = res.getString("ses_clave");
             }
             pstmt.close();
             this.disconnect();
@@ -236,7 +263,48 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             return "Error, el hotel con ese id ya existe";
         }
 
-        return "Componente añadido correctamente";
+        return "Hotel añadido correctamente";
+    }
+
+    @Override
+    public String addPersona(Persona persona, String tipo) {
+        try {
+
+            this.connect();
+            int cont;
+            String sql = "insert into persona values(?,?,?,?)";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setInt(cont, persona.getId());
+            cont++;
+            pstmt.setString(cont, persona.getNombre());
+            cont++;
+            pstmt.setString(cont, persona.getTelefono());
+            cont++;
+            pstmt.setString(cont, persona.getDireccion());
+            System.out.println(pstmt.toString());
+            pstmt.executeUpdate();
+            pstmt.close();
+            String sql2 = "insert into Sesion values(?,?,?,?)";
+            PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+            cont = 1;
+            pstmt2.setString(cont, persona.getUsuario());
+            cont++;
+            pstmt2.setString(cont, persona.getClave());
+            cont++;
+            pstmt2.setString(cont, tipo);
+            cont++;
+            pstmt2.setInt(cont, persona.getId());
+            System.out.println(pstmt2.toString());
+            pstmt2.executeUpdate();
+            pstmt2.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+            return "Error, la persona con ese id ya existe";
+        }
+
+        return "Persona añadido correctamente";
     }
 
     /**
@@ -270,5 +338,6 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
     }
+
 
 }

@@ -6,15 +6,16 @@ import co.mycompany.hotel.cliente.access.IHotelAccess;
 import co.mycompany.hotel.cliente.infra.Subject;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.DiaSemana;
+import co.mycompany.hotel.commons.domain.Persona;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
- * Es una fachada para comunicar la presentación con el
- * dominio
+ * Es una fachada para comunicar la presentación con el dominio
  *
  * @author Kevin Morales
  */
-public class HotelService extends Subject{
+public class HotelService extends Subject {
 
     private final IHotelAccess service;
 
@@ -27,70 +28,100 @@ public class HotelService extends Subject{
 
     /**
      * Adiciona un componenete a la base de datos
+     *
      * @param habitacion
      * @return
      */
-    public String addHabitacion(Habitacion habitacion){
+    public String addHabitacion(Habitacion habitacion) {
         return service.addHabitacion(habitacion);
     }
+
     /**
      * obtiene todos los habitacions registrados
-     * @return 
+     *
+     * @return
      */
-    public ArrayList<Habitacion> getHabitaciones(){
+    public ArrayList<Habitacion> getHabitaciones() {
         return service.getHabitaciones();
-    }   
+    }
+
     /**
      * Obtiene el menu de los componenetes en un hotel y dia determinado
+     *
      * @param idHotel
      * @param dia
-     * @return 
+     * @return
      */
-    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel,DiaSemana dia){
+    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel, DiaSemana dia) {
         return service.getDiaHabitaciones(idHotel, dia);
     }
+
+    /**
+     *
+     * @param persona
+     * @param tipo
+     * @return
+     */
+    public String addPersona(Persona persona, String tipo) {
+        return service.addPersona(persona, tipo);
+    }
+
     /**
      * Adiciona un habitacion en un restuarante determinado y dia determinado
+     *
      * @param idHotel
      * @param habitacion
-     * @param dia
+     * @param fecha_inicio
+     * @param fecha_fin
+     * @param sesion
      * @return
      */
-    public String addHabitacionSemanal(int idHotel,Habitacion habitacion,DiaSemana dia){
-        return service.addHabitacionSemanal(idHotel, habitacion,dia);
+
+    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion) {
+        return service.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
     }
+
     /**
      * Elimina un habitacion de un hotel determinado en un dia determinado
+     *
      * @param idHotel
      * @param habitacion
      * @param dia
      * @return
      */
-    public String deleteHabitacionSemanal(int idHotel,Habitacion habitacion,DiaSemana dia){
-        return service.deleteHabitacionSemanal(idHotel, habitacion,dia);
+    public String deleteHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia) {
+        return service.deleteHabitacionSemanal(idHotel, habitacion, dia);
     }
-    
+
     /**
      * obtiene la lista de todos los hotels
-     * @return 
+     *
+     * @return
      */
-    public ArrayList<Hotel> getHotels(){ 
+    public ArrayList<Hotel> getHotels() {
         return service.getHotels();
     }
+
     /**
      * obtiene el plato del un hotel con id
+     *
      * @param hotel
-     * @return 
+     * @return
      */
-        public String addHotel(Hotel hotel){
+    public String addHotel(Hotel hotel) {
         return service.addHotel(hotel);
     }
+
     /**
      * obtiene la clave del administrador en caso de existir
+     *
      * @param usuario
-     * @return 
+     * @return
      */
-    public String getAdministrador(String usuario){
-        return service.getAdministrador(usuario);
+    public String getSecionClave(String usuario) {
+        return service.getSecionClave(usuario);
+    }
+    public Persona getPersona(String usuario) {
+        return service.getPersona(usuario);
     }
 }

@@ -44,7 +44,7 @@ public class Factory {
 
         switch (type) {
             case "default":
-                result = new HotelRepositoryImplArrays();
+               // result = new HotelRepositoryImplArrays();
                 break;
             case "mysql":
                 result = new HotelRepositoryImplMysql();

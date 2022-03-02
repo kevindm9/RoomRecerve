@@ -115,7 +115,8 @@ public class PnlLogin extends javax.swing.JPanel {
         try {
             String usuario = txtLogUsuario.getText();
             String password = txtLogPassword.getText();
-            if (UserService.autenticacion(usuario, password)) {
+            String tipo="Master";
+            if (UserService.autenticacion(tipo,usuario, password)) {
                 System.out.println("Logeado");
                 panel.cargarAdministrador();
             }

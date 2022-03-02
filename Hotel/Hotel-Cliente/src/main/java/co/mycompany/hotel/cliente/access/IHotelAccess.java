@@ -4,6 +4,8 @@ import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import java.util.ArrayList;
 import co.mycompany.hotel.commons.domain.Hotel;
+import co.mycompany.hotel.commons.domain.Persona;
+import java.time.LocalDate;
 
 /**
  * Interface que define los servicios de persistencia de Clientes de la agencia
@@ -14,49 +16,77 @@ public interface IHotelAccess {
 
     /**
      * Adiciona un componenete a la base de datos
+     *
      * @param habitacion
      * @return
      */
     public String addHabitacion(Habitacion habitacion);
+
     /**
      * obtiene todos los habitacions registrados
-     * @return 
+     *
+     * @return
      */
     public ArrayList<Habitacion> getHabitaciones();
+
+    /**
+     *
+     * @param usuario
+     * @return
+     */
+    public Persona getPersona(String usuario);
     /**
      * Obtiene el menu de los componenetes en un hotel y dia determinado
+     *
      * @param idHotel
      * @param dia
-     * @return 
+     * @return
      */
-    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel,DiaSemana dia);
+    public ArrayList<Habitacion> getDiaHabitaciones(int idHotel, DiaSemana dia);
+
     /**
      * Adiciona un habitacion en un hotel determinado y dia determinado
+     *
      * @param idHotel
      * @param habitacion
      * @param dia
      * @return
      */
-    public String addHabitacionSemanal(int idHotel,Habitacion habitacion,DiaSemana dia);
+    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion);
+
     /**
      * Elimina un habitacion de un hotel determinado en un dia determinado
+     *
      * @param idHotel
      * @param habitacion
      * @param dia
      * @return
      */
-    public String deleteHabitacionSemanal(int idHotel,Habitacion habitacion,DiaSemana dia);
+    public String deleteHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia);
+
     /**
      * obtiene la lista de todos los hotels
-     * @return 
+     *
+     * @return
      */
     public ArrayList<Hotel> getHotels();
+
     /**
      * obtiene la clave del administrador en caso de existir
+     *
      * @param usuario
-     * @return 
+     * @return
      */
-    public String getAdministrador(String usuario);
-    
-     public String addHotel(Hotel hotel);
+    public String getSecionClave(String usuario);
+
+    public String addHotel(Hotel hotel);
+
+    /**
+     * Adicionar una nueva persona a la base de datos
+     *
+     * @param persona
+     * @param tipo
+     * @return
+     */
+    public String addPersona(Persona persona, String tipo);
 }
