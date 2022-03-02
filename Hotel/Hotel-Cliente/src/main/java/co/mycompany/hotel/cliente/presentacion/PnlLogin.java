@@ -36,8 +36,8 @@ public class PnlLogin extends javax.swing.JPanel {
         lbLogUsuario = new javax.swing.JLabel();
         lbLogPassword = new javax.swing.JLabel();
         txtLogUsuario = new javax.swing.JTextField();
-        txtLogPassword = new javax.swing.JTextField();
         btnLogIniciar = new javax.swing.JButton();
+        txtLogPassword = new javax.swing.JPasswordField();
 
         pnlLogLogin.setPreferredSize(new java.awt.Dimension(700, 300));
 
@@ -66,9 +66,9 @@ public class PnlLogin extends javax.swing.JPanel {
                             .addComponent(lbLogUsuario)
                             .addComponent(lbLogPassword))
                         .addGap(36, 36, 36)
-                        .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLogUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLogPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtLogUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(txtLogPassword)))
                     .addGroup(pnlLogLoginLayout.createSequentialGroup()
                         .addGap(317, 317, 317)
                         .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +132,7 @@ public class PnlLogin extends javax.swing.JPanel {
     private javax.swing.JLabel lbLogTitulo;
     private javax.swing.JLabel lbLogUsuario;
     private javax.swing.JPanel pnlLogLogin;
-    private javax.swing.JTextField txtLogPassword;
+    private javax.swing.JPasswordField txtLogPassword;
     private javax.swing.JTextField txtLogUsuario;
     // End of variables declaration//GEN-END:variables
 }
