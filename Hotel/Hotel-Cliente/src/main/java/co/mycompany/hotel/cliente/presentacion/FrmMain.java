@@ -12,11 +12,13 @@ import co.mycompany.hotel.cliente.domain.services.HotelService;
  */
 public class FrmMain extends javax.swing.JFrame {
     private HotelService service;
+    private javax.swing.JPanel aux;
     /**
      * Creates new form frmMain
      */
     public FrmMain() {
         service = new HotelService();
+        aux = new javax.swing.JPanel();
         initComponents();
         mostrarSucursales();
         
@@ -37,7 +39,7 @@ public class FrmMain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pnlControl = new javax.swing.JPanel();
         btnMainSalir = new javax.swing.JButton();
-        lbMainAdministrar = new javax.swing.JLabel();
+        lbMainLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,10 +56,10 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
-        lbMainAdministrar.setText("Login");
-        lbMainAdministrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbMainLogin.setText("Login");
+        lbMainLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbMainAdministrarMouseClicked(evt);
+                lbMainLoginMouseClicked(evt);
             }
         });
 
@@ -76,7 +78,7 @@ public class FrmMain extends javax.swing.JFrame {
                         .addComponent(pnlControl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(lbMainAdministrar)
+                        .addComponent(lbMainLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnMainSalir)))
                 .addContainerGap())
@@ -88,7 +90,7 @@ public class FrmMain extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbMainAdministrar)
+                    .addComponent(lbMainLogin)
                     .addGroup(pnlMainLayout.createSequentialGroup()
                         .addComponent(pnlControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -115,37 +117,61 @@ public class FrmMain extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnMainSalirActionPerformed
 
-    private void lbMainAdministrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMainAdministrarMouseClicked
+    private void lbMainLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMainLoginMouseClicked
         // TODO add your handling code here:
-        cargarLogin();
-    }//GEN-LAST:event_lbMainAdministrarMouseClicked
+        if ("Login".equals(lbMainLogin.getText())){            
+            lbMainLogin.setText("LogOut");
+            cargarLogin();
+        }
+        else{
+            lbMainLogin.setText("Login");
+            mostrarSucursales();
+        }
+    }//GEN-LAST:event_lbMainLoginMouseClicked
 
     public void cargarLogin(){
-        PnlLogin panelLogin = new PnlLogin(this);
+        aux.removeAll();
+        aux.add(pnlControl.getComponent(0));
+        PnlLogin panelLogin = new PnlLogin(this);        
         pnlControl.removeAll();
         pnlControl.add(panelLogin);
         pnlControl.repaint();
         pnlControl.revalidate();
     }
     
-    public void cargarAdministrador(){
-        PnlAdministrador panelAdmin = new PnlAdministrador(this,service);
+    public void cargarAdmMaster(){
+        PnlAdmMaster panelAdmin = new PnlAdmMaster(this);
         pnlControl.removeAll();
         pnlControl.add(panelAdmin);
         pnlControl.repaint();
         pnlControl.revalidate();
     }
     
+    public void cargarAdmJunior(){
+        PnlAdmJunior panelJunior = new PnlAdmJunior(this);
+        pnlControl.removeAll();
+        pnlControl.add(panelJunior);
+        pnlControl.repaint();
+        pnlControl.revalidate();
+    }
+    
     public void mostrarSucursales(){
-        PnlUsuSucursales panelSucursales = new PnlUsuSucursales(this,service);
+        PnlUsuSucursales panelSucursales = new PnlUsuSucursales(this);
         pnlControl.removeAll();
         pnlControl.add(panelSucursales);
         pnlControl.repaint();
         pnlControl.revalidate();
     }
     
+    public void cargarCliente(){
+        pnlControl.removeAll();
+        pnlControl.add(aux.getComponent(0));
+        pnlControl.repaint();
+        pnlControl.revalidate();
+    }
+    
     public void cargarReserva(int id_hotel){
-        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this,service,id_hotel);
+        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this,id_hotel);
         pnlControl.removeAll();
         pnlControl.add(panelHabitaciones);
         pnlControl.repaint();
@@ -190,7 +216,7 @@ public class FrmMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMainSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lbMainAdministrar;
+    private javax.swing.JLabel lbMainLogin;
     private javax.swing.JPanel pnlControl;
     private javax.swing.JPanel pnlMain;
     // End of variables declaration//GEN-END:variables
