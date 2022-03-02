@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Kevin Morales
+ * @author Ramira experimentar
  */
 public class ClientMain {
     private static  FrmMain formPrincipal;
