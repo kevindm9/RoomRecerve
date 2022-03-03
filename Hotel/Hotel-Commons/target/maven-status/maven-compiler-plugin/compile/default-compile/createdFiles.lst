@@ -1,3 +1,4 @@
+co\mycompany\hotel\commons\domain\Administrador.class
 co\mycompany\hotel\commons\infra\Parameter.class
 co\mycompany\hotel\commons\infra\Protocol.class
 co\mycompany\hotel\commons\domain\Habitacion.class
@@ -7,3 +8,4 @@ co\mycompany\hotel\commons\domain\Persona.class
 co\mycompany\hotel\commons\domain\DiaSemana.class
 co\mycompany\hotel\commons\domain\TipoHabitacion.class
 co\mycompany\hotel\commons\domain\Hotel.class
+co\mycompany\hotel\commons\domain\Reserva.class

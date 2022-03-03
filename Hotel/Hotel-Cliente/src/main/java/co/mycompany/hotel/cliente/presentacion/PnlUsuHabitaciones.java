@@ -30,6 +30,9 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     private ArrayList<Habitacion> habitaciones;
     private final DefaultTableModel modelo;
     private final int id_hotel;
+    Date fechaIni;
+    Date fechaFin;
+
     /**
      * Creates new form PnlVistaHabitaciones
      */
@@ -40,6 +43,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         this.service = new HotelService();
         initComponents();
         this.modelo = (DefaultTableModel) tabUsuHabitaciones.getModel();
+        
     }
 
 
@@ -135,7 +139,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         int opc =JOptionPane.showConfirmDialog(null, "Reservar habitacion", "Desea reservar la habitacion?", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
         if (opc == 0){
             try{
-            //service.deleteHabitacionSemanal(id_hotel, habitaciones.get(fila), dias[cbxUsuHabDias.getSelectedIndex()]);     
+            //service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,);     
             //cargarHabitaciones();
             }
             catch(Exception e){
@@ -155,9 +159,9 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = simpleDateFormat.format(dccUsuHabInicio.getDate());
         //dccUsuHabInicio.getDateFormatString()
-        Date fechaIni = Date.valueOf(formattedDate);
+        fechaIni = Date.valueOf(formattedDate);
         formattedDate = simpleDateFormat.format(dccUsuHabFin.getDate());
-        Date fechaFin = Date.valueOf(formattedDate);
+        fechaFin = Date.valueOf(formattedDate);
         
         cargarHabitaciones(fechaIni,fechaFin);
         

@@ -22,7 +22,19 @@ public interface IHotelAccess {
      * @return
      */
     public String addHabitacion(Habitacion habitacion);
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Habitacion getHabitacion(int id);
 
+    /**
+     *
+     * @param habitacion
+     * @return
+     */
+    public String ModificarHabitacion(Habitacion habitacion);
     /**
      * obtiene todos los habitacions registrados
      *

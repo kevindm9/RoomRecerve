@@ -6,8 +6,10 @@
 package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
+import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Persona;
+import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import java.util.ArrayList;
 
 /**
@@ -28,7 +30,12 @@ public class ClientMain {
 //         ArrayList<Integer> i;
 //         i=service.getReserva();         
 //        // System.out.println(i.get(0));
-//         System.out.println(service.getSecionTipo("kevindm"));
+//        Habitacion h=new Habitacion();
+//        h=service.getHabitacion(1);
+//        h.setDescripcion("super Mega");
+//        h.setPrecio(500000);
+//        h.setTipo(TipoHabitacion.GRUPAL);
+//      System.out.println(service.ModificarHabitacion(h));
         formPrincipal = new FrmMain();
         formPrincipal.setVisible(true);
     }

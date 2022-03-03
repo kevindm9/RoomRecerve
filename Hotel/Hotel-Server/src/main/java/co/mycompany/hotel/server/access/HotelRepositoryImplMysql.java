@@ -107,7 +107,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             this.connect();
             int cont;
             String sql = "insert into habitacion values(null,?,?,?,?,?)";
-
+             System.out.println(sql);
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
             //pstmt.setInt(cont, habitacion.getId());
@@ -128,9 +128,71 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             this.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+            return "Error,la habitacion con ese id y nombre ya existe";
+        }
+        return "Habitacion añadida correctamente";
+    }
+    @Override
+    public Habitacion getHabitacion(int id) {
+       Habitacion habitacion = new Habitacion();
+        try {
+            this.connect();
+            int cont = 0;
+            String sql = "SELECT * FROM habitacion where  habt_id = ? ";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setInt(cont, id);
+            System.out.println(pstmt.toString());
+            ResultSet res = pstmt.executeQuery();
+            while (res.next()) {
+                Habitacion c = new Habitacion();
+                c.setId(res.getInt("habt_id"));
+                c.setDescripcion(res.getString("habt_descripcion"));
+                c.setPrecio(res.getInt("habt_precio"));
+                c.setTipo(TipoHabitacion.valueOf(res.getString("habt_tipo")));
+                c.setFoto(res.getString("habt_foto"));
+                habitacion= c;
+            }
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar getComponentes de la base de datos", ex);
+        }
+        return habitacion;
+    }
+
+    @Override
+    public String ModificarHabitacion(Habitacion habitacion) {
+        System.out.println(" aqui si ");
+        try {
+            this.connect();
+            int cont;
+            String sql = "UPDATE habitacion SET habt_descripcion = ?, habt_precio = ?, habt_tipo = ?, habt_foto=?  WHERE habt_id = ?";
+            System.out.println(sql);
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            //pstmt.setInt(cont, habitacion.getId());
+            //cont++;
+            pstmt.setString(cont, habitacion.getDescripcion());
+            cont++;
+            pstmt.setInt(cont, habitacion.getPrecio());
+            cont++;
+            pstmt.setString(cont, habitacion.getTipo().name());
+            cont++;
+            pstmt.setString(cont, habitacion.getFoto());
+            cont++;
+            pstmt.setInt(cont, habitacion.getId());
+            System.out.println(pstmt.toString());
+
+            pstmt.executeUpdate();
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
             return "Error, el componente con ese id y nombre ya existe";
         }
-        return "Componente añadido correctamente";
+        return "Habitacion modificada correctamente";
     }
 
     @Override
@@ -409,6 +471,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
     }
+
 
 
 
