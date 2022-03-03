@@ -5,6 +5,7 @@ import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.Persona;
+import co.mycompany.hotel.commons.domain.Reserva;
 import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import co.mycompany.hotel.commons.infra.JsonError;
 import co.mycompany.hotel.commons.infra.Protocol;
@@ -171,7 +172,7 @@ public class HotelServerSocket implements Runnable {
             case "Hoteles":
                 if (protocolRequest.getAction().equals("get")) {
                     // Obtener datos de hoteles
-                    processGetHotel();
+                    processGetHotel(protocolRequest);
                 }
                 break;
             case "Hotel":
@@ -183,7 +184,7 @@ public class HotelServerSocket implements Runnable {
                     //{"resource":"componentes","action":"get","parameters":[{"name":"rest_id","value":"1"},{"name":"dia","value":"LUNES"}]}
                     processGetDiaHabitaciones(protocolRequest);
                 } else if (protocolRequest.getAction().equals("get")) {
-                    processGethabitacion();
+                    processGethabitacion(protocolRequest);
                 }
 
                 break;
@@ -273,8 +274,12 @@ public class HotelServerSocket implements Runnable {
      *
      * @param protocolRequest Protocolo de la solicitud
      */
-    private void processGethabitacion() {
-        ArrayList<Habitacion> habitacion = service.getHabitaciones();
+    private void processGethabitacion(Protocol protocolRequest) {
+        int cont = 0;
+        int idHotel = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
+        Date fechaInicio = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
+        Date fechafin = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());       
+        ArrayList<Habitacion> habitacion = service.getHabitaciones(idHotel, fechaInicio, fechafin);
         String response = objectCompToJSON(habitacion);
         output.println(response);
     }
@@ -310,7 +315,7 @@ public class HotelServerSocket implements Runnable {
         Persona persona=service.getPersona(protocolRequest.getParameters().get(0).getValue());
         output.println(objectPersToJSON(persona));
     }
-       private String objectPersToJSON(Persona p) {
+    private String objectPersToJSON(Persona p) {
         Gson gson = new Gson();
         String strObject = gson.toJson(p);
         return strObject;
@@ -346,8 +351,9 @@ public class HotelServerSocket implements Runnable {
         cont++;
         habitacion.setFoto(protocolRequest.getParameters().get(cont).getValue());
         cont++;
-
         habitacion.setTipo(TipoHabitacion.valueOf(protocolRequest.getParameters().get(cont).getValue()));
+        cont++;
+        habitacion.setId_hotel(Integer.parseInt(protocolRequest.getParameters().get(cont).getValue()));
         String response = service.addHabitacion(habitacion);
         output.println(response);
     }
@@ -374,8 +380,9 @@ public class HotelServerSocket implements Runnable {
         output.println(response);
     }
 
-    private void processGetHotel() {
-        ArrayList<Hotel> Hotels = service.getHoteles();
+    private void processGetHotel(Protocol protocolRequest) {
+        String usuario = protocolRequest.getParameters().get(0).getValue();
+        ArrayList<Hotel> Hotels = service.getHoteles(usuario);
         if (Hotels.isEmpty()) {
             output.println("Hotel vacio");
         } else {

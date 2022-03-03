@@ -13,12 +13,14 @@ import co.mycompany.hotel.cliente.domain.services.HotelService;
 public class FrmMain extends javax.swing.JFrame {
     private HotelService service;
     private javax.swing.JPanel aux;
+    private String usuario;
     /**
      * Creates new form frmMain
      */
     public FrmMain() {
         service = new HotelService();
         aux = new javax.swing.JPanel();
+        
         initComponents();
         mostrarSucursales();
         
@@ -139,6 +141,10 @@ public class FrmMain extends javax.swing.JFrame {
         pnlControl.revalidate();
     }
     
+    public void cargarUsuario(String usuario){
+        this.usuario = usuario;
+    }
+    
     public void cargarAdmMaster(){
         PnlAdmMaster panelAdmin = new PnlAdmMaster(this);
         pnlControl.removeAll();
@@ -148,7 +154,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
     
     public void cargarAdmJunior(){
-        PnlAdmJunior panelJunior = new PnlAdmJunior(this);
+        PnlAdmJunior panelJunior = new PnlAdmJunior(this,usuario);
         pnlControl.removeAll();
         pnlControl.add(panelJunior);
         pnlControl.repaint();

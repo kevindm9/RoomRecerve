@@ -34,8 +34,8 @@ public class HotelService {
         return repo.getDiaHabitaciones(id_Persona);
     }
 
-    public ArrayList<Hotel> getHoteles() {
-        return repo.getHoteles();
+    public ArrayList<Hotel> getHoteles(String usuario) {
+        return repo.getHoteles(usuario);
     }
 
     public String addHabitacion(Habitacion habitacion) {
@@ -48,8 +48,8 @@ public class HotelService {
   public String addPersona(Persona persona,String tipo){
       return repo.addPersona(persona, tipo);  
   }
-    public ArrayList<Habitacion> getHabitaciones() {
-        return repo.getHabitaciones();
+    public ArrayList<Habitacion> getHabitaciones(int id_hotel, Date fechaInicio, Date fechafin) {
+        return repo.getHabitaciones(id_hotel, fechaInicio, fechafin);
     }
     public Persona getPersona(String usuario) {
         return repo.getPersona(usuario);

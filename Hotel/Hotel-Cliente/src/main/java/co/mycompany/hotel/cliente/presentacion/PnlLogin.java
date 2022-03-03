@@ -112,12 +112,15 @@ public class PnlLogin extends javax.swing.JPanel {
 
     private void btnLogIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogIniciarActionPerformed
         // TODO add your handling code here:
-
+        String tipo = "";
         String usuario = txtLogUsuario.getText();
         String password = txtLogPassword.getText();
-        String tipo = UserService.autenticacion(usuario, password);
+        if(!usuario.equals("All_Hotels")){
+            tipo = UserService.autenticacion(usuario, password);
+            panel.cargarUsuario(usuario);
+        }
         switch (tipo) {
-            case "Master":
+            case "Master":    
                 panel.cargarAdmMaster();
                 break;
             case "Junior":
@@ -127,9 +130,9 @@ public class PnlLogin extends javax.swing.JPanel {
                 panel.cargarCliente();
                 break;
             default:
+                panel.cargarUsuario("");
                 panel.cargarCliente();
                 System.out.println("No se pudo conectar");
-
         }
 
     }//GEN-LAST:event_btnLogIniciarActionPerformed

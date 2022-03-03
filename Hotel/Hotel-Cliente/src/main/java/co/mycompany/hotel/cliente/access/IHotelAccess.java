@@ -5,6 +5,7 @@ import co.mycompany.hotel.commons.domain.DiaSemana;
 import java.util.ArrayList;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Persona;
+import java.sql.Date;
 import java.time.LocalDate;
 
 /**
@@ -27,7 +28,7 @@ public interface IHotelAccess {
      *
      * @return
      */
-    public ArrayList<Habitacion> getHabitaciones();
+    public ArrayList<Habitacion> getHabitaciones(int id_hotel, Date fechaInicio, Date fechafin);
 
     /**
      *
@@ -69,7 +70,7 @@ public interface IHotelAccess {
      *
      * @return
      */
-    public ArrayList<Hotel> getHotels();
+    public ArrayList<Hotel> getHotels(String ses_usuario);
 
     /**
      * obtiene la clave del administrador en caso de existir
@@ -78,7 +79,7 @@ public interface IHotelAccess {
      * @return
      */
     public String getSecionClave(String usuario);
-      public String getSecionTipo(String usuario);
+    public String getSecionTipo(String usuario);
 
     public String addHotel(Hotel hotel);
 

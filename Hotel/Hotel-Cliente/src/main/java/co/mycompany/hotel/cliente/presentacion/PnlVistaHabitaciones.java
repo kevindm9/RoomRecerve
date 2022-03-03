@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -35,11 +36,12 @@ public class PnlVistaHabitaciones extends javax.swing.JPanel {
         this.service = service;
         initComponents();
         this.modelo = (DefaultTableModel) tabvisHabitaciones.getModel();
-        lanzar();
+        //lanzar(id_hotel);
     }
 
-    private void lanzar() {
-        habitaciones = service.getHabitaciones();
+    private void lanzar(int id_hotel) {
+        
+        habitaciones = service.getHabitaciones(id_hotel, Date.valueOf("1800-01-01"), Date.valueOf("1800-01-02"));
 
         tabvisHabitaciones.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel dt = new DefaultTableModel() {
