@@ -10,7 +10,7 @@ import co.mycompany.hotel.cliente.domain.services.HotelService;
  *
  * @author Jose Ricardo
  */
-public class PnlAdministrador extends javax.swing.JPanel {
+public class PnlAdmMaster extends javax.swing.JPanel {
 
     private FrmMain panel;
     private HotelService service;
@@ -18,8 +18,8 @@ public class PnlAdministrador extends javax.swing.JPanel {
     /**
      * Creates new form PnlAdm
      */
-    public PnlAdministrador(FrmMain panel, HotelService service) {
-        this.service = service;
+    public PnlAdmMaster(FrmMain panel) {
+        this.service = new HotelService();
         this.panel = panel;
         initComponents();
     }
@@ -50,8 +50,14 @@ public class PnlAdministrador extends javax.swing.JPanel {
         bgAdmHabEliminar1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         pnlAdmHabControl1 = new javax.swing.JPanel();
+        pnlAdmHabitaciones1 = new javax.swing.JPanel();
+        pnlAdmHabMain2 = new javax.swing.JPanel();
+        bgAdmHabCrear2 = new javax.swing.JRadioButton();
+        bgAdmHabModificar2 = new javax.swing.JRadioButton();
+        bgAdmHabEliminar2 = new javax.swing.JRadioButton();
+        bgAdmHabConsultar1 = new javax.swing.JRadioButton();
+        pnlAdmHabControl2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnAdmCerrar = new javax.swing.JButton();
 
         pnlAdmPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlAdmPrincipal.setPreferredSize(new java.awt.Dimension(700, 300));
@@ -135,7 +141,7 @@ public class PnlAdministrador extends javax.swing.JPanel {
             .addGroup(pnlAdmHabitacionesLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(pnlAdmHabMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         tbpMadMenu.addTab("Habitaciones", pnlAdmHabitaciones);
@@ -203,33 +209,104 @@ public class PnlAdministrador extends javax.swing.JPanel {
             .addGroup(pnlAdmSucursalesLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(pnlAdmHabMain1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         tbpMadMenu.addTab("Sucursales", pnlAdmSucursales);
 
-        jLabel1.setText("Menu Administracion");
+        pnlAdmHabMain2.setBorder(javax.swing.BorderFactory.createTitledBorder("Procesos"));
 
-        btnAdmCerrar.setText("Cerrar Seccion");
-        btnAdmCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmCerrarActionPerformed(evt);
+        GrupoHab.add(bgAdmHabCrear2);
+        bgAdmHabCrear2.setText("Crear");
+        bgAdmHabCrear2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                bgAdmHabCrear2StateChanged(evt);
             }
         });
+        bgAdmHabCrear2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bgAdmHabCrear2MouseClicked(evt);
+            }
+        });
+
+        GrupoHab.add(bgAdmHabModificar2);
+        bgAdmHabModificar2.setText("Modificar");
+
+        GrupoHab.add(bgAdmHabEliminar2);
+        bgAdmHabEliminar2.setText("Eliminar");
+
+        GrupoHab.add(bgAdmHabConsultar1);
+        bgAdmHabConsultar1.setText("Consutar");
+        bgAdmHabConsultar1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                bgAdmHabConsultar1StateChanged(evt);
+            }
+        });
+        bgAdmHabConsultar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bgAdmHabConsultar1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlAdmHabMain2Layout = new javax.swing.GroupLayout(pnlAdmHabMain2);
+        pnlAdmHabMain2.setLayout(pnlAdmHabMain2Layout);
+        pnlAdmHabMain2Layout.setHorizontalGroup(
+            pnlAdmHabMain2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAdmHabMain2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlAdmHabMain2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bgAdmHabEliminar2)
+                    .addComponent(bgAdmHabModificar2)
+                    .addComponent(bgAdmHabCrear2)
+                    .addComponent(bgAdmHabConsultar1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlAdmHabMain2Layout.setVerticalGroup(
+            pnlAdmHabMain2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAdmHabMain2Layout.createSequentialGroup()
+                .addComponent(bgAdmHabCrear2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bgAdmHabConsultar1)
+                .addGap(5, 5, 5)
+                .addComponent(bgAdmHabModificar2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bgAdmHabEliminar2)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        pnlAdmHabControl2.setRequestFocusEnabled(false);
+        pnlAdmHabControl2.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout pnlAdmHabitaciones1Layout = new javax.swing.GroupLayout(pnlAdmHabitaciones1);
+        pnlAdmHabitaciones1.setLayout(pnlAdmHabitaciones1Layout);
+        pnlAdmHabitaciones1Layout.setHorizontalGroup(
+            pnlAdmHabitaciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAdmHabitaciones1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlAdmHabMain2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlAdmHabControl2, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlAdmHabitaciones1Layout.setVerticalGroup(
+            pnlAdmHabitaciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlAdmHabControl2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlAdmHabitaciones1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(pnlAdmHabMain2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        tbpMadMenu.addTab("Administradores Junior", pnlAdmHabitaciones1);
+
+        jLabel1.setText("Menu Administracion");
 
         javax.swing.GroupLayout pnlAdmPrincipalLayout = new javax.swing.GroupLayout(pnlAdmPrincipal);
         pnlAdmPrincipal.setLayout(pnlAdmPrincipalLayout);
         pnlAdmPrincipalLayout.setHorizontalGroup(
             pnlAdmPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAdmPrincipalLayout.createSequentialGroup()
-                .addGroup(pnlAdmPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlAdmPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tbpMadMenu))
-                    .addGroup(pnlAdmPrincipalLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnAdmCerrar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(tbpMadMenu)
                 .addContainerGap())
             .addGroup(pnlAdmPrincipalLayout.createSequentialGroup()
                 .addGap(282, 282, 282)
@@ -241,10 +318,8 @@ public class PnlAdministrador extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAdmPrincipalLayout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbpMadMenu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdmCerrar)
-                .addGap(5, 5, 5))
+                .addComponent(tbpMadMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -261,36 +336,31 @@ public class PnlAdministrador extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bgAdmHabCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgAdmHabCrearMouseClicked
+    private void bgAdmHabConsultar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgAdmHabConsultar1MouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_bgAdmHabCrearMouseClicked
+    }//GEN-LAST:event_bgAdmHabConsultar1MouseClicked
 
-    private void btnAdmCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmCerrarActionPerformed
+    private void bgAdmHabConsultar1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabConsultar1StateChanged
         // TODO add your handling code here:
-        panel.mostrarSucursales();
-    }//GEN-LAST:event_btnAdmCerrarActionPerformed
+    }//GEN-LAST:event_bgAdmHabConsultar1StateChanged
+
+    private void bgAdmHabCrear2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgAdmHabCrear2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bgAdmHabCrear2MouseClicked
+
+    private void bgAdmHabCrear2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabCrear2StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bgAdmHabCrear2StateChanged
 
     private void bgAdmHabCrear1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgAdmHabCrear1MouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_bgAdmHabCrear1MouseClicked
 
     private void bgAdmHabConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgAdmHabConsultarMouseClicked
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_bgAdmHabConsultarMouseClicked
 
-    private void bgAdmHabCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabCrearStateChanged
-        // TODO add your handling code here:
-        if (bgAdmHabCrear.isSelected()) {
-            PnlAdmHabAdd panelHabAdd = new PnlAdmHabAdd(service);
-            pnlAdmHabControl.removeAll();
-            pnlAdmHabControl.add(panelHabAdd);
-            pnlAdmHabControl.repaint();
-            pnlAdmHabControl.revalidate();
-        }
-    }//GEN-LAST:event_bgAdmHabCrearStateChanged
+    }//GEN-LAST:event_bgAdmHabConsultarMouseClicked
 
     private void bgAdmHabConsultarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabConsultarStateChanged
         // TODO add your handling code here:
@@ -303,24 +373,46 @@ public class PnlAdministrador extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bgAdmHabConsultarStateChanged
 
+    private void bgAdmHabCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgAdmHabCrearMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_bgAdmHabCrearMouseClicked
+
+    private void bgAdmHabCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabCrearStateChanged
+        // TODO add your handling code here:
+        if (bgAdmHabCrear.isSelected()) {
+            PnlAdmHabAdd panelHabAdd = new PnlAdmHabAdd("All_Hotels");
+            pnlAdmHabControl.removeAll();
+            pnlAdmHabControl.add(panelHabAdd);
+            pnlAdmHabControl.repaint();
+            pnlAdmHabControl.revalidate();
+        }
+    }//GEN-LAST:event_bgAdmHabCrearStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup GrupoHab;
     private javax.swing.JRadioButton bgAdmHabConsultar;
+    private javax.swing.JRadioButton bgAdmHabConsultar1;
     private javax.swing.JRadioButton bgAdmHabCrear;
     private javax.swing.JRadioButton bgAdmHabCrear1;
+    private javax.swing.JRadioButton bgAdmHabCrear2;
     private javax.swing.JRadioButton bgAdmHabEliminar;
     private javax.swing.JRadioButton bgAdmHabEliminar1;
+    private javax.swing.JRadioButton bgAdmHabEliminar2;
     private javax.swing.JRadioButton bgAdmHabModificar;
     private javax.swing.JRadioButton bgAdmHabModificar1;
-    private javax.swing.JButton btnAdmCerrar;
+    private javax.swing.JRadioButton bgAdmHabModificar2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel pnlAdmHabControl;
     private javax.swing.JPanel pnlAdmHabControl1;
+    private javax.swing.JPanel pnlAdmHabControl2;
     private javax.swing.JPanel pnlAdmHabMain;
     private javax.swing.JPanel pnlAdmHabMain1;
+    private javax.swing.JPanel pnlAdmHabMain2;
     private javax.swing.JPanel pnlAdmHabitaciones;
+    private javax.swing.JPanel pnlAdmHabitaciones1;
     private javax.swing.JPanel pnlAdmPrincipal;
     private javax.swing.JPanel pnlAdmSucursales;
     private javax.swing.JTabbedPane tbpMadMenu;

@@ -30,11 +30,14 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
     private HotelService service;
     private TipoHabitacion tipos[];
     private ArrayList<Hotel> hoteles;
+    private String usuario;
 
     /**
      * Creates new form PnlAdmHabAdd
      */
-    public PnlAdmHabAdd(HotelService service) {
+    public PnlAdmHabAdd(String usuario) {
+        this.usuario = usuario;
+        service = new HotelService();
         this.service = service;
         hoteles = new ArrayList<>();
         initComponents();
@@ -165,8 +168,10 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         //public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo);
         TipoHabitacion tipo = this.tipos[cbxAdmHabTipo.getSelectedIndex()];
         String descripcion = txtAdmHabDescripcion.getText();
+        int id_hotel = cbxAdmHabSucursal.getSelectedIndex() + 1;
+        System.out.println("id hotel: "+id_hotel);
         int precio = Integer.parseInt(txtAdmHabPrecio.getText());
-        Habitacion habitacion = new Habitacion(0,descripcion, precio, tipo);
+        Habitacion habitacion = new Habitacion(0,descripcion, precio, tipo,id_hotel);
         habitacion.setFoto(txtAdmHabFoto.getText());
         JFrame jFrame = new JFrame();
         JOptionPane.showMessageDialog(jFrame, service.addHabitacion(habitacion));
@@ -196,7 +201,7 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         for (int i = 0; i < tipos.length; i++) {
             cbxAdmHabTipo.addItem(tipos[i].toString());
         }
-        hoteles = service.getHotels();
+        hoteles = service.getHotels(this.usuario);
         cbxAdmHabSucursal.removeAllItems();
         for (int i = 0; i < hoteles.size(); i++) {
             cbxAdmHabSucursal.addItem(hoteles.get(i).getNombre());

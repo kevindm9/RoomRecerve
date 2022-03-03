@@ -7,6 +7,7 @@ import co.mycompany.hotel.cliente.infra.Subject;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Persona;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -41,8 +42,8 @@ public class HotelService extends Subject {
      *
      * @return
      */
-    public ArrayList<Habitacion> getHabitaciones() {
-        return service.getHabitaciones();
+    public ArrayList<Habitacion> getHabitaciones(int id_hotel, Date fechaInicio, Date fechafin) {
+        return service.getHabitaciones(id_hotel, fechaInicio, fechafin);
     }
 
     /**
@@ -98,8 +99,8 @@ public class HotelService extends Subject {
      *
      * @return
      */
-    public ArrayList<Hotel> getHotels() {
-        return service.getHotels();
+    public ArrayList<Hotel> getHotels(String ses_usuario) {
+        return service.getHotels(ses_usuario);
     }
 
     /**
@@ -128,5 +129,24 @@ public class HotelService extends Subject {
     }
     public ArrayList<Integer> getReserva(){
         return service.getReserva();
+        
+    }
+       /**
+     *
+     * @param id
+     * @return
+     */
+    public Habitacion getHabitacion(int id){
+    return service.getHabitacion(id);
+    
+    }
+
+    /**
+     *
+     * @param habitacion
+     * @return
+     */
+    public String ModificarHabitacion(Habitacion habitacion){
+    return service.ModificarHabitacion(habitacion);
     }
 }

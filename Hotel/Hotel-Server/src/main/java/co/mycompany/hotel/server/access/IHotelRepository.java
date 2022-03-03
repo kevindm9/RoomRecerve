@@ -6,6 +6,7 @@ import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import co.mycompany.hotel.commons.infra.Utilities;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 /**
@@ -20,11 +21,30 @@ public interface IHotelRepository {
      * @return
      */
     public String addHabitacion(Habitacion habitacion);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Habitacion getHabitacion(int id);
+
+    /**
+     *
+     * @param habitacion
+     * @return
+     */
+    public String ModificarHabitacion(Habitacion habitacion);
     /**
      * obtiene todos los componentes registrados
+     * @param id
+     * @param fechaInicio
      * @return 
      */
-    public ArrayList<Habitacion> getHabitaciones();
+  
+     
+     
+    public ArrayList<Habitacion> getHabitaciones(int id, Date fechaInicio, Date fechafin);
     /**
      * Obtiene las habitaciones en un Hotel y Fecha determinada
      * @param id_persona
@@ -54,7 +74,7 @@ public interface IHotelRepository {
      * obtiene la lista de todos los restaurantes
      * @return 
      */
-    public ArrayList<Hotel> getHoteles();
+    public ArrayList<Hotel> getHoteles(String usuario);
     /**
      * obtiene la clave del administrador en caso de existir
      * @param usuario

@@ -5,13 +5,14 @@
 package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
-import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -29,30 +30,22 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     private ArrayList<Habitacion> habitaciones;
     private final DefaultTableModel modelo;
     private final int id_hotel;
-    DiaSemana dias[];
+    Date fechaIni;
+    Date fechaFin;
+
     /**
      * Creates new form PnlVistaHabitaciones
      */
-    public PnlUsuHabitaciones(FrmMain panel,HotelService service, int id_hotel) {
+    public PnlUsuHabitaciones(FrmMain panel, int id_hotel) {
         this.panel = panel;
         this.id_hotel = id_hotel;
         habitaciones = new ArrayList<>();
-        this.service = service;
+        this.service = new HotelService();
         initComponents();
         this.modelo = (DefaultTableModel) tabUsuHabitaciones.getModel();
-        lanzar();
-    }
-
-    private void lanzar() {
-        DiaSemana dias[] = DiaSemana.values(); 
-        this.dias = dias;
-        cbxUsuHabDias.removeAllItems();
-        for (int i = 0; i < dias.length; i++) {
-            cbxUsuHabDias.addItem(dias[i].toString());
-        }
-        cargarHabitaciones();
         
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -67,8 +60,10 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabUsuHabitaciones = new javax.swing.JTable();
-        cbxUsuHabDias = new javax.swing.JComboBox<>();
         btnUsuHabRegresar = new javax.swing.JButton();
+        dccUsuHabInicio = new com.toedter.calendar.JDateChooser();
+        dccUsuHabFin = new com.toedter.calendar.JDateChooser();
+        btnUsuHabBuscar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -94,16 +89,17 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
             tabUsuHabitaciones.getColumnModel().getColumn(0).setMaxWidth(120);
         }
 
-        cbxUsuHabDias.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxUsuHabDiasItemStateChanged(evt);
-            }
-        });
-
         btnUsuHabRegresar.setText("Regresar");
         btnUsuHabRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuHabRegresarActionPerformed(evt);
+            }
+        });
+
+        btnUsuHabBuscar.setText("Buscar");
+        btnUsuHabBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuHabBuscarActionPerformed(evt);
             }
         });
 
@@ -113,31 +109,29 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnUsuHabRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbxUsuHabDias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dccUsuHabFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUsuHabBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUsuHabRegresar, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(dccUsuHabInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(cbxUsuHabDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(dccUsuHabInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(dccUsuHabFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuHabBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(btnUsuHabRegresar)
-                .addGap(21, 21, 21))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbxUsuHabDiasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxUsuHabDiasItemStateChanged
-        // TODO add your handling code here:
-        if(cbxUsuHabDias.getItemCount()>6){
-            tabUsuHabitaciones.removeAll();
-            cargarHabitaciones();
-        }
-    }//GEN-LAST:event_cbxUsuHabDiasItemStateChanged
 
     private void tabUsuHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabUsuHabitacionesMouseClicked
         // TODO add your handling code here:
@@ -145,8 +139,8 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         int opc =JOptionPane.showConfirmDialog(null, "Reservar habitacion", "Desea reservar la habitacion?", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
         if (opc == 0){
             try{
-            service.deleteHabitacionSemanal(id_hotel, habitaciones.get(fila), dias[cbxUsuHabDias.getSelectedIndex()]);     
-            cargarHabitaciones();
+            //service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,);     
+            //cargarHabitaciones();
             }
             catch(Exception e){
                 
@@ -159,14 +153,27 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         panel.mostrarSucursales();
     }//GEN-LAST:event_btnUsuHabRegresarActionPerformed
 
-    public void cargarHabitaciones(){
+    private void btnUsuHabBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuHabBuscarActionPerformed
+        // TODO add your handling code here:
+        System.out.println(dccUsuHabInicio.getDateFormatString());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = simpleDateFormat.format(dccUsuHabInicio.getDate());
+        //dccUsuHabInicio.getDateFormatString()
+        fechaIni = Date.valueOf(formattedDate);
+        formattedDate = simpleDateFormat.format(dccUsuHabFin.getDate());
+        fechaFin = Date.valueOf(formattedDate);
+        
+        cargarHabitaciones(fechaIni,fechaFin);
+        
+    }//GEN-LAST:event_btnUsuHabBuscarActionPerformed
+
+    public void cargarHabitaciones(Date fechaIni, Date fechaFin){
         for (int i = modelo.getRowCount()-1; i>=0;i--){
             modelo.removeRow(i);
         }
-        
-        
+
         habitaciones.clear();
-       // habitaciones = service.getDiaHabitaciones(id_hotel,dias[cbxUsuHabDias.getSelectedIndex()]);
+        habitaciones = service.getHabitaciones(id_hotel,fechaIni,fechaFin);
         tabUsuHabitaciones.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel dt = new DefaultTableModel() {
             @Override
@@ -211,8 +218,10 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUsuHabBuscar;
     private javax.swing.JButton btnUsuHabRegresar;
-    private javax.swing.JComboBox<String> cbxUsuHabDias;
+    private com.toedter.calendar.JDateChooser dccUsuHabFin;
+    private com.toedter.calendar.JDateChooser dccUsuHabInicio;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;

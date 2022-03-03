@@ -7,7 +7,7 @@ import co.mycompany.hotel.commons.infra.Utilities;
  * Fabrica que se encarga de instanciar CustomerServiceImplSockets o cualquier
  * otro que se cree en el futuro.
  *
- * @author Kevin Morales
+ * @author Kevin Morales, Jose, Yaquelin
  */
 public class Factory {
 

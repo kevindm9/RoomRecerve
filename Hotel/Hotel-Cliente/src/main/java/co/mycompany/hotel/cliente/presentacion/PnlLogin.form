@@ -51,9 +51,9 @@
                               <Component id="lbLogPassword" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtLogUsuario" min="-2" pref="136" max="-2" attributes="0"/>
-                              <Component id="txtLogPassword" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtLogUsuario" pref="136" max="32767" attributes="0"/>
+                              <Component id="txtLogPassword" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -108,8 +108,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtLogUsuario">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtLogPassword">
-        </Component>
         <Component class="javax.swing.JButton" name="btnLogIniciar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Iniciar"/>
@@ -117,6 +115,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogIniciarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtLogPassword">
         </Component>
       </SubComponents>
     </Container>

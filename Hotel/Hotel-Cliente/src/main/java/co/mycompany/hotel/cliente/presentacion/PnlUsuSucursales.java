@@ -26,12 +26,12 @@ public class PnlUsuSucursales extends javax.swing.JPanel {
     /**
      * Creates new form PnlUsuSucursales
      */
-    public PnlUsuSucursales(FrmMain panel,HotelService service) {
+    public PnlUsuSucursales(FrmMain panel) {
         this.panel=panel;
-        this.service = service;
+        this.service = new HotelService();
         initComponents();
         this.modelo = (DefaultTableModel) tabUsuSucursales.getModel();
-        hoteles = service.getHotels();
+        hoteles = service.getHotels("All_Hotels");
         lanzar();
     }
 
@@ -56,7 +56,7 @@ public class PnlUsuSucursales extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Habitacion", "Carateristicas"
+                "Hotel", "Carateristicas"
             }
         ));
         tabUsuSucursales.addMouseListener(new java.awt.event.MouseAdapter() {

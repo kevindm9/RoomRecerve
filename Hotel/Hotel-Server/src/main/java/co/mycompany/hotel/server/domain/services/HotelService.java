@@ -34,8 +34,8 @@ public class HotelService {
         return repo.getDiaHabitaciones(id_Persona);
     }
 
-    public ArrayList<Hotel> getHoteles() {
-        return repo.getHoteles();
+    public ArrayList<Hotel> getHoteles(String usuario) {
+        return repo.getHoteles(usuario);
     }
 
     public String addHabitacion(Habitacion habitacion) {
@@ -45,26 +45,53 @@ public class HotelService {
     public String addHotel(Hotel hotel) {
         return repo.addHotel(hotel);
     }
-  public String addPersona(Persona persona,String tipo){
-      return repo.addPersona(persona, tipo);  
-  }
-    public ArrayList<Habitacion> getHabitaciones() {
-        return repo.getHabitaciones();
+
+    public String addPersona(Persona persona, String tipo) {
+        return repo.addPersona(persona, tipo);
     }
+
+    public ArrayList<Habitacion> getHabitaciones(int id_hotel, Date fechaInicio, Date fechafin) {
+        return repo.getHabitaciones(id_hotel, fechaInicio, fechafin);
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Habitacion getHabitacion(int id) {
+
+        return repo.getHabitacion(id);
+    }
+
+    /**
+     *
+     * @param habitacion
+     * @return
+     */
+    public String ModificarHabitacion(Habitacion habitacion) {
+
+        return repo.ModificarHabitacion(habitacion);
+    }
+
     public Persona getPersona(String usuario) {
         return repo.getPersona(usuario);
     }
-    public String getSesionTipo(String usuario){
-         return repo.getSesionTipo(usuario);
+
+    public String getSesionTipo(String usuario) {
+        return repo.getSesionTipo(usuario);
     }
+
     public String getSesionClave(String usuario) {
         return repo.getSesionClave(usuario);
     }
-    public ArrayList<Integer> getReserva(){
-    return repo.getReserva();
+
+    public ArrayList<Integer> getReserva() {
+        return repo.getReserva();
     }
-    public String addReserva(int idHotel, Habitacion habitacion,LocalDate fecha_inicio,LocalDate fecha_fin,Persona sesion) {
-        return repo.addReserva(idHotel, habitacion, fecha_inicio,fecha_fin,sesion);
+
+    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion) {
+        return repo.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
     }
 
     public String deleteHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia) {
