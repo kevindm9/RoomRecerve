@@ -18,25 +18,17 @@ public class Habitacion {
     private String descripcion;
     private int precio;
     private String foto;
-    private boolean reserva;
     private TipoHabitacion tipo;
-    ArrayList<DiaSemana> dias;
-
-    public ArrayList<DiaSemana> getDias() {
-        return dias;
-    }
-
-    public void setDias(ArrayList<DiaSemana> dias) {
-        this.dias = dias;
-    }
+    private int id_hotel;
     
     public Habitacion(){}
 
-    public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo) {
+    public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo,int id_hotel) {
         this.id = id;
         this.descripcion = descripcion;
         this.precio = precio;
         this.tipo = tipo;
+        this.id_hotel = id_hotel;
     }
 
     public Habitacion(int id, String descripcion, int precio) {
@@ -86,20 +78,12 @@ public class Habitacion {
         this.tipo = tipo;
     }
 
-    public boolean isReserva() {
-        return reserva;
+    public int getId_hotel() {
+        return id_hotel;
     }
 
-    public void setReserva(boolean reserva) {
-        this.reserva = reserva;
-    } 
-
-    @Override
-    public String toString() {
-        return "Habitacion{" + "id=" + id + ", descripcion=" + descripcion + ", precio=" + precio + ", foto=" + foto + ", reserva=" + reserva + ", tipo=" + tipo + ", dias=" + dias + '}';
+    public void setId_hotel(int id_hotel) {
+        this.id_hotel = id_hotel;
     }
-
-
-    
     
 }

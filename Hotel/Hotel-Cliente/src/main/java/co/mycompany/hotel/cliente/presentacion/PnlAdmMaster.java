@@ -381,7 +381,7 @@ public class PnlAdmMaster extends javax.swing.JPanel {
     private void bgAdmHabCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabCrearStateChanged
         // TODO add your handling code here:
         if (bgAdmHabCrear.isSelected()) {
-            PnlAdmHabAdd panelHabAdd = new PnlAdmHabAdd(service);
+            PnlAdmHabAdd panelHabAdd = new PnlAdmHabAdd("All_Hotels");
             pnlAdmHabControl.removeAll();
             pnlAdmHabControl.add(panelHabAdd);
             pnlAdmHabControl.repaint();
