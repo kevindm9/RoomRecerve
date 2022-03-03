@@ -172,18 +172,23 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
 
     private void btnAdmHabModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabModificarActionPerformed
         // TODO add your handling code here:
-        //public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo);
-//        TipoHabitacion tipo = this.tipos[cbxAdmHabTipo.getSelectedIndex()];
-//        String descripcion = txtAdmHabDescripcion.getText();
-//        int precio = Integer.parseInt(txtAdmHabPrecio.getText());
+//        public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo);
+        TipoHabitacion tipo = this.tipos[cbxAdmHabTipo.getSelectedIndex()];
+        String descripcion = txtAdmHabDescripcion.getText();
+        int precio = Integer.parseInt(txtAdmHabPrecio.getText());
+        int id=Integer.parseInt(txtIdHabitacion.getText());
         Habitacion habitacion = new Habitacion();
-        
+        habitacion.setId(id);
+        habitacion.setDescripcion(descripcion);
+        habitacion.setPrecio(precio);
+        habitacion.setTipo(tipo);
         habitacion.setFoto(txtAdmHabFoto.getText());
         JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, service.addHabitacion(habitacion));
+        JOptionPane.showMessageDialog(jFrame, service.ModificarHabitacion(habitacion));
         txtAdmHabDescripcion.setText("");
         txtAdmHabPrecio.setText("");
         txtAdmHabFoto.setText("");
+        txtIdHabitacion.setEnabled(true);
     }//GEN-LAST:event_btnAdmHabModificarActionPerformed
 
     private void btnAdmHabFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabFotoActionPerformed
@@ -208,6 +213,8 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
        txtAdmHabDescripcion.setText(habitacion.getDescripcion());
        txtAdmHabPrecio.setText(String.valueOf(habitacion.getPrecio()));
        txtAdmHabFoto.setText(habitacion.getFoto());
+       
+       
        
     }//GEN-LAST:event_btnBuscarIdActionPerformed
 

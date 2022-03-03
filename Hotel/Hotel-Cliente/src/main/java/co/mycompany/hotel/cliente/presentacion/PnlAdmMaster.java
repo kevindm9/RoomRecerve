@@ -79,6 +79,11 @@ public class PnlAdmMaster extends javax.swing.JPanel {
 
         GrupoHab.add(bgAdmHabModificar);
         bgAdmHabModificar.setText("Modificar");
+        bgAdmHabModificar.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                bgAdmHabModificarStateChanged(evt);
+            }
+        });
 
         GrupoHab.add(bgAdmHabEliminar);
         bgAdmHabEliminar.setText("Eliminar");
@@ -388,6 +393,17 @@ public class PnlAdmMaster extends javax.swing.JPanel {
             pnlAdmHabControl.revalidate();
         }
     }//GEN-LAST:event_bgAdmHabCrearStateChanged
+
+    private void bgAdmHabModificarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabModificarStateChanged
+        // TODO add your handling code here:
+            if (bgAdmHabModificar.isSelected()) {
+            PnlAdmHabModificar panelHabAdd = new PnlAdmHabModificar("All_Hotels");
+            pnlAdmHabControl.removeAll();
+            pnlAdmHabControl.add(panelHabAdd);
+            pnlAdmHabControl.repaint();
+            pnlAdmHabControl.revalidate();
+        }
+    }//GEN-LAST:event_bgAdmHabModificarStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
