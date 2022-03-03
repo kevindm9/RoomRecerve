@@ -65,7 +65,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tbpMadMenu" max="32767" attributes="0"/>
+                  <Component id="tbpMadMenu" pref="265" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -167,6 +167,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Modificar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="bgAdmHabModificarStateChanged"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="bgAdmHabEliminar">
                       <Properties>
