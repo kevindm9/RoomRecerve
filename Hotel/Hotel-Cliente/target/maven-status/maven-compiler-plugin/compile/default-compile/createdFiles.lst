@@ -18,6 +18,7 @@ co\mycompany\hotel\cliente\presentacion\PnlLogin.class
 co\mycompany\hotel\cliente\presentacion\FrmMain$3.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmJunior$1.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$1.class
+co\mycompany\hotel\cliente\presentacion\PnlAdmJunior$5.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$8.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones$2.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuSucursales$2.class
@@ -42,6 +43,7 @@ co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones$1.class
 co\mycompany\hotel\cliente\presentacion\ClientMain.class
 co\mycompany\hotel\cliente\domain\services\HotelService.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmHabAdd$2.class
+co\mycompany\hotel\cliente\presentacion\PnlAdmHabModificar$3.class
 co\mycompany\hotel\cliente\presentacion\PnlLogin$1.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$6.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$9.class
