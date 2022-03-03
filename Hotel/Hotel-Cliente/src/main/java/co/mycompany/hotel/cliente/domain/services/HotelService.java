@@ -129,5 +129,24 @@ public class HotelService extends Subject {
     }
     public ArrayList<Integer> getReserva(){
         return service.getReserva();
+        
+    }
+       /**
+     *
+     * @param id
+     * @return
+     */
+    public Habitacion getHabitacion(int id){
+    return service.getHabitacion(id);
+    
+    }
+
+    /**
+     *
+     * @param habitacion
+     * @return
+     */
+    public String ModificarHabitacion(Habitacion habitacion){
+    return service.ModificarHabitacion(habitacion);
     }
 }

@@ -21,12 +21,29 @@ public interface IHotelRepository {
      * @return
      */
     public String addHabitacion(Habitacion habitacion);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Habitacion getHabitacion(int id);
+
+    /**
+     *
+     * @param habitacion
+     * @return
+     */
+    public String ModificarHabitacion(Habitacion habitacion);
     /**
      * obtiene todos los componentes registrados
      * @param id
      * @param fechaInicio
      * @return 
      */
+  
+     
+     
     public ArrayList<Habitacion> getHabitaciones(int id, Date fechaInicio, Date fechafin);
     /**
      * Obtiene las habitaciones en un Hotel y Fecha determinada
