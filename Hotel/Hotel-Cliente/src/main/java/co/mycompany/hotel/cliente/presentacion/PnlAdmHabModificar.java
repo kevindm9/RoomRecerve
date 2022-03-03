@@ -59,9 +59,7 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
         lbAdmHabTipo = new javax.swing.JLabel();
         txtAdmHabDescripcion = new javax.swing.JTextField();
         txtAdmHabPrecio = new javax.swing.JTextField();
-        cbxAdmHabSucursal = new javax.swing.JComboBox<>();
-        lbAdmHabSucursal = new javax.swing.JLabel();
-        btnAdmHabAgregar = new javax.swing.JButton();
+        btnAdmHabModificar = new javax.swing.JButton();
         cbxAdmHabTipo = new javax.swing.JComboBox<>();
         txtAdmHabFoto = new javax.swing.JTextField();
         btnAdmHabFoto = new javax.swing.JButton();
@@ -77,14 +75,10 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
 
         lbAdmHabTipo.setText("Tipo");
 
-        cbxAdmHabSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lbAdmHabSucursal.setText("Sucursal");
-
-        btnAdmHabAgregar.setText("Agregar Habitacion");
-        btnAdmHabAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnAdmHabModificar.setText("Modificar Habitacion");
+        btnAdmHabModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmHabAgregarActionPerformed(evt);
+                btnAdmHabModificarActionPerformed(evt);
             }
         });
 
@@ -103,6 +97,11 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
         lblIdHabitacion.setText("Id");
 
         btnBuscarId.setText("Buscar");
+        btnBuscarId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarIdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bgAdmHabAddLayout = new javax.swing.GroupLayout(bgAdmHabAdd);
         bgAdmHabAdd.setLayout(bgAdmHabAddLayout);
@@ -112,13 +111,11 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbAdmHabTipo)
-                    .addComponent(lbAdmHabSucursal)
                     .addComponent(lbAdmHabPrecio)
                     .addComponent(lbAdmHabDescripcion)
                     .addComponent(btnAdmHabFoto))
                 .addGap(28, 28, 28)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbxAdmHabSucursal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtAdmHabDescripcion)
                     .addComponent(txtAdmHabPrecio)
                     .addComponent(cbxAdmHabTipo, 0, 178, Short.MAX_VALUE)
@@ -127,7 +124,7 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
                 .addComponent(lblIdHabitacion)
                 .addGap(18, 18, 18)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnAdmHabAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                    .addComponent(btnAdmHabModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(btnBuscarId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtIdHabitacion))
                 .addContainerGap())
@@ -152,14 +149,10 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
                     .addComponent(lbAdmHabTipo))
                 .addGap(18, 18, 18)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxAdmHabSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAdmHabSucursal)
-                    .addComponent(btnAdmHabAgregar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdmHabModificar)
                     .addComponent(btnAdmHabFoto)
                     .addComponent(txtAdmHabFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         txtIdHabitacion.getAccessibleContext().setAccessibleName("txtIdHabitacion");
@@ -177,22 +170,21 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdmHabAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabAgregarActionPerformed
+    private void btnAdmHabModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabModificarActionPerformed
         // TODO add your handling code here:
         //public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo);
-        TipoHabitacion tipo = this.tipos[cbxAdmHabTipo.getSelectedIndex()];
-        String descripcion = txtAdmHabDescripcion.getText();
-        int id_hotel = cbxAdmHabSucursal.getSelectedIndex() + 1;
-        System.out.println("id hotel: "+id_hotel);
-        int precio = Integer.parseInt(txtAdmHabPrecio.getText());
-        Habitacion habitacion = new Habitacion(0,descripcion, precio, tipo,id_hotel);
+//        TipoHabitacion tipo = this.tipos[cbxAdmHabTipo.getSelectedIndex()];
+//        String descripcion = txtAdmHabDescripcion.getText();
+//        int precio = Integer.parseInt(txtAdmHabPrecio.getText());
+        Habitacion habitacion = new Habitacion();
+        
         habitacion.setFoto(txtAdmHabFoto.getText());
         JFrame jFrame = new JFrame();
         JOptionPane.showMessageDialog(jFrame, service.addHabitacion(habitacion));
         txtAdmHabDescripcion.setText("");
         txtAdmHabPrecio.setText("");
         txtAdmHabFoto.setText("");
-    }//GEN-LAST:event_btnAdmHabAgregarActionPerformed
+    }//GEN-LAST:event_btnAdmHabModificarActionPerformed
 
     private void btnAdmHabFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabFotoActionPerformed
         // TODO add your handling code here:
@@ -208,6 +200,17 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAdmHabFotoActionPerformed
 
+    private void btnBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIdActionPerformed
+       int id=Integer.parseInt(txtIdHabitacion.getText());
+       Habitacion habitacion=new Habitacion();
+       habitacion=service.getHabitacion(id);
+       txtIdHabitacion.setEnabled(false);
+       txtAdmHabDescripcion.setText(habitacion.getDescripcion());
+       txtAdmHabPrecio.setText(String.valueOf(habitacion.getPrecio()));
+       txtAdmHabFoto.setText(habitacion.getFoto());
+       
+    }//GEN-LAST:event_btnBuscarIdActionPerformed
+
     private void cargarValoresIniciales() {
         TipoHabitacion tipos[] = TipoHabitacion.values();
         this.tipos = tipos;
@@ -215,23 +218,16 @@ public class PnlAdmHabModificar extends javax.swing.JPanel {
         for (int i = 0; i < tipos.length; i++) {
             cbxAdmHabTipo.addItem(tipos[i].toString());
         }
-        hoteles = service.getHotels(this.usuario);
-        cbxAdmHabSucursal.removeAllItems();
-        for (int i = 0; i < hoteles.size(); i++) {
-            cbxAdmHabSucursal.addItem(hoteles.get(i).getNombre());
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAdmHabAdd;
-    private javax.swing.JButton btnAdmHabAgregar;
     private javax.swing.JButton btnAdmHabFoto;
+    private javax.swing.JButton btnAdmHabModificar;
     private javax.swing.JButton btnBuscarId;
-    private javax.swing.JComboBox<String> cbxAdmHabSucursal;
     private javax.swing.JComboBox<String> cbxAdmHabTipo;
     private javax.swing.JLabel lbAdmHabDescripcion;
     private javax.swing.JLabel lbAdmHabPrecio;
-    private javax.swing.JLabel lbAdmHabSucursal;
     private javax.swing.JLabel lbAdmHabTipo;
     private javax.swing.JLabel lblIdHabitacion;
     private javax.swing.JTextField txtAdmHabDescripcion;

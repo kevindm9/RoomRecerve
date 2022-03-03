@@ -67,6 +67,11 @@ public class PnlAdmJunior extends javax.swing.JPanel {
 
         GrupoHab.add(bgAdmHabModificar);
         bgAdmHabModificar.setText("Modificar");
+        bgAdmHabModificar.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                bgAdmHabModificarStateChanged(evt);
+            }
+        });
 
         GrupoHab.add(bgAdmHabEliminar);
         bgAdmHabEliminar.setText("Eliminar");
@@ -155,7 +160,7 @@ public class PnlAdmJunior extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAdmPrincipalLayout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbpMadMenu)
+                .addComponent(tbpMadMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -202,6 +207,17 @@ public class PnlAdmJunior extends javax.swing.JPanel {
             pnlAdmHabControl.revalidate();
         }
     }//GEN-LAST:event_bgAdmHabCrearStateChanged
+
+    private void bgAdmHabModificarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabModificarStateChanged
+        // TODO add your handling code here:
+        if (bgAdmHabModificar.isSelected()) {
+            PnlAdmHabModificar panelHabAdd = new PnlAdmHabModificar(usuario);
+            pnlAdmHabControl.removeAll();
+            pnlAdmHabControl.add(panelHabAdd);
+            pnlAdmHabControl.repaint();
+            pnlAdmHabControl.revalidate();
+        }
+    }//GEN-LAST:event_bgAdmHabModificarStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
