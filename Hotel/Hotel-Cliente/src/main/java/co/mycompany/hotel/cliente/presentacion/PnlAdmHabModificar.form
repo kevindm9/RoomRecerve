@@ -40,14 +40,12 @@
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lbAdmHabTipo" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbAdmHabSucursal" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lbAdmHabPrecio" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lbAdmHabDescripcion" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAdmHabFoto" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="cbxAdmHabSucursal" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtAdmHabDescripcion" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtAdmHabPrecio" alignment="0" max="32767" attributes="0"/>
                       <Component id="cbxAdmHabTipo" alignment="0" pref="178" max="32767" attributes="0"/>
@@ -57,7 +55,7 @@
                   <Component id="lblIdHabitacion" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnAdmHabAgregar" pref="139" max="32767" attributes="0"/>
+                      <Component id="btnAdmHabModificar" pref="139" max="32767" attributes="0"/>
                       <Component id="btnBuscarId" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtIdHabitacion" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -88,16 +86,11 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="cbxAdmHabSucursal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbAdmHabSucursal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnAdmHabAgregar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnAdmHabModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAdmHabFoto" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtAdmHabFoto" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="76" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -122,32 +115,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtAdmHabPrecio">
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbxAdmHabSucursal">
+        <Component class="javax.swing.JButton" name="btnAdmHabModificar">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbAdmHabSucursal">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Sucursal"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnAdmHabAgregar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar Habitacion"/>
+            <Property name="text" type="java.lang.String" value="Modificar Habitacion"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdmHabAgregarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdmHabModificarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbxAdmHabTipo">
@@ -196,6 +169,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarIdActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
