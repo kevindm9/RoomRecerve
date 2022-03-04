@@ -171,11 +171,11 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
         hotel.setFoto(txtAdmHotFoto.getText());
         JFrame jFrame = new JFrame();
         JOptionPane.showMessageDialog(jFrame, service.addHotel(hotel,usuario));
-//        txtAdmHotNombre.setText("");
-//        txtAdmHotDir.setText("");
-//        txtAdmHotCiudad.setText("");
-//        txtAdmHotTel.setText("");
-//        txtAdmHabFoto.setText("");
+        txtAdmHotNombre.setText("");
+        txtAdmHotDir.setText("");
+        txtAdmHotCiudad.setText("");
+        txtAdmHotTel.setText("");
+        txtAdmHotFoto.setText("");
     }//GEN-LAST:event_btnAdmHotAgregarActionPerformed
 
     private void btnAdmHabFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabFotoActionPerformed
