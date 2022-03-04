@@ -27,10 +27,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class PnlAdmHabAdd extends javax.swing.JPanel {
 
-    private HotelService service;
+    private final HotelService service;
     private TipoHabitacion tipos[];
     private ArrayList<Hotel> hoteles;
-    private String usuario;
+    private final String usuario;
 
     /**
      * Creates new form PnlAdmHabAdd
@@ -192,6 +192,8 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         txtAdmHabDescripcion.setText("");
         txtAdmHabPrecio.setText("");
         txtAdmHabFoto.setText("");
+        
+        
     }//GEN-LAST:event_btnAdmHabAgregarActionPerformed
 
     private void btnAdmHabFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabFotoActionPerformed
