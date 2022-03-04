@@ -47,7 +47,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         this.service = new HotelService();
         initComponents();
         this.modelo = (DefaultTableModel) tabUsuHabitaciones.getModel();
-        
+
     }
 
 
@@ -151,7 +151,10 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
                     cargarHabitaciones(fechaIni,fechaFin);
                 }
                 else{
-                    System.out.println("Inicie seccion");
+                    JOptionPane.showMessageDialog(null,
+                    "Debe iniciar seccion para reservar la habitacion",
+                    "Login",
+                    JOptionPane.INFORMATION_MESSAGE);
                 }
             }
             catch(Exception e){
@@ -175,6 +178,13 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         formattedDate = simpleDateFormat.format(dccUsuHabFin.getDate());
         fechaFin = Date.valueOf(formattedDate);
         
+        if(fechaFin.before(fechaIni)){
+            JOptionPane.showMessageDialog(null,
+                "Periodo de tiempo no valido","Datos invalidos",
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         cargarHabitaciones(fechaIni,fechaFin);
         
     }//GEN-LAST:event_btnUsuHabBuscarActionPerformed
@@ -186,6 +196,14 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
 
         habitaciones.clear();
         habitaciones = service.getHabitaciones(id_hotel,fechaIni,fechaFin);
+        
+        if(habitaciones.isEmpty()){
+            JOptionPane.showMessageDialog(null,
+                "No se encontraron habitaciones","Advertencia",
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         tabUsuHabitaciones.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel dt = new DefaultTableModel() {
             @Override

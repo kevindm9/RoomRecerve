@@ -34,28 +34,16 @@ public class PnlLogin extends javax.swing.JPanel {
     private void initComponents() {
 
         pnlLogLogin = new javax.swing.JPanel();
+        btnLogRegistrarse = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lbLogTitulo = new javax.swing.JLabel();
         lbLogUsuario = new javax.swing.JLabel();
-        lbLogPassword = new javax.swing.JLabel();
         txtLogUsuario = new javax.swing.JTextField();
-        btnLogIniciar = new javax.swing.JButton();
+        lbLogPassword = new javax.swing.JLabel();
         txtLogPassword = new javax.swing.JPasswordField();
-        btnLogRegistrarse = new javax.swing.JButton();
+        btnLogIniciar = new javax.swing.JButton();
 
         pnlLogLogin.setPreferredSize(new java.awt.Dimension(700, 300));
-
-        lbLogTitulo.setText("Iniciar Seccion");
-
-        lbLogUsuario.setText("Usuario");
-
-        lbLogPassword.setText("Password");
-
-        btnLogIniciar.setText("Iniciar");
-        btnLogIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogIniciarActionPerformed(evt);
-            }
-        });
 
         btnLogRegistrarse.setText("Registrarse");
         btnLogRegistrarse.addActionListener(new java.awt.event.ActionListener() {
@@ -64,50 +52,79 @@ public class PnlLogin extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lbLogTitulo.setText("Iniciar Seccion");
+
+        lbLogUsuario.setText("Usuario");
+
+        lbLogPassword.setText("Contraseña");
+
+        btnLogIniciar.setText("Iniciar");
+        btnLogIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogIniciarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbLogPassword)
+                    .addComponent(lbLogUsuario))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnLogIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtLogUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLogPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lbLogTitulo)))
+                .addContainerGap(116, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(lbLogTitulo)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbLogUsuario)
+                    .addComponent(txtLogUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbLogPassword)
+                    .addComponent(txtLogPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnLogIniciar)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pnlLogLoginLayout = new javax.swing.GroupLayout(pnlLogLogin);
         pnlLogLogin.setLayout(pnlLogLoginLayout);
         pnlLogLoginLayout.setHorizontalGroup(
             pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogLoginLayout.createSequentialGroup()
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141))
             .addGroup(pnlLogLoginLayout.createSequentialGroup()
-                .addContainerGap(280, Short.MAX_VALUE)
-                .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogLoginLayout.createSequentialGroup()
-                        .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlLogLoginLayout.createSequentialGroup()
-                                .addComponent(lbLogPassword)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtLogPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlLogLoginLayout.createSequentialGroup()
-                                .addComponent(btnLogIniciar)
-                                .addGap(34, 34, 34)
-                                .addComponent(btnLogRegistrarse))
-                            .addGroup(pnlLogLoginLayout.createSequentialGroup()
-                                .addComponent(lbLogUsuario)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtLogUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(220, 220, 220))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogLoginLayout.createSequentialGroup()
-                        .addComponent(lbLogTitulo)
-                        .addGap(301, 301, 301))))
+                .addGap(304, 304, 304)
+                .addComponent(btnLogRegistrarse)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlLogLoginLayout.setVerticalGroup(
             pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLogLoginLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(lbLogTitulo)
-                .addGap(18, 18, 18)
-                .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbLogUsuario)
-                    .addComponent(txtLogUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbLogPassword)
-                    .addComponent(txtLogPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnlLogLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogIniciar)
-                    .addComponent(btnLogRegistrarse))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnLogRegistrarse)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -164,6 +181,7 @@ public class PnlLogin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogIniciar;
     private javax.swing.JButton btnLogRegistrarse;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbLogPassword;
     private javax.swing.JLabel lbLogTitulo;
     private javax.swing.JLabel lbLogUsuario;
