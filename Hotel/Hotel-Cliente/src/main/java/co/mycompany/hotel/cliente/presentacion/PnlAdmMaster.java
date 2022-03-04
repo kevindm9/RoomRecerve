@@ -53,7 +53,7 @@ public class PnlAdmMaster extends javax.swing.JPanel {
         bgAdmHotCons = new javax.swing.JRadioButton();
         pnlAdmHabitaciones1 = new javax.swing.JPanel();
         pnlAdmHabMain2 = new javax.swing.JPanel();
-        bgAdmHabCrear2 = new javax.swing.JRadioButton();
+        bgAdmJunCrear = new javax.swing.JRadioButton();
         bgAdmHabModificar2 = new javax.swing.JRadioButton();
         bgAdmHabEliminar2 = new javax.swing.JRadioButton();
         bgAdmHabConsultar1 = new javax.swing.JRadioButton();
@@ -223,11 +223,11 @@ public class PnlAdmMaster extends javax.swing.JPanel {
 
         pnlAdmHabMain2.setBorder(javax.swing.BorderFactory.createTitledBorder("Procesos"));
 
-        GrupoHab.add(bgAdmHabCrear2);
-        bgAdmHabCrear2.setText("Crear");
-        bgAdmHabCrear2.addChangeListener(new javax.swing.event.ChangeListener() {
+        GrupoHab.add(bgAdmJunCrear);
+        bgAdmJunCrear.setText("Crear");
+        bgAdmJunCrear.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                bgAdmHabCrear2StateChanged(evt);
+                bgAdmJunCrearStateChanged(evt);
             }
         });
 
@@ -254,14 +254,14 @@ public class PnlAdmMaster extends javax.swing.JPanel {
                 .addGroup(pnlAdmHabMain2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bgAdmHabEliminar2)
                     .addComponent(bgAdmHabModificar2)
-                    .addComponent(bgAdmHabCrear2)
+                    .addComponent(bgAdmJunCrear)
                     .addComponent(bgAdmHabConsultar1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlAdmHabMain2Layout.setVerticalGroup(
             pnlAdmHabMain2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAdmHabMain2Layout.createSequentialGroup()
-                .addComponent(bgAdmHabCrear2)
+                .addComponent(bgAdmJunCrear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bgAdmHabConsultar1)
                 .addGap(5, 5, 5)
@@ -337,9 +337,16 @@ public class PnlAdmMaster extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_bgAdmHabConsultar1StateChanged
 
-    private void bgAdmHabCrear2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabCrear2StateChanged
+    private void bgAdmJunCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmJunCrearStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_bgAdmHabCrear2StateChanged
+            if (bgAdmJunCrear.isSelected()) {
+            PnlAdmPersonaAdd panelPersAdd = new PnlAdmPersonaAdd("Junior");
+            pnlAdmHabControl2.removeAll();
+            pnlAdmHabControl2.add(panelPersAdd);
+            pnlAdmHabControl2.repaint();
+            pnlAdmHabControl2.revalidate();
+        }
+    }//GEN-LAST:event_bgAdmJunCrearStateChanged
 
     private void bgAdmHabConsultarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabConsultarStateChanged
         // TODO add your handling code here:
@@ -408,7 +415,6 @@ public class PnlAdmMaster extends javax.swing.JPanel {
     private javax.swing.JRadioButton bgAdmHabConsultar2;
     private javax.swing.JRadioButton bgAdmHabCrear;
     private javax.swing.JRadioButton bgAdmHabCrear1;
-    private javax.swing.JRadioButton bgAdmHabCrear2;
     private javax.swing.JRadioButton bgAdmHabEliminar;
     private javax.swing.JRadioButton bgAdmHabEliminar2;
     private javax.swing.JRadioButton bgAdmHabEliminar3;
@@ -419,6 +425,7 @@ public class PnlAdmMaster extends javax.swing.JPanel {
     private javax.swing.JRadioButton bgAdmHotCrear;
     private javax.swing.JRadioButton bgAdmHotEliminar;
     private javax.swing.JRadioButton bgAdmHotModificar;
+    private javax.swing.JRadioButton bgAdmJunCrear;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlAdmHabControl;
