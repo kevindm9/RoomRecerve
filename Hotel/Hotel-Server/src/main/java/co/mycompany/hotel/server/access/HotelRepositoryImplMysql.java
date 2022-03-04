@@ -68,15 +68,14 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     @Override
     public ArrayList<Hotel> getHoteles(String usuario) {
         ArrayList<Hotel> hoteles = new ArrayList();
-        
+
         try {
             this.connect();
             PreparedStatement pstmt;
-            if(usuario.equals("All_Hotels")){
+            if (usuario.equals("All_Hotels")) {
                 String sql = "SELECT * from hotel";
                 pstmt = conn.prepareStatement(sql);
-            }
-            else{
+            } else {
                 String sql = "SELECT * from hotel where ses_usuario = ?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, usuario);
@@ -107,7 +106,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             this.connect();
             int cont;
             String sql = "insert into habitacion values(null,?,?,?,?,?)";
-             System.out.println(sql);
+            System.out.println(sql);
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
             //pstmt.setInt(cont, habitacion.getId());
@@ -132,9 +131,10 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Habitacion añadida correctamente";
     }
+
     @Override
     public Habitacion getHabitacion(int id) {
-       Habitacion habitacion = new Habitacion();
+        Habitacion habitacion = new Habitacion();
         try {
             this.connect();
             int cont = 0;
@@ -152,7 +152,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 c.setPrecio(res.getInt("habt_precio"));
                 c.setTipo(TipoHabitacion.valueOf(res.getString("habt_tipo")));
                 c.setFoto(res.getString("habt_foto"));
-                habitacion= c;
+                habitacion = c;
             }
             pstmt.close();
             this.disconnect();
@@ -220,9 +220,10 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Habitacion añadido correctamente";
     }
+
     @Override
     public ArrayList<Integer> getReserva() {
-         ArrayList<Integer> idHabitaciones = new ArrayList();
+        ArrayList<Integer> idHabitaciones = new ArrayList();
         try {
             this.connect();
             String sql = "SELECT * from hotel";
@@ -230,7 +231,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
                 int aux;
-                aux=Integer.parseInt(res.getString("habt_id"));
+                aux = Integer.parseInt(res.getString("habt_id"));
                 idHabitaciones.add(aux);
             }
             pstmt.close();
@@ -262,9 +263,10 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Habitacion se ha reservado correctamente";
     }
+
     @Override
     public Persona getPersona(String usuario) {
-        Persona p=new Persona();
+        Persona p = new Persona();
         try {
             this.connect();
             String sql = "SELECT * from persona inner join sesion on persona.persona_id=sesion.persona_id where sesion.ses_usuario=?";
@@ -284,9 +286,10 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return p;
     }
+
     @Override
     public String getSesionTipo(String usuario) {
-         String tipo = null;
+        String tipo = null;
         try {
             this.connect();
             String sql = "select * from sesion where ses_usuario=?";
@@ -303,6 +306,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return tipo;
     }
+
     @Override
     public String getSesionClave(String usuario) {
         String clave = null;
@@ -330,9 +334,9 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             this.connect();
             int cont = 0;
             String sql = "SELECT * FROM habitacion where  hotel_id = ? and habt_id not in "
-            +"(select distinct habt_id from reserva "
-            +"where  hotel_id = 1 and ((fecha_inicio<= ? and fecha_fin >= ?) "
-            +"or (fecha_inicio<= ? and fecha_fin >= ?)or ((fecha_inicio>= ? and fecha_fin <= ?))))";
+                    + "(select distinct habt_id from reserva "
+                    + "where  hotel_id = 1 and ((fecha_inicio<= ? and fecha_fin >= ?) "
+                    + "or (fecha_inicio<= ? and fecha_fin >= ?)or ((fecha_inicio>= ? and fecha_fin <= ?))))";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
@@ -348,7 +352,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             cont++;
             pstmt.setDate(cont, fechaInicio);
             cont++;
-            pstmt.setDate(cont, fechafin);  
+            pstmt.setDate(cont, fechafin);
             System.out.println(pstmt.toString());
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
@@ -374,18 +378,20 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
 
             this.connect();
             int cont;
-            String sql = "insert into hotel values(?,?,?,?,?,'customer')";
+            String sql = "insert into hotel values(null,?,?,?,?,?,'Juan')";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
-            pstmt.setInt(cont, hotel.getId());
-            cont++;
+//            pstmt.setInt(cont, hotel.getId());
+//            cont++;
             pstmt.setString(cont, hotel.getNombre());
             cont++;
             pstmt.setString(cont, hotel.getDirecccion());
             cont++;
             pstmt.setString(cont, hotel.getCiudad());
             cont++;
-            pstmt.setString(cont, hotel.getTelefono());
+            pstmt.setInt(cont, Integer.parseInt(hotel.getTelefono()));
+            cont++;
+            pstmt.setString(cont, hotel.getFoto());
             System.out.println(pstmt.toString());
             pstmt.executeUpdate();
             pstmt.close();
@@ -397,7 +403,6 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
 
         return "Hotel añadido correctamente";
     }
- 
 
     @Override
     public String addPersona(Persona persona, String tipo) {
@@ -471,12 +476,5 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
     }
-
-
-
-
-
-
-
 
 }
