@@ -40,7 +40,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
      * Creates new form PnlVistaHabitaciones
      */
     public PnlUsuHabitaciones(FrmMain panel, int id_hotel,String usuario) {
-        
+        this.usuario = usuario;
         this.panel = panel;
         this.id_hotel = id_hotel;
         habitaciones = new ArrayList<>();
@@ -142,12 +142,20 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         int fila = tabUsuHabitaciones.getSelectedRow();
         int opc =JOptionPane.showConfirmDialog(null, "Reservar habitacion", "Desea reservar la habitacion?", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
         if (opc == 0){
+            
             try{
-                service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,service.getPersona(usuario));     
-                cargarHabitaciones(fechaIni,fechaFin);
+                
+                usuario = panel.getUsuario();
+                if(service.getPersona(usuario).getId()!= 0){    
+                    service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,service.getPersona(usuario));     
+                    cargarHabitaciones(fechaIni,fechaFin);
+                }
+                else{
+                    System.out.println("Inicie seccion");
+                }
             }
             catch(Exception e){
-                
+                System.out.println("Mando una excecion");
             }
         } 
     }//GEN-LAST:event_tabUsuHabitacionesMouseClicked

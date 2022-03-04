@@ -7,7 +7,7 @@ import co.mycompany.hotel.commons.domain.Persona;
 import java.util.ArrayList;
 import co.mycompany.hotel.server.access.IHotelRepository;
 import java.sql.Date;
-import java.time.LocalDate;
+
 
 /**
  * Servicio de clientes. Da acceso a la lógica de negocio

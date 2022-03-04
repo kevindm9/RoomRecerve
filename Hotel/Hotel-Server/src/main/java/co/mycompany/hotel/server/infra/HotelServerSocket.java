@@ -209,12 +209,14 @@ public class HotelServerSocket implements Runnable {
                 } else if (protocolRequest.getAction().equals("get")) {
                     processGetReserva(protocolRequest);
                 }
+                break;
             case "Persona":
                 if (protocolRequest.getAction().equals("set")) {
                     processSetPersona(protocolRequest);
                 } else if (protocolRequest.getAction().equals("get")) {
                     processGetPersona(protocolRequest);
                 }
+                break;
         }
 
     }
@@ -249,10 +251,9 @@ public class HotelServerSocket implements Runnable {
         int cont = 0;
         int idHotel = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
         habitacion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
-        habitacion.setPrecio(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         habitacion.setDescripcion(protocolRequest.getParameters().get(cont++).getValue());
-        habitacion.setTipo(TipoHabitacion.valueOf(protocolRequest.getParameters().get(cont).getValue()));
-        sesion.setUsuario(protocolRequest.getParameters().get(cont++).getValue());
+        habitacion.setPrecio(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
+        habitacion.setTipo(TipoHabitacion.valueOf(protocolRequest.getParameters().get(cont++).getValue()));
         sesion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         fecha_inicio = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         fecha_fin = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());

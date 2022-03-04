@@ -20,7 +20,7 @@ public class PnlLogin extends javax.swing.JPanel {
      */
     public PnlLogin(FrmMain panel) {
         this.panel = panel;
-         aux = new javax.swing.JPanel();
+        aux = new javax.swing.JPanel();
         initComponents();
     }
 

@@ -20,7 +20,7 @@ public class FrmMain extends javax.swing.JFrame {
     public FrmMain() {
         service = new HotelService();
         aux = new javax.swing.JPanel();
-        
+        usuario = "";
         initComponents();
         mostrarSucursales();
         
@@ -127,6 +127,7 @@ public class FrmMain extends javax.swing.JFrame {
         }
         else{
             lbMainLogin.setText("Login");
+            usuario = "";
             mostrarSucursales();
         }
     }//GEN-LAST:event_lbMainLoginMouseClicked
@@ -139,6 +140,10 @@ public class FrmMain extends javax.swing.JFrame {
         pnlControl.add(panelLogin);
         pnlControl.repaint();
         pnlControl.revalidate();
+    }
+    
+    public String getUsuario(){
+        return this.usuario;
     }
     
     public void cargarUsuario(String usuario){

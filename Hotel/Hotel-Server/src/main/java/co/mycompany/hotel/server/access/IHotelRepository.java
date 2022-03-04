@@ -7,7 +7,6 @@ import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import co.mycompany.hotel.commons.infra.Utilities;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  * Interface del respositorio de clientes

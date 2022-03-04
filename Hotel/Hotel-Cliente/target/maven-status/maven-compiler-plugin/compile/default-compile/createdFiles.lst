@@ -3,6 +3,8 @@ co\mycompany\hotel\cliente\presentacion\PnlUsuSucursales.class
 co\mycompany\hotel\cliente\domain\services\UserService.class
 co\mycompany\hotel\cliente\infra\Subject.class
 co\mycompany\hotel\cliente\presentacion\FrmMain$2.class
+co\mycompany\hotel\cliente\presentacion\PnlAdmPersonaAdd.class
+co\mycompany\hotel\cliente\presentacion\PnlAdmHotelAdd$2.class
 co\mycompany\hotel\cliente\access\HotelAccessImplSockets.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones$3.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$7.class
@@ -22,6 +24,8 @@ co\mycompany\hotel\cliente\presentacion\PnlAdmJunior$5.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$8.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones$2.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuSucursales$2.class
+co\mycompany\hotel\cliente\presentacion\PnlAdmHotelAdd.class
+co\mycompany\hotel\cliente\presentacion\PnlLogin$2.class
 co\mycompany\hotel\cliente\infra\Observer.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmHabModificar$2.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmJunior$2.class
@@ -33,6 +37,7 @@ co\mycompany\hotel\cliente\presentacion\FrmMain.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones$4.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$5.class
 co\mycompany\hotel\cliente\presentacion\Render.class
+co\mycompany\hotel\cliente\presentacion\PnlAdmHotelAdd$1.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmHabAdd.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$2.class
@@ -46,8 +51,8 @@ co\mycompany\hotel\cliente\presentacion\PnlAdmHabAdd$2.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmHabModificar$3.class
 co\mycompany\hotel\cliente\presentacion\PnlLogin$1.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$6.class
-co\mycompany\hotel\cliente\presentacion\PnlAdmMaster$9.class
 co\mycompany\hotel\cliente\presentacion\PnlVistaHabitaciones$1.class
+co\mycompany\hotel\cliente\presentacion\PnlAdmPersonaAdd$1.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmHabEliminar.class
 co\mycompany\hotel\cliente\presentacion\PnlAdmJunior$3.class
 co\mycompany\hotel\cliente\presentacion\PnlVistaHabitaciones.class

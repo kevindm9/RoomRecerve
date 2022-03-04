@@ -113,7 +113,7 @@ public class PnlUsuSucursales extends javax.swing.JPanel {
         dt.addColumn("Hotel");
         dt.addColumn("Descripcion");
 
-        if (hoteles.size() > 0) {
+        if (hoteles != null) {
             for (int i = 0; i < hoteles.size(); i++) {
                 Object fila[] = new Object[2];
 

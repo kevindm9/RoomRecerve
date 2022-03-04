@@ -130,9 +130,9 @@ public class HotelAccessImplSockets implements IHotelAccess {
         protocol.addParameter("rest_Id", String.valueOf(idHotel));
         protocol.addParameter("Id", Integer.toString(habitacion.getId()));
         protocol.addParameter("Nombre", habitacion.getDescripcion());
-        protocol.addParameter("Id", Integer.toString(habitacion.getPrecio()));
+        protocol.addParameter("Precio", Integer.toString(habitacion.getPrecio()));
         protocol.addParameter("Tipo", habitacion.getTipo().name());
-        protocol.addParameter("sesion_usuario", sesion.getUsuario());
+        System.out.println("Ide antes de mandar: "+ String.valueOf(sesion.getId()));
         protocol.addParameter("sesion_idPe", String.valueOf(sesion.getId()));
         protocol.addParameter("fecha_inicio", String.valueOf(fecha_inicio));
         protocol.addParameter("fecha_fin", String.valueOf(fecha_fin));
