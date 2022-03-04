@@ -373,12 +373,12 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     }
 
     @Override
-    public String addHotel(Hotel hotel) {
+    public String addHotel(Hotel hotel,String usuario) {
         try {
 
             this.connect();
             int cont;
-            String sql = "insert into hotel values(null,?,?,?,?,?,'Juan')";
+            String sql = "insert into hotel values(null,?,?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
 //            pstmt.setInt(cont, hotel.getId());
@@ -392,6 +392,8 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             pstmt.setInt(cont, Integer.parseInt(hotel.getTelefono()));
             cont++;
             pstmt.setString(cont, hotel.getFoto());
+            cont++;
+            pstmt.setString(cont, usuario);
             System.out.println(pstmt.toString());
             pstmt.executeUpdate();
             pstmt.close();
