@@ -160,7 +160,6 @@ public class FrmMain extends javax.swing.JFrame {
         pnlControl.repaint();
         pnlControl.revalidate();
     }
-    
     public void mostrarSucursales(){
         PnlUsuSucursales panelSucursales = new PnlUsuSucursales(this);
         pnlControl.removeAll();
