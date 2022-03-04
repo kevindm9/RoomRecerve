@@ -217,11 +217,13 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         for (int i = 0; i < tipos.length; i++) {
             cbxAdmHabTipo.addItem(tipos[i].toString());
         }
-        hoteles = service.getHotels(this.usuario);
+        hoteles = service.getHotels("All_Hotels");
         cbxAdmHabSucursal.removeAllItems();
-        for (int i = 0; i < hoteles.size(); i++) {
-            cbxAdmHabSucursal.addItem(hoteles.get(i).getNombre());
-        }
+        if(hoteles !=null){
+            for (int i = 0; i < hoteles.size(); i++) {
+                cbxAdmHabSucursal.addItem(hoteles.get(i).getNombre());
+            }
+        }    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

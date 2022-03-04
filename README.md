@@ -1,5 +1,5 @@
 # RoomReserve
-# MVP.
+# MVP2.
 El proyecto busca desarrollar una aplicación que permita a los  usuarios hacer una reservación en un hotel deseado a una de sus habitaciones disponibles . La aplicación permitirá llevar el control de los Diferentes hoteles, de las habitaciones, el pago y la gestión de estas mismas y así poder prestar un mejor servicio para el usuario final y el administrador llevar mejor un informe semanal y mensual de sus servicios. 
 	El sistema inicialmente brindará apoyo en los siguientes procesos:
   ● Visualizar habitación: El usuario podrá consultar las características, disponibilidad y reservar la habitación

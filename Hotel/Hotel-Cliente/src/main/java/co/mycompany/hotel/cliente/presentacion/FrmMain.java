@@ -20,7 +20,7 @@ public class FrmMain extends javax.swing.JFrame {
     public FrmMain() {
         service = new HotelService();
         aux = new javax.swing.JPanel();
-        
+        usuario = "";
         initComponents();
         mostrarSucursales();
         
@@ -127,6 +127,7 @@ public class FrmMain extends javax.swing.JFrame {
         }
         else{
             lbMainLogin.setText("Login");
+            usuario = "";
             mostrarSucursales();
         }
     }//GEN-LAST:event_lbMainLoginMouseClicked
@@ -141,12 +142,16 @@ public class FrmMain extends javax.swing.JFrame {
         pnlControl.revalidate();
     }
     
+    public String getUsuario(){
+        return this.usuario;
+    }
+    
     public void cargarUsuario(String usuario){
         this.usuario = usuario;
     }
     
     public void cargarAdmMaster(){
-        PnlAdmMaster panelAdmin = new PnlAdmMaster(this);
+        PnlAdmMaster panelAdmin = new PnlAdmMaster(this,usuario);
         pnlControl.removeAll();
         pnlControl.add(panelAdmin);
         pnlControl.repaint();
@@ -176,7 +181,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
     
     public void cargarReserva(int id_hotel){
-        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this,id_hotel);
+        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this,id_hotel,usuario);
         pnlControl.removeAll();
         pnlControl.add(panelHabitaciones);
         pnlControl.repaint();

@@ -1,7 +1,7 @@
-C:\Users\AIM\Documents\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\Factory.java
-C:\Users\AIM\Documents\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\HotelRepositoryImplMysql.java
-C:\Users\AIM\Documents\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\IHotelRepository.java
-C:\Users\AIM\Documents\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\domain\services\HotelService.java
-C:\Users\AIM\Documents\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\HotelRepositoryImplArrays.java
-C:\Users\AIM\Documents\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\app\HotelApplication.java
-C:\Users\AIM\Documents\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\infra\HotelServerSocket.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\HotelRepositoryImplArrays.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\IHotelRepository.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\app\HotelApplication.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\infra\HotelServerSocket.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\Factory.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\access\HotelRepositoryImplMysql.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Server\src\main\java\co\mycompany\hotel\server\domain\services\HotelService.java
