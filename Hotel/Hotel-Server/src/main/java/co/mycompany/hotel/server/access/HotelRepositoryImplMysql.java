@@ -6,9 +6,6 @@ import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.TipoHabitacion;
 import co.mycompany.hotel.commons.infra.Utilities;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -18,9 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+
 
 /**
  * Repositorio de Clientes en MySWL
@@ -89,6 +84,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 hotel.setCiudad(res.getString("hotel_ciudad"));
                 hotel.setTelefono(res.getString("hotel_telefono"));
                 hotel.setFoto(res.getString("hotel_foto"));
+                hotel.setAdministrador(res.getString("ses_usuario"));
                 hoteles.add(hotel);
             }
             pstmt.close();
@@ -335,11 +331,13 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             int cont = 0;
             String sql = "SELECT * FROM habitacion where  hotel_id = ? and habt_id not in "
                     + "(select distinct habt_id from reserva "
-                    + "where  hotel_id = 1 and ((fecha_inicio<= ? and fecha_fin >= ?) "
+                    + "where  hotel_id = ? and ((fecha_inicio<= ? and fecha_fin >= ?) "
                     + "or (fecha_inicio<= ? and fecha_fin >= ?)or ((fecha_inicio>= ? and fecha_fin <= ?))))";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
+            pstmt.setInt(cont, id_hotel);
+            cont++;
             pstmt.setInt(cont, id_hotel);
             cont++;
             pstmt.setDate(cont, fechaInicio);
@@ -406,6 +404,40 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         return "Hotel añadido correctamente";
     }
 
+    @Override
+    public String updateHotel(Hotel hotel,String usuario) {
+        try {
+            this.connect();
+            int cont;
+            String sql = "update hotel set hotel_nombre = ?, hotel_direccion = ?"
+                    + ", hotel_ciudad = ?, hotel_telefono = ?, hotel_foto=?"
+                    + ", ses_usuario = ? where hotel_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setString(cont, hotel.getNombre());
+            cont++;
+            pstmt.setString(cont, hotel.getDirecccion());
+            cont++;
+            pstmt.setString(cont, hotel.getCiudad());
+            cont++;
+            pstmt.setInt(cont, Integer.parseInt(hotel.getTelefono()));
+            cont++;
+            pstmt.setString(cont, hotel.getFoto());
+            cont++;
+            pstmt.setString(cont, hotel.getAdministrador());
+            cont++;
+            pstmt.setInt(cont, hotel.getId());  
+            System.out.println("Actualizacion: "+ pstmt.toString());
+            pstmt.executeUpdate();
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+        }
+        return "Hotel Actualizado con exito";
+    }
+    
+    
     @Override
     public String addPersona(Persona persona, String tipo) {
         try {

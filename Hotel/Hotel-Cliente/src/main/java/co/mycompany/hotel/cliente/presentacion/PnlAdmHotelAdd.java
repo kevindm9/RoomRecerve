@@ -5,17 +5,7 @@
 package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
-import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.Hotel;
-import co.mycompany.hotel.commons.domain.TipoHabitacion;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,7 +28,6 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
     public PnlAdmHotelAdd(String usuario) {
         this.usuario = usuario;
         service = new HotelService();
-        this.service = service;
         //hotel = new Hotel();
         initComponents();
 
@@ -167,10 +156,9 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
         String direccion= txtAdmHotDir.getText();
         String ciudad=txtAdmHotCiudad.getText();
         String telefono = txtAdmHotTel.getText();
-        Hotel hotel = new Hotel(0,nombre, direccion,ciudad,telefono);
+        Hotel hotel = new Hotel(0,nombre, direccion,ciudad,telefono,null);
         hotel.setFoto(txtAdmHotFoto.getText());
         JFrame jFrame = new JFrame();
-        System.out.println("Este es eñ usuario : "+usuario);
         JOptionPane.showMessageDialog(jFrame, service.addHotel(hotel,usuario));
         txtAdmHotNombre.setText("");
         txtAdmHotDir.setText("");
@@ -192,8 +180,6 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
             txtAdmHotFoto.setText(ruta);
         }
     }//GEN-LAST:event_btnAdmHabFotoActionPerformed
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bgAdmHabAdd;

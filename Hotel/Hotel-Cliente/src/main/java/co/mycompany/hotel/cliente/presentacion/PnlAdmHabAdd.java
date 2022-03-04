@@ -217,7 +217,13 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         for (int i = 0; i < tipos.length; i++) {
             cbxAdmHabTipo.addItem(tipos[i].toString());
         }
-        hoteles = service.getHotels("All_Hotels");
+        String tipo = service.getSecionTipo(usuario);
+        if(tipo.equals("Master")){
+            hoteles = service.getHotels("All_Hotels");
+        }
+        else{
+            hoteles = service.getHotels(usuario);        
+        }
         cbxAdmHabSucursal.removeAllItems();
         if(hoteles !=null){
             for (int i = 0; i < hoteles.size(); i++) {

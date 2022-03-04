@@ -185,7 +185,7 @@ public class PnlAdmJunior extends javax.swing.JPanel {
     private void bgAdmHabConsultarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabConsultarStateChanged
         // TODO add your handling code here:
         if (bgAdmHabConsultar.isSelected()) {
-            PnlVistaHabitaciones panelHabVista = new PnlVistaHabitaciones(service);
+            PnlVistaHabitaciones panelHabVista = new PnlVistaHabitaciones();
             pnlAdmHabControl.removeAll();
             pnlAdmHabControl.add(panelHabVista);
             pnlAdmHabControl.repaint();

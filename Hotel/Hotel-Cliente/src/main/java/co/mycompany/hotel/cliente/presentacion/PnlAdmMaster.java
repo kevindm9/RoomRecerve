@@ -341,8 +341,8 @@ public class PnlAdmMaster extends javax.swing.JPanel {
 
     private void bgAdmJunCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmJunCrearStateChanged
         // TODO add your handling code here:
-            if (bgAdmJunCrear.isSelected()) {
-            PnlAdmPersonaAdd panelPersAdd = new PnlAdmPersonaAdd("Junior");
+        if (bgAdmJunCrear.isSelected()) {
+            PnlAdmPersonaAdd panelPersAdd = new PnlAdmPersonaAdd(null,"Junior");
             pnlAdmHabControl2.removeAll();
             pnlAdmHabControl2.add(panelPersAdd);
             pnlAdmHabControl2.repaint();
@@ -353,7 +353,7 @@ public class PnlAdmMaster extends javax.swing.JPanel {
     private void bgAdmHabConsultarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabConsultarStateChanged
         // TODO add your handling code here:
         if (bgAdmHabConsultar.isSelected()) {
-            PnlVistaHabitaciones panelHabVista = new PnlVistaHabitaciones(service);
+            PnlVistaHabitaciones panelHabVista = new PnlVistaHabitaciones();
             pnlAdmHabControl.removeAll();
             pnlAdmHabControl.add(panelHabVista);
             pnlAdmHabControl.repaint();
@@ -396,12 +396,20 @@ public class PnlAdmMaster extends javax.swing.JPanel {
 
     private void bgAdmHotModificarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHotModificarStateChanged
         // TODO add your handling code here:
+        if (bgAdmHotModificar.isSelected()) {
+            PnlAdmHotelUpdate panelUpdate = new PnlAdmHotelUpdate(usuario);
+            pnlAdmHabControl1.removeAll();
+            pnlAdmHabControl1.add(panelUpdate);
+            pnlAdmHabControl1.repaint();
+            pnlAdmHabControl1.revalidate();
+        }
+        
     }//GEN-LAST:event_bgAdmHotModificarStateChanged
 
     private void bgAdmHotConsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHotConsStateChanged
         // TODO add your handling code here:
-            if (bgAdmHotCons.isSelected()) {
-                PnlUsuSucursales panelHot = new PnlUsuSucursales(panel);
+        if (bgAdmHotCons.isSelected()) {
+            PnlUsuSucursales panelHot = new PnlUsuSucursales(panel);
             pnlAdmHabControl1.removeAll();
             pnlAdmHabControl1.add(panelHot);
             pnlAdmHabControl1.repaint();

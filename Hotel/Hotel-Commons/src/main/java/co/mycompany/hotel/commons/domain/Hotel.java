@@ -15,19 +15,18 @@ public class Hotel {
     private String ciudad;
     private String telefono;
     private String foto;
-    private ArrayList<Habitacion> habitaciones;
+    private String administrador;
 
     public Hotel() {
     }
 
-    public Hotel(int id, String nombre, String direccion, String ciudad, String telefono) {
+    public Hotel(int id, String nombre, String direccion, String ciudad, String telefono, String administrador) {
         this.id = id;
         this.nombre = nombre;
         this.direcccion = direccion;
         this.ciudad = ciudad;
         this.telefono = telefono;
-        this.habitaciones = new ArrayList<>();
-
+        this.administrador = administrador;
     }
 
     public int getId() {
@@ -70,14 +69,6 @@ public class Hotel {
         this.telefono = telefono;
     }
 
-    public ArrayList<Habitacion> getHabitaciones() {
-        return habitaciones;
-    }
-
-    public void setHabitaciones(ArrayList<Habitacion> habitaciones) {
-        this.habitaciones = habitaciones;
-    }
-
     public String getFoto() {
         return foto;
     }
@@ -86,10 +77,15 @@ public class Hotel {
         this.foto = foto;
     }
 
-    @Override
-    public String toString() {
-        return "Hotel{" + "id=" + id + ", nombre=" + nombre + ", direcccion=" + direcccion + ", ciudad=" + ciudad + ", telefono=" + telefono + ", foto=" + foto + ", habitaciones=" + habitaciones + '}';
+    public String getAdministrador() {
+        return administrador;
     }
+
+    public void setAdministrador(String administrador) {
+        this.administrador = administrador;
+    }
+
+    
 
 
 

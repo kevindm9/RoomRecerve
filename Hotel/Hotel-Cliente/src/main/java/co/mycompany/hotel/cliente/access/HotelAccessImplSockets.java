@@ -13,17 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Persona;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  * Servicio de Cliente. Permite hacer el CRUD de clientes solicitando los
@@ -132,7 +124,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
         protocol.addParameter("Nombre", habitacion.getDescripcion());
         protocol.addParameter("Precio", Integer.toString(habitacion.getPrecio()));
         protocol.addParameter("Tipo", habitacion.getTipo().name());
-        System.out.println("Ide antes de mandar: "+ String.valueOf(sesion.getId()));
+        System.out.println("Ide antes de mandar: " + String.valueOf(sesion.getId()));
         protocol.addParameter("sesion_idPe", String.valueOf(sesion.getId()));
         protocol.addParameter("fecha_inicio", String.valueOf(fecha_inicio));
         protocol.addParameter("fecha_fin", String.valueOf(fecha_fin));
@@ -228,13 +220,14 @@ public class HotelAccessImplSockets implements IHotelAccess {
         protocol.addParameter("Foto", habitacion.getFoto());
         protocol.addParameter("Tipo", habitacion.getTipo().name());
         protocol.addParameter("Id_hotel", Integer.toString(habitacion.getId_hotel()));
-        
+
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
 
         return requestJson;
     }
-        private String modfHabitacionRequestJson(Habitacion habitacion) {
+
+    private String modfHabitacionRequestJson(Habitacion habitacion) {
 
         Protocol protocol = new Protocol();
         protocol.setResource("habitacion");
@@ -245,14 +238,13 @@ public class HotelAccessImplSockets implements IHotelAccess {
         protocol.addParameter("Foto", habitacion.getFoto());
         protocol.addParameter("Tipo", habitacion.getTipo().name());
         protocol.addParameter("Id_hotel", Integer.toString(habitacion.getId_hotel()));
-        
+
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
 
         return requestJson;
     }
-    
-    
+
     @Override
     public ArrayList<Hotel> getHotels(String ses_usuario) {
         String jsonResponse = null;
@@ -282,12 +274,12 @@ public class HotelAccessImplSockets implements IHotelAccess {
             }
         }
     }
-    
+
     private String getHotelRequestJson(String ses_usuario) {
         Protocol protocol = new Protocol();
         protocol.setResource("Hoteles");
         protocol.setAction("get");
-        protocol.addParameter("ses_usuario",(ses_usuario));
+        protocol.addParameter("ses_usuario", (ses_usuario));
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         return requestJson;
@@ -351,9 +343,10 @@ public class HotelAccessImplSockets implements IHotelAccess {
             }
         }
     }
+
     @Override
     public Habitacion getHabitacion(int id) {
-         String jsonResponse = null;
+        String jsonResponse = null;
         String requestJson = gethabtRequestJson(id);
         try {
             mySocket.connect();
@@ -361,7 +354,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
             mySocket.closeStream();
             mySocket.disconnect();
 
-       } catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
         }
         if (jsonResponse == null) {
@@ -370,21 +363,22 @@ public class HotelAccessImplSockets implements IHotelAccess {
             if (jsonResponse.contains("error")) {
                 //Devolvió algún error                
                 Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
-               return null;
+                return null;
             } else {
                 if (jsonResponse.contains("vacio")) {
                     return null;
                 }
-                Habitacion h=jsonToHabitacion(jsonResponse);
+                Habitacion h = jsonToHabitacion(jsonResponse);
                 return h;
             }
         }
     }
+
     private String gethabtRequestJson(int id) {
         Protocol protocol = new Protocol();
         protocol.setResource("habitacion");
         protocol.setAction("get");
-        protocol.addParameter("habt_id",Integer.toString(id));
+        protocol.addParameter("habt_id", Integer.toString(id));
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         return requestJson;
@@ -414,7 +408,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
         //Agregó correctamente el menu, devuelve los nombres de los platos
         return jsonResponse;
     }
-    
+
     private String getHabitacionsRequestJson(int id_hotel, Date fechaInicio, Date fechafin) {
         Protocol protocol = new Protocol();
         protocol.setResource("habitaciones");
@@ -479,7 +473,9 @@ public class HotelAccessImplSockets implements IHotelAccess {
             if (jsonRes.contains("}") == false) {
                 jsonRes += "}";
             }
-            habitacions.add(jsonToHabitacion(jsonRes));
+            if (jsonToHabitacion(jsonRes) != null) {
+                habitacions.add(jsonToHabitacion(jsonRes));
+            }
         }
         return habitacions;
     }
@@ -491,13 +487,19 @@ public class HotelAccessImplSockets implements IHotelAccess {
      * @param jsonHotel objeto cliente en formato json
      */
     private Habitacion jsonToHabitacion(String jsonHabitacion) {
+        Habitacion habitacion = null;
         Gson gson = new Gson();
-        Habitacion habitacion = gson.fromJson(jsonHabitacion, Habitacion.class);
+        try {
+            habitacion = gson.fromJson(jsonHabitacion, Habitacion.class);
+        } catch (Exception e) {
+            System.out.println("Elemento vacio");
+        }
         return habitacion;
     }
+
     @Override
     public ArrayList<Integer> getReserva() {
-          String jsonResponse = null;
+        String jsonResponse = null;
         //{"resource":"habitacions","action":"get","parameters":[{"name":"rest_id","value":"1"},{"name":"dia","value":"LUNES"}]}
         String requestJson = getReservaRequestJson();
         try {
@@ -525,6 +527,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
             }
         }
     }
+
     private ArrayList<Integer> jsonToArrayReserva(String jsonResponse) {
         ArrayList<Integer> IdHabitaciones = new ArrayList<>();
         String jsonAux = jsonResponse.replace("[", "");
@@ -538,11 +541,13 @@ public class HotelAccessImplSockets implements IHotelAccess {
         }
         return IdHabitaciones;
     }
-   private int jsonToReserva(String jsonHabitacion) {
+
+    private int jsonToReserva(String jsonHabitacion) {
         Gson gson = new Gson();
         int habitacion = gson.fromJson(jsonHabitacion, int.class);
         return habitacion;
     }
+
     /**
      *
      * @param usuario
@@ -558,7 +563,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
             mySocket.closeStream();
             mySocket.disconnect();
 
-       } catch (IOException ex) {
+        } catch (IOException ex) {
             Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
         }
         if (jsonResponse == null) {
@@ -567,16 +572,17 @@ public class HotelAccessImplSockets implements IHotelAccess {
             if (jsonResponse.contains("error")) {
                 //Devolvió algún error                
                 Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
-               return null;
+                return null;
             } else {
                 if (jsonResponse.contains("vacio")) {
                     return null;
                 }
-                Persona p=jsonToPersona(jsonResponse);
+                Persona p = jsonToPersona(jsonResponse);
                 return p;
             }
         }
     }
+
     private Persona jsonToPersona(String jsonResponse) {
         Gson gson = new Gson();
         Persona p = gson.fromJson(jsonResponse, Persona.class);
@@ -596,7 +602,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
 
     @Override
     public String getSecionTipo(String usuario) {
-    String jsonResponse = null;
+        String jsonResponse = null;
         String requestJson = getSecionTipoRequestJson(usuario);
         try {
             mySocket.connect();
@@ -622,9 +628,10 @@ public class HotelAccessImplSockets implements IHotelAccess {
                 return jsonResponse;
             }
         }
-    
+
     }
- private String getSecionTipoRequestJson(String usuario) {
+
+    private String getSecionTipoRequestJson(String usuario) {
         Protocol protocol = new Protocol();
         protocol.setResource("tipoSesion");
         protocol.setAction("get");
@@ -633,6 +640,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
         String requestJson = gson.toJson(protocol);
         return requestJson;
     }
+
     @Override
     public String getSecionClave(String usuario) {
         String jsonResponse = null;
@@ -703,11 +711,10 @@ public class HotelAccessImplSockets implements IHotelAccess {
     }
 
     @Override
-    public String addHotel(Hotel hotel,String usuario) {
+    public String addHotel(Hotel hotel, String usuario) {
         String jsonResponse = null;
-        String requestJson = addHotelRequestJson(hotel,usuario);
+        String requestJson = HotelRequestJson(hotel, usuario,"add");
         try {
-
             mySocket.connect();
             jsonResponse = mySocket.sendStream(requestJson);
             mySocket.closeStream();
@@ -729,22 +736,44 @@ public class HotelAccessImplSockets implements IHotelAccess {
         return jsonResponse;
     }
 
-    private String addHotelRequestJson(Hotel hotel,String usuario) {
+    @Override
+    public String updateHotel(Hotel hotel, String usuario) {
+        String jsonResponse = null;
+        String requestJson = HotelRequestJson(hotel, usuario, "update");
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+
+        } catch (IOException ex) {
+            Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            return "No se pudo conectar con el servidor";
+        }
+        if (jsonResponse.contains("error")) {
+            //Devolvió algún error                
+            Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+            return extractMessages(jsonResponse);
+        }
+        return jsonResponse;
+    }
+
+    private String HotelRequestJson(Hotel hotel, String usuario, String metodo) {
         Protocol protocol = new Protocol();
         protocol.setResource("Hotel");
-        protocol.setAction("set");
+        protocol.setAction(metodo);
         protocol.addParameter("Id", Integer.toString(hotel.getId()));
         protocol.addParameter("Nombre", hotel.getNombre());
         protocol.addParameter("Direccion", hotel.getDirecccion());
         protocol.addParameter("Ciudad", hotel.getCiudad());
         protocol.addParameter("Telefono", hotel.getTelefono());
-         protocol.addParameter("Foto", hotel.getFoto());
-          protocol.addParameter("User", usuario);
+        protocol.addParameter("Foto", hotel.getFoto());
+        protocol.addParameter("User", usuario);
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
-
         return requestJson;
-
     }
 
     private String getReservaRequestJson() {
@@ -755,10 +784,5 @@ public class HotelAccessImplSockets implements IHotelAccess {
         String requestJson = gson.toJson(protocol);
         return requestJson;
     }
-
-
-
-
-
 
 }
