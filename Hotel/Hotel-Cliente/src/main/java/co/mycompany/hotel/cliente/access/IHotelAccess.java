@@ -65,7 +65,7 @@ public interface IHotelAccess {
      * @param dia
      * @return
      */
-    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion);
+    public String addReserva(int idHotel, Habitacion habitacion, Date fecha_inicio, Date fecha_fin, Persona sesion);
 
     /**
      * Elimina un habitacion de un hotel determinado en un dia determinado

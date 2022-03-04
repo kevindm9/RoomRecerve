@@ -196,7 +196,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     }
 
     @Override
-    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion) {
+    public String addReserva(int idHotel, Habitacion habitacion,Date fecha_inicio, Date fecha_fin, Persona sesion) {
         try {
             this.connect();
             int cont;
