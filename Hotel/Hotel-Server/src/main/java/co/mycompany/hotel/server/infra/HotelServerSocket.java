@@ -244,8 +244,8 @@ public class HotelServerSocket implements Runnable {
         //parameters=[Parameter{name=Id, value=12}, Parameter{name=Nombre, value=jugo de lulo}, Parameter{name=Tipo, value=BEBIDA}]}
         Habitacion habitacion = new Habitacion();
         Persona sesion = new Persona();
-        LocalDate fecha_inicio;
-        LocalDate fecha_fin;
+        Date fecha_inicio;
+        Date fecha_fin;
         int cont = 0;
         int idHotel = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
         habitacion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
@@ -254,8 +254,8 @@ public class HotelServerSocket implements Runnable {
         habitacion.setTipo(TipoHabitacion.valueOf(protocolRequest.getParameters().get(cont).getValue()));
         sesion.setUsuario(protocolRequest.getParameters().get(cont++).getValue());
         sesion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
-        fecha_inicio = LocalDate.parse(protocolRequest.getParameters().get(cont++).getValue());
-        fecha_fin = LocalDate.parse(protocolRequest.getParameters().get(cont++).getValue());
+        fecha_inicio = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
+        fecha_fin = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         String response = service.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
         output.println(response);
     }

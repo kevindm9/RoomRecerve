@@ -92,7 +92,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
     }
 
     @Override
-    public String addReserva(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion) {
+    public String addReserva(int idHotel, Habitacion habitacion, Date fecha_inicio, Date fecha_fin, Persona sesion) {
         String jsonResponse = null;
         String requestJson = addReservaRequestJson(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
         try {
@@ -122,7 +122,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
      * @param habitacion habitacion del plato
      * @return
      */
-    private String addReservaRequestJson(int idHotel, Habitacion habitacion, LocalDate fecha_inicio, LocalDate fecha_fin, Persona sesion) {
+    private String addReservaRequestJson(int idHotel, Habitacion habitacion, Date fecha_inicio, Date fecha_fin, Persona sesion) {
 
         Protocol protocol = new Protocol();
         protocol.setResource("habitacionReserva");
