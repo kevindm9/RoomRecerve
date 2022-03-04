@@ -13,6 +13,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -32,11 +34,13 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     private final int id_hotel;
     Date fechaIni;
     Date fechaFin;
+    String usuario;
 
     /**
      * Creates new form PnlVistaHabitaciones
      */
-    public PnlUsuHabitaciones(FrmMain panel, int id_hotel) {
+    public PnlUsuHabitaciones(FrmMain panel, int id_hotel,String usuario) {
+        
         this.panel = panel;
         this.id_hotel = id_hotel;
         habitaciones = new ArrayList<>();
@@ -139,8 +143,8 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         int opc =JOptionPane.showConfirmDialog(null, "Reservar habitacion", "Desea reservar la habitacion?", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
         if (opc == 0){
             try{
-            //service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,);     
-            //cargarHabitaciones();
+                service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,service.getPersona(usuario));     
+                cargarHabitaciones(fechaIni,fechaFin);
             }
             catch(Exception e){
                 
@@ -155,7 +159,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
 
     private void btnUsuHabBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuHabBuscarActionPerformed
         // TODO add your handling code here:
-        System.out.println(dccUsuHabInicio.getDateFormatString());
+        //System.out.println(dccUsuHabInicio.getDateFormatString());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = simpleDateFormat.format(dccUsuHabInicio.getDate());
         //dccUsuHabInicio.getDateFormatString()

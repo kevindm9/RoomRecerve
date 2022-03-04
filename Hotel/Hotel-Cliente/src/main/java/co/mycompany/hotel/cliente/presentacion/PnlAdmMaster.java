@@ -14,11 +14,13 @@ public class PnlAdmMaster extends javax.swing.JPanel {
 
     private FrmMain panel;
     private HotelService service;
+    private String usuario;
 
     /**
      * Creates new form PnlAdm
      */
-    public PnlAdmMaster(FrmMain panel) {
+    public PnlAdmMaster(FrmMain panel, String usuario) {
+        this.usuario = usuario;
         this.service = new HotelService();
         this.panel = panel;
         initComponents();
@@ -362,7 +364,7 @@ public class PnlAdmMaster extends javax.swing.JPanel {
     private void bgAdmHabCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabCrearStateChanged
         // TODO add your handling code here:
         if (bgAdmHabCrear.isSelected()) {
-            PnlAdmHabAdd panelHabAdd = new PnlAdmHabAdd("All_Hotels");
+            PnlAdmHabAdd panelHabAdd = new PnlAdmHabAdd(usuario);
             pnlAdmHabControl.removeAll();
             pnlAdmHabControl.add(panelHabAdd);
             pnlAdmHabControl.repaint();
@@ -373,7 +375,7 @@ public class PnlAdmMaster extends javax.swing.JPanel {
     private void bgAdmHabModificarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabModificarStateChanged
         // TODO add your handling code here:
         if (bgAdmHabModificar.isSelected()) {
-            PnlAdmHabModificar panelHabAdd = new PnlAdmHabModificar("All_Hotels");
+            PnlAdmHabModificar panelHabAdd = new PnlAdmHabModificar(usuario);
             pnlAdmHabControl.removeAll();
             pnlAdmHabControl.add(panelHabAdd);
             pnlAdmHabControl.repaint();
@@ -384,7 +386,7 @@ public class PnlAdmMaster extends javax.swing.JPanel {
     private void bgAdmHotCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHotCrearStateChanged
         // TODO add your handling code here:
         if (bgAdmHotCrear.isSelected()) {
-            PnlAdmHotelAdd panelHotAdd = new PnlAdmHotelAdd("All_Hotels");
+            PnlAdmHotelAdd panelHotAdd = new PnlAdmHotelAdd(usuario);
             pnlAdmHabControl1.removeAll();
             pnlAdmHabControl1.add(panelHotAdd);
             pnlAdmHabControl1.repaint();

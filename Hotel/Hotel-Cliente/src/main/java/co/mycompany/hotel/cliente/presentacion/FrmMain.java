@@ -146,7 +146,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
     
     public void cargarAdmMaster(){
-        PnlAdmMaster panelAdmin = new PnlAdmMaster(this);
+        PnlAdmMaster panelAdmin = new PnlAdmMaster(this,usuario);
         pnlControl.removeAll();
         pnlControl.add(panelAdmin);
         pnlControl.repaint();
@@ -176,7 +176,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
     
     public void cargarReserva(int id_hotel){
-        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this,id_hotel);
+        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this,id_hotel,usuario);
         pnlControl.removeAll();
         pnlControl.add(panelHabitaciones);
         pnlControl.repaint();

@@ -170,6 +170,7 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
         Hotel hotel = new Hotel(0,nombre, direccion,ciudad,telefono);
         hotel.setFoto(txtAdmHotFoto.getText());
         JFrame jFrame = new JFrame();
+        System.out.println("Este es eñ usuario : "+usuario);
         JOptionPane.showMessageDialog(jFrame, service.addHotel(hotel,usuario));
         txtAdmHotNombre.setText("");
         txtAdmHotDir.setText("");
