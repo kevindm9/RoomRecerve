@@ -109,8 +109,8 @@ public class HotelService extends Subject {
      * @param hotel
      * @return
      */
-    public String addHotel(Hotel hotel) {
-        return service.addHotel(hotel);
+    public String addHotel(Hotel hotel,String usuario) {
+        return service.addHotel(hotel,usuario);
     }
     public String getSecionTipo(String usuario) {
         return service.getSecionTipo(usuario);

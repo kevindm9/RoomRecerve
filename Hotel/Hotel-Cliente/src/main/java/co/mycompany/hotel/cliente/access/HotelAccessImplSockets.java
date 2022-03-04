@@ -703,9 +703,9 @@ public class HotelAccessImplSockets implements IHotelAccess {
     }
 
     @Override
-    public String addHotel(Hotel hotel) {
+    public String addHotel(Hotel hotel,String usuario) {
         String jsonResponse = null;
-        String requestJson = addHotelRequestJson(hotel);
+        String requestJson = addHotelRequestJson(hotel,usuario);
         try {
 
             mySocket.connect();
@@ -729,7 +729,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
         return jsonResponse;
     }
 
-    private String addHotelRequestJson(Hotel hotel) {
+    private String addHotelRequestJson(Hotel hotel,String usuario) {
         Protocol protocol = new Protocol();
         protocol.setResource("Hotel");
         protocol.setAction("set");
@@ -738,6 +738,8 @@ public class HotelAccessImplSockets implements IHotelAccess {
         protocol.addParameter("Direccion", hotel.getDirecccion());
         protocol.addParameter("Ciudad", hotel.getCiudad());
         protocol.addParameter("Telefono", hotel.getTelefono());
+         protocol.addParameter("Foto", hotel.getFoto());
+          protocol.addParameter("User", usuario);
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
 

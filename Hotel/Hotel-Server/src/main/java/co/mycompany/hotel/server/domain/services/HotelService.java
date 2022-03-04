@@ -42,8 +42,8 @@ public class HotelService {
         return repo.addHabitacion(habitacion);
     }
 
-    public String addHotel(Hotel hotel) {
-        return repo.addHotel(hotel);
+    public String addHotel(Hotel hotel,String usuario) {
+        return repo.addHotel(hotel,usuario);
     }
 
     public String addPersona(Persona persona, String tipo) {

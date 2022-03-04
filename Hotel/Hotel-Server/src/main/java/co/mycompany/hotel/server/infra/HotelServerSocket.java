@@ -409,6 +409,7 @@ public class HotelServerSocket implements Runnable {
     private void processaddHotel(Protocol protocolRequest) {
         //parameters=[Parameter{name=Id, value=12}, Parameter{name=Nombre, value=jugo de lulo}, Parameter{name=Tipo, value=BEBIDA}]}
         Hotel hotel = new Hotel();
+        String usuario="";
         int cont = 0;
         hotel.setId(Integer.parseInt(protocolRequest.getParameters().get(cont).getValue()));
         cont++;
@@ -419,7 +420,9 @@ public class HotelServerSocket implements Runnable {
         hotel.setCiudad(protocolRequest.getParameters().get(cont).getValue());
         cont++;
         hotel.setTelefono(protocolRequest.getParameters().get(cont).getValue());
-        String response = service.addHotel(hotel);
+        cont++;
+        usuario = protocolRequest.getParameters().get(cont).getValue();
+        String response = service.addHotel(hotel,usuario);
         output.println(response);
     }
 
