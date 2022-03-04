@@ -34,11 +34,11 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
 
     /**
      * Creates new form PnlAdmHabAdd
+     * @param usuario
      */
     public PnlAdmHabAdd(String usuario) {
         this.usuario = usuario;
         service = new HotelService();
-        this.service = service;
         hoteles = new ArrayList<>();
         initComponents();
         cargarValoresIniciales();
@@ -168,13 +168,27 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         //public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo);
         TipoHabitacion tipo = this.tipos[cbxAdmHabTipo.getSelectedIndex()];
         String descripcion = txtAdmHabDescripcion.getText();
-        int id_hotel = cbxAdmHabSucursal.getSelectedIndex() + 1;
-        System.out.println("id hotel: "+id_hotel);
+        String nombre_hotel = cbxAdmHabSucursal.getSelectedItem().toString();
+
+
+        int id_hotel = -1;
+        System.out.println("id hotel: "+nombre_hotel);
         int precio = Integer.parseInt(txtAdmHabPrecio.getText());
-        Habitacion habitacion = new Habitacion(0,descripcion, precio, tipo,id_hotel);
-        habitacion.setFoto(txtAdmHabFoto.getText());
+        for (Hotel hotel : hoteles){
+            if (hotel.getNombre().equals(nombre_hotel)){
+                id_hotel = hotel.getId();
+                break;
+            }
+        }
         JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, service.addHabitacion(habitacion));
+        if(id_hotel != -1){
+            Habitacion habitacion = new Habitacion(0,descripcion, precio, tipo,id_hotel);
+            habitacion.setFoto(txtAdmHabFoto.getText());
+            JOptionPane.showMessageDialog(jFrame, service.addHabitacion(habitacion));
+        }
+        else{
+            JOptionPane.showMessageDialog(jFrame,"No se pudo adiccionar la habitacion");
+        }
         txtAdmHabDescripcion.setText("");
         txtAdmHabPrecio.setText("");
         txtAdmHabFoto.setText("");
