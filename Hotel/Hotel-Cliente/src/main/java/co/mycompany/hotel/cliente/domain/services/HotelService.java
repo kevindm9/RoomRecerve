@@ -8,7 +8,6 @@ import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Persona;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -77,7 +76,6 @@ public class HotelService extends Subject {
      * @param sesion
      * @return
      */
-
     public String addReserva(int idHotel, Habitacion habitacion, Date fecha_inicio, Date fecha_fin, Persona sesion) {
         return service.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
     }
@@ -109,12 +107,18 @@ public class HotelService extends Subject {
      * @param hotel
      * @return
      */
-    public String addHotel(Hotel hotel,String usuario) {
-        return service.addHotel(hotel,usuario);
+    public String addHotel(Hotel hotel, String usuario) {
+        return service.addHotel(hotel, usuario);
     }
+
+    public String updateHotel(Hotel hotel, String usuario) {
+        return service.updateHotel(hotel, usuario);
+    }
+
     public String getSecionTipo(String usuario) {
         return service.getSecionTipo(usuario);
     }
+
     /**
      * obtiene la clave del administrador en caso de existir
      *
@@ -124,21 +128,24 @@ public class HotelService extends Subject {
     public String getSecionClave(String usuario) {
         return service.getSecionClave(usuario);
     }
+
     public Persona getPersona(String usuario) {
         return service.getPersona(usuario);
     }
-    public ArrayList<Integer> getReserva(){
+
+
+    public ArrayList<Integer> getReserva() {
         return service.getReserva();
-        
+
     }
-       /**
+
+    /**
      *
      * @param id
      * @return
      */
-    public Habitacion getHabitacion(int id){
-    return service.getHabitacion(id);
-    
+    public Habitacion getHabitacion(int id) {
+        return service.getHabitacion(id);
     }
 
     /**
@@ -146,7 +153,7 @@ public class HotelService extends Subject {
      * @param habitacion
      * @return
      */
-    public String ModificarHabitacion(Habitacion habitacion){
-    return service.ModificarHabitacion(habitacion);
+    public String ModificarHabitacion(Habitacion habitacion) {
+        return service.ModificarHabitacion(habitacion);
     }
 }

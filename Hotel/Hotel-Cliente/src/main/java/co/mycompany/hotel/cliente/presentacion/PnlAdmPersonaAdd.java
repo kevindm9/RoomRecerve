@@ -29,18 +29,17 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class PnlAdmPersonaAdd extends javax.swing.JPanel {
 
     private HotelService service;
-     private FrmMain panel;
-    //private Hotel hotel;
-    private String tipousuario;
+    private String tipo;
+    private FrmMain panel;
 
     /**
      * Creates new form PnlAdmHabAdd
      */
-    public PnlAdmPersonaAdd(String usuario) {
-        this.tipousuario = usuario;
+    public PnlAdmPersonaAdd(FrmMain panel,String tipo) {
+        this.panel = panel;
         service = new HotelService();
+        this.tipo = tipo;
         this.service = service;
-        //hotel = new Hotel();
         initComponents();
 
     }
@@ -183,12 +182,16 @@ public class PnlAdmPersonaAdd extends javax.swing.JPanel {
         String clave=txtAdmPersContr.getText();
         Persona Persona=new Persona(User, clave, id, nombre, telefono, direccion);
         JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, service.addPersona(Persona, tipousuario));
+        JOptionPane.showMessageDialog(jFrame, service.addPersona(Persona, tipo));
 //        txtAdmHotNombre.setText("");
 //        txtAdmHotDir.setText("");
 //        txtAdmHotCiudad.setText("");
 //        txtAdmHotTel.setText("");
 //        txtAdmHabFoto.setText("");
+        if(tipo.equals("Cliente")){
+            panel.cargarLogin();
+        }
+       
     }//GEN-LAST:event_btnPersonaAgregarActionPerformed
 
 

@@ -79,7 +79,7 @@ public class PnlLogin extends javax.swing.JPanel {
                                 .addComponent(txtLogPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlLogLoginLayout.createSequentialGroup()
                                 .addComponent(btnLogIniciar)
-                                .addGap(27, 27, 27)
+                                .addGap(34, 34, 34)
                                 .addComponent(btnLogRegistrarse))
                             .addGroup(pnlLogLoginLayout.createSequentialGroup()
                                 .addComponent(lbLogUsuario)
@@ -155,8 +155,8 @@ public class PnlLogin extends javax.swing.JPanel {
 
     private void btnLogRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogRegistrarseActionPerformed
         // TODO add your handling code here:
-           PnlAdmPersonaAdd panelPersAdd = new PnlAdmPersonaAdd("Cliente");
-
+           panel.cargarRegistrar("Cliente");
+           
         
     }//GEN-LAST:event_btnLogRegistrarseActionPerformed
 
