@@ -36,10 +36,10 @@ HOTEL-SERVER
 HOTEL-CLIENTE
 ![Cliente](docs/Uml/Cliente.png)
 HOTEL-COMMONS
-![Diagrama de clases](docs/Uml/Diagrama%20de%20clases.png)
+![Diagrama de clases](docs/Uml/Commons.png)
 Untitled Diagram-Instalacion.drawio.png
 # VISTA DE DATOS (MODELO ENTIDAD-RELACIÓN).
-![E-R_hotel](docs/Uml/E-R_hotel.png)
+![E-R_hotel](docs/Uml/E_R_hotel.png)
 # DIAGRAMA DE SECUENCIA(UML).
 RESERVAR              
 
