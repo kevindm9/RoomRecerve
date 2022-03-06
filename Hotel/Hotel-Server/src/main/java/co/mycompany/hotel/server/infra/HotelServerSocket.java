@@ -183,9 +183,10 @@ public class HotelServerSocket implements Runnable {
                 }
                 break;
             case "Hotel":
-                processaddHotel(protocolRequest);
-
+                processHotel(protocolRequest, protocolRequest.getAction());
                 break;
+                
+
             case "habitaciones":
                 if (protocolRequest.getAction().equals("getReserva")) {
                     //{"resource":"componentes","action":"get","parameters":[{"name":"rest_id","value":"1"},{"name":"dia","value":"LUNES"}]}
@@ -407,8 +408,9 @@ public class HotelServerSocket implements Runnable {
      *
      * @param protocolRequest Protocolo de la solicitud
      */
-    private void processaddHotel(Protocol protocolRequest) {
+    private void processHotel(Protocol protocolRequest, String metodo) {
         //parameters=[Parameter{name=Id, value=12}, Parameter{name=Nombre, value=jugo de lulo}, Parameter{name=Tipo, value=BEBIDA}]}
+        String response = "No se realizo la operacion";
         Hotel hotel = new Hotel();
         String usuario;
         int cont = 0;
@@ -425,7 +427,12 @@ public class HotelServerSocket implements Runnable {
         hotel.setFoto(protocolRequest.getParameters().get(cont).getValue());
         cont++;
         usuario = protocolRequest.getParameters().get(cont).getValue();
-        String response = service.addHotel(hotel,usuario);
+        if (metodo.equals("add")){
+            response = service.addHotel(hotel,usuario);
+        }
+        else if(metodo.equals("update")){
+            response = service.updateHotel(hotel,usuario);
+        }
         output.println(response);
     }
 

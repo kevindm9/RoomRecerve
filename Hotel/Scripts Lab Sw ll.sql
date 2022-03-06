@@ -50,11 +50,11 @@ insert into hotel values (null,'Crouse','carrera 11','Popayan',6025984454,'d:\\U
 insert into hotel values (null,'Narnia','carrera 15','Popayan',602854210,'d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\H2.jpg','customer');
 insert into hotel values (null,'Cesar','carrera 22','Popayan',602365814,'d:\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\H3.jpg','customer');
 insert into hotel values (null,'Colonia','carrera 32','Popayan',602987452,'d:\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\H4.jpg','customer');
-insert into habitacion values(null,'habitacion individual normal',35000,'INDIVIDUAL','d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\HB1.jpg',1);
-insert into habitacion values(null,'habitacion matrimonial normal',45000,'MATRIMONIAL','d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\HB8.jpg',2);
-insert into habitacion values(null,'habitacion individual junior',40000,'INDIVIDUAL','d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\HB2.jpg',1);
-insert into habitacion values(null,'habitacion matrimonial premium',75000,'MATRIMONIAL','d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\HB3.jpg',2);
-insert into habitacion values(null,'habitacion matrimonial junior',55000,'MATRIMONIAL','d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\HB4.jpg',2);
+insert into habitacion values(null,'habitacion individual normal',35000,'INDIVIDUAL','C:\Users\AIM\Documents\RoomReserve\Hotel\recursos\HB1',1);
+insert into habitacion values(null,'habitacion matrimonial normal',45000,'MATRIMONIAL','C:\Users\AIM\Documents\RoomReserve\Hotel\recursos\HB1',2);
+insert into habitacion values(null,'habitacion individual junior',40000,'INDIVIDUAL','C:\Users\AIM\Documents\RoomReserve\Hotel\recursos\HB1',1);
+insert into habitacion values(null,'habitacion matrimonial premium',75000,'MATRIMONIAL','C:\Users\AIM\Documents\RoomReserve\Hotel\recursos\HB1',2);
+insert into habitacion values(null,'habitacion matrimonial junior',55000,'MATRIMONIAL','C:\Users\AIM\Documents\RoomReserve\Hotel\recursos\HB1',2);
 insert into habitacion values(null,'habitacion grupal normal',150000,'GRUPAL','d:\\Users\\AIM\Documents\\proyectos\\Hotel\\recursos\\HB5.jpg',1);
 insert into habitacion values(null,'habitacion matrimonial normal',35000,'MATRIMONIAL','d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\HB6.jpg',1);
 insert into habitacion values(null,'habitacion individual normal',35000,'INDIVIDUAL','d:\\Users\\AIM\\Documents\\proyectos\\Hotel\\recursos\\HB7.jpg',1);

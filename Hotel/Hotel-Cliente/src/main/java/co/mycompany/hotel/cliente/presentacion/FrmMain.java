@@ -14,6 +14,7 @@ public class FrmMain extends javax.swing.JFrame {
     private HotelService service;
     private javax.swing.JPanel aux;
     private String usuario;
+    private String tipo;
     /**
      * Creates new form frmMain
      */
@@ -70,20 +71,18 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainLayout.setHorizontalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGap(278, 278, 278)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlControl, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
                     .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnlControl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
                         .addComponent(lbMainLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnMainSalir)))
                 .addContainerGap())
+            .addGroup(pnlMainLayout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,12 +90,11 @@ public class FrmMain extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbMainLogin)
-                    .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addComponent(pnlControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnMainSalir)))
+                .addComponent(pnlControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnMainSalir)
+                    .addComponent(lbMainLogin))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -122,7 +120,6 @@ public class FrmMain extends javax.swing.JFrame {
     private void lbMainLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMainLoginMouseClicked
         // TODO add your handling code here:
         if ("Login".equals(lbMainLogin.getText())){            
-            lbMainLogin.setText("LogOut");
             cargarLogin();
         }
         else{
@@ -133,6 +130,7 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_lbMainLoginMouseClicked
 
     public void cargarLogin(){
+        
         aux.removeAll();
         aux.add(pnlControl.getComponent(0));
         PnlLogin panelLogin = new PnlLogin(this);        
@@ -145,12 +143,28 @@ public class FrmMain extends javax.swing.JFrame {
     public String getUsuario(){
         return this.usuario;
     }
+    public String getTipo(){
+        return this.usuario;
+    }
     
     public void cargarUsuario(String usuario){
         this.usuario = usuario;
     }
     
+    public void cargarTipo(String tipo){
+        this.tipo = tipo;
+    }
+    
+    public void cargarRegistrar(String tipo){
+        PnlAdmPersonaAdd panelAdmin = new PnlAdmPersonaAdd(this,tipo);
+        pnlControl.removeAll();
+        pnlControl.add(panelAdmin);
+        pnlControl.repaint();
+        pnlControl.revalidate();
+    }
+    
     public void cargarAdmMaster(){
+        lbMainLogin.setText("LogOut");
         PnlAdmMaster panelAdmin = new PnlAdmMaster(this,usuario);
         pnlControl.removeAll();
         pnlControl.add(panelAdmin);
@@ -159,6 +173,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
     
     public void cargarAdmJunior(){
+        lbMainLogin.setText("LogOut");
         PnlAdmJunior panelJunior = new PnlAdmJunior(this,usuario);
         pnlControl.removeAll();
         pnlControl.add(panelJunior);
@@ -174,6 +189,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
     
     public void cargarCliente(){
+        lbMainLogin.setText("LogOut");
         pnlControl.removeAll();
         pnlControl.add(aux.getComponent(0));
         pnlControl.repaint();

@@ -87,7 +87,7 @@ public interface IHotelRepository {
      * @return
      */
     public String addHotel(Hotel hotel,String sesion);
-    
+    public String updateHotel(Hotel hotel,String sesion);
     /**
      *Adicionar una nueva persona a la base de datos
      * @param persona

@@ -94,7 +94,7 @@ public interface IHotelAccess {
     public String getSecionTipo(String usuario);
 
     public String addHotel(Hotel hotel,String usuario);
-
+    public String updateHotel(Hotel hotel,String usuario);
     /**
      * Adicionar una nueva persona a la base de datos
      *

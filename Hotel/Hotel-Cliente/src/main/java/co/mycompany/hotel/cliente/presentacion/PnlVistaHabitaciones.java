@@ -6,6 +6,7 @@ package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.Habitacion;
+import co.mycompany.hotel.commons.domain.Hotel;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -31,17 +32,29 @@ public class PnlVistaHabitaciones extends javax.swing.JPanel {
     /**
      * Creates new form PnlVistaHabitaciones
      */
-    public PnlVistaHabitaciones(HotelService service) {
+    public PnlVistaHabitaciones() {
         habitaciones = new ArrayList<>();
-        this.service = service;
+        this.service = new HotelService();
         initComponents();
         this.modelo = (DefaultTableModel) tabvisHabitaciones.getModel();
-        //lanzar(id_hotel);
+        lanzar();
     }
 
-    private void lanzar(int id_hotel) {
+    private void lanzar() {
         
-        habitaciones = service.getHabitaciones(id_hotel, Date.valueOf("1800-01-01"), Date.valueOf("1800-01-02"));
+        
+        ArrayList<Hotel> hoteles = service.getHotels("All_Hotels");
+        if(hoteles == null)
+            return;
+        
+        for(Hotel hotel:hoteles){
+            ArrayList<Habitacion> habitsxhotel = service.getHabitaciones(hotel.getId(),Date.valueOf("1800-01-01"), Date.valueOf("1800-01-01"));
+            if(habitsxhotel == null)
+                continue;
+            habitsxhotel.forEach((habitacion)-> habitacion.setId_hotel(hotel.getId()));
+            habitaciones.addAll(habitsxhotel);
+        }
+
 
         tabvisHabitaciones.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel dt = new DefaultTableModel() {
@@ -59,9 +72,10 @@ public class PnlVistaHabitaciones extends javax.swing.JPanel {
 
                 String descripcion = "<html>";
                 descripcion += "<body><h3>"+habitaciones.get(i).getDescripcion()+"</h3>";
-                descripcion += "--->Tipo:   " + habitaciones.get(i).getTipo().toString();
-                descripcion += "<br>--->Precio: " + habitaciones.get(i).getPrecio();
-                descripcion += "<br>--->Id:     "+ habitaciones.get(i).getId();
+                descripcion += "--->Tipo:    " + habitaciones.get(i).getTipo().toString();
+                descripcion += "<br>--->Precio:  " + habitaciones.get(i).getPrecio();
+                descripcion += "<br>--->Id Hab:  "+ habitaciones.get(i).getId();
+                descripcion += "<br>--->Id Hotel:"+ habitaciones.get(i).getId_hotel();
                 descripcion += "</body></html>";
 
                 Image imagen = new ImageIcon(habitaciones.get(i).getFoto()).getImage();
@@ -123,7 +137,7 @@ public class PnlVistaHabitaciones extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
