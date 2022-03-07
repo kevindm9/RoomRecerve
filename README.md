@@ -3,18 +3,18 @@
 
 El proyecto busca desarrollar una aplicación que permita a los  usuarios hacer una reservación en un hotel deseado a una de sus habitaciones disponibles . La aplicación permitirá llevar el control de los Diferentes hoteles, de las habitaciones, el pago y la gestión de estas mismas y así poder prestar un mejor servicio para el usuario final y el administrador llevar mejor un informe semanal y mensual de sus servicios. 
 El sistema inicialmente brindará apoyo en los siguientes procesos:
-● Visualizar habitación: El usuario (visitante, cliente y administradores) podrá consultar las características y disponibilidad.
-● Reservar habitación: Un usuario cliente después de haber seleccionado la habitación acorde a sus necesidades, puede generar una reserva de la misma estableciendo el medio de pago siempre y cuando la habitación se encuentre disponible en las fechas seleccionadas.
-● Adicionar habitación: Un administrador podrá realizar la inserción de una habitación a su Hotel.
-● Adicionar sucursal:  Un administrador Master podrá realizar la inserción de una nueva sucursal.
-● Visualizar sucursal: El usuario (Cliente,  Adm junior y  master) y visitantes podrán consultar las características del hotel.
-●  Modificar habitación: El administrador master y junior podrá modificar la información de la habitación.
-● Agregar administrador junior a un hotel: El administrador master podrá modificar el administrador junior asignado a una sucursal.
-● Login master: El administrador master podrá iniciar sesión.  
-● Login junior: El administrador junior podrá iniciar sesión.  
-● Login cliente: El cliente podrá iniciar sesión.
-● Crear cliente: Visitante podrá crear un usuario cliente para poder reservar habitaciones.
-● Crear administrador junior: El administrador master podrá crear un usuario administrador junior.
+* Visualizar habitación: El usuario (visitante, cliente y administradores) podrá consultar las características y disponibilidad.
+* Reservar habitación: Un usuario cliente después de haber seleccionado la habitación acorde a sus necesidades, puede generar una reserva de la misma estableciendo el medio de pago siempre y cuando la habitación se encuentre disponible en las fechas seleccionadas.
+* Adicionar habitación: Un administrador podrá realizar la inserción de una habitación a su Hotel.
+* Adicionar sucursal:  Un administrador Master podrá realizar la inserción de una nueva sucursal.
+* Visualizar sucursal: El usuario (Cliente,  Adm junior y  master) y visitantes podrán consultar las características del hotel.
+*  Modificar habitación: El administrador master y junior podrá modificar la información de la habitación.
+* Agregar administrador junior a un hotel: El administrador master podrá modificar el administrador junior asignado a una sucursal.
+* Login master: El administrador master podrá iniciar sesión.  
+* Login junior: El administrador junior podrá iniciar sesión.  
+* Login cliente: El cliente podrá iniciar sesión.
+* Crear cliente: Visitante podrá crear un usuario cliente para poder reservar habitaciones.
+* Crear administrador junior: El administrador master podrá crear un usuario administrador junior.
 
 
 # Componentes
