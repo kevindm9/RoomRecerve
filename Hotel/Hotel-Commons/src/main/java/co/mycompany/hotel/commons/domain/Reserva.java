@@ -15,12 +15,22 @@ public class Reserva {
     private int id_habitacion;
     private Date fechaInicio;
     private Date fechaFin;
+    private int id_persona;
 
-    public Reserva(int id_hotel, int id_habitacion, Date fechaInicio, Date fechaFin) {
+    public int getId_persona() {
+        return id_persona;
+    }
+
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
+    }
+
+    public Reserva(int id_hotel, int id_habitacion, Date fechaInicio, Date fechaFin,int id_persona) {
         this.id_hotel = id_hotel;
         this.id_habitacion = id_habitacion;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
+        this.id_persona=id_persona;
     }
 
     public Reserva() {

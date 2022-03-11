@@ -4,6 +4,7 @@ import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.Persona;
+import co.mycompany.hotel.commons.domain.Reserva;
 import java.util.ArrayList;
 import co.mycompany.hotel.server.access.IHotelRepository;
 import java.sql.Date;
@@ -90,10 +91,18 @@ public class HotelService {
         return repo.getSesionClave(usuario);
     }
 
-    public ArrayList<Integer> getReserva() {
+    public ArrayList<Reserva> getReserva() {
         return repo.getReserva();
     }
-
+    public String updatePersona(Persona persona, String tipo){
+        
+    return repo.updatePersona(persona, tipo);
+    
+    } 
+    public String deleteHabitacion(Habitacion habitacion){
+    
+    return repo.deleteHabitacion(habitacion);
+    }
     public String addReserva(int idHotel, Habitacion habitacion, Date fecha_inicio, Date fecha_fin, Persona sesion) {
         return repo.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
     }

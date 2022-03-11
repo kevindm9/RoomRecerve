@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import co.mycompany.hotel.server.access.IHotelRepository;
+import co.unicauca.serversocket.serversockettemplate.infra.ServerSocketTemplate;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -31,125 +32,17 @@ import java.time.LocalDate;
  *
  * @author Kevin Morales
  */
-public class HotelServerSocket implements Runnable {
+public class HotelServerSocket  extends ServerSocketTemplate {
 
     /**
      * Servicio de clientes
      */
-    private final HotelService service;
-    /**
-     * Server Socket, la orejita
-     */
-    private static ServerSocket ssock;
-    /**
-     * Socket por donde se hace la petición/respuesta
-     */
-    private static Socket socket;
-    /**
-     * Permite leer un flujo de datos del socket
-     */
-    private Scanner input;
-    /**
-     * Permite escribir un flujo de datos del scoket
-     */
-    private PrintStream output;
-    /**
-     * Puerto por donde escucha el server socket
-     */
-    private static final int PORT = Integer.parseInt(Utilities.loadProperty("server.port"));
+    private  HotelService service;
 
-    /**
-     * Constructor
-     */
+
     public HotelServerSocket() {
-        // Se hace la inyección de dependencia
-        IHotelRepository repository = Factory.getInstance().getRepository();
-        service = new HotelService(repository);
     }
 
-    /**
-     * Arranca el servidor y hace la estructura completa
-     */
-    public void start() {
-        openPort();
-
-        while (true) {
-            waitToClient();
-            throwThread();
-        }
-    }
-
-    /**
-     * Lanza el hilo
-     */
-    private static void throwThread() {
-        new Thread(new HotelServerSocket()).start();
-    }
-
-    /**
-     * Instancia el server socket y abre el puerto respectivo
-     */
-    private static void openPort() {
-        try {
-            ssock = new ServerSocket(PORT);
-            Logger.getLogger("Server").log(Level.INFO, "Servidor iniciado, escuchando por el puerto {0}", PORT);
-        } catch (IOException ex) {
-            Logger.getLogger(HotelServerSocket.class.getName()).log(Level.SEVERE, "Error del server socket al abrir el puerto", ex);
-        }
-    }
-
-    /**
-     * Espera que el cliente se conecta y le devuelve un socket
-     */
-    private static void waitToClient() {
-        try {
-            socket = ssock.accept();
-            Logger.getLogger("Socket").log(Level.INFO, "Socket conectado");
-        } catch (IOException ex) {
-            Logger.getLogger(HotelServerSocket.class.getName()).log(Level.SEVERE, "Eror al abrir un socket", ex);
-        }
-    }
-
-    /**
-     * Cuerpo del hilo
-     */
-    @Override
-    public void run() {
-        try {
-            createStreams();
-            readStream();
-            closeStream();
-
-        } catch (IOException ex) {
-            Logger.getLogger(HotelServerSocket.class.getName()).log(Level.SEVERE, "Eror al leer el flujo", ex);
-        }
-    }
-
-    /**
-     * Crea los flujos con el socket
-     *
-     * @throws IOException
-     */
-    private void createStreams() throws IOException {
-        output = new PrintStream(socket.getOutputStream());
-        input = new Scanner(socket.getInputStream());
-    }
-
-    /**
-     * Lee el flujo del socket
-     */
-    private void readStream() {
-        if (input.hasNextLine()) {
-            // Extrae el flujo que envió la aplicación cliente
-            String request = input.nextLine();
-            processRequest(request);
-
-        } else {
-            output.flush();
-            String errorJson = generateErrorJson();
-            output.println(errorJson);
-        }
-    }
 
     /**
      * Procesar la solicitud que proviene de la aplicación cliente
@@ -159,7 +52,8 @@ public class HotelServerSocket implements Runnable {
      * "{"resource":"restaurante","action":"get","parameters":[{"name":"id","value":"1"}]}"
      *
      */
-    private void processRequest(String requestJson) {
+     @Override
+    protected void processRequest(String requestJson) {
         // Convertir la solicitud a objeto Protocol para poderlo procesar
         Gson gson = new Gson();
         Protocol protocolRequest = gson.fromJson(requestJson, Protocol.class);
@@ -173,6 +67,8 @@ public class HotelServerSocket implements Runnable {
                     processGethabitacion(protocolRequest);
                 } else if(protocolRequest.getAction().equals("modificar")) {
                     processModfhabitacion(protocolRequest);
+                }else if(protocolRequest.getAction().equals("eliminar")) {
+                    processDeletehabitacion(protocolRequest);
                 }
                 break;
                 
@@ -216,6 +112,8 @@ public class HotelServerSocket implements Runnable {
                     processSetPersona(protocolRequest);
                 } else if (protocolRequest.getAction().equals("get")) {
                     processGetPersona(protocolRequest);
+                }else if (protocolRequest.getAction().equals("modificar")) {
+                    processModfPersona(protocolRequest);
                 }
                 break;
         }
@@ -234,7 +132,7 @@ public class HotelServerSocket implements Runnable {
         persona.setClave(protocolRequest.getParameters().get(cont++).getValue());
         tipo = protocolRequest.getParameters().get(cont++).getValue();
         String response = service.addPersona(persona, tipo);
-        output.println(response);
+        respond(response);
     }
 
     /**
@@ -259,7 +157,7 @@ public class HotelServerSocket implements Runnable {
         fecha_inicio = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         fecha_fin = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         String response = service.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
-        output.println(response);
+        respond(response);
     }
 
     /**
@@ -276,15 +174,23 @@ public class HotelServerSocket implements Runnable {
         DiaSemana dia = DiaSemana.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         habitacion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         String response = service.deleteHabitacionSemanal(idHotel, habitacion, dia);
-        output.println(response);
+        respond(response);
+    }
+    private void processDeletehabitacion(Protocol protocolRequest) {
+        Habitacion habitacion = new Habitacion();
+        int cont = 0;
+        habitacion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
+        habitacion.setId_hotel(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
+        String response = service.deleteHabitacion(habitacion);
+        respond(response);
     }
 
     private void processGethabitacion(Protocol protocolRequest) {
         int cont = 0;
         int id = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
         Habitacion habitacion = service.getHabitacion(id);
-        String response = objectHabtToJSON(habitacion);
-        output.println(response);
+        String response = objectToJSON(habitacion);
+        respond(response);
     }
 
     /**
@@ -298,27 +204,19 @@ public class HotelServerSocket implements Runnable {
         Date fechaInicio = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         Date fechafin = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());       
         ArrayList<Habitacion> habitacion = service.getHabitaciones(idHotel, fechaInicio, fechafin);
-        String response = objectCompToJSON(habitacion);
-        output.println(response);
+        String response = objectToJSON(habitacion);
+        respond(response);
     }
 
-    private String objectHabtToJSON(Habitacion habitacion) {
-        Gson gson = new Gson();
-        String strObject = gson.toJson(habitacion);
-        return strObject;
-    }
+
 
     private void processGetReserva(Protocol protocolRequest) {
-        ArrayList<Integer> idHabitaciones = service.getReserva();
-        String response = objectIdHabtToJSON(idHabitaciones);
-        output.println(response);
+        ArrayList<Reserva> res= service.getReserva();
+        String response = objectToJSON(res);
+        respond(response);
     }
 
-    private String objectIdHabtToJSON(ArrayList<Integer> idHabitaciones) {
-        Gson gson = new Gson();
-        String strObject = gson.toJson(idHabitaciones);
-        return strObject;
-    }
+
 
     /**
      * Procesa la solicitud de agregar un Habitacion
@@ -327,35 +225,27 @@ public class HotelServerSocket implements Runnable {
      */
     private void processGetDiaHabitaciones(Protocol protocolRequest) {
         ArrayList<Habitacion> habitacion = service.getDiaHabitaciones(Integer.parseInt(protocolRequest.getParameters().get(0).getValue()));
-        String response = objectCompToJSON(habitacion);
-        output.println(response);
+        String response = objectToJSON(habitacion);
+        respond(response);
     }
 
-    private String objectCompToJSON(ArrayList<Habitacion> habitacion) {
-        Gson gson = new Gson();
-        String strObject = gson.toJson(habitacion);
-        return strObject;
-    }
+
 
     private void processGetPersona(Protocol protocolRequest) {
         Persona persona = service.getPersona(protocolRequest.getParameters().get(0).getValue());
-        output.println(objectPersToJSON(persona));
+        respond(objectToJSON(persona));
     }
 
-    private String objectPersToJSON(Persona p) {
-        Gson gson = new Gson();
-        String strObject = gson.toJson(p);
-        return strObject;
-    }
+
 
     private void processGetSesionTipo(Protocol protocolRequest) {
         String tipo = service.getSesionTipo(protocolRequest.getParameters().get(0).getValue());
-        output.println(tipo);
+        respond(tipo);
     }
 
     private void processGetSesionClave(Protocol protocolRequest) {
         String clave = service.getSesionClave(protocolRequest.getParameters().get(0).getValue());
-        output.println(clave);
+        respond(clave);
     }
     private void processModfhabitacion(Protocol protocolRequest) {
        
@@ -373,9 +263,22 @@ public class HotelServerSocket implements Runnable {
         cont++;
         habitacion.setId_hotel(Integer.parseInt(protocolRequest.getParameters().get(cont).getValue()));
         String response = service.ModificarHabitacion(habitacion);
-        output.println(response);
+        respond(response);
     }
-
+    private void processModfPersona(Protocol protocolRequest) {
+        Persona persona=new Persona();
+         String tipo;
+        int cont = 0;
+        persona.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
+        persona.setNombre(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setTelefono(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setDireccion(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setUsuario(protocolRequest.getParameters().get(cont++).getValue());
+        persona.setClave(protocolRequest.getParameters().get(cont++).getValue());
+        tipo = protocolRequest.getParameters().get(cont++).getValue();
+        String response = service.addPersona(persona, tipo);
+        respond(response);
+    }
     /**
      * Procesa la solicitud de agregar un Habitacion
      *
@@ -400,7 +303,7 @@ public class HotelServerSocket implements Runnable {
         cont++;
         habitacion.setId_hotel(Integer.parseInt(protocolRequest.getParameters().get(cont).getValue()));
         String response = service.addHabitacion(habitacion);
-        output.println(response);
+        respond(response);
     }
 
     /**
@@ -433,54 +336,45 @@ public class HotelServerSocket implements Runnable {
         else if(metodo.equals("update")){
             response = service.updateHotel(hotel,usuario);
         }
-        output.println(response);
+        respond(response);
     }
 
     private void processGetHotel(Protocol protocolRequest) {
         String usuario = protocolRequest.getParameters().get(0).getValue();
         ArrayList<Hotel> Hotels = service.getHoteles(usuario);
         if (Hotels.isEmpty()) {
-            output.println("Hotel vacio");
+            respond("Hotel vacio");
         } else {
-            output.println(objectRestToJSON(Hotels));
+            respond(objectToJSON(Hotels));
         }
     }
 
+
     /**
-     * Genera un ErrorJson genérico
-     *
-     * @return error en formato json
+     * @return the service
      */
-    private String generateErrorJson() {
-        List<JsonError> errors = new ArrayList<>();
-        JsonError error = new JsonError();
-        error.setCode("400");
-        error.setError("BAD_REQUEST");
-        error.setMessage("Error en la solicitud");
-        errors.add(error);
-
-        Gson gson = new Gson();
-        String errorJson = gson.toJson(errors);
-
-        return errorJson;
+    public HotelService getService() {
+        return service;
     }
 
     /**
-     * Cierra los flujos de entrada y salida
-     *
-     * @throws IOException
+     * @param service the service to set
      */
-    private void closeStream() throws IOException {
-        output.close();
-        input.close();
-        socket.close();
+    public void setService(HotelService service) {
+        this.service = service;
+    }
+    @Override
+    protected ServerSocketTemplate init() {
+        PORT = Integer.parseInt(Utilities.loadProperty("server.port"));
+        // Se hace la inyección de dependencia
+        IHotelRepository repository = Factory.getInstance().getRepository();
+        this.setService(new HotelService(repository));
+        return this;
+    
     }
 
-    private String objectRestToJSON(ArrayList<Hotel> hoteles) {
-        Gson gson = new Gson();
-        String strObject = gson.toJson(hoteles);
-        return strObject;
-    }
+
+
 
 
 }
