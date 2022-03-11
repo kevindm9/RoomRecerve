@@ -11,6 +11,6 @@ import co.mycompany.hotel.server.infra.HotelServerSocket;
 public class HotelApplication {
     public static void main(String args[]){
         HotelServerSocket server = new HotelServerSocket();
-        server.start();
+        server.startServer();
     }
 }
