@@ -148,6 +148,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 c.setPrecio(res.getInt("habt_precio"));
                 c.setTipo(TipoHabitacion.valueOf(res.getString("habt_tipo")));
                 c.setFoto(res.getString("habt_foto"));
+                c.setId_hotel(res.getInt("hotel_id"));
                 habitacion = c;
             }
             pstmt.close();
@@ -568,6 +569,26 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         } catch (SQLException ex) {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.FINER, "Error al cerrar Connection", ex);
         }
+    }
+
+    @Override
+    public String deleteHotel(int id_hotel) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String deleteReserva(Reserva reserva) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String deletePersona(int id, String tipo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String updateReserva(Reserva reserva) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

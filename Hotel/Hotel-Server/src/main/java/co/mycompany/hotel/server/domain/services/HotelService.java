@@ -110,5 +110,17 @@ public class HotelService {
     public String deleteHabitacionSemanal(int idHotel, Habitacion habitacion, DiaSemana dia) {
         return repo.deleteHabitacionSemanal(idHotel, habitacion, dia);
     }
-
+        public String deleteHotel(int idHotel) {
+        return repo.deleteHotel(idHotel);
+    }  
+        public String deleteReserva(Reserva reserva) {
+        return repo.deleteReserva(reserva);
+    }  
+        public String deletePersona(int id_Persona,String tipo) {
+        return repo.deletePersona(id_Persona,tipo);
+    }
+    public String updateReserva(Reserva reserva){
+        return repo.updateReserva(reserva);
+    
+    }
 }
