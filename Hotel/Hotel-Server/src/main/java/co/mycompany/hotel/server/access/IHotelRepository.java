@@ -164,4 +164,13 @@ public interface IHotelRepository {
      * @return
      */
     public ArrayList<Reserva> getReserva();
+    
+    
+     public String deleteHotel(int id_hotel);
+     
+      public String deleteReserva(Reserva reserva);
+      
+       public String deletePersona(int id,String tipo);
+       
+        public String updateReserva(Reserva reserva);
 }
