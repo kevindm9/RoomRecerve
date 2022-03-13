@@ -48,30 +48,30 @@ public class PnlHabEliminar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bgAdmHabAdd = new javax.swing.JPanel();
-        pnlHabModConsultar = new javax.swing.JPanel();
+        pnlHabEliminar = new javax.swing.JPanel();
+        pnlHabEliConsultar = new javax.swing.JPanel();
         lblIdHabitacion = new javax.swing.JLabel();
         btnHabEliBuscarId = new javax.swing.JButton();
         cbxHabEliHoteles = new javax.swing.JComboBox<>();
-        txtHabEliId = new javax.swing.JTextField();
+        txtHabEliIdHabitacion = new javax.swing.JTextField();
         btnHabEliEliminar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        lbAdmHabDescripcion = new javax.swing.JLabel();
+        pnlHabEliDatos = new javax.swing.JPanel();
+        lbHabEliDescripcion = new javax.swing.JLabel();
         txtHabEliDescripcion = new javax.swing.JTextField();
-        lbAdmHabPrecio = new javax.swing.JLabel();
+        lbHabEliPrecio = new javax.swing.JLabel();
         txtHabEliPrecio = new javax.swing.JTextField();
-        lbAdmHabTipo = new javax.swing.JLabel();
+        lbHabEliTipo = new javax.swing.JLabel();
         cbxHabEliTipo = new javax.swing.JComboBox<>();
-        btnAdmHabFoto = new javax.swing.JButton();
+        btnHabEliFoto = new javax.swing.JButton();
         txtHabEliFoto = new javax.swing.JTextField();
         lbHabEliTitulo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(740, 235));
 
-        bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(570, 202));
+        pnlHabEliminar.setPreferredSize(new java.awt.Dimension(570, 202));
 
-        pnlHabModConsultar.setBorder(javax.swing.BorderFactory.createTitledBorder("Consular habitación"));
-        pnlHabModConsultar.setOpaque(false);
+        pnlHabEliConsultar.setBorder(javax.swing.BorderFactory.createTitledBorder("Consular habitación"));
+        pnlHabEliConsultar.setOpaque(false);
 
         lblIdHabitacion.setText("Id");
 
@@ -84,37 +84,37 @@ public class PnlHabEliminar extends javax.swing.JPanel {
 
         cbxHabEliHoteles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        txtHabEliId.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtHabEliIdHabitacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtHabEliIdMouseClicked(evt);
+                txtHabEliIdHabitacionMouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlHabModConsultarLayout = new javax.swing.GroupLayout(pnlHabModConsultar);
-        pnlHabModConsultar.setLayout(pnlHabModConsultarLayout);
-        pnlHabModConsultarLayout.setHorizontalGroup(
-            pnlHabModConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHabModConsultarLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlHabEliConsultarLayout = new javax.swing.GroupLayout(pnlHabEliConsultar);
+        pnlHabEliConsultar.setLayout(pnlHabEliConsultarLayout);
+        pnlHabEliConsultarLayout.setHorizontalGroup(
+            pnlHabEliConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHabEliConsultarLayout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(btnHabEliBuscarId)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabModConsultarLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabEliConsultarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlHabModConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabModConsultarLayout.createSequentialGroup()
+                .addGroup(pnlHabEliConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHabEliConsultarLayout.createSequentialGroup()
                         .addComponent(lblIdHabitacion)
                         .addGap(18, 18, 18)
-                        .addComponent(txtHabEliId))
+                        .addComponent(txtHabEliIdHabitacion))
                     .addComponent(cbxHabEliHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
-        pnlHabModConsultarLayout.setVerticalGroup(
-            pnlHabModConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHabModConsultarLayout.createSequentialGroup()
+        pnlHabEliConsultarLayout.setVerticalGroup(
+            pnlHabEliConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHabEliConsultarLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(pnlHabModConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlHabEliConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblIdHabitacion)
-                    .addComponent(txtHabEliId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHabEliIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxHabEliHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
@@ -131,64 +131,64 @@ public class PnlHabEliminar extends javax.swing.JPanel {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datoa encontrados"));
-        jPanel1.setOpaque(false);
+        pnlHabEliDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("Nuevos  datos"));
+        pnlHabEliDatos.setOpaque(false);
 
-        lbAdmHabDescripcion.setText("Descripcion");
+        lbHabEliDescripcion.setText("Descripcion");
 
-        lbAdmHabPrecio.setText("Precio");
+        lbHabEliPrecio.setText("Precio");
 
-        lbAdmHabTipo.setText("Tipo");
+        lbHabEliTipo.setText("Tipo");
 
         cbxHabEliTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnAdmHabFoto.setText("Foto");
-        btnAdmHabFoto.addActionListener(new java.awt.event.ActionListener() {
+        btnHabEliFoto.setText("Foto");
+        btnHabEliFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmHabFotoActionPerformed(evt);
+                btnHabEliFotoActionPerformed(evt);
             }
         });
 
         txtHabEliFoto.setEnabled(false);
         txtHabEliFoto.setFocusable(false);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlHabEliDatosLayout = new javax.swing.GroupLayout(pnlHabEliDatos);
+        pnlHabEliDatos.setLayout(pnlHabEliDatosLayout);
+        pnlHabEliDatosLayout.setHorizontalGroup(
+            pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHabEliDatosLayout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbAdmHabTipo)
-                    .addComponent(lbAdmHabPrecio)
-                    .addComponent(lbAdmHabDescripcion)
-                    .addComponent(btnAdmHabFoto))
+                .addGroup(pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbHabEliTipo)
+                    .addComponent(lbHabEliPrecio)
+                    .addComponent(lbHabEliDescripcion)
+                    .addComponent(btnHabEliFoto))
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtHabEliDescripcion)
                     .addComponent(txtHabEliPrecio)
                     .addComponent(cbxHabEliTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtHabEliFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlHabEliDatosLayout.setVerticalGroup(
+            pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHabEliDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtHabEliDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAdmHabDescripcion))
+                    .addComponent(lbHabEliDescripcion))
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtHabEliPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAdmHabPrecio))
+                    .addComponent(lbHabEliPrecio))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxHabEliTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAdmHabTipo))
+                    .addComponent(lbHabEliTipo))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdmHabFoto)
+                .addGroup(pnlHabEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHabEliFoto)
                     .addComponent(txtHabEliFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -196,34 +196,34 @@ public class PnlHabEliminar extends javax.swing.JPanel {
         lbHabEliTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbHabEliTitulo.setText("Eliminar habitación");
 
-        javax.swing.GroupLayout bgAdmHabAddLayout = new javax.swing.GroupLayout(bgAdmHabAdd);
-        bgAdmHabAdd.setLayout(bgAdmHabAddLayout);
-        bgAdmHabAddLayout.setHorizontalGroup(
-            bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlHabEliminarLayout = new javax.swing.GroupLayout(pnlHabEliminar);
+        pnlHabEliminar.setLayout(pnlHabEliminarLayout);
+        pnlHabEliminarLayout.setHorizontalGroup(
+            pnlHabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHabEliminarLayout.createSequentialGroup()
+                .addGroup(pnlHabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlHabEliminarLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlHabModConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlHabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlHabEliConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnHabEliEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+                        .addComponent(pnlHabEliDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlHabEliminarLayout.createSequentialGroup()
                         .addGap(296, 296, 296)
                         .addComponent(lbHabEliTitulo)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
-        bgAdmHabAddLayout.setVerticalGroup(
-            bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+        pnlHabEliminarLayout.setVerticalGroup(
+            pnlHabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHabEliminarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbHabEliTitulo)
                 .addGap(18, 18, 18)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                        .addComponent(pnlHabModConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlHabEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pnlHabEliDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlHabEliminarLayout.createSequentialGroup()
+                        .addComponent(pnlHabEliConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnHabEliEliminar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -233,36 +233,30 @@ public class PnlHabEliminar extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addComponent(pnlHabEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(pnlHabEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHabEliEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabEliEliminarActionPerformed
         // TODO add your handling code here:
-//        public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo);
-        TipoHabitacion tipo = this.tipos[cbxHabEliTipo.getSelectedIndex()];
-        String descripcion = txtHabEliDescripcion.getText();
-        int precio = Integer.parseInt(txtHabEliPrecio.getText());
-        int id = Integer.parseInt(txtHabEliId.getText());
-
-        habitacion.setId(id);
-        habitacion.setDescripcion(descripcion);
-        habitacion.setPrecio(precio);
-        habitacion.setTipo(tipo);
-        habitacion.setFoto(txtHabEliFoto.getText());
-        JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, service.ModificarHabitacion(habitacion));
-        txtHabEliDescripcion.setText("");
-        txtHabEliPrecio.setText("");
-        txtHabEliFoto.setText("");
-
+        if (JOptionPane.showConfirmDialog(null,
+                "Esta seguro de eliminar la habitacion con id " + habitacion.getId(),
+                "Eliminar habitación", JOptionPane.OK_CANCEL_OPTION) == 0) {
+            JOptionPane.showMessageDialog(null, service.deleteHabitacion(habitacion), "Alerta", JOptionPane.INFORMATION_MESSAGE);
+            txtHabEliIdHabitacion.setText("");
+            txtHabEliDescripcion.setText("");
+            txtHabEliPrecio.setText("");
+            txtHabEliFoto.setText("");
+            habitacion = null;
+            btnHabEliEliminar.setEnabled(false);
+        }
     }//GEN-LAST:event_btnHabEliEliminarActionPerformed
 
-    private void btnAdmHabFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabFotoActionPerformed
+    private void btnHabEliFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabEliFotoActionPerformed
         // TODO add your handling code here:
 
         JFileChooser j = new JFileChooser();
@@ -274,33 +268,42 @@ public class PnlHabEliminar extends javax.swing.JPanel {
             String ruta = j.getSelectedFile().getAbsolutePath();
             txtHabEliFoto.setText(ruta);
         }
-    }//GEN-LAST:event_btnAdmHabFotoActionPerformed
+    }//GEN-LAST:event_btnHabEliFotoActionPerformed
 
     private void btnHabEliBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabEliBuscarIdActionPerformed
         try {
-            int id = Integer.parseInt(txtHabEliId.getText());
+            int id = Integer.parseInt(txtHabEliIdHabitacion.getText());
             habitacion = service.getHabitacion(id);
             if (habitacion.getId_hotel() == hoteles.get(cbxHabEliHoteles.getSelectedIndex()).getId()) {
                 txtHabEliDescripcion.setText(habitacion.getDescripcion());
                 txtHabEliPrecio.setText(String.valueOf(habitacion.getPrecio()));
                 txtHabEliFoto.setText(habitacion.getFoto());
                 btnHabEliEliminar.setEnabled(true);
+
+                System.out.println(habitacion.getId_hotel());
+
             } else {
                 JOptionPane.showMessageDialog(null, "Habitacion no encontrada");
+                txtHabEliIdHabitacion.setText("");
+                txtHabEliDescripcion.setText("");
+                txtHabEliPrecio.setText("");
+                txtHabEliFoto.setText("");
+                habitacion = null;
+                btnHabEliEliminar.setEnabled(false);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No es un id valido");
         }
     }//GEN-LAST:event_btnHabEliBuscarIdActionPerformed
 
-    private void txtHabEliIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHabEliIdMouseClicked
+    private void txtHabEliIdHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHabEliIdHabitacionMouseClicked
         // TODO add your handling code here:
         btnHabEliEliminar.setEnabled(false);
         txtHabEliDescripcion.setText("");
         txtHabEliPrecio.setText("");
         txtHabEliFoto.setText("");
 
-    }//GEN-LAST:event_txtHabEliIdMouseClicked
+    }//GEN-LAST:event_txtHabEliIdHabitacionMouseClicked
 
     private void cargarValoresIniciales() {
         btnHabEliEliminar.setEnabled(false);
@@ -329,22 +332,22 @@ public class PnlHabEliminar extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bgAdmHabAdd;
-    private javax.swing.JButton btnAdmHabFoto;
     private javax.swing.JButton btnHabEliBuscarId;
     private javax.swing.JButton btnHabEliEliminar;
+    private javax.swing.JButton btnHabEliFoto;
     private javax.swing.JComboBox<String> cbxHabEliHoteles;
     private javax.swing.JComboBox<String> cbxHabEliTipo;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lbAdmHabDescripcion;
-    private javax.swing.JLabel lbAdmHabPrecio;
-    private javax.swing.JLabel lbAdmHabTipo;
+    private javax.swing.JLabel lbHabEliDescripcion;
+    private javax.swing.JLabel lbHabEliPrecio;
+    private javax.swing.JLabel lbHabEliTipo;
     private javax.swing.JLabel lbHabEliTitulo;
     private javax.swing.JLabel lblIdHabitacion;
-    private javax.swing.JPanel pnlHabModConsultar;
+    private javax.swing.JPanel pnlHabEliConsultar;
+    private javax.swing.JPanel pnlHabEliDatos;
+    private javax.swing.JPanel pnlHabEliminar;
     private javax.swing.JTextField txtHabEliDescripcion;
     private javax.swing.JTextField txtHabEliFoto;
-    private javax.swing.JTextField txtHabEliId;
+    private javax.swing.JTextField txtHabEliIdHabitacion;
     private javax.swing.JTextField txtHabEliPrecio;
     // End of variables declaration//GEN-END:variables
 }

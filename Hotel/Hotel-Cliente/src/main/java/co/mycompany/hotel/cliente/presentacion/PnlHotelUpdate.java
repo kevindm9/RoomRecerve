@@ -60,6 +60,7 @@ public class PnlHotelUpdate extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         txtAdmHotUpAdmin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        lbHotModTitulo = new javax.swing.JLabel();
 
         bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(570, 202));
 
@@ -100,39 +101,48 @@ public class PnlHotelUpdate extends javax.swing.JPanel {
 
         jLabel2.setText("Administrador");
 
+        lbHotModTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbHotModTitulo.setText("Modificar Hotel");
+
         javax.swing.GroupLayout bgAdmHabAddLayout = new javax.swing.GroupLayout(bgAdmHabAdd);
         bgAdmHabAdd.setLayout(bgAdmHabAddLayout);
         bgAdmHabAddLayout.setHorizontalGroup(
             bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(31, 31, 31)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbAdmHotCiudad)
                     .addComponent(lbAdmHotTelefono)
                     .addComponent(lbAdmHotDireccion)
                     .addComponent(lbAdmHotNombre)
                     .addComponent(btnAdmHabFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2))
                 .addGap(28, 28, 28)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtAdmHotUpAdmin)
-                    .addComponent(txtAdmHotUpNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(txtAdmHotUpNombre)
                     .addComponent(txtAdmHotUpDir)
                     .addComponent(txtAdmHotUpCiudad)
                     .addComponent(txtAdmHotUpTel)
-                    .addComponent(txtAdmHotUpFoto))
+                    .addComponent(txtAdmHotUpFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(btnAdmHotUpActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbxAdmHotUpHoteles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cbxAdmHotUpHoteles, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
-                .addGap(74, 74, 74))
+                .addGap(71, 71, 71))
+            .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+                .addGap(229, 229, 229)
+                .addComponent(lbHotModTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgAdmHabAddLayout.setVerticalGroup(
             bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAdmHabAddLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbHotModTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAdmHotUpNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbAdmHotNombre)
@@ -163,7 +173,7 @@ public class PnlHotelUpdate extends javax.swing.JPanel {
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAdmHotUpAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -174,36 +184,38 @@ public class PnlHotelUpdate extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdmHotUpActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHotUpActualizarActionPerformed
         // TODO add your handling code here:
         //public Habitacion(int id, String descripcion, int precio, TipoHabitacion tipo);
-        
-            try {
-                String nombre = txtAdmHotUpNombre.getText();
-                String direccion = txtAdmHotUpDir.getText();
-                String ciudad = txtAdmHotUpCiudad.getText();
-                String telefono = txtAdmHotUpTel.getText();
-                String admin = txtAdmHotUpAdmin.getText();
-                Hotel hotel = new Hotel(cbxAdmHotUpHoteles.getSelectedIndex() + 1, nombre, direccion, ciudad, telefono, admin);
-                hotel.setFoto(txtAdmHotUpFoto.getText());
-                JFrame jFrame = new JFrame();
-                JOptionPane.showMessageDialog(jFrame, service.updateHotel(hotel, admin));
-                txtAdmHotUpNombre.setText("");
-                txtAdmHotUpDir.setText("");
-                txtAdmHotUpCiudad.setText("");
-                txtAdmHotUpTel.setText("");
-                txtAdmHotUpFoto.setText("");
-                txtAdmHotUpAdmin.setText("");
-                cargarDatos();
 
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Datos invalidos");
-            }
-        
+        try {
+            String nombre = txtAdmHotUpNombre.getText();
+            String direccion = txtAdmHotUpDir.getText();
+            String ciudad = txtAdmHotUpCiudad.getText();
+            String telefono = txtAdmHotUpTel.getText();
+            String admin = txtAdmHotUpAdmin.getText();
+            Hotel hotel = new Hotel(cbxAdmHotUpHoteles.getSelectedIndex(), nombre, direccion, ciudad, telefono, admin);
+            hotel.setFoto(txtAdmHotUpFoto.getText());
+            JFrame jFrame = new JFrame();
+            JOptionPane.showMessageDialog(jFrame, service.updateHotel(hotel, admin));
+            txtAdmHotUpNombre.setText("");
+            txtAdmHotUpDir.setText("");
+            txtAdmHotUpCiudad.setText("");
+            txtAdmHotUpTel.setText("");
+            txtAdmHotUpFoto.setText("");
+            txtAdmHotUpAdmin.setText("");
+            cargarDatos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Datos invalidos");
+        }
+
     }//GEN-LAST:event_btnAdmHotUpActualizarActionPerformed
 
     private void btnAdmHabFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmHabFotoActionPerformed
@@ -225,20 +237,29 @@ public class PnlHotelUpdate extends javax.swing.JPanel {
     private void cbxAdmHotUpHotelesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxAdmHotUpHotelesItemStateChanged
         // TODO add your handling code here:
         if (bandera) {
-        int i = cbxAdmHotUpHoteles.getSelectedIndex();
-        txtAdmHotUpNombre.setText(hoteles.get(i).getNombre());
-        txtAdmHotUpDir.setText(hoteles.get(i).getDirecccion());
-        txtAdmHotUpCiudad.setText(hoteles.get(i).getCiudad());
-        txtAdmHotUpTel.setText(hoteles.get(i).getTelefono());
-        txtAdmHotUpFoto.setText(hoteles.get(i).getFoto());
-        txtAdmHotUpAdmin.setText(hoteles.get(i).getAdministrador());
+            try {
+                int i = cbxAdmHotUpHoteles.getSelectedIndex()-1;
+                txtAdmHotUpNombre.setText(hoteles.get(i).getNombre());
+                txtAdmHotUpDir.setText(hoteles.get(i).getDirecccion());
+                txtAdmHotUpCiudad.setText(hoteles.get(i).getCiudad());
+                txtAdmHotUpTel.setText(hoteles.get(i).getTelefono());
+                txtAdmHotUpFoto.setText(hoteles.get(i).getFoto());
+                txtAdmHotUpAdmin.setText(hoteles.get(i).getAdministrador());
+            } catch (Exception e) {
+                txtAdmHotUpNombre.setText("");
+                txtAdmHotUpDir.setText("");
+                txtAdmHotUpCiudad.setText("");
+                txtAdmHotUpTel.setText("");
+                txtAdmHotUpFoto.setText("");
+                txtAdmHotUpAdmin.setText("");
+            }
         }
-
     }//GEN-LAST:event_cbxAdmHotUpHotelesItemStateChanged
 
     private void cargarDatos() {
         bandera = false;
         cbxAdmHotUpHoteles.removeAllItems();
+        cbxAdmHotUpHoteles.addItem("Seleccione un hotel");
         hoteles.clear();
         try {
 
@@ -264,6 +285,7 @@ public class PnlHotelUpdate extends javax.swing.JPanel {
     private javax.swing.JLabel lbAdmHotDireccion;
     private javax.swing.JLabel lbAdmHotNombre;
     private javax.swing.JLabel lbAdmHotTelefono;
+    private javax.swing.JLabel lbHotModTitulo;
     private javax.swing.JTextField txtAdmHotUpAdmin;
     private javax.swing.JTextField txtAdmHotUpCiudad;
     private javax.swing.JTextField txtAdmHotUpDir;

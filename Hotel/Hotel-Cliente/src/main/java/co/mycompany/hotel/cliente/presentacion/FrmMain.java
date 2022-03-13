@@ -156,8 +156,8 @@ public class FrmMain extends javax.swing.JFrame {
         jmiMainSecSalir = new javax.swing.JMenuItem();
         jmmMainHoteles = new javax.swing.JMenu();
         jmiMainHotCrear = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmiMainHotModificar = new javax.swing.JMenuItem();
+        jmiMainHotEliminar = new javax.swing.JMenuItem();
         jmmMainHabitaciones = new javax.swing.JMenu();
         jmiMainHabCrear = new javax.swing.JMenuItem();
         jmiMainHabConsultar = new javax.swing.JMenuItem();
@@ -175,6 +175,7 @@ public class FrmMain extends javax.swing.JFrame {
         lbMainFechaFin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Room Reserve Service");
         setMaximumSize(new java.awt.Dimension(2000, 2147483647));
         setPreferredSize(new java.awt.Dimension(752, 580));
 
@@ -257,16 +258,21 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jmmMainHoteles.add(jmiMainHotCrear);
 
-        jMenuItem1.setText("Modificar Hotel");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmiMainHotModificar.setText("Modificar Hotel");
+        jmiMainHotModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmiMainHotModificarActionPerformed(evt);
             }
         });
-        jmmMainHoteles.add(jMenuItem1);
+        jmmMainHoteles.add(jmiMainHotModificar);
 
-        jMenuItem2.setText("Eliminar Hotel");
-        jmmMainHoteles.add(jMenuItem2);
+        jmiMainHotEliminar.setText("Eliminar Hotel");
+        jmiMainHotEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainHotEliminarActionPerformed(evt);
+            }
+        });
+        jmmMainHoteles.add(jmiMainHotEliminar);
 
         jmbMainControl.add(jmmMainHoteles);
 
@@ -476,14 +482,14 @@ public class FrmMain extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmmMainAdministradoresActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmiMainHotModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHotModificarActionPerformed
         // TODO add your handling code here:
         PnlHotelUpdate panelUpdate = new PnlHotelUpdate(usuario);
         pnlMainControl.removeAll();
         pnlMainControl.add(panelUpdate);
         pnlMainControl.repaint();
         pnlMainControl.revalidate();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmiMainHotModificarActionPerformed
 
     private void jmmMainAdmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmmMainAdmCrearActionPerformed
         // TODO add your handling code here:
@@ -513,6 +519,15 @@ public class FrmMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Seleccione primero un hotel, fecha de inicio y fecha de fin","Advertencia",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnMainBuscarActionPerformed
+
+    private void jmiMainHotEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHotEliminarActionPerformed
+        // TODO add your handling code here:
+        PnlHotelDelete panelHotelEliminar = new PnlHotelDelete(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHotelEliminar);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jmiMainHotEliminarActionPerformed
 
     private void consultarHabitaciones() {
         PnlHabConsultar panelHabVista = new PnlHabConsultar(usuario);
@@ -561,8 +576,6 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JInternalFrame IfmMainControl;
     private javax.swing.JButton btnMainBuscar;
     private javax.swing.JComboBox<String> cbxMainHoteles;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private com.toedter.calendar.JDateChooser jdcMainFechaFin;
@@ -573,6 +586,8 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiMainHabEliminar;
     private javax.swing.JMenuItem jmiMainHabModificar;
     private javax.swing.JMenuItem jmiMainHotCrear;
+    private javax.swing.JMenuItem jmiMainHotEliminar;
+    private javax.swing.JMenuItem jmiMainHotModificar;
     private javax.swing.JMenuItem jmiMainSecCerrar;
     private javax.swing.JMenuItem jmiMainSecInicio;
     private javax.swing.JMenuItem jmiMainSecModificar;
