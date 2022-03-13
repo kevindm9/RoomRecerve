@@ -38,5 +38,6 @@ public class ClientMain {
 //      System.out.println(service.ModificarHabitacion(h));
         formPrincipal = new FrmMain();
         formPrincipal.setVisible(true);
+
     }
 }

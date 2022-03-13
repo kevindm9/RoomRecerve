@@ -196,7 +196,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         try {
             this.connect();
             int cont;
-            String sql = "insert into reserva values(?,?,?,?,?)";
+            String sql = "insert into reserva values(null,?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
             pstmt.setInt(cont, idHotel);
@@ -598,17 +598,17 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         try {
             this.connect();
             int cont;
-            String sql = "delete from reserva where persona_id=? ";
+            String sql = "delete from reserva where reserva_id=? ";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
-            pstmt.setInt(cont, reserva.getId_persona());
+            pstmt.setInt(cont, reserva.getId());
             pstmt.executeUpdate();
             pstmt.close();
             this.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
         }
-        return "Hotel se ha eliminado correctamente";
+        return "Reserva se ha eliminado correctamente";
     }
 
     @Override
@@ -641,7 +641,28 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
 
     @Override
     public String updateReserva(Reserva reserva) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          try {
+            this.connect();
+            int cont;
+            String sql = "update reserva set fecha_inicio= ?, fecha_fin = ?"
+                    + ", habt_id = ? where reserva_id = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setString(cont, String.valueOf(reserva.getFechaInicio()));
+            cont++;
+            pstmt.setString(cont,  String.valueOf(reserva.getFechaFin()));
+            cont++;
+            pstmt.setInt(cont, reserva.getId_habitacion());
+            cont++;
+            pstmt.setInt(cont, reserva.getId());
+            System.out.println("Actualizacion: " + pstmt.toString());
+            pstmt.executeUpdate();
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+        }
+        return "Reserva Actualizado con exito";
     }
 
 }

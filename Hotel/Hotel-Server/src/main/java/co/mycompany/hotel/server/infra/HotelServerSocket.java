@@ -169,6 +169,7 @@ public class HotelServerSocket  extends ServerSocketTemplate {
      private void processmodfReserva(Protocol protocolRequest) {
         Reserva reserva=new Reserva();
         int cont = 0;
+        reserva.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         reserva.setId_habitacion(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         reserva.setId_hotel(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         reserva.setFechaInicio(Date.valueOf(protocolRequest.getParameters().get(cont++).getValue()));
@@ -194,6 +195,7 @@ public class HotelServerSocket  extends ServerSocketTemplate {
     private void processDeleteReserva(Protocol protocolRequest) {
         Reserva reserva = new Reserva();
         int cont = 0;
+        reserva.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         String response = service.deleteReserva(reserva);
         respond(response);
     }
