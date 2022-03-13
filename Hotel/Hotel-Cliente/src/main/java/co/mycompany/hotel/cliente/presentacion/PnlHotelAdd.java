@@ -15,7 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Jose Ricardo
  */
-public class PnlAdmHotelAdd extends javax.swing.JPanel {
+public class PnlHotelAdd extends javax.swing.JPanel {
 
     private HotelService service;
     
@@ -25,7 +25,7 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
     /**
      * Creates new form PnlAdmHabAdd
      */
-    public PnlAdmHotelAdd(String usuario) {
+    public PnlHotelAdd(String usuario) {
         this.usuario = usuario;
         service = new HotelService();
         //hotel = new Hotel();
@@ -54,6 +54,7 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
         btnAdmHabFoto = new javax.swing.JButton();
         txtAdmHotCiudad = new javax.swing.JTextField();
         txtAdmHotTel = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(570, 202));
 
@@ -82,69 +83,79 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Crear Hotel");
+
         javax.swing.GroupLayout bgAdmHabAddLayout = new javax.swing.GroupLayout(bgAdmHabAdd);
         bgAdmHabAdd.setLayout(bgAdmHabAddLayout);
         bgAdmHabAddLayout.setHorizontalGroup(
             bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbAdmHotCiudad)
-                    .addComponent(lbAdmHotTelefono)
-                    .addComponent(lbAdmHotDireccion)
-                    .addComponent(lbAdmHotNombre)
-                    .addComponent(btnAdmHabFoto))
-                .addGap(28, 28, 28)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAdmHotNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                    .addComponent(txtAdmHotDir)
-                    .addComponent(txtAdmHotFoto)
-                    .addComponent(txtAdmHotCiudad)
-                    .addComponent(txtAdmHotTel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                .addComponent(btnAdmHotAgregar)
-                .addGap(33, 33, 33))
+                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+                        .addGap(325, 325, 325)
+                        .addComponent(jLabel1))
+                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbAdmHotCiudad)
+                            .addComponent(lbAdmHotTelefono)
+                            .addComponent(lbAdmHotDireccion)
+                            .addComponent(lbAdmHotNombre)
+                            .addComponent(btnAdmHabFoto))
+                        .addGap(28, 28, 28)
+                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAdmHotNombre)
+                            .addComponent(txtAdmHotDir)
+                            .addComponent(txtAdmHotFoto)
+                            .addComponent(txtAdmHotCiudad)
+                            .addComponent(txtAdmHotTel, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(111, 111, 111)
+                        .addComponent(btnAdmHotAgregar)))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         bgAdmHabAddLayout.setVerticalGroup(
             bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAdmHabAddLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAdmHotNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbAdmHotNombre))
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAdmHotDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbAdmHotDireccion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbAdmHotCiudad)
-                            .addComponent(txtAdmHotCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAdmHabAddLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdmHotAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbAdmHotTelefono)
-                    .addComponent(txtAdmHotTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(txtAdmHotDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAdmHotDireccion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdmHotAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAdmHotCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbAdmHotCiudad))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbAdmHotTelefono)
+                            .addComponent(txtAdmHotTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdmHabFoto)
                     .addComponent(txtAdmHotFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,6 +196,7 @@ public class PnlAdmHotelAdd extends javax.swing.JPanel {
     private javax.swing.JPanel bgAdmHabAdd;
     private javax.swing.JButton btnAdmHabFoto;
     private javax.swing.JButton btnAdmHotAgregar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbAdmHotCiudad;
     private javax.swing.JLabel lbAdmHotDireccion;
     private javax.swing.JLabel lbAdmHotNombre;

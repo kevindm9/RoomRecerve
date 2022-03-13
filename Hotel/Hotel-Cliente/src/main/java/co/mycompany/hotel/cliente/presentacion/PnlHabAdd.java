@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Jose Ricardo
  */
-public class PnlAdmHabAdd extends javax.swing.JPanel {
+public class PnlHabAdd extends javax.swing.JPanel {
 
     private final HotelService service;
     private TipoHabitacion tipos[];
@@ -36,7 +36,7 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
      * Creates new form PnlAdmHabAdd
      * @param usuario
      */
-    public PnlAdmHabAdd(String usuario) {
+    public PnlHabAdd(String usuario) {
         this.usuario = usuario;
         service = new HotelService();
         hoteles = new ArrayList<>();
@@ -54,29 +54,28 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
     private void initComponents() {
 
         bgAdmHabAdd = new javax.swing.JPanel();
-        lbAdmHabDescripcion = new javax.swing.JLabel();
-        lbAdmHabPrecio = new javax.swing.JLabel();
-        lbAdmHabTipo = new javax.swing.JLabel();
+        lbHabAddTitulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnAdmHabAgregar = new javax.swing.JButton();
         txtAdmHabDescripcion = new javax.swing.JTextField();
         txtAdmHabPrecio = new javax.swing.JTextField();
-        cbxAdmHabSucursal = new javax.swing.JComboBox<>();
-        lbAdmHabSucursal = new javax.swing.JLabel();
-        btnAdmHabAgregar = new javax.swing.JButton();
         cbxAdmHabTipo = new javax.swing.JComboBox<>();
+        cbxAdmHabSucursal = new javax.swing.JComboBox<>();
         txtAdmHabFoto = new javax.swing.JTextField();
         btnAdmHabFoto = new javax.swing.JButton();
+        lbAdmHabSucursal = new javax.swing.JLabel();
+        lbAdmHabTipo = new javax.swing.JLabel();
+        lbAdmHabPrecio = new javax.swing.JLabel();
+        lbAdmHabDescripcion = new javax.swing.JLabel();
 
-        bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(570, 202));
+        bgAdmHabAdd.setOpaque(false);
+        bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(740, 202));
 
-        lbAdmHabDescripcion.setText("Descripcion");
+        lbHabAddTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbHabAddTitulo.setText("Adicionar Habitación");
 
-        lbAdmHabPrecio.setText("Precio");
-
-        lbAdmHabTipo.setText("Tipo");
-
-        cbxAdmHabSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        lbAdmHabSucursal.setText("Sucursal");
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setOpaque(false);
 
         btnAdmHabAgregar.setText("Agregar Habitacion");
         btnAdmHabAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +85,8 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         });
 
         cbxAdmHabTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbxAdmHabSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtAdmHabFoto.setEnabled(false);
         txtAdmHabFoto.setFocusable(false);
@@ -97,57 +98,84 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout bgAdmHabAddLayout = new javax.swing.GroupLayout(bgAdmHabAdd);
-        bgAdmHabAdd.setLayout(bgAdmHabAddLayout);
-        bgAdmHabAddLayout.setHorizontalGroup(
-            bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        lbAdmHabSucursal.setText("Sucursal");
+
+        lbAdmHabTipo.setText("Tipo");
+
+        lbAdmHabPrecio.setText("Precio");
+
+        lbAdmHabDescripcion.setText("Descripcion");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbAdmHabTipo)
                     .addComponent(lbAdmHabSucursal)
                     .addComponent(lbAdmHabPrecio)
                     .addComponent(lbAdmHabDescripcion)
                     .addComponent(btnAdmHabFoto))
                 .addGap(28, 28, 28)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbxAdmHabSucursal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtAdmHabDescripcion)
                     .addComponent(txtAdmHabPrecio)
-                    .addComponent(cbxAdmHabTipo, 0, 178, Short.MAX_VALUE)
-                    .addComponent(txtAdmHabFoto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                    .addComponent(cbxAdmHabTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAdmHabFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(btnAdmHabAgregar)
-                .addGap(33, 33, 33))
+                .addGap(49, 49, 49))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdmHabDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAdmHabDescripcion))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdmHabPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAdmHabPrecio))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdmHabAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxAdmHabTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAdmHabTipo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxAdmHabSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbAdmHabSucursal))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdmHabFoto)
+                    .addComponent(txtAdmHabFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout bgAdmHabAddLayout = new javax.swing.GroupLayout(bgAdmHabAdd);
+        bgAdmHabAdd.setLayout(bgAdmHabAddLayout);
+        bgAdmHabAddLayout.setHorizontalGroup(
+            bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgAdmHabAddLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAdmHabAddLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbHabAddTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(258, 258, 258))
         );
         bgAdmHabAddLayout.setVerticalGroup(
             bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAdmHabDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAdmHabDescripcion))
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgAdmHabAddLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAdmHabPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbAdmHabPrecio))
-                        .addGap(18, 18, 18)
-                        .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxAdmHabTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbAdmHabTipo)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgAdmHabAddLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdmHabAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxAdmHabSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbAdmHabSucursal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bgAdmHabAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdmHabFoto)
-                    .addComponent(txtAdmHabFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(lbHabAddTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -155,11 +183,11 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -238,10 +266,12 @@ public class PnlAdmHabAdd extends javax.swing.JPanel {
     private javax.swing.JButton btnAdmHabFoto;
     private javax.swing.JComboBox<String> cbxAdmHabSucursal;
     private javax.swing.JComboBox<String> cbxAdmHabTipo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbAdmHabDescripcion;
     private javax.swing.JLabel lbAdmHabPrecio;
     private javax.swing.JLabel lbAdmHabSucursal;
     private javax.swing.JLabel lbAdmHabTipo;
+    private javax.swing.JLabel lbHabAddTitulo;
     private javax.swing.JTextField txtAdmHabDescripcion;
     private javax.swing.JTextField txtAdmHabFoto;
     private javax.swing.JTextField txtAdmHabPrecio;

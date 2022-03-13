@@ -8,45 +8,50 @@ import co.mycompany.hotel.cliente.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.Hotel;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Jose Ricardo
  */
-public class PnlVistaHabitaciones extends javax.swing.JPanel {
+public class PnlHabConsultar extends javax.swing.JPanel {
 
     private HotelService service;
     private ArrayList<Habitacion> habitaciones;
+    private ArrayList<Hotel> hoteles;
     private DefaultTableModel modelo;
+    private String usuario;
 
     /**
      * Creates new form PnlVistaHabitaciones
      */
-    public PnlVistaHabitaciones() {
+    public PnlHabConsultar(String usuario) {
         habitaciones = new ArrayList<>();
+        hoteles = new ArrayList<>();
         this.service = new HotelService();
+        this.usuario = usuario;
         initComponents();
         this.modelo = (DefaultTableModel) tabvisHabitaciones.getModel();
         lanzar();
     }
 
     private void lanzar() {
-        
-        
-        ArrayList<Hotel> hoteles = service.getHotels("All_Hotels");
-        if(hoteles == null)
+        hoteles = null;
+        String tipo = service.getSecionTipo(usuario);
+        if(tipo.equals("Master")){
+            hoteles = service.getHotels("All_Hotels");
+        }
+        else{
+            hoteles = service.getHotels(usuario);        
+        }
+        if(hoteles ==null){
             return;
-        
+        }
+                
         for(Hotel hotel:hoteles){
             ArrayList<Habitacion> habitsxhotel = service.getHabitaciones(hotel.getId(),Date.valueOf("1800-01-01"), Date.valueOf("1800-01-01"));
             if(habitsxhotel == null)
@@ -118,6 +123,10 @@ public class PnlVistaHabitaciones extends javax.swing.JPanel {
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        setPreferredSize(new java.awt.Dimension(740, 216));
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(740, 402));
+
         tabvisHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -137,7 +146,9 @@ public class PnlVistaHabitaciones extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

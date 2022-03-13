@@ -5,30 +5,122 @@
 package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
+import co.mycompany.hotel.commons.domain.Hotel;
+import java.util.ArrayList;
 
 /**
  *
- * @author Jose Ricardo
+ * @author Jose Ricardo, Yaquelin Gomez, Kevin Morales
  */
 public class FrmMain extends javax.swing.JFrame {
-    private HotelService service;
+
+    ArrayList<Hotel> hoteles;
+    private final HotelService service;
     private javax.swing.JPanel aux;
     private String usuario;
     private String tipo;
-    /**
-     * Creates new form frmMain
-     */
+
     public FrmMain() {
+        initComponents();
         service = new HotelService();
         aux = new javax.swing.JPanel();
-        usuario = "";
-        initComponents();
-        mostrarSucursales();
-        
+        ocultarMenu();
+        iniciar();
     }
 
-    
-    
+    private void iniciar() {
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.IfmMainControl.getUI()).setNorthPane(null);
+        //TipoHabitacion tipos[] = TipoHabitacion.values();
+        hoteles = service.getHotels("All_Hotels");
+        cbxMainHoteles.removeAllItems();
+        cbxMainHoteles.addItem("Reserva en tu hotel favorito");
+        if (hoteles != null) {
+            for (int i = 0; i < hoteles.size(); i++) {
+                cbxMainHoteles.addItem(hoteles.get(i).getNombre());
+            }
+        }
+        mostrarHoteles();
+    }
+
+    private void ocultarMenu() {
+        jmbMainControl.setVisible(false);
+        jmmMainSeccion.setVisible(false);
+        jmmMainAdministradores.setVisible(false);
+        jmmMainHabitaciones.setVisible(false);
+        jmmMainHoteles.setVisible(false);
+        jmmMainReservas.setVisible(false);
+
+    }
+
+    public void mostrarHoteles() {
+
+        PnlUsuHoteles panelHoteles = new PnlUsuHoteles(this, usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHoteles);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }
+
+    public void cargarReserva(int id_hotel) {
+        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this, id_hotel, usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHabitaciones);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }
+
+    public void cargarLogin() {
+        aux.removeAll();
+        aux.add(pnlMainControl.getComponent(0));
+        PnlLogin panelLogin = new PnlLogin(this);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelLogin);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+
+    }
+
+    public String getUsuario() {
+        return this.usuario;
+    }
+
+    public void cargarUsuario(String usuario) {
+        jmbMainControl.setVisible(true);
+        this.usuario = usuario;
+        lbMainUsuario.setText(usuario);
+        lbMainLogin.setText("LogOut");
+    }
+
+    public void cargarAdmMaster() {
+        jmmMainSeccion.setVisible(true);
+        jmmMainAdministradores.setVisible(true);
+        jmmMainHabitaciones.setVisible(true);
+        jmmMainHoteles.setVisible(true);
+        mostrarHoteles();
+    }
+
+    public void cargarAdmJunior() {
+        jmmMainSeccion.setVisible(true);
+        jmmMainHabitaciones.setVisible(true);
+        jmmMainReservas.setVisible(false);
+        mostrarHoteles();
+    }
+
+    public void cargarCliente() {
+        pnlMainControl.removeAll();
+        pnlMainControl.add(aux.getComponent(0));
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }
+
+    public void cargarRegistrar(String tipo) {
+        PnlRegistrar panelAdmin = new PnlRegistrar(this, tipo);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelAdmin);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,26 +130,45 @@ public class FrmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlMain = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        pnlControl = new javax.swing.JPanel();
-        btnMainSalir = new javax.swing.JButton();
+        pnlEstado = new javax.swing.JPanel();
         lbMainLogin = new javax.swing.JLabel();
+        lbMainUsuario = new javax.swing.JLabel();
+        IfmMainControl = new javax.swing.JInternalFrame();
+        pnlMainControl = new javax.swing.JPanel();
+        jmbMainControl = new javax.swing.JMenuBar();
+        jmmMainSeccion = new javax.swing.JMenu();
+        jmiMainSecInicio = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jmiMainSecPerfil = new javax.swing.JMenuItem();
+        jmiMainSecModificar = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jmiMainSecCerrar = new javax.swing.JMenuItem();
+        jmiMainSecSalir = new javax.swing.JMenuItem();
+        jmmMainHoteles = new javax.swing.JMenu();
+        jmiMainHotCrear = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jmmMainHabitaciones = new javax.swing.JMenu();
+        jmiMainHabCrear = new javax.swing.JMenuItem();
+        jmiMainHabConsultar = new javax.swing.JMenuItem();
+        jmiMainHabModificar = new javax.swing.JMenuItem();
+        jmiMainHabEliminar = new javax.swing.JMenuItem();
+        jmmMainAdministradores = new javax.swing.JMenu();
+        jmmMainAdmCrear = new javax.swing.JMenuItem();
+        jmmMainReservas = new javax.swing.JMenu();
+        pnlMainBusqueda = new javax.swing.JPanel();
+        btnMainBuscar = new javax.swing.JButton();
+        cbxMainHoteles = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        lbMainFechaIni = new javax.swing.JLabel();
+        lbMainFechaFin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(2000, 2147483647));
+        setPreferredSize(new java.awt.Dimension(752, 580));
 
-        jLabel1.setText("App Reservacion Hoteles");
-
-        pnlControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnlControl.setPreferredSize(new java.awt.Dimension(700, 300));
-        pnlControl.setLayout(new java.awt.CardLayout());
-
-        btnMainSalir.setText("Salir");
-        btnMainSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMainSalirActionPerformed(evt);
-            }
-        });
+        pnlEstado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbMainLogin.setText("Login");
         lbMainLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,144 +176,310 @@ public class FrmMain extends javax.swing.JFrame {
                 lbMainLoginMouseClicked(evt);
             }
         });
+        pnlEstado.add(lbMainLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 47, -1));
 
-        javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
-        pnlMain.setLayout(pnlMainLayout);
-        pnlMainLayout.setHorizontalGroup(
-            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMainLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlControl, javax.swing.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-                    .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addComponent(lbMainLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMainSalir)))
-                .addContainerGap())
-            .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGap(299, 299, 299)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        lbMainUsuario.setText("Crea tu cuenta");
+        lbMainUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMainUsuarioMouseClicked(evt);
+            }
+        });
+        pnlEstado.add(lbMainUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, -1, -1));
+
+        IfmMainControl.setBorder(null);
+        IfmMainControl.setForeground(new java.awt.Color(255, 255, 255));
+        IfmMainControl.setEnabled(false);
+        IfmMainControl.setFocusCycleRoot(false);
+        IfmMainControl.setFocusable(false);
+        IfmMainControl.setRequestFocusEnabled(false);
+        IfmMainControl.setVerifyInputWhenFocusTarget(false);
+        IfmMainControl.setVisible(true);
+
+        pnlMainControl.setPreferredSize(new java.awt.Dimension(740, 400));
+        pnlMainControl.setLayout(new java.awt.CardLayout());
+
+        jmbMainControl.setToolTipText("Administrar");
+        jmbMainControl.setOpaque(false);
+
+        jmmMainSeccion.setText("Seccion");
+
+        jmiMainSecInicio.setText("Inicio");
+        jmiMainSecInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainSecInicioActionPerformed(evt);
+            }
+        });
+        jmmMainSeccion.add(jmiMainSecInicio);
+        jmmMainSeccion.add(jSeparator1);
+
+        jmiMainSecPerfil.setText("Ver perfil");
+        jmmMainSeccion.add(jmiMainSecPerfil);
+
+        jmiMainSecModificar.setText("Modificar Perfil");
+        jmmMainSeccion.add(jmiMainSecModificar);
+        jmmMainSeccion.add(jSeparator2);
+
+        jmiMainSecCerrar.setText("Cerrar Seccion");
+        jmiMainSecCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainSecCerrarActionPerformed(evt);
+            }
+        });
+        jmmMainSeccion.add(jmiMainSecCerrar);
+
+        jmiMainSecSalir.setText("Salir");
+        jmiMainSecSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainSecSalirActionPerformed(evt);
+            }
+        });
+        jmmMainSeccion.add(jmiMainSecSalir);
+
+        jmbMainControl.add(jmmMainSeccion);
+
+        jmmMainHoteles.setText("Hoteles");
+
+        jmiMainHotCrear.setText("Crear Hotel");
+        jmiMainHotCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainHotCrearActionPerformed(evt);
+            }
+        });
+        jmmMainHoteles.add(jmiMainHotCrear);
+
+        jMenuItem1.setText("Modificar Hotel");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jmmMainHoteles.add(jMenuItem1);
+
+        jMenuItem2.setText("Eliminar Hotel");
+        jmmMainHoteles.add(jMenuItem2);
+
+        jmbMainControl.add(jmmMainHoteles);
+
+        jmmMainHabitaciones.setText("Habitaciones");
+
+        jmiMainHabCrear.setText("Crear habitación");
+        jmiMainHabCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainHabCrearActionPerformed(evt);
+            }
+        });
+        jmmMainHabitaciones.add(jmiMainHabCrear);
+
+        jmiMainHabConsultar.setText("Consultar habitaciones");
+        jmiMainHabConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainHabConsultarActionPerformed(evt);
+            }
+        });
+        jmmMainHabitaciones.add(jmiMainHabConsultar);
+
+        jmiMainHabModificar.setText("Modificar habitación");
+        jmiMainHabModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainHabModificarActionPerformed(evt);
+            }
+        });
+        jmmMainHabitaciones.add(jmiMainHabModificar);
+
+        jmiMainHabEliminar.setText("Eliminar habitación");
+        jmiMainHabEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainHabEliminarActionPerformed(evt);
+            }
+        });
+        jmmMainHabitaciones.add(jmiMainHabEliminar);
+
+        jmbMainControl.add(jmmMainHabitaciones);
+
+        jmmMainAdministradores.setText("Administradores");
+        jmmMainAdministradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmmMainAdministradoresActionPerformed(evt);
+            }
+        });
+
+        jmmMainAdmCrear.setText("Registrar Administrador Junior");
+        jmmMainAdmCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmmMainAdmCrearActionPerformed(evt);
+            }
+        });
+        jmmMainAdministradores.add(jmmMainAdmCrear);
+
+        jmbMainControl.add(jmmMainAdministradores);
+
+        jmmMainReservas.setText("Reservas");
+        jmbMainControl.add(jmmMainReservas);
+
+        IfmMainControl.setJMenuBar(jmbMainControl);
+
+        javax.swing.GroupLayout IfmMainControlLayout = new javax.swing.GroupLayout(IfmMainControl.getContentPane());
+        IfmMainControl.getContentPane().setLayout(IfmMainControlLayout);
+        IfmMainControlLayout.setHorizontalGroup(
+            IfmMainControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlMainControl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        pnlMainLayout.setVerticalGroup(
-            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMainSalir)
-                    .addComponent(lbMainLogin))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        IfmMainControlLayout.setVerticalGroup(
+            IfmMainControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlMainControl, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
         );
+
+        pnlMainBusqueda.setPreferredSize(new java.awt.Dimension(740, 37));
+        pnlMainBusqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMainBuscar.setText("Buscar");
+        pnlMainBusqueda.add(btnMainBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 100, -1));
+
+        cbxMainHoteles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlMainBusqueda.add(cbxMainHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
+        pnlMainBusqueda.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 120, -1));
+        pnlMainBusqueda.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 120, -1));
+
+        lbMainFechaIni.setText("Desde");
+        pnlMainBusqueda.add(lbMainFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+
+        lbMainFechaFin.setText("Hasta");
+        pnlMainBusqueda.add(lbMainFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(IfmMainControl, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(pnlMainBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(pnlMainBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(IfmMainControl))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMainSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainSalirActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_btnMainSalirActionPerformed
-
     private void lbMainLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMainLoginMouseClicked
         // TODO add your handling code here:
-        if ("Login".equals(lbMainLogin.getText())){            
-            cargarLogin();
-        }
-        else{
-            lbMainLogin.setText("Login");
-            usuario = "";
-            mostrarSucursales();
-        }
+        seccion();
     }//GEN-LAST:event_lbMainLoginMouseClicked
 
-    public void cargarLogin(){
-        
-        aux.removeAll();
-        aux.add(pnlControl.getComponent(0));
-        PnlLogin panelLogin = new PnlLogin(this);        
-        pnlControl.removeAll();
-        pnlControl.add(panelLogin);
-        pnlControl.repaint();
-        pnlControl.revalidate();
+    private void seccion() {
+        if ("Login".equals(lbMainLogin.getText())) {
+            cargarLogin();
+        } else {
+            lbMainLogin.setText("Login");
+            usuario = "";
+            lbMainUsuario.setText("Crea tu cuenta");
+            ocultarMenu();
+            mostrarHoteles();
+        }
     }
-    
-    public String getUsuario(){
-        return this.usuario;
+
+    private void jmiMainHabCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHabCrearActionPerformed
+        // TODO add your handling code here:
+
+        PnlHabAdd panelHabAdd = new PnlHabAdd(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHabAdd);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jmiMainHabCrearActionPerformed
+
+    private void jmiMainHabModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHabModificarActionPerformed
+        // TODO add your handling code here:
+        PnlHabModificar panelHabAdd = new PnlHabModificar(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHabAdd);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+
+    }//GEN-LAST:event_jmiMainHabModificarActionPerformed
+
+    private void jmiMainHabEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHabEliminarActionPerformed
+
+
+    }//GEN-LAST:event_jmiMainHabEliminarActionPerformed
+
+    private void jmiMainHabConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHabConsultarActionPerformed
+        // TODO add your handling code here:
+        consultarHabitaciones();
+    }//GEN-LAST:event_jmiMainHabConsultarActionPerformed
+
+    private void jmiMainSecSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecSalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jmiMainSecSalirActionPerformed
+
+    private void jmiMainSecCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecCerrarActionPerformed
+        // TODO add your handling code here:
+        seccion();
+    }//GEN-LAST:event_jmiMainSecCerrarActionPerformed
+
+    private void jmiMainSecInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecInicioActionPerformed
+        // TODO add your handling code here:
+        mostrarHoteles();
+    }//GEN-LAST:event_jmiMainSecInicioActionPerformed
+
+    private void jmiMainHotCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHotCrearActionPerformed
+        // TODO add your handling code here:
+        PnlHotelAdd panelHotAdd = new PnlHotelAdd(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHotAdd);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jmiMainHotCrearActionPerformed
+
+    private void lbMainUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMainUsuarioMouseClicked
+        // TODO add your handling code here:
+        cargarRegistrar("Cliente");
+    }//GEN-LAST:event_lbMainUsuarioMouseClicked
+
+    private void jmmMainAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmmMainAdministradoresActionPerformed
+        // TODO add your handling code here:
+        PnlRegistrar panelRegistrar = new PnlRegistrar(this, "Junior");
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelRegistrar);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+
+    }//GEN-LAST:event_jmmMainAdministradoresActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        PnlHotelUpdate panelUpdate = new PnlHotelUpdate(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelUpdate);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmmMainAdmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmmMainAdmCrearActionPerformed
+        // TODO add your handling code here:
+        cargarRegistrar("junior");   
+    }//GEN-LAST:event_jmmMainAdmCrearActionPerformed
+
+    private void consultarHabitaciones() {
+        PnlHabConsultar panelHabVista = new PnlHabConsultar(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHabVista);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
     }
-    public String getTipo(){
-        return this.usuario;
-    }
-    
-    public void cargarUsuario(String usuario){
-        this.usuario = usuario;
-    }
-    
-    public void cargarTipo(String tipo){
-        this.tipo = tipo;
-    }
-    
-    public void cargarRegistrar(String tipo){
-        PnlAdmPersonaAdd panelAdmin = new PnlAdmPersonaAdd(this,tipo);
-        pnlControl.removeAll();
-        pnlControl.add(panelAdmin);
-        pnlControl.repaint();
-        pnlControl.revalidate();
-    }
-    
-    public void cargarAdmMaster(){
-        lbMainLogin.setText("LogOut");
-        PnlAdmMaster panelAdmin = new PnlAdmMaster(this,usuario);
-        pnlControl.removeAll();
-        pnlControl.add(panelAdmin);
-        pnlControl.repaint();
-        pnlControl.revalidate();
-    }
-    
-    public void cargarAdmJunior(){
-        lbMainLogin.setText("LogOut");
-        PnlAdmJunior panelJunior = new PnlAdmJunior(this,usuario);
-        pnlControl.removeAll();
-        pnlControl.add(panelJunior);
-        pnlControl.repaint();
-        pnlControl.revalidate();
-    }
-    public void mostrarSucursales(){
-        PnlUsuSucursales panelSucursales = new PnlUsuSucursales(this);
-        pnlControl.removeAll();
-        pnlControl.add(panelSucursales);
-        pnlControl.repaint();
-        pnlControl.revalidate();
-    }
-    
-    public void cargarCliente(){
-        lbMainLogin.setText("LogOut");
-        pnlControl.removeAll();
-        pnlControl.add(aux.getComponent(0));
-        pnlControl.repaint();
-        pnlControl.revalidate();
-    }
-    
-    public void cargarReserva(int id_hotel){
-        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this,id_hotel,usuario);
-        pnlControl.removeAll();
-        pnlControl.add(panelHabitaciones);
-        pnlControl.repaint();
-        pnlControl.revalidate();
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -229,7 +506,6 @@ public class FrmMain extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -240,10 +516,38 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMainSalir;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JInternalFrame IfmMainControl;
+    private javax.swing.JButton btnMainBuscar;
+    private javax.swing.JComboBox<String> cbxMainHoteles;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenuBar jmbMainControl;
+    private javax.swing.JMenuItem jmiMainHabConsultar;
+    private javax.swing.JMenuItem jmiMainHabCrear;
+    private javax.swing.JMenuItem jmiMainHabEliminar;
+    private javax.swing.JMenuItem jmiMainHabModificar;
+    private javax.swing.JMenuItem jmiMainHotCrear;
+    private javax.swing.JMenuItem jmiMainSecCerrar;
+    private javax.swing.JMenuItem jmiMainSecInicio;
+    private javax.swing.JMenuItem jmiMainSecModificar;
+    private javax.swing.JMenuItem jmiMainSecPerfil;
+    private javax.swing.JMenuItem jmiMainSecSalir;
+    private javax.swing.JMenuItem jmmMainAdmCrear;
+    private javax.swing.JMenu jmmMainAdministradores;
+    private javax.swing.JMenu jmmMainHabitaciones;
+    private javax.swing.JMenu jmmMainHoteles;
+    private javax.swing.JMenu jmmMainReservas;
+    private javax.swing.JMenu jmmMainSeccion;
+    private javax.swing.JLabel lbMainFechaFin;
+    private javax.swing.JLabel lbMainFechaIni;
     private javax.swing.JLabel lbMainLogin;
-    private javax.swing.JPanel pnlControl;
-    private javax.swing.JPanel pnlMain;
+    private javax.swing.JLabel lbMainUsuario;
+    private javax.swing.JPanel pnlEstado;
+    private javax.swing.JPanel pnlMainBusqueda;
+    private javax.swing.JPanel pnlMainControl;
     // End of variables declaration//GEN-END:variables
 }
