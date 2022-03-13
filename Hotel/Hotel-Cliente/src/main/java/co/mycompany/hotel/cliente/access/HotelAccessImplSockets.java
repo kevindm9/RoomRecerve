@@ -187,6 +187,39 @@ public class HotelAccessImplSockets implements IHotelAccess {
 
         return requestJson;
     }
+        @Override
+    public String deleteReserva(Reserva reserva) {
+              String jsonResponse = null;
+        String requestJson = deleteReservaRequestJson(reserva);
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+
+        } catch (IOException ex) {
+            Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null) {
+            return "No se pudo conectar con el servidor";
+        }
+        if (jsonResponse.contains("error")) {
+            //Devolvió algún error                
+            Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+            return extractMessages(jsonResponse);
+        }
+        //Agregó correctamente el menu, devuelve los nombres de los platos
+        return jsonResponse;
+    }
+        private String deleteReservaRequestJson(Reserva reserva) {
+        Protocol protocol = new Protocol();
+        protocol.setResource("habitacionReserva");
+        protocol.setAction("eliminar");
+        protocol.addParameter("reserva_Id", Integer.toString(reserva.getId()));
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+        return requestJson;
+    }
     @Override
     public String addReserva(int idHotel, Habitacion habitacion, Date fecha_inicio, Date fecha_fin, Persona sesion) {
         String jsonResponse = null;
@@ -265,6 +298,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
         Protocol protocol = new Protocol();
         protocol.setResource("habitacionReserva");
         protocol.setAction("set");
+        protocol.addParameter("Id_reserva", Integer.toString(reserva.getId()));
         protocol.addParameter("Id_habt", Integer.toString(reserva.getId_habitacion()));
         protocol.addParameter("id_hotel", Integer.toString(reserva.getId_hotel()));
         protocol.addParameter("fecha_inicio", String.valueOf(reserva.getFechaInicio()));
@@ -969,10 +1003,9 @@ public class HotelAccessImplSockets implements IHotelAccess {
 
 
 
-    @Override
-    public String deleteReserva(Reserva reserva) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+
+
 
 
 
