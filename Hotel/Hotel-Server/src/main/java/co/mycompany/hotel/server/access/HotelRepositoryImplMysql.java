@@ -489,7 +489,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             cont++;
             pstmt.setString(cont, hotel.getFoto());
             cont++;
-            pstmt.setString(cont, hotel.getAdministrador());
+            pstmt.setString(cont, usuario);
             cont++;
             pstmt.setInt(cont, hotel.getId());
             System.out.println("Actualizacion: " + pstmt.toString());
