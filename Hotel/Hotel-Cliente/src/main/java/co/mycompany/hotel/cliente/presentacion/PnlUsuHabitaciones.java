@@ -39,15 +39,17 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     /**
      * Creates new form PnlVistaHabitaciones
      */
-    public PnlUsuHabitaciones(FrmMain panel, int id_hotel,String usuario) {
+    public PnlUsuHabitaciones(FrmMain panel, int id_hotel,String usuario, Date fechaIni, Date fechaFin) {
         this.usuario = usuario;
         this.panel = panel;
         this.id_hotel = id_hotel;
         habitaciones = new ArrayList<>();
         this.service = new HotelService();
+        this.fechaIni = fechaIni;
+        this.fechaFin = fechaFin;
         initComponents();
         this.modelo = (DefaultTableModel) tabUsuHabitaciones.getModel();
-
+        cargarHabitaciones();
     }
 
 
@@ -168,7 +170,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
                 usuario = panel.getUsuario();
                 if(service.getPersona(usuario).getId()!= 0){    
                     service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,service.getPersona(usuario));     
-                    cargarHabitaciones(fechaIni,fechaFin);
+                    cargarHabitaciones();
                 }
                 else{
                     JOptionPane.showMessageDialog(null,
@@ -183,6 +185,9 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         } 
     }//GEN-LAST:event_tabUsuHabitacionesMouseClicked
 
+    
+    
+    
     private void btnUsuHabRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuHabRegresarActionPerformed
         // TODO add your handling code here:
         panel.mostrarHoteles();
@@ -205,11 +210,18 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
             return;
         }
         
-        cargarHabitaciones(fechaIni,fechaFin);
+        cargarHabitaciones();
         
     }//GEN-LAST:event_btnUsuHabBuscarActionPerformed
 
-    public void cargarHabitaciones(Date fechaIni, Date fechaFin){
+    public void cargarHabitaciones(){
+        
+        if ((fechaIni.after(Date.valueOf("1900-01-01")))&&(fechaFin.after(Date.valueOf("1900-01-01")))){
+            dccUsuHabInicio.setDate(fechaIni);
+            dccUsuHabFin.setDate(fechaFin);
+        }
+        
+        
         for (int i = modelo.getRowCount()-1; i>=0;i--){
             modelo.removeRow(i);
         }

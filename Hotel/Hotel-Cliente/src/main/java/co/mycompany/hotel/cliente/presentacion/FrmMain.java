@@ -6,7 +6,10 @@ package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.Hotel;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -61,8 +64,15 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.revalidate();
     }
 
-    public void cargarReserva(int id_hotel) {
-        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this, id_hotel, usuario);
+    public void cargarReserva(int id_hotel, Date fechaIni, Date fechaFin) {
+        PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this, id_hotel, usuario, fechaIni, fechaFin);
+        for(int i = 0 ; i< hoteles.size();i++){
+            if(id_hotel == hoteles.get(i).getId()){
+                cbxMainHoteles.setSelectedIndex(i+1);
+                break;
+            }
+        }
+
         pnlMainControl.removeAll();
         pnlMainControl.add(panelHabitaciones);
         pnlMainControl.repaint();
@@ -159,8 +169,8 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainBusqueda = new javax.swing.JPanel();
         btnMainBuscar = new javax.swing.JButton();
         cbxMainHoteles = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jdcMainFechaFin = new com.toedter.calendar.JDateChooser();
+        jdcMainFechaIni = new com.toedter.calendar.JDateChooser();
         lbMainFechaIni = new javax.swing.JLabel();
         lbMainFechaFin = new javax.swing.JLabel();
 
@@ -333,12 +343,17 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainBusqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnMainBuscar.setText("Buscar");
+        btnMainBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainBuscarActionPerformed(evt);
+            }
+        });
         pnlMainBusqueda.add(btnMainBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 100, -1));
 
         cbxMainHoteles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         pnlMainBusqueda.add(cbxMainHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
-        pnlMainBusqueda.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 120, -1));
-        pnlMainBusqueda.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 120, -1));
+        pnlMainBusqueda.add(jdcMainFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 120, -1));
+        pnlMainBusqueda.add(jdcMainFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 120, -1));
 
         lbMainFechaIni.setText("Desde");
         pnlMainBusqueda.add(lbMainFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
@@ -410,8 +425,11 @@ public class FrmMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiMainHabModificarActionPerformed
 
     private void jmiMainHabEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHabEliminarActionPerformed
-
-
+        PnlHabEliminar panelHabDel = new PnlHabEliminar(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelHabDel);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
     }//GEN-LAST:event_jmiMainHabEliminarActionPerformed
 
     private void jmiMainHabConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainHabConsultarActionPerformed
@@ -469,8 +487,32 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void jmmMainAdmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmmMainAdmCrearActionPerformed
         // TODO add your handling code here:
-        cargarRegistrar("junior");   
+        cargarRegistrar("junior");
     }//GEN-LAST:event_jmmMainAdmCrearActionPerformed
+
+    private void btnMainBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainBuscarActionPerformed
+        // TODO add your handling code here:
+        try{
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = simpleDateFormat.format(jdcMainFechaIni.getDate());
+        //dccUsuHabInicio.getDateFormatString()
+        Date fechaIni = Date.valueOf(formattedDate);
+        formattedDate = simpleDateFormat.format(jdcMainFechaFin.getDate());
+        Date fechaFin = Date.valueOf(formattedDate);
+
+        if (fechaFin.before(fechaIni)) {
+            JOptionPane.showMessageDialog(null,
+                    "Periodo de tiempo no valido", "Datos invalidos",
+                    JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        System.out.println(hoteles.get(cbxMainHoteles.getSelectedIndex()-1).getNombre());
+        cargarReserva(hoteles.get(cbxMainHoteles.getSelectedIndex()-1).getId(),fechaIni,fechaFin);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Seleccione primero un hotel, fecha de inicio y fecha de fin","Advertencia",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnMainBuscarActionPerformed
 
     private void consultarHabitaciones() {
         PnlHabConsultar panelHabVista = new PnlHabConsultar(usuario);
@@ -519,12 +561,12 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JInternalFrame IfmMainControl;
     private javax.swing.JButton btnMainBuscar;
     private javax.swing.JComboBox<String> cbxMainHoteles;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private com.toedter.calendar.JDateChooser jdcMainFechaFin;
+    private com.toedter.calendar.JDateChooser jdcMainFechaIni;
     private javax.swing.JMenuBar jmbMainControl;
     private javax.swing.JMenuItem jmiMainHabConsultar;
     private javax.swing.JMenuItem jmiMainHabCrear;

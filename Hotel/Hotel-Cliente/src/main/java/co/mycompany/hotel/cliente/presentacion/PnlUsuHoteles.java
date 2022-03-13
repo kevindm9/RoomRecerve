@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Date;
 
 /**
  *
@@ -105,7 +106,7 @@ public class PnlUsuHoteles extends javax.swing.JPanel {
         //int clic = tabUsuSucursales.rowAtPoint(evt.getPoint());
         //codigo = (int)tabla.getValueAt(clic, 0)
         int fila = tabUsuSucursales.getSelectedRow()+1;
-        panel.cargarReserva(fila);
+        panel.cargarReserva(fila,Date.valueOf("1800-01-01"),Date.valueOf("1800-01-01"));
         
     }//GEN-LAST:event_tabUsuSucursalesMouseClicked
 

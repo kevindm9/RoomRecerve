@@ -47,14 +47,14 @@
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="pnlHabModConsultar" max="32767" attributes="0"/>
-                              <Component id="btnAdmHabModificar" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
+                              <Component id="btnHabEliEliminar" alignment="1" min="-2" pref="176" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
-                          <Component id="lbHabMod" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbHabEliTitulo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="50" max="32767" attributes="0"/>
@@ -65,14 +65,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lbHabMod" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbHabEliTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="pnlHabModConsultar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnAdmHabModificar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnHabEliEliminar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -96,7 +96,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="btnBuscarId" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnHabEliBuscarId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -105,9 +105,9 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblIdHabitacion" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtIdHabitacion" max="32767" attributes="0"/>
+                              <Component id="txtHabEliId" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="cbxHabModHoteles" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="cbxHabEliHoteles" min="-2" pref="119" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
@@ -119,12 +119,12 @@
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblIdHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtIdHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtHabEliId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cbxHabModHoteles" min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="cbxHabEliHoteles" min="-2" pref="20" max="-2" attributes="0"/>
                       <EmptySpace pref="7" max="32767" attributes="0"/>
-                      <Component id="btnBuscarId" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnHabEliBuscarId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -139,15 +139,15 @@
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="lblIdhotel"/>
               </AccessibilityProperties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnBuscarId">
+            <Component class="javax.swing.JButton" name="btnHabEliBuscarId">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarIdActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHabEliBuscarIdActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbxHabModHoteles">
+            <Component class="javax.swing.JComboBox" name="cbxHabEliHoteles">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -162,26 +162,26 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtIdHabitacion">
+            <Component class="javax.swing.JTextField" name="txtHabEliId">
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtIdHabitacionMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtHabEliIdMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnAdmHabModificar">
+        <Component class="javax.swing.JButton" name="btnHabEliEliminar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Modificar Habitacion"/>
+            <Property name="text" type="java.lang.String" value="Eliminar Habitacion"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdmHabModificarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHabEliEliminarActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Nuevos  datos"/>
+                <TitledBorder title="Datoa encontrados"/>
               </Border>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
@@ -200,10 +200,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtAdmHabDescripcion" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtAdmHabPrecio" alignment="0" max="32767" attributes="0"/>
-                          <Component id="cbxAdmHabTipo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtAdmHabFoto" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="txtHabEliDescripcion" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtHabEliPrecio" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cbxHabEliTipo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtHabEliFoto" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="92" max="32767" attributes="0"/>
                   </Group>
@@ -214,23 +214,23 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtAdmHabDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtHabEliDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbAdmHabDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtAdmHabPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtHabEliPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbAdmHabPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cbxAdmHabTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxHabEliTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbAdmHabTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAdmHabFoto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAdmHabFoto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtHabEliFoto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -243,21 +243,21 @@
                 <Property name="text" type="java.lang.String" value="Descripcion"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtAdmHabDescripcion">
+            <Component class="javax.swing.JTextField" name="txtHabEliDescripcion">
             </Component>
             <Component class="javax.swing.JLabel" name="lbAdmHabPrecio">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Precio"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtAdmHabPrecio">
+            <Component class="javax.swing.JTextField" name="txtHabEliPrecio">
             </Component>
             <Component class="javax.swing.JLabel" name="lbAdmHabTipo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tipo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cbxAdmHabTipo">
+            <Component class="javax.swing.JComboBox" name="cbxHabEliTipo">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -280,7 +280,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdmHabFotoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtAdmHabFoto">
+            <Component class="javax.swing.JTextField" name="txtHabEliFoto">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
@@ -288,12 +288,12 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lbHabMod">
+        <Component class="javax.swing.JLabel" name="lbHabEliTitulo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Modificar habitaci&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Eliminar habitaci&#xf3;n"/>
           </Properties>
         </Component>
       </SubComponents>
