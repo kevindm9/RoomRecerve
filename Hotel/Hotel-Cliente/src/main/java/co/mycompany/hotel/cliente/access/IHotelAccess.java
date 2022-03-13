@@ -5,6 +5,7 @@ import co.mycompany.hotel.commons.domain.DiaSemana;
 import java.util.ArrayList;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Persona;
+import co.mycompany.hotel.commons.domain.Reserva;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -22,6 +23,7 @@ public interface IHotelAccess {
      * @return
      */
     public String addHabitacion(Habitacion habitacion);
+
     /**
      *
      * @param id
@@ -35,6 +37,7 @@ public interface IHotelAccess {
      * @return
      */
     public String ModificarHabitacion(Habitacion habitacion);
+
     /**
      * obtiene todos los habitacions registrados
      *
@@ -48,11 +51,11 @@ public interface IHotelAccess {
      * @return
      */
     public Persona getPersona(String usuario);
+
     /**
      * Obtiene el menu de los componenetes en un hotel y dia determinado
      *
-     * @param idHotel
-     * @param dia
+     * @param idPersona
      * @return
      */
     public ArrayList<Habitacion> getDiaHabitaciones(int idPersona);
@@ -91,10 +94,13 @@ public interface IHotelAccess {
      * @return
      */
     public String getSecionClave(String usuario);
+
     public String getSecionTipo(String usuario);
 
-    public String addHotel(Hotel hotel,String usuario);
-    public String updateHotel(Hotel hotel,String usuario);
+    public String addHotel(Hotel hotel, String usuario);
+
+    public String updateHotel(Hotel hotel, String usuario);
+
     /**
      * Adicionar una nueva persona a la base de datos
      *
@@ -103,6 +109,23 @@ public interface IHotelAccess {
      * @return
      */
     public String addPersona(Persona persona, String tipo);
-    
-    public ArrayList<Integer> getReserva();
+
+    public ArrayList<Reserva> getReserva();
+
+    /**
+     *
+     * @param habitacion
+     * @return
+     */
+    public String deleteHabitacion(Habitacion habitacion);
+
+    public String UpdatePersona(Persona persona, String tipo);
+
+    public String deleteHotel(int id_hotel);
+
+    public String deleteReserva(Reserva reserva);
+
+    public String deletePersona(int id, String tipo);
+
+    public String updateReserva(Reserva reserva);
 }
