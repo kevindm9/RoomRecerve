@@ -16,7 +16,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Jose Ricardo
  */
-public class PnlAdmHotelUpdate extends javax.swing.JPanel {
+public class PnlHotelUpdate extends javax.swing.JPanel {
 
     private HotelService service;
     private ArrayList<Hotel> hoteles;
@@ -26,7 +26,7 @@ public class PnlAdmHotelUpdate extends javax.swing.JPanel {
     /**
      * Creates new form PnlAdmHabAdd
      */
-    public PnlAdmHotelUpdate(String usuario) {
+    public PnlHotelUpdate(String usuario) {
         this.usuario = usuario;
         service = new HotelService();
         hoteles = new ArrayList<>();

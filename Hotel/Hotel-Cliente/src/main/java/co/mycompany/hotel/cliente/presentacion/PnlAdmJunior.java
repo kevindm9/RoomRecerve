@@ -184,13 +184,13 @@ public class PnlAdmJunior extends javax.swing.JPanel {
 
     private void bgAdmHabConsultarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabConsultarStateChanged
         // TODO add your handling code here:
-        if (bgAdmHabConsultar.isSelected()) {
-            PnlVistaHabitaciones panelHabVista = new PnlVistaHabitaciones();
-            pnlAdmHabControl.removeAll();
-            pnlAdmHabControl.add(panelHabVista);
-            pnlAdmHabControl.repaint();
-            pnlAdmHabControl.revalidate();
-        }
+//        if (bgAdmHabConsultar.isSelected()) {
+//            PnlHabConsultar panelHabVista = new PnlHabConsultar();
+//            pnlAdmHabControl.removeAll();
+//            pnlAdmHabControl.add(panelHabVista);
+//            pnlAdmHabControl.repaint();
+//            pnlAdmHabControl.revalidate();
+//        }
     }//GEN-LAST:event_bgAdmHabConsultarStateChanged
 
     private void bgAdmHabCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgAdmHabCrearMouseClicked
@@ -200,7 +200,7 @@ public class PnlAdmJunior extends javax.swing.JPanel {
     private void bgAdmHabCrearStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabCrearStateChanged
         // TODO add your handling code here:
         if (bgAdmHabCrear.isSelected()) {
-            PnlAdmHabAdd panelHabAdd = new PnlAdmHabAdd(usuario);
+            PnlHabAdd panelHabAdd = new PnlHabAdd(usuario);
             pnlAdmHabControl.removeAll();
             pnlAdmHabControl.add(panelHabAdd);
             pnlAdmHabControl.repaint();
@@ -211,7 +211,7 @@ public class PnlAdmJunior extends javax.swing.JPanel {
     private void bgAdmHabModificarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bgAdmHabModificarStateChanged
         // TODO add your handling code here:
         if (bgAdmHabModificar.isSelected()) {
-            PnlAdmHabModificar panelHabAdd = new PnlAdmHabModificar(usuario);
+            PnlHabModificar panelHabAdd = new PnlHabModificar(usuario);
             pnlAdmHabControl.removeAll();
             pnlAdmHabControl.add(panelHabAdd);
             pnlAdmHabControl.repaint();

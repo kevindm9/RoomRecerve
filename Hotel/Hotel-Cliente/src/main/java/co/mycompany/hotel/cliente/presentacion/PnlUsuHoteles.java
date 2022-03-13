@@ -16,22 +16,24 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Jose Ricardo
  */
-public class PnlUsuSucursales extends javax.swing.JPanel {
+public class PnlUsuHoteles extends javax.swing.JPanel {
     private FrmMain panel;
     private HotelService service;
     private DefaultTableModel modelo;
-    private ArrayList<Hotel> hoteles = new ArrayList<>();
+    private ArrayList<Hotel> hoteles;
+    private String usuario;
         
 
     /**
      * Creates new form PnlUsuSucursales
      */
-    public PnlUsuSucursales(FrmMain panel) {
-        this.panel=panel;
+    public PnlUsuHoteles(FrmMain panel, String usuario) {
+        this.panel = panel;
         this.service = new HotelService();
+        this.usuario = usuario;
+        hoteles = new ArrayList<>();
         initComponents();
         this.modelo = (DefaultTableModel) tabUsuSucursales.getModel();
-        hoteles = service.getHotels("All_Hotels");
         lanzar();
     }
 
@@ -65,30 +67,36 @@ public class PnlUsuSucursales extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tabUsuSucursales);
+        if (tabUsuSucursales.getColumnModel().getColumnCount() > 0) {
+            tabUsuSucursales.getColumnModel().getColumn(0).setMinWidth(120);
+            tabUsuSucursales.getColumnModel().getColumn(0).setPreferredWidth(120);
+            tabUsuSucursales.getColumnModel().getColumn(0).setMaxWidth(120);
+        }
 
         javax.swing.GroupLayout pnlControlLayout = new javax.swing.GroupLayout(pnlControl);
         pnlControl.setLayout(pnlControlLayout);
         pnlControlLayout.setHorizontalGroup(
             pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
         );
         pnlControlLayout.setVerticalGroup(
             pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlControl, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addGap(0, 720, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(pnlControl, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 422, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(pnlControl, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -102,7 +110,19 @@ public class PnlUsuSucursales extends javax.swing.JPanel {
     }//GEN-LAST:event_tabUsuSucursalesMouseClicked
 
     private void lanzar() {
-
+        
+        hoteles = null;
+        String tipo = service.getSecionTipo(usuario);
+        if(tipo.equals("Junior")){
+            hoteles = service.getHotels(usuario);      
+        }
+        else{
+            hoteles = service.getHotels("All_Hotels");      
+        }
+        if(hoteles ==null){
+            return;
+        }
+        
         tabUsuSucursales.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel dt = new DefaultTableModel() {
             @Override
@@ -122,6 +142,9 @@ public class PnlUsuSucursales extends javax.swing.JPanel {
                 descripcion += "--->Direccion:   " + hoteles.get(i).getDirecccion();
                 descripcion += "<br>--->Ciudad: " + hoteles.get(i).getCiudad();
                 descripcion += "<br>--->Telefono:     "+ hoteles.get(i).getTelefono();
+                if(tipo.equals("Master")){
+                    descripcion += "<br>--->id:     "+ hoteles.get(i).getId();
+                }
                 descripcion += "</body></html>";
 
                 Image imagen = new ImageIcon(hoteles.get(i).getFoto()).getImage();

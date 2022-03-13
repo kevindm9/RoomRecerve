@@ -13,7 +13,7 @@ import co.mycompany.hotel.cliente.domain.services.UserService;
 public class PnlLogin extends javax.swing.JPanel {
 
     private FrmMain panel;
-     private javax.swing.JPanel aux;
+    private javax.swing.JPanel aux;
 
     /**
      * Creates new form PnlLogin
@@ -150,31 +150,29 @@ public class PnlLogin extends javax.swing.JPanel {
         String password = txtLogPassword.getText();
         if(!usuario.equals("All_Hotels")){
             tipo = UserService.autenticacion(usuario, password);
-            panel.cargarUsuario(usuario);
         }
         switch (tipo) {
-            case "Master":    
+            case "Master":
+                panel.cargarUsuario(usuario);
                 panel.cargarAdmMaster();
                 break;
             case "Junior":
+                panel.cargarUsuario(usuario);
                 panel.cargarAdmJunior();
                 break;
             case "Cliente":
+                panel.cargarUsuario(usuario);
                 panel.cargarCliente();
                 break;
             default:
-                panel.cargarUsuario("");
-                panel.cargarCliente();
-                System.out.println("No se pudo conectar");
+                panel.cargarLogin();
         }
 
     }//GEN-LAST:event_btnLogIniciarActionPerformed
 
     private void btnLogRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogRegistrarseActionPerformed
         // TODO add your handling code here:
-           panel.cargarRegistrar("Cliente");
-           
-        
+           panel.cargarRegistrar("Cliente");   
     }//GEN-LAST:event_btnLogRegistrarseActionPerformed
 
 
