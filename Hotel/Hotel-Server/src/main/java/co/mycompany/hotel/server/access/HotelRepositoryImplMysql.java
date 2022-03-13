@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  * Repositorio de Clientes en MySWL
  *
@@ -193,7 +192,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     }
 
     @Override
-    public String addReserva(int idHotel, Habitacion habitacion,Date fecha_inicio, Date fecha_fin, Persona sesion) {
+    public String addReserva(int idHotel, Habitacion habitacion, Date fecha_inicio, Date fecha_fin, Persona sesion) {
         try {
             this.connect();
             int cont;
@@ -209,7 +208,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             pstmt.setString(cont, fecha_inicio.toString());
             cont++;
             pstmt.setString(cont, fecha_fin.toString());
-            System.out.println("psmt :"+pstmt.toString());
+            System.out.println("psmt :" + pstmt.toString());
             pstmt.executeUpdate();
             pstmt.close();
             this.disconnect();
@@ -228,7 +227,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
-                Reserva reserva=new Reserva();
+                Reserva reserva = new Reserva();
                 reserva.setId_hotel(Integer.parseInt(res.getString("hotel_id")));
                 reserva.setId_habitacion(Integer.parseInt(res.getString("habt_id")));
                 reserva.setFechaInicio(res.getDate("fecha_inicio"));
@@ -264,9 +263,10 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Habitacion se ha reservado correctamente";
     }
+
     @Override
     public String deleteHabitacion(Habitacion habitacion) {
-            try {
+        try {
             this.connect();
             int cont;
             String sql = "delete from habitacion where  habt_id=? and hotel_id=? ";
@@ -283,6 +283,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Habitacion se ha eliminado correctamente";
     }
+
     @Override
     public Persona getPersona(String usuario) {
         Persona p = new Persona();
@@ -394,7 +395,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     }
 
     @Override
-    public String addHotel(Hotel hotel,String usuario) {
+    public String addHotel(Hotel hotel, String usuario) {
         try {
 
             this.connect();
@@ -426,15 +427,18 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
 
         return "Hotel añadido correctamente";
     }
+
     @Override
     public String updatePersona(Persona persona, String tipo) {
         try {
             this.connect();
             int cont;
-            String sql = "UPDATE persona SET persona_tel = ?, persona_dir = ? where persona_id = ?";
+            String sql = "UPDATE persona SET persona_nombre=?, persona_tel = ?, persona_dir = ? where persona_id = ?";
             System.out.println(sql);
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
+            pstmt.setString(cont, persona.getNombre());
+            cont++;
             pstmt.setString(cont, persona.getTelefono());
             cont++;
             pstmt.setString(cont, persona.getDireccion());
@@ -457,15 +461,16 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             pstmt2.executeUpdate();
             pstmt2.close();
             this.disconnect();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
             return "Error, el componente con ese id y nombre ya existe";
         }
         return "Habitacion modificada correctamente";
     }
+
     @Override
-    public String updateHotel(Hotel hotel,String usuario) {
+    public String updateHotel(Hotel hotel, String usuario) {
         try {
             this.connect();
             int cont;
@@ -486,8 +491,8 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             cont++;
             pstmt.setString(cont, hotel.getAdministrador());
             cont++;
-            pstmt.setInt(cont, hotel.getId());  
-            System.out.println("Actualizacion: "+ pstmt.toString());
+            pstmt.setInt(cont, hotel.getId());
+            System.out.println("Actualizacion: " + pstmt.toString());
             pstmt.executeUpdate();
             pstmt.close();
             this.disconnect();
@@ -496,8 +501,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         }
         return "Hotel Actualizado con exito";
     }
-    
-    
+
     @Override
     public String addPersona(Persona persona, String tipo) {
         try {
@@ -573,26 +577,71 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
 
     @Override
     public String deleteHotel(int id_hotel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.connect();
+            int cont;
+            String sql = "delete from hotel where hotel_id=? ";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setInt(cont, id_hotel);
+            pstmt.executeUpdate();
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+        }
+        return "Hotel se ha eliminado correctamente";
     }
 
     @Override
     public String deleteReserva(Reserva reserva) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.connect();
+            int cont;
+            String sql = "delete from reserva where persona_id=? ";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setInt(cont, reserva.getId_persona());
+            pstmt.executeUpdate();
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+        }
+        return "Hotel se ha eliminado correctamente";
     }
 
     @Override
     public String deletePersona(int id, String tipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            this.connect();
+            int cont;
+            String sql2 = "delete from sesion where persona_id=? and ses_rango=? ";
+            PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+            cont = 1;
+            pstmt2.setInt(cont, id);
+            cont++;
+            pstmt2.setString(cont, tipo);
+            pstmt2.executeUpdate();
+            pstmt2.close();
+            System.out.println(id + "  " + tipo);
+            String sql = "delete from persona where persona_id=? ";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setInt(cont, id);
+            pstmt.executeUpdate();
+            pstmt.close();
+
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
+        }
+        return "Persona se ha eliminado correctamente";
     }
 
     @Override
     public String updateReserva(Reserva reserva) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-
-
-
 
 }

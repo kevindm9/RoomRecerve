@@ -178,7 +178,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
     }
     private String deletePersonaRequestJson(int id, String tipo) {
          Protocol protocol = new Protocol();
-        protocol.setResource("habitacionReserva");
+        protocol.setResource("Persona");
         protocol.setAction("eliminar");
         protocol.addParameter("persona_Id", Integer.toString(id));
         protocol.addParameter("Tipo", tipo);

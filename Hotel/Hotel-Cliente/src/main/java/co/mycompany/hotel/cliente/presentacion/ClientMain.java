@@ -24,18 +24,15 @@ public class ClientMain {
     public static void main(String[] args) {
         // TODO code application logic here
         HotelService service = new HotelService();
-//         Persona p1=new Persona();
-//         p1=service.getPersona("kevindm");
-//         System.out.println(p1.getNombre());
-//         ArrayList<Integer> i;
-//         i=service.getReserva();         
+//         Persona p1=new Persona();      
 //        // System.out.println(i.get(0));
 //        Habitacion h=new Habitacion();
-//        h=service.getHabitacion(1);
+//        h=service.getHabitacion(8);
 //        h.setDescripcion("super Mega");
 //        h.setPrecio(500000);
 //        h.setTipo(TipoHabitacion.GRUPAL);
-//      System.out.println(service.ModificarHabitacion(h));
+//        h.setId_hotel(3);
+//      System.out.println(service.deleteHotel(6));
         formPrincipal = new FrmMain();
         formPrincipal.setVisible(true);
     }
