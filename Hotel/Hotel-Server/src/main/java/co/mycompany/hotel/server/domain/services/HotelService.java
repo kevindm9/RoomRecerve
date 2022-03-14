@@ -91,8 +91,11 @@ public class HotelService {
         return repo.getSesionClave(usuario);
     }
 
-    public ArrayList<Reserva> getReserva() {
-        return repo.getReserva();
+    public ArrayList<Reserva> getReservaCliente(int id_cliente) {
+        return repo.getReservaCliente(id_cliente);
+    }
+        public ArrayList<Reserva> getReservaHotel(int id_hotel) {
+        return repo.getReservaHotel(id_hotel);
     }
     public String updatePersona(Persona persona, String tipo){
         

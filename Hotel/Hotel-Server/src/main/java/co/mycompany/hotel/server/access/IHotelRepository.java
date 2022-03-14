@@ -163,8 +163,9 @@ public interface IHotelRepository {
      *
      * @return
      */
-    public ArrayList<Reserva> getReserva();
+    public ArrayList<Reserva> getReservaCliente(int id_cliente);
     
+    public ArrayList<Reserva> getReservaHotel(int id_hotel);
     
      public String deleteHotel(int id_hotel);
      
