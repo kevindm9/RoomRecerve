@@ -219,12 +219,16 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
     }
 
     @Override
-    public ArrayList<Reserva> getReserva() {
+    public ArrayList<Reserva> getReservaCliente(int id_cliente) {
         ArrayList<Reserva> reservas = new ArrayList();
         try {
+            int cont;
             this.connect();
-            String sql = "SELECT * from reserva";
+            String sql = "SELECT * from reserva where  persona_id = ?";
+          
             PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setInt(cont, id_cliente);
             ResultSet res = pstmt.executeQuery();
             while (res.next()) {
                 Reserva reserva = new Reserva();
@@ -665,6 +669,34 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al insertar el registro", ex);
         }
         return "Reserva Actualizado con exito";
+    }
+
+    @Override
+    public ArrayList<Reserva> getReservaHotel(int id_hotel) {
+        ArrayList<Reserva> reservas = new ArrayList();
+        try {
+            int cont;
+            this.connect();
+            String sql = "SELECT * from reserva where  id_hotel= ?";
+          
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            cont = 1;
+            pstmt.setInt(cont, id_hotel);
+            ResultSet res = pstmt.executeQuery();
+            while (res.next()) {
+                Reserva reserva = new Reserva();
+                reserva.setId_hotel(Integer.parseInt(res.getString("hotel_id")));
+                reserva.setId_habitacion(Integer.parseInt(res.getString("habt_id")));
+                reserva.setFechaInicio(res.getDate("fecha_inicio"));
+                reserva.setFechaFin(res.getDate("fecha_fin"));
+                reserva.setId_persona(Integer.parseInt(res.getString("persona_id")));
+            }
+            pstmt.close();
+            this.disconnect();
+        } catch (SQLException ex) {
+            Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar Customer de la base de datos", ex);
+        }
+        return reservas;
     }
 
 }

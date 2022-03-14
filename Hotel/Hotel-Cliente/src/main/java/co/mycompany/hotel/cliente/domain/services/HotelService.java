@@ -133,11 +133,14 @@ public class HotelService extends Subject {
         return service.getPersona(usuario);
     }
 
-    public ArrayList<Reserva> getReserva() {
-        return service.getReserva();
+    public ArrayList<Reserva> getReservaCliente(int id_cliente) {
+        return service.getReservaCliente(id_cliente);
 
     }
+    public ArrayList<Reserva> getReservaHotel(int id_cliente) {
+        return service.getReservaHotel(id_cliente);
 
+    }
     /**
      *
      * @param id

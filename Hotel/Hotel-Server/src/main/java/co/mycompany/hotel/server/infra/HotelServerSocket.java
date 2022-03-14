@@ -1,5 +1,4 @@
 package co.mycompany.hotel.server.infra;
-
 import co.mycompany.hotel.server.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.DiaSemana;
 import co.mycompany.hotel.commons.domain.Hotel;
@@ -32,17 +31,15 @@ import java.time.LocalDate;
  *
  * @author Kevin Morales
  */
-public class HotelServerSocket  extends ServerSocketTemplate {
+public class HotelServerSocket extends ServerSocketTemplate {
 
     /**
      * Servicio de clientes
      */
-    private  HotelService service;
-
+    private HotelService service;
 
     public HotelServerSocket() {
     }
-
 
     /**
      * Procesar la solicitud que proviene de la aplicación cliente
@@ -52,7 +49,7 @@ public class HotelServerSocket  extends ServerSocketTemplate {
      * "{"resource":"restaurante","action":"get","parameters":[{"name":"id","value":"1"}]}"
      *
      */
-     @Override
+    @Override
     protected void processRequest(String requestJson) {
         // Convertir la solicitud a objeto Protocol para poderlo procesar
         Gson gson = new Gson();
@@ -65,26 +62,25 @@ public class HotelServerSocket  extends ServerSocketTemplate {
                     processSetHabitacion(protocolRequest);
                 } else if (protocolRequest.getAction().equals("get")) {
                     processGethabitacion(protocolRequest);
-                } else if(protocolRequest.getAction().equals("modificar")) {
+                } else if (protocolRequest.getAction().equals("modificar")) {
                     processModfhabitacion(protocolRequest);
-                }else if(protocolRequest.getAction().equals("eliminar")) {
+                } else if (protocolRequest.getAction().equals("eliminar")) {
                     processDeletehabitacion(protocolRequest);
                 }
                 break;
-                
+
             case "Hoteles":
                 if (protocolRequest.getAction().equals("get")) {
                     // Obtener datos de hoteles
                     processGetHotel(protocolRequest);
-                }else if(protocolRequest.getAction().equals("eliminar")) {
-                   processDeletehotel(protocolRequest);
+                } else if (protocolRequest.getAction().equals("eliminar")) {
+                    processDeletehotel(protocolRequest);
                 }
                 break;
-                
+
             case "Hotel":
                 processHotel(protocolRequest, protocolRequest.getAction());
                 break;
-                
 
             case "habitaciones":
                 if (protocolRequest.getAction().equals("getReserva")) {
@@ -106,9 +102,11 @@ public class HotelServerSocket  extends ServerSocketTemplate {
                     processDeleteReserva(protocolRequest);
                 } else if (protocolRequest.getAction().equals("set")) {
                     processSetHabitacionReserva(protocolRequest);
-                } else if (protocolRequest.getAction().equals("get")) {
+                } else if (protocolRequest.getAction().equals("getCliente")) {
                     processGetReserva(protocolRequest);
-                }else if (protocolRequest.getAction().equals("modificar")) {
+                } else if (protocolRequest.getAction().equals("getHotel")) {
+                    processGetHotelReserva(protocolRequest);
+                } else if (protocolRequest.getAction().equals("modificar")) {
                     processmodfReserva(protocolRequest);
                 }
                 break;
@@ -117,9 +115,9 @@ public class HotelServerSocket  extends ServerSocketTemplate {
                     processSetPersona(protocolRequest);
                 } else if (protocolRequest.getAction().equals("get")) {
                     processGetPersona(protocolRequest);
-                }else if (protocolRequest.getAction().equals("modificar")) {
+                } else if (protocolRequest.getAction().equals("modificar")) {
                     processModfPersona(protocolRequest);
-                }else if (protocolRequest.getAction().equals("eliminar")) {
+                } else if (protocolRequest.getAction().equals("eliminar")) {
                     processDeletPersona(protocolRequest);
                 }
                 break;
@@ -166,27 +164,28 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         String response = service.addReserva(idHotel, habitacion, fecha_inicio, fecha_fin, sesion);
         respond(response);
     }
-     private void processmodfReserva(Protocol protocolRequest) {
-        Reserva reserva=new Reserva();
+
+    private void processmodfReserva(Protocol protocolRequest) {
+        Reserva reserva = new Reserva();
         int cont = 0;
         reserva.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         reserva.setId_habitacion(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         reserva.setId_hotel(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         reserva.setFechaInicio(Date.valueOf(protocolRequest.getParameters().get(cont++).getValue()));
-         reserva.setFechaFin(Date.valueOf(protocolRequest.getParameters().get(cont++).getValue()));
-         reserva.setId_persona(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
-         String response = service.updateReserva(reserva);
+        reserva.setFechaFin(Date.valueOf(protocolRequest.getParameters().get(cont++).getValue()));
+        reserva.setId_persona(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
+        String response = service.updateReserva(reserva);
         respond(response);
-        
-        
+
     }
 
     private void processDeletehotel(Protocol protocolRequest) {
-       int cont=0;
-       int id_hotel=Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
-       String response = service.deleteHotel(id_hotel);
+        int cont = 0;
+        int id_hotel = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
+        String response = service.deleteHotel(id_hotel);
         respond(response);
     }
+
     /**
      * Procesa la solicitud de agregar un Habitacion
      *
@@ -199,6 +198,7 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         String response = service.deleteReserva(reserva);
         respond(response);
     }
+
     private void processDeletehabitacion(Protocol protocolRequest) {
         Habitacion habitacion = new Habitacion();
         int cont = 0;
@@ -207,15 +207,17 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         String response = service.deleteHabitacion(habitacion);
         respond(response);
     }
+
     private void processDeletPersona(Protocol protocolRequest) {
         int cont = 0;
         int id;
         String tipo;
-        id=Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
-        tipo=protocolRequest.getParameters().get(cont++).getValue();
+        id = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
+        tipo = protocolRequest.getParameters().get(cont++).getValue();
         String response = service.deletePersona(id, tipo);
         respond(response);
     }
+
     private void processGethabitacion(Protocol protocolRequest) {
         int cont = 0;
         int id = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
@@ -233,22 +235,26 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         int cont = 0;
         int idHotel = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());
         Date fechaInicio = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
-        Date fechafin = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());       
+        Date fechafin = Date.valueOf(protocolRequest.getParameters().get(cont++).getValue());
         ArrayList<Habitacion> habitacion = service.getHabitaciones(idHotel, fechaInicio, fechafin);
         String response = objectToJSON(habitacion);
         respond(response);
     }
 
-
-
     private void processGetReserva(Protocol protocolRequest) {
-        ArrayList<Reserva> res= service.getReserva();
+        int cont = 0;
+        int id_cliente = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());;
+        ArrayList<Reserva> res = service.getReservaCliente(id_cliente);
         String response = objectToJSON(res);
         respond(response);
     }
-
-
-
+    private void processGetHotelReserva(Protocol protocolRequest) {
+         int cont = 0;
+        int id_cliente = Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue());;
+        ArrayList<Reserva> res = service.getReservaHotel(id_cliente);
+        String response = objectToJSON(res);
+        respond(response);
+    }
     /**
      * Procesa la solicitud de agregar un Habitacion
      *
@@ -260,14 +266,10 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         respond(response);
     }
 
-
-
     private void processGetPersona(Protocol protocolRequest) {
         Persona persona = service.getPersona(protocolRequest.getParameters().get(0).getValue());
         respond(objectToJSON(persona));
     }
-
-
 
     private void processGetSesionTipo(Protocol protocolRequest) {
         String tipo = service.getSesionTipo(protocolRequest.getParameters().get(0).getValue());
@@ -278,8 +280,9 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         String clave = service.getSesionClave(protocolRequest.getParameters().get(0).getValue());
         respond(clave);
     }
+
     private void processModfhabitacion(Protocol protocolRequest) {
-       
+
         Habitacion habitacion = new Habitacion();
         int cont = 0;
         habitacion.setId(Integer.parseInt(protocolRequest.getParameters().get(cont).getValue()));
@@ -296,9 +299,10 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         String response = service.ModificarHabitacion(habitacion);
         respond(response);
     }
+
     private void processModfPersona(Protocol protocolRequest) {
-        Persona persona=new Persona();
-         String tipo;
+        Persona persona = new Persona();
+        String tipo;
         int cont = 0;
         persona.setId(Integer.parseInt(protocolRequest.getParameters().get(cont++).getValue()));
         persona.setNombre(protocolRequest.getParameters().get(cont++).getValue());
@@ -310,6 +314,7 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         String response = service.updatePersona(persona, tipo);
         respond(response);
     }
+
     /**
      * Procesa la solicitud de agregar un Habitacion
      *
@@ -361,11 +366,10 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         hotel.setFoto(protocolRequest.getParameters().get(cont).getValue());
         cont++;
         usuario = protocolRequest.getParameters().get(cont).getValue();
-        if (metodo.equals("add")){
-            response = service.addHotel(hotel,usuario);
-        }
-        else if(metodo.equals("update")){
-            response = service.updateHotel(hotel,usuario);
+        if (metodo.equals("add")) {
+            response = service.addHotel(hotel, usuario);
+        } else if (metodo.equals("update")) {
+            response = service.updateHotel(hotel, usuario);
         }
         respond(response);
     }
@@ -380,7 +384,6 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         }
     }
 
-
     /**
      * @return the service
      */
@@ -394,6 +397,7 @@ public class HotelServerSocket  extends ServerSocketTemplate {
     public void setService(HotelService service) {
         this.service = service;
     }
+
     @Override
     protected ServerSocketTemplate init() {
         PORT = Integer.parseInt(Utilities.loadProperty("server.port"));
@@ -401,15 +405,8 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         IHotelRepository repository = Factory.getInstance().getRepository();
         this.setService(new HotelService(repository));
         return this;
-    
+
     }
-
-
-
-
-
-
-
 
 
 

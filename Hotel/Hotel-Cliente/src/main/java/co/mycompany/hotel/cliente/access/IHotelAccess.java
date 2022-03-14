@@ -110,7 +110,9 @@ public interface IHotelAccess {
      */
     public String addPersona(Persona persona, String tipo);
 
-    public ArrayList<Reserva> getReserva();
+    public ArrayList<Reserva> getReservaCliente(int id_cliente);
+
+    public ArrayList<Reserva> getReservaHotel(int id_hotel);
 
     /**
      *

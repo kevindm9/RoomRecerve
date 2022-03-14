@@ -23,6 +23,8 @@ public class ClientMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        HotelService service = new HotelService();
+//         Persona p1=new Persona();
 //        HotelService service = new HotelService();
 //        Persona persona = service.getPersona("jose");
 //        System.out.println(persona.toString());
@@ -39,7 +41,13 @@ public class ClientMain {
 //      System.out.println(service.ModificarHabitacion(h));
         formPrincipal = new FrmMain();
         formPrincipal.setVisible(true);
-
+//         Persona p1=new Persona();
+//         p1=service.getPersona("Cami");
+//         p1.setUsuario("Cami");
+//         p1.setClave("0000");
+//         System.out.println(service.updatePersona(p1, "Cliente"));
+         
+        
 
     }
 }

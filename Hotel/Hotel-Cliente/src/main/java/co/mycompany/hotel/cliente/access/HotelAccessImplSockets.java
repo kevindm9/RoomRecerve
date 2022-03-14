@@ -712,12 +712,42 @@ public class HotelAccessImplSockets implements IHotelAccess {
         }
         return habitacion;
     }
+    @Override
+    public ArrayList<Reserva> getReservaHotel(int id_hotel) {
+         String jsonResponse = null;
+        //{"resource":"habitacions","action":"get","parameters":[{"name":"rest_id","value":"1"},{"name":"dia","value":"LUNES"}]}
+        String requestJson = getReservaHotelRequestJson(id_hotel);
+        try {
+            mySocket.connect();
+            jsonResponse = mySocket.sendStream(requestJson);
+            mySocket.closeStream();
+            mySocket.disconnect();
+
+        } catch (IOException ex) {
+            Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.SEVERE, "No hubo conexión con el servidor", ex);
+        }
+        if (jsonResponse == null || jsonResponse.equals("[]")) {
+            return new ArrayList<>();
+        } else {
+            if (jsonResponse.contains("error")) {
+                //Devolvió algún error                
+                Logger.getLogger(HotelAccessImplSockets.class.getName()).log(Level.INFO, jsonResponse);
+                return new ArrayList<>();
+            } else {
+                if (jsonResponse.contains("vacio")) {
+                    return null;
+                }
+                //Extrajo correctamente los platos para devolver un arrayList de estos
+                return jsonToArrayReserva(jsonResponse);
+            }
+        }
+    }
 
     @Override
-    public ArrayList<Reserva> getReserva() {
+    public ArrayList<Reserva> getReservaCliente(int id_cliente) {
         String jsonResponse = null;
         //{"resource":"habitacions","action":"get","parameters":[{"name":"rest_id","value":"1"},{"name":"dia","value":"LUNES"}]}
-        String requestJson = getReservaRequestJson();
+        String requestJson = getReservaRequestJson(id_cliente);
         try {
             mySocket.connect();
             jsonResponse = mySocket.sendStream(requestJson);
@@ -992,36 +1022,25 @@ public class HotelAccessImplSockets implements IHotelAccess {
         return requestJson;
     }
 
-    private String getReservaRequestJson() {
+    private String getReservaRequestJson(int id_cliente) {
         Protocol protocol = new Protocol();
         protocol.setResource("habitacionReserva");
-        protocol.setAction("get");
+        protocol.setAction("getCliente");
+        protocol.addParameter("Id", Integer.toString(id_cliente));
         Gson gson = new Gson();
         String requestJson = gson.toJson(protocol);
         return requestJson;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private String getReservaHotelRequestJson(int id_hotel) {
+        Protocol protocol = new Protocol();
+        protocol.setResource("habitacionReserva");
+        protocol.setAction("getHotel");
+        protocol.addParameter("Id", Integer.toString(id_hotel));
+        Gson gson = new Gson();
+        String requestJson = gson.toJson(protocol);
+        return requestJson;
+    }
 
 
 
