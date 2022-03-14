@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Jose Ricardo
  */
 public class PnlUsuHabitaciones extends javax.swing.JPanel {
+
     private FrmMain panel;
     private final HotelService service;
     private ArrayList<Habitacion> habitaciones;
@@ -39,7 +40,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     /**
      * Creates new form PnlVistaHabitaciones
      */
-    public PnlUsuHabitaciones(FrmMain panel, int id_hotel,String usuario, Date fechaIni, Date fechaFin) {
+    public PnlUsuHabitaciones(FrmMain panel, int id_hotel, String usuario, Date fechaIni, Date fechaFin) {
         this.usuario = usuario;
         this.panel = panel;
         this.id_hotel = id_hotel;
@@ -51,7 +52,6 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         this.modelo = (DefaultTableModel) tabUsuHabitaciones.getModel();
         cargarHabitaciones();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -161,33 +161,54 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
 
     private void tabUsuHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabUsuHabitacionesMouseClicked
         // TODO add your handling code here:
+
         int fila = tabUsuHabitaciones.getSelectedRow();
-        int opc =JOptionPane.showConfirmDialog(null, "Reservar habitacion", "Desea reservar la habitacion?", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE);
-        if (opc == 0){
-            
-            try{
-                
-                usuario = panel.getUsuario();
-                if(service.getPersona(usuario).getId()!= 0){    
-                    service.addReserva(id_hotel, habitaciones.get(fila),fechaIni,fechaFin,service.getPersona(usuario));     
-                    cargarHabitaciones();
-                }
-                else{
+        int opc = JOptionPane.showConfirmDialog(null, "Reservar habitacion", "Desea reservar la habitacion?", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (opc == 0) {
+            try {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String formattedDate = simpleDateFormat.format(dccUsuHabInicio.getDate());
+                //dccUsuHabInicio.getDateFormatString()
+                fechaIni = Date.valueOf(formattedDate);
+                formattedDate = simpleDateFormat.format(dccUsuHabFin.getDate());
+                fechaFin = Date.valueOf(formattedDate);
+
+                if (fechaFin.before(fechaIni) || fechaIni.before(new Date(System.currentTimeMillis()))) {
                     JOptionPane.showMessageDialog(null,
-                    "Debe iniciar seccion para reservar la habitacion",
-                    "Login",
-                    JOptionPane.INFORMATION_MESSAGE);
+                            "Periodo de tiempo no valido", "Datos invalidos",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    return;
                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Debe selecionar primero una fecha antes de reservar");
+                return;
             }
-            catch(Exception e){
-                System.out.println("Mando una excecion");
+
+            try {
+
+                usuario = panel.getUsuario();
+                if (service.getPersona(usuario).getId() != 0) {
+
+                    int pago = JOptionPane.showConfirmDialog(null, "Presione YES para simular que el pago fue recibido en la plataforma", "Simulacion de PAGO", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+                    if (pago == 0) {
+
+                        service.addReserva(id_hotel, habitaciones.get(fila), fechaIni, fechaFin, service.getPersona(usuario));
+                        cargarHabitaciones();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "Debe iniciar seccion para reservar la habitacion",
+                            "Login",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error de conexion");
             }
-        } 
+        }
+
     }//GEN-LAST:event_tabUsuHabitacionesMouseClicked
 
-    
-    
-    
+
     private void btnUsuHabRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuHabRegresarActionPerformed
         // TODO add your handling code here:
         panel.mostrarHoteles();
@@ -202,40 +223,39 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         fechaIni = Date.valueOf(formattedDate);
         formattedDate = simpleDateFormat.format(dccUsuHabFin.getDate());
         fechaFin = Date.valueOf(formattedDate);
-        
-        if(fechaFin.before(fechaIni)){
+
+        if (fechaFin.before(fechaIni) || fechaIni.before(new Date(System.currentTimeMillis()))) {
             JOptionPane.showMessageDialog(null,
-                "Periodo de tiempo no valido","Datos invalidos",
-                JOptionPane.INFORMATION_MESSAGE);
+                    "Periodo de tiempo no valido", "Datos invalidos",
+                    JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
+
         cargarHabitaciones();
-        
+
     }//GEN-LAST:event_btnUsuHabBuscarActionPerformed
 
-    public void cargarHabitaciones(){
-        
-        if ((fechaIni.after(Date.valueOf("1900-01-01")))&&(fechaFin.after(Date.valueOf("1900-01-01")))){
+    public void cargarHabitaciones() {
+
+        if ((fechaIni.after(Date.valueOf("1900-01-01"))) && (fechaFin.after(Date.valueOf("1900-01-01")))) {
             dccUsuHabInicio.setDate(fechaIni);
             dccUsuHabFin.setDate(fechaFin);
         }
-        
-        
-        for (int i = modelo.getRowCount()-1; i>=0;i--){
+
+        for (int i = modelo.getRowCount() - 1; i >= 0; i--) {
             modelo.removeRow(i);
         }
 
         habitaciones.clear();
-        habitaciones = service.getHabitaciones(id_hotel,fechaIni,fechaFin);
-        
-        if(habitaciones.isEmpty()){
+        habitaciones = service.getHabitaciones(id_hotel, fechaIni, fechaFin);
+
+        if (habitaciones.isEmpty()) {
             JOptionPane.showMessageDialog(null,
-                "No se encontraron habitaciones","Advertencia",
-                JOptionPane.INFORMATION_MESSAGE);
+                    "No se encontraron habitaciones", "Advertencia",
+                    JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
+
         tabUsuHabitaciones.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel dt = new DefaultTableModel() {
             @Override
@@ -251,10 +271,10 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
                 Object fila[] = new Object[2];
 
                 String descripcion = "<html>";
-                descripcion += "<body><h3>"+habitaciones.get(i).getDescripcion()+"</h3>";
+                descripcion += "<body><h3>" + habitaciones.get(i).getDescripcion() + "</h3>";
                 descripcion += "--->Tipo:   " + habitaciones.get(i).getTipo().toString();
                 descripcion += "<br>--->Precio: " + habitaciones.get(i).getPrecio();
-                descripcion += "<br>--->Id:     "+ habitaciones.get(i).getId();
+                descripcion += "<br>--->Id:     " + habitaciones.get(i).getId();
                 descripcion += "</body></html>";
 
                 Image imagen = new ImageIcon(habitaciones.get(i).getFoto()).getImage();
@@ -265,7 +285,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
 
                     fila[0] = new JLabel(icono);
                     fila[1] = new JLabel(descripcion);
-                     
+
                     modelo.addRow(fila);
 
                 } catch (Exception ex) {

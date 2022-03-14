@@ -388,6 +388,11 @@ public class FrmMain extends javax.swing.JFrame {
         jmmMainReservas.add(jmiMainResModificar);
 
         jmiMainResEliminar.setText("Eliminar reserva");
+        jmiMainResEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainResEliminarActionPerformed(evt);
+            }
+        });
         jmmMainReservas.add(jmiMainResEliminar);
 
         jmbMainControl.add(jmmMainReservas);
@@ -645,6 +650,16 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.repaint();
         pnlMainControl.revalidate();
     }//GEN-LAST:event_jmiMainResModificarActionPerformed
+
+    private void jmiMainResEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainResEliminarActionPerformed
+        // TODO add your handling code here:
+        PnlResEliminar panelaux = new PnlResEliminar(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelaux);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+        
+    }//GEN-LAST:event_jmiMainResEliminarActionPerformed
 
     private void consultarHabitaciones() {
         PnlHabConsultar panelHabVista = new PnlHabConsultar(usuario);

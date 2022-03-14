@@ -9,6 +9,7 @@ import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Reserva;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -255,16 +256,28 @@ public class PnlResUpdate extends javax.swing.JPanel {
             actReserva.setId_habitacion(Integer.parseInt(txtResUpIdHabitacion.getText()));
             actReserva.setFechaInicio(fechaIni);
             actReserva.setFechaFin(fechaFin);
+            if (fechaFin.before(fechaIni) || fechaIni.before(new Date(System.currentTimeMillis()))) {
+                JOptionPane.showMessageDialog(null,
+                        "Periodo de tiempo no valido", "Datos invalidos",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            if (service.getHabitacion(actReserva.getId_habitacion()).getId_hotel() != actReserva.getId_hotel()) {
+                JOptionPane.showMessageDialog(null, "La habitacion no pertecece al hotel");
+                return;
+            }
             if (JOptionPane.showConfirmDialog(null,
                     "Esta seguro de modificar la reserva con id " + actReserva.getId() + "? Esta opción debe acordada con Cliente",
                     "Modificar Reserva", JOptionPane.OK_CANCEL_OPTION) == 0) {
-                //JOptionPane.showMessageDialog(null, service.updateReserva(actReserva), "Alerta", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, service.updateReserva(actReserva), "Alerta", JOptionPane.INFORMATION_MESSAGE);
                 actReserva = null;
                 txtResUpIdHabitacion.setText("");
                 txtResUpIdHotel.setText("");
                 txtResUpIdUsuario.setText("");
                 jdcResUpFechaFin.setDate(null);
                 jdcResUpFechaIni.setDate(null);
+                cargarReservas();
             }
 
         } catch (Exception e) {

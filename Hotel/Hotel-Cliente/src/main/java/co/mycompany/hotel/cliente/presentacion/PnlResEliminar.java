@@ -21,7 +21,7 @@ public class PnlResEliminar extends javax.swing.JPanel {
     private HotelService service;
     private String usuario;
     private ArrayList<Reserva> reservas;
-    private Reserva actReserva;
+    private Reserva eliReserva;
 
     /**
      * Creates new form pnlResUpdate
@@ -31,8 +31,8 @@ public class PnlResEliminar extends javax.swing.JPanel {
         this.usuario = usuario;
         this.reservas = new ArrayList<>();
         initComponents();
-        btnResUpActualizar.setEnabled(false);
-        btnResUpBuscar.setEnabled(false);
+        btnResEliEliminar.setEnabled(false);
+        btnResEliBuscar.setEnabled(false);
         cargarReservas();
     }
 
@@ -43,7 +43,7 @@ public class PnlResEliminar extends javax.swing.JPanel {
                 for (Hotel hotel : hoteles) {
                     reservas.addAll(service.getReservaHotel(hotel.getId()));
                 }
-                btnResUpBuscar.setEnabled(true);
+                btnResEliBuscar.setEnabled(true);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la conexion");
@@ -60,7 +60,7 @@ public class PnlResEliminar extends javax.swing.JPanel {
     private void initComponents() {
 
         pnlResEliminar = new javax.swing.JPanel();
-        pnlResEliEliminar = new javax.swing.JPanel();
+        pnlResEliDatos = new javax.swing.JPanel();
         txtResEliIdUsuario = new javax.swing.JTextField();
         txtResEliIdHotel = new javax.swing.JTextField();
         txtResEliIdHabitacion = new javax.swing.JTextField();
@@ -71,18 +71,20 @@ public class PnlResEliminar extends javax.swing.JPanel {
         lbResEliIdHabitacion = new javax.swing.JLabel();
         lbResEliFechaIni = new javax.swing.JLabel();
         lbResEliFechaFin = new javax.swing.JLabel();
-        pnlResUpActualizar = new javax.swing.JPanel();
-        txtResUpIdReserva = new javax.swing.JTextField();
-        lbResUpIdReserva = new javax.swing.JLabel();
-        btnResUpBuscar = new javax.swing.JButton();
-        btnResUpActualizar = new javax.swing.JButton();
+        pnlResEliEliminar = new javax.swing.JPanel();
+        txtResEliIdReserva = new javax.swing.JTextField();
+        lbResEliIdReserva = new javax.swing.JLabel();
+        btnResEliBuscar = new javax.swing.JButton();
+        btnResEliEliminar = new javax.swing.JButton();
         lbResEliTitulo = new javax.swing.JLabel();
 
-        pnlResEliEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la reserva"));
+        pnlResEliDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la reserva"));
 
         txtResEliIdUsuario.setEditable(false);
 
         txtResEliIdHotel.setEditable(false);
+
+        txtResEliIdHabitacion.setEditable(false);
 
         lbResEliIdUsuario.setText("id Usuario");
 
@@ -94,20 +96,20 @@ public class PnlResEliminar extends javax.swing.JPanel {
 
         lbResEliFechaFin.setText("Fecha Fin");
 
-        javax.swing.GroupLayout pnlResEliEliminarLayout = new javax.swing.GroupLayout(pnlResEliEliminar);
-        pnlResEliEliminar.setLayout(pnlResEliEliminarLayout);
-        pnlResEliEliminarLayout.setHorizontalGroup(
-            pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResEliEliminarLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlResEliDatosLayout = new javax.swing.GroupLayout(pnlResEliDatos);
+        pnlResEliDatos.setLayout(pnlResEliDatosLayout);
+        pnlResEliDatosLayout.setHorizontalGroup(
+            pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResEliDatosLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbResEliIdUsuario)
                     .addComponent(lbResEliIdHotel)
                     .addComponent(lbResEliIdHabitacion)
                     .addComponent(lbResEliFechaIni)
                     .addComponent(lbResEliFechaFin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtResEliIdUsuario)
                     .addComponent(txtResEliIdHotel)
                     .addComponent(txtResEliIdHabitacion)
@@ -115,90 +117,90 @@ public class PnlResEliminar extends javax.swing.JPanel {
                     .addComponent(jdcResEliFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(33, 33, 33))
         );
-        pnlResEliEliminarLayout.setVerticalGroup(
-            pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlResEliEliminarLayout.createSequentialGroup()
+        pnlResEliDatosLayout.setVerticalGroup(
+            pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResEliDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlResEliEliminarLayout.createSequentialGroup()
-                        .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlResEliDatosLayout.createSequentialGroup()
+                        .addGroup(pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtResEliIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbResEliIdUsuario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtResEliIdHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbResEliIdHotel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtResEliIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbResEliIdHabitacion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jdcResEliFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbResEliFechaIni))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnlResEliDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jdcResEliFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbResEliFechaFin))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlResUpActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar y actualizar reserva"));
+        pnlResEliEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar y actualizar reserva"));
 
-        txtResUpIdReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtResEliIdReserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtResUpIdReservaMouseClicked(evt);
+                txtResEliIdReservaMouseClicked(evt);
             }
         });
-        txtResUpIdReserva.addActionListener(new java.awt.event.ActionListener() {
+        txtResEliIdReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtResUpIdReservaActionPerformed(evt);
+                txtResEliIdReservaActionPerformed(evt);
             }
         });
 
-        lbResUpIdReserva.setText("id Reserva");
+        lbResEliIdReserva.setText("id Reserva");
 
-        btnResUpBuscar.setText("Buscar");
-        btnResUpBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnResEliBuscar.setText("Buscar");
+        btnResEliBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResUpBuscarActionPerformed(evt);
+                btnResEliBuscarActionPerformed(evt);
             }
         });
 
-        btnResUpActualizar.setText("Actualizar");
-        btnResUpActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnResEliEliminar.setText("Eliminar");
+        btnResEliEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResUpActualizarActionPerformed(evt);
+                btnResEliEliminarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnlResUpActualizarLayout = new javax.swing.GroupLayout(pnlResUpActualizar);
-        pnlResUpActualizar.setLayout(pnlResUpActualizarLayout);
-        pnlResUpActualizarLayout.setHorizontalGroup(
-            pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResUpActualizarLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlResEliEliminarLayout = new javax.swing.GroupLayout(pnlResEliEliminar);
+        pnlResEliEliminar.setLayout(pnlResEliEliminarLayout);
+        pnlResEliEliminarLayout.setHorizontalGroup(
+            pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResEliEliminarLayout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(lbResUpIdReserva)
+                .addComponent(lbResEliIdReserva)
                 .addGap(18, 18, 18)
-                .addComponent(txtResUpIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtResEliIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
-            .addGroup(pnlResUpActualizarLayout.createSequentialGroup()
+            .addGroup(pnlResEliEliminarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnResUpActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                    .addComponent(btnResUpBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnResEliEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(btnResEliBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlResUpActualizarLayout.setVerticalGroup(
-            pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlResUpActualizarLayout.createSequentialGroup()
+        pnlResEliEliminarLayout.setVerticalGroup(
+            pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResEliEliminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtResUpIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbResUpIdReserva))
+                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtResEliIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbResEliIdReserva))
                 .addGap(23, 23, 23)
-                .addComponent(btnResUpBuscar)
+                .addComponent(btnResEliBuscar)
                 .addGap(18, 18, 18)
-                .addComponent(btnResUpActualizar)
+                .addComponent(btnResEliEliminar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -211,9 +213,9 @@ public class PnlResEliminar extends javax.swing.JPanel {
             pnlResEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlResEliminarLayout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
-                .addComponent(pnlResUpActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
                 .addComponent(pnlResEliEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(pnlResEliDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
             .addGroup(pnlResEliminarLayout.createSequentialGroup()
                 .addGap(301, 301, 301)
@@ -227,8 +229,8 @@ public class PnlResEliminar extends javax.swing.JPanel {
                 .addComponent(lbResEliTitulo)
                 .addGap(27, 27, 27)
                 .addGroup(pnlResEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlResUpActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlResEliEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlResEliEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlResEliDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -244,48 +246,42 @@ public class PnlResEliminar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnResUpActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResUpActualizarActionPerformed
+    private void btnResEliEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResEliEliminarActionPerformed
         // TODO add your handling code here:
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String formattedDate = simpleDateFormat.format(jdcResEliFechaIni.getDate());
-            Date fechaIni = Date.valueOf(formattedDate);
-            formattedDate = simpleDateFormat.format(jdcResEliFechaFin.getDate());
-            Date fechaFin = Date.valueOf(formattedDate);
-            actReserva.setId_habitacion(Integer.parseInt(txtResEliIdHabitacion.getText()));
-            actReserva.setFechaInicio(fechaIni);
-            actReserva.setFechaFin(fechaFin);
+
             if (JOptionPane.showConfirmDialog(null,
-                    "Esta seguro de modificar la reserva con id " + actReserva.getId() + "? Esta opción debe acordada con Cliente",
-                    "Modificar Reserva", JOptionPane.OK_CANCEL_OPTION) == 0) {
-                //JOptionPane.showMessageDialog(null, service.updateReserva(actReserva), "Alerta", JOptionPane.INFORMATION_MESSAGE);
-                actReserva = null;
+                    "Esta seguro de eliminar la reserva con id " + eliReserva.getId() + "? Esta opción debe notificada al Cliente",
+                    "Eliminar Reserva", JOptionPane.OK_CANCEL_OPTION) == 0) {
+                JOptionPane.showMessageDialog(null, service.deleteReserva(eliReserva), "Alerta", JOptionPane.INFORMATION_MESSAGE);
+                eliReserva = null;
                 txtResEliIdHabitacion.setText("");
                 txtResEliIdHotel.setText("");
                 txtResEliIdUsuario.setText("");
                 jdcResEliFechaFin.setDate(null);
                 jdcResEliFechaIni.setDate(null);
+                btnResEliEliminar.setEnabled(false);
             }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Datos invalidos");
         }
-    }//GEN-LAST:event_btnResUpActualizarActionPerformed
+    }//GEN-LAST:event_btnResEliEliminarActionPerformed
 
-    private void btnResUpBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResUpBuscarActionPerformed
+    private void btnResEliBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResEliBuscarActionPerformed
         // TODO add your handling code here:
         if (reservas != null) {
             try {
-                int id = Integer.parseInt(txtResUpIdReserva.getText());
+                int id = Integer.parseInt(txtResEliIdReserva.getText());
                 for (Reserva reserva : reservas) {
                     if (reserva.getId() == id) {
-                        actReserva = reserva;
-                        txtResEliIdHabitacion.setText("" + actReserva.getId_habitacion());
-                        txtResEliIdHotel.setText("" + actReserva.getId_hotel());
-                        txtResEliIdUsuario.setText("" + actReserva.getId_persona());
-                        jdcResEliFechaFin.setDate(actReserva.getFechaFin());
-                        jdcResEliFechaIni.setDate(actReserva.getFechaInicio());
-                        btnResUpActualizar.setEnabled(true);
+                        eliReserva = reserva;
+                        txtResEliIdHabitacion.setText("" + eliReserva.getId_habitacion());
+                        txtResEliIdHotel.setText("" + eliReserva.getId_hotel());
+                        txtResEliIdUsuario.setText("" + eliReserva.getId_persona());
+                        jdcResEliFechaFin.setDate(eliReserva.getFechaFin());
+                        jdcResEliFechaIni.setDate(eliReserva.getFechaInicio());
+                        btnResEliEliminar.setEnabled(true);
                         return;
                     }
                 }
@@ -293,37 +289,37 @@ public class PnlResEliminar extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Id invalida");
             }
         }
-    }//GEN-LAST:event_btnResUpBuscarActionPerformed
+    }//GEN-LAST:event_btnResEliBuscarActionPerformed
 
-    private void txtResUpIdReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResUpIdReservaActionPerformed
+    private void txtResEliIdReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResEliIdReservaActionPerformed
         // TODO add your handling code here:
-        btnResUpActualizar.setEnabled(false);
-    }//GEN-LAST:event_txtResUpIdReservaActionPerformed
+        btnResEliEliminar.setEnabled(false);
+    }//GEN-LAST:event_txtResEliIdReservaActionPerformed
 
-    private void txtResUpIdReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtResUpIdReservaMouseClicked
+    private void txtResEliIdReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtResEliIdReservaMouseClicked
         // TODO add your handling code here:
-        btnResUpActualizar.setEnabled(false);
-    }//GEN-LAST:event_txtResUpIdReservaMouseClicked
+        btnResEliEliminar.setEnabled(false);
+    }//GEN-LAST:event_txtResEliIdReservaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnResUpActualizar;
-    private javax.swing.JButton btnResUpBuscar;
+    private javax.swing.JButton btnResEliBuscar;
+    private javax.swing.JButton btnResEliEliminar;
     private com.toedter.calendar.JDateChooser jdcResEliFechaFin;
     private com.toedter.calendar.JDateChooser jdcResEliFechaIni;
     private javax.swing.JLabel lbResEliFechaFin;
     private javax.swing.JLabel lbResEliFechaIni;
     private javax.swing.JLabel lbResEliIdHabitacion;
     private javax.swing.JLabel lbResEliIdHotel;
+    private javax.swing.JLabel lbResEliIdReserva;
     private javax.swing.JLabel lbResEliIdUsuario;
     private javax.swing.JLabel lbResEliTitulo;
-    private javax.swing.JLabel lbResUpIdReserva;
+    private javax.swing.JPanel pnlResEliDatos;
     private javax.swing.JPanel pnlResEliEliminar;
     private javax.swing.JPanel pnlResEliminar;
-    private javax.swing.JPanel pnlResUpActualizar;
     private javax.swing.JTextField txtResEliIdHabitacion;
     private javax.swing.JTextField txtResEliIdHotel;
+    private javax.swing.JTextField txtResEliIdReserva;
     private javax.swing.JTextField txtResEliIdUsuario;
-    private javax.swing.JTextField txtResUpIdReserva;
     // End of variables declaration//GEN-END:variables
 }

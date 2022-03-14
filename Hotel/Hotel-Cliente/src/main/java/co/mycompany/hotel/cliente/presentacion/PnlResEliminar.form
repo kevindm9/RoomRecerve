@@ -33,9 +33,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="54" max="32767" attributes="0"/>
-                  <Component id="pnlResUpActualizar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="pnlResEliEliminar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="pnlResEliDatos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -52,8 +52,8 @@
                   <Component id="lbResEliTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="pnlResUpActualizar" max="32767" attributes="0"/>
                       <Component id="pnlResEliEliminar" max="32767" attributes="0"/>
+                      <Component id="pnlResEliDatos" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="61" max="32767" attributes="0"/>
               </Group>
@@ -61,7 +61,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlResEliEliminar">
+        <Container class="javax.swing.JPanel" name="pnlResEliDatos">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -141,6 +141,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtResEliIdHabitacion">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDateChooser" name="jdcResEliFechaIni">
             </Component>
@@ -173,7 +176,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlResUpActualizar">
+        <Container class="javax.swing.JPanel" name="pnlResEliEliminar">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -187,16 +190,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="25" max="32767" attributes="0"/>
-                      <Component id="lbResUpIdReserva" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbResEliIdReserva" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtResUpIdReserva" min="-2" pref="98" max="-2" attributes="0"/>
+                      <Component id="txtResEliIdReserva" min="-2" pref="98" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnResUpActualizar" pref="88" max="32767" attributes="0"/>
-                          <Component id="btnResUpBuscar" max="32767" attributes="0"/>
+                          <Component id="btnResEliEliminar" pref="88" max="32767" attributes="0"/>
+                          <Component id="btnResEliBuscar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -207,44 +210,44 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtResUpIdReserva" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbResUpIdReserva" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtResEliIdReserva" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbResEliIdReserva" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="btnResUpBuscar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnResEliBuscar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnResUpActualizar" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnResEliEliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtResUpIdReserva">
+            <Component class="javax.swing.JTextField" name="txtResEliIdReserva">
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtResUpIdReservaMouseClicked"/>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtResUpIdReservaActionPerformed"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtResEliIdReservaMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtResEliIdReservaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbResUpIdReserva">
+            <Component class="javax.swing.JLabel" name="lbResEliIdReserva">
               <Properties>
                 <Property name="text" type="java.lang.String" value="id Reserva"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnResUpBuscar">
+            <Component class="javax.swing.JButton" name="btnResEliBuscar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResUpBuscarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResEliBuscarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnResUpActualizar">
+            <Component class="javax.swing.JButton" name="btnResEliEliminar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Actualizar"/>
+                <Property name="text" type="java.lang.String" value="Eliminar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResUpActualizarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResEliEliminarActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
