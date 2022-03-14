@@ -5,22 +5,10 @@
 package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
-import co.mycompany.hotel.commons.domain.Habitacion;
-import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Persona;
-import co.mycompany.hotel.commons.domain.TipoHabitacion;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 /**
  *
@@ -188,6 +176,7 @@ public class PnlPerRegistrar extends javax.swing.JPanel {
         String clave=txtAdmPersContr.getText();
         Persona Persona=new Persona(User, clave, id, nombre, telefono, direccion);
         JFrame jFrame = new JFrame();
+        System.out.println(tipo);
         JOptionPane.showMessageDialog(jFrame, service.addPersona(Persona, tipo));
 //        txtAdmHotNombre.setText("");
 //        txtAdmHotDir.setText("");
