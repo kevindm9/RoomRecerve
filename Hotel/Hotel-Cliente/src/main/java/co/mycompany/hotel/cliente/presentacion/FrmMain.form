@@ -101,8 +101,6 @@
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
         <Property name="focusCycleRoot" type="boolean" value="false"/>
-        <Property name="focusable" type="boolean" value="false"/>
-        <Property name="requestFocusEnabled" type="boolean" value="false"/>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
@@ -272,12 +270,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmmMainAdministradoresActionPerformed"/>
               </Events>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jmmMainAdmCrear">
+                <MenuItem class="javax.swing.JMenuItem" name="jmiMainAdmCrear">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Registrar Administrador Junior"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmmMainAdmCrearActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiMainAdmCrearActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiMainAdmEliminar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar Asministrador Junior"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiMainAdmEliminarActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
@@ -286,6 +292,26 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reservas"/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiMainResVisualizar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Historial de reservas"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiMainResVisualizarActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiMainResModificar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Modificar reserva"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jmiMainResEliminar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Eliminar reserva"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
           </SubComponents>
         </Menu>

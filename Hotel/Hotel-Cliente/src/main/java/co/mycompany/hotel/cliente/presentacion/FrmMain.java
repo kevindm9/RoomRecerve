@@ -53,6 +53,9 @@ public class FrmMain extends javax.swing.JFrame {
         jmmMainHabitaciones.setVisible(false);
         jmmMainHoteles.setVisible(false);
         jmmMainReservas.setVisible(false);
+        jmiMainResEliminar.setVisible(false);
+        jmiMainResModificar.setVisible(false);
+        jmiMainResVisualizar.setVisible(false);
 
     }
 
@@ -113,11 +116,15 @@ public class FrmMain extends javax.swing.JFrame {
     public void cargarAdmJunior() {
         jmmMainSeccion.setVisible(true);
         jmmMainHabitaciones.setVisible(true);
-        jmmMainReservas.setVisible(false);
+        jmmMainReservas.setVisible(true);
+        jmiMainResEliminar.setVisible(true);
+        jmiMainResModificar.setVisible(true);
+        jmiMainResVisualizar.setVisible(true);
         mostrarHoteles();
     }
 
     public void cargarCliente() {
+        jmmMainReservas.setVisible(true);
         pnlMainControl.removeAll();
         pnlMainControl.add(aux.getComponent(0));
         pnlMainControl.repaint();
@@ -166,8 +173,12 @@ public class FrmMain extends javax.swing.JFrame {
         jmiMainHabModificar = new javax.swing.JMenuItem();
         jmiMainHabEliminar = new javax.swing.JMenuItem();
         jmmMainAdministradores = new javax.swing.JMenu();
-        jmmMainAdmCrear = new javax.swing.JMenuItem();
+        jmiMainAdmCrear = new javax.swing.JMenuItem();
+        jmiMainAdmEliminar = new javax.swing.JMenuItem();
         jmmMainReservas = new javax.swing.JMenu();
+        jmiMainResVisualizar = new javax.swing.JMenuItem();
+        jmiMainResModificar = new javax.swing.JMenuItem();
+        jmiMainResEliminar = new javax.swing.JMenuItem();
         pnlMainBusqueda = new javax.swing.JPanel();
         btnMainBuscar = new javax.swing.JButton();
         cbxMainHoteles = new javax.swing.JComboBox<>();
@@ -203,8 +214,6 @@ public class FrmMain extends javax.swing.JFrame {
         IfmMainControl.setForeground(new java.awt.Color(255, 255, 255));
         IfmMainControl.setEnabled(false);
         IfmMainControl.setFocusCycleRoot(false);
-        IfmMainControl.setFocusable(false);
-        IfmMainControl.setRequestFocusEnabled(false);
         IfmMainControl.setVerifyInputWhenFocusTarget(false);
         IfmMainControl.setVisible(true);
 
@@ -339,17 +348,40 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
-        jmmMainAdmCrear.setText("Registrar Administrador Junior");
-        jmmMainAdmCrear.addActionListener(new java.awt.event.ActionListener() {
+        jmiMainAdmCrear.setText("Registrar Administrador Junior");
+        jmiMainAdmCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmmMainAdmCrearActionPerformed(evt);
+                jmiMainAdmCrearActionPerformed(evt);
             }
         });
-        jmmMainAdministradores.add(jmmMainAdmCrear);
+        jmmMainAdministradores.add(jmiMainAdmCrear);
+
+        jmiMainAdmEliminar.setText("Eliminar Asministrador Junior");
+        jmiMainAdmEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainAdmEliminarActionPerformed(evt);
+            }
+        });
+        jmmMainAdministradores.add(jmiMainAdmEliminar);
 
         jmbMainControl.add(jmmMainAdministradores);
 
         jmmMainReservas.setText("Reservas");
+
+        jmiMainResVisualizar.setText("Historial de reservas");
+        jmiMainResVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainResVisualizarActionPerformed(evt);
+            }
+        });
+        jmmMainReservas.add(jmiMainResVisualizar);
+
+        jmiMainResModificar.setText("Modificar reserva");
+        jmmMainReservas.add(jmiMainResModificar);
+
+        jmiMainResEliminar.setText("Eliminar reserva");
+        jmmMainReservas.add(jmiMainResEliminar);
+
         jmbMainControl.add(jmmMainReservas);
 
         IfmMainControl.setJMenuBar(jmbMainControl);
@@ -512,10 +544,10 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.revalidate();
     }//GEN-LAST:event_jmiMainHotModificarActionPerformed
 
-    private void jmmMainAdmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmmMainAdmCrearActionPerformed
+    private void jmiMainAdmCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainAdmCrearActionPerformed
         // TODO add your handling code here:
-        cargarRegistrar("junior");
-    }//GEN-LAST:event_jmmMainAdmCrearActionPerformed
+        cargarRegistrar("Junior");
+    }//GEN-LAST:event_jmiMainAdmCrearActionPerformed
 
     private void btnMainBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainBuscarActionPerformed
         // TODO add your handling code here:
@@ -578,6 +610,25 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.revalidate();
     }//GEN-LAST:event_jmiMainSecPasswordActionPerformed
 
+    private void jmiMainAdmEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainAdmEliminarActionPerformed
+        // TODO add your handling code here:
+        PnlPerEliminar panelPerEliminar = new PnlPerEliminar();
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelPerEliminar);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jmiMainAdmEliminarActionPerformed
+
+    private void jmiMainResVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainResVisualizarActionPerformed
+        // TODO add your handling code here:
+        PnlResVisualizar panelaux = new PnlResVisualizar(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelaux);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+        
+    }//GEN-LAST:event_jmiMainResVisualizarActionPerformed
+
     private void consultarHabitaciones() {
         PnlHabConsultar panelHabVista = new PnlHabConsultar(usuario);
         pnlMainControl.removeAll();
@@ -636,6 +687,8 @@ public class FrmMain extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jdcMainFechaFin;
     private com.toedter.calendar.JDateChooser jdcMainFechaIni;
     private javax.swing.JMenuBar jmbMainControl;
+    private javax.swing.JMenuItem jmiMainAdmCrear;
+    private javax.swing.JMenuItem jmiMainAdmEliminar;
     private javax.swing.JMenuItem jmiMainHabConsultar;
     private javax.swing.JMenuItem jmiMainHabCrear;
     private javax.swing.JMenuItem jmiMainHabEliminar;
@@ -643,13 +696,15 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiMainHotCrear;
     private javax.swing.JMenuItem jmiMainHotEliminar;
     private javax.swing.JMenuItem jmiMainHotModificar;
+    private javax.swing.JMenuItem jmiMainResEliminar;
+    private javax.swing.JMenuItem jmiMainResModificar;
+    private javax.swing.JMenuItem jmiMainResVisualizar;
     private javax.swing.JMenuItem jmiMainSecCerrar;
     private javax.swing.JMenuItem jmiMainSecInicio;
     private javax.swing.JMenuItem jmiMainSecModificar;
     private javax.swing.JMenuItem jmiMainSecPassword;
     private javax.swing.JMenuItem jmiMainSecPerfil;
     private javax.swing.JMenuItem jmiMainSecSalir;
-    private javax.swing.JMenuItem jmmMainAdmCrear;
     private javax.swing.JMenu jmmMainAdministradores;
     private javax.swing.JMenu jmmMainHabitaciones;
     private javax.swing.JMenu jmmMainHoteles;
