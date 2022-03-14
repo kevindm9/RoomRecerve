@@ -237,6 +237,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 reserva.setFechaInicio(res.getDate("fecha_inicio"));
                 reserva.setFechaFin(res.getDate("fecha_fin"));
                 reserva.setId_persona(Integer.parseInt(res.getString("persona_id")));
+                reservas.add(reserva);
             }
             pstmt.close();
             this.disconnect();
@@ -677,7 +678,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
         try {
             int cont;
             this.connect();
-            String sql = "SELECT * from reserva where  id_hotel= ?";
+            String sql = "SELECT * from reserva where  hotel_id= ?";
           
             PreparedStatement pstmt = conn.prepareStatement(sql);
             cont = 1;
@@ -690,6 +691,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 reserva.setFechaInicio(res.getDate("fecha_inicio"));
                 reserva.setFechaFin(res.getDate("fecha_fin"));
                 reserva.setId_persona(Integer.parseInt(res.getString("persona_id")));
+                reservas.add(reserva);
             }
             pstmt.close();
             this.disconnect();

@@ -48,7 +48,6 @@ public class ClientMain {
 //         p1.setUsuario("Cami");
 //         p1.setClave("0000");
 //         System.out.println(service.updatePersona(p1, "Cliente"));
-         
         
 
     }
