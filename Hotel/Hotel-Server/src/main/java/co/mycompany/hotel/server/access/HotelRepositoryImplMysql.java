@@ -237,6 +237,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 reserva.setFechaInicio(res.getDate("fecha_inicio"));
                 reserva.setFechaFin(res.getDate("fecha_fin"));
                 reserva.setId_persona(Integer.parseInt(res.getString("persona_id")));
+                reserva.setId(Integer.parseInt(res.getString("reserva_id")));
                 reservas.add(reserva);
             }
             pstmt.close();
@@ -691,6 +692,7 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 reserva.setFechaInicio(res.getDate("fecha_inicio"));
                 reserva.setFechaFin(res.getDate("fecha_fin"));
                 reserva.setId_persona(Integer.parseInt(res.getString("persona_id")));
+                reserva.setId(Integer.parseInt(res.getString("reserva_id")));
                 reservas.add(reserva);
             }
             pstmt.close();
