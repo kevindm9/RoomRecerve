@@ -307,7 +307,7 @@ public class HotelServerSocket  extends ServerSocketTemplate {
         persona.setUsuario(protocolRequest.getParameters().get(cont++).getValue());
         persona.setClave(protocolRequest.getParameters().get(cont++).getValue());
         tipo = protocolRequest.getParameters().get(cont++).getValue();
-        String response = service.addPersona(persona, tipo);
+        String response = service.updatePersona(persona, tipo);
         respond(response);
     }
     /**
