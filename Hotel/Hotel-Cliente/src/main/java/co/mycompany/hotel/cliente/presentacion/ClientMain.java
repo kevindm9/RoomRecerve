@@ -25,6 +25,9 @@ public class ClientMain {
         // TODO code application logic here
         HotelService service = new HotelService();
 //         Persona p1=new Persona();
+//        HotelService service = new HotelService();
+//        Persona persona = service.getPersona("jose");
+//        System.out.println(persona.toString());
 //         p1=service.getPersona("kevindm");
 //         System.out.println(p1.getNombre());
 //         ArrayList<Integer> i;

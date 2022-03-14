@@ -27,6 +27,7 @@ public class FrmMain extends javax.swing.JFrame {
         initComponents();
         service = new HotelService();
         aux = new javax.swing.JPanel();
+        tipo = "Visitante";
         ocultarMenu();
         iniciar();
     }
@@ -124,7 +125,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     public void cargarRegistrar(String tipo) {
-        PnlRegistrar panelAdmin = new PnlRegistrar(this, tipo);
+        PnlPerRegistrar panelAdmin = new PnlPerRegistrar(this, tipo);
         pnlMainControl.removeAll();
         pnlMainControl.add(panelAdmin);
         pnlMainControl.repaint();
@@ -151,6 +152,7 @@ public class FrmMain extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmiMainSecPerfil = new javax.swing.JMenuItem();
         jmiMainSecModificar = new javax.swing.JMenuItem();
+        jmiMainSecPassword = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmiMainSecCerrar = new javax.swing.JMenuItem();
         jmiMainSecSalir = new javax.swing.JMenuItem();
@@ -224,10 +226,28 @@ public class FrmMain extends javax.swing.JFrame {
         jmmMainSeccion.add(jSeparator1);
 
         jmiMainSecPerfil.setText("Ver perfil");
+        jmiMainSecPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainSecPerfilActionPerformed(evt);
+            }
+        });
         jmmMainSeccion.add(jmiMainSecPerfil);
 
         jmiMainSecModificar.setText("Modificar Perfil");
+        jmiMainSecModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainSecModificarActionPerformed(evt);
+            }
+        });
         jmmMainSeccion.add(jmiMainSecModificar);
+
+        jmiMainSecPassword.setText("Modificar Contraseña");
+        jmiMainSecPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainSecPasswordActionPerformed(evt);
+            }
+        });
+        jmmMainSeccion.add(jmiMainSecPassword);
         jmmMainSeccion.add(jSeparator2);
 
         jmiMainSecCerrar.setText("Cerrar Seccion");
@@ -404,6 +424,7 @@ public class FrmMain extends javax.swing.JFrame {
         } else {
             lbMainLogin.setText("Login");
             usuario = "";
+            tipo = "Visitante";
             lbMainUsuario.setText("Crea tu cuenta");
             ocultarMenu();
             mostrarHoteles();
@@ -474,7 +495,7 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void jmmMainAdministradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmmMainAdministradoresActionPerformed
         // TODO add your handling code here:
-        PnlRegistrar panelRegistrar = new PnlRegistrar(this, "Junior");
+        PnlPerRegistrar panelRegistrar = new PnlPerRegistrar(this, "Junior");
         pnlMainControl.removeAll();
         pnlMainControl.add(panelRegistrar);
         pnlMainControl.repaint();
@@ -529,6 +550,34 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.revalidate();
     }//GEN-LAST:event_jmiMainHotEliminarActionPerformed
 
+    private void jmiMainSecPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecPerfilActionPerformed
+        // TODO add your handling code here:
+        PnlPerPerfil panelPerPerfil = new PnlPerPerfil(usuario);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelPerPerfil);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+        
+    }//GEN-LAST:event_jmiMainSecPerfilActionPerformed
+
+    private void jmiMainSecModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecModificarActionPerformed
+        // TODO add your handling code here:
+        PnlPerModificar panelPerModificar = new PnlPerModificar(usuario, tipo);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelPerModificar);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jmiMainSecModificarActionPerformed
+
+    private void jmiMainSecPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecPasswordActionPerformed
+        // TODO add your handling code here:
+        PnlPerPassword panelPerpasword = new PnlPerPassword(usuario, tipo);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelPerpasword);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jmiMainSecPasswordActionPerformed
+
     private void consultarHabitaciones() {
         PnlHabConsultar panelHabVista = new PnlHabConsultar(usuario);
         pnlMainControl.removeAll();
@@ -536,6 +585,12 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.repaint();
         pnlMainControl.revalidate();
     }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    
 
     /**
      * @param args the command line arguments
@@ -591,6 +646,7 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiMainSecCerrar;
     private javax.swing.JMenuItem jmiMainSecInicio;
     private javax.swing.JMenuItem jmiMainSecModificar;
+    private javax.swing.JMenuItem jmiMainSecPassword;
     private javax.swing.JMenuItem jmiMainSecPerfil;
     private javax.swing.JMenuItem jmiMainSecSalir;
     private javax.swing.JMenuItem jmmMainAdmCrear;

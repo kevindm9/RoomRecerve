@@ -154,14 +154,17 @@ public class PnlLogin extends javax.swing.JPanel {
         switch (tipo) {
             case "Master":
                 panel.cargarUsuario(usuario);
+                panel.setTipo(tipo);
                 panel.cargarAdmMaster();
                 break;
             case "Junior":
                 panel.cargarUsuario(usuario);
+                panel.setTipo(tipo);
                 panel.cargarAdmJunior();
                 break;
             case "Cliente":
                 panel.cargarUsuario(usuario);
+                panel.setTipo(tipo);
                 panel.cargarCliente();
                 break;
             default:
