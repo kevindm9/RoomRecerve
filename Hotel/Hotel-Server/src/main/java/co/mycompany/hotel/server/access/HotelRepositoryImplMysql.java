@@ -298,8 +298,10 @@ public class HotelRepositoryImplMysql implements IHotelRepository {
                 p.setNombre(res.getString("persona_nombre"));
                 p.setTelefono(res.getString("persona_tel"));
                 p.setDireccion(res.getString("persona_dir"));
+                p.setClave(res.getString("sesion.ses_clave"));
             }
             pstmt.close();
+            
             this.disconnect();
         } catch (SQLException ex) {
             Logger.getLogger(HotelRepositoryImplMysql.class.getName()).log(Level.SEVERE, "Error al consultar getMenuDia de la base de datos", ex);
