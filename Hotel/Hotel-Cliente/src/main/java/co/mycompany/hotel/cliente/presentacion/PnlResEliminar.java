@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  *
  * @author Jose Ricardo
  */
-public class PnlResUpdate extends javax.swing.JPanel {
+public class PnlResEliminar extends javax.swing.JPanel {
 
     private HotelService service;
     private String usuario;
@@ -26,7 +26,7 @@ public class PnlResUpdate extends javax.swing.JPanel {
     /**
      * Creates new form pnlResUpdate
      */
-    public PnlResUpdate(String usuario) {
+    public PnlResEliminar(String usuario) {
         service = new HotelService();
         this.usuario = usuario;
         this.reservas = new ArrayList<>();
@@ -59,86 +59,86 @@ public class PnlResUpdate extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        pnlResUpdate = new javax.swing.JPanel();
-        txtResUpIdUsuario = new javax.swing.JTextField();
-        txtResUpIdHotel = new javax.swing.JTextField();
-        txtResUpIdHabitacion = new javax.swing.JTextField();
-        jdcResUpFechaIni = new com.toedter.calendar.JDateChooser();
-        jdcResUpFechaFin = new com.toedter.calendar.JDateChooser();
-        lbResUpIdUsuario = new javax.swing.JLabel();
-        lbResUpIdHotel = new javax.swing.JLabel();
-        lbResUpIdHabitacion = new javax.swing.JLabel();
-        lbResUpFechaIni = new javax.swing.JLabel();
-        lbResUpFechaFin = new javax.swing.JLabel();
+        pnlResEliminar = new javax.swing.JPanel();
+        pnlResEliEliminar = new javax.swing.JPanel();
+        txtResEliIdUsuario = new javax.swing.JTextField();
+        txtResEliIdHotel = new javax.swing.JTextField();
+        txtResEliIdHabitacion = new javax.swing.JTextField();
+        jdcResEliFechaIni = new com.toedter.calendar.JDateChooser();
+        jdcResEliFechaFin = new com.toedter.calendar.JDateChooser();
+        lbResEliIdUsuario = new javax.swing.JLabel();
+        lbResEliIdHotel = new javax.swing.JLabel();
+        lbResEliIdHabitacion = new javax.swing.JLabel();
+        lbResEliFechaIni = new javax.swing.JLabel();
+        lbResEliFechaFin = new javax.swing.JLabel();
         pnlResUpActualizar = new javax.swing.JPanel();
         txtResUpIdReserva = new javax.swing.JTextField();
         lbResUpIdReserva = new javax.swing.JLabel();
         btnResUpBuscar = new javax.swing.JButton();
         btnResUpActualizar = new javax.swing.JButton();
-        lbResUpTitulo = new javax.swing.JLabel();
+        lbResEliTitulo = new javax.swing.JLabel();
 
-        pnlResUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la reserva"));
+        pnlResEliEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la reserva"));
 
-        txtResUpIdUsuario.setEditable(false);
+        txtResEliIdUsuario.setEditable(false);
 
-        txtResUpIdHotel.setEditable(false);
+        txtResEliIdHotel.setEditable(false);
 
-        lbResUpIdUsuario.setText("id Usuario");
+        lbResEliIdUsuario.setText("id Usuario");
 
-        lbResUpIdHotel.setText("id Hotel");
+        lbResEliIdHotel.setText("id Hotel");
 
-        lbResUpIdHabitacion.setText("id Habitacion");
+        lbResEliIdHabitacion.setText("id Habitacion");
 
-        lbResUpFechaIni.setText("Fecha Inicio");
+        lbResEliFechaIni.setText("Fecha Inicio");
 
-        lbResUpFechaFin.setText("Fecha Fin");
+        lbResEliFechaFin.setText("Fecha Fin");
 
-        javax.swing.GroupLayout pnlResUpdateLayout = new javax.swing.GroupLayout(pnlResUpdate);
-        pnlResUpdate.setLayout(pnlResUpdateLayout);
-        pnlResUpdateLayout.setHorizontalGroup(
-            pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResUpdateLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlResEliEliminarLayout = new javax.swing.GroupLayout(pnlResEliEliminar);
+        pnlResEliEliminar.setLayout(pnlResEliEliminarLayout);
+        pnlResEliEliminarLayout.setHorizontalGroup(
+            pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResEliEliminarLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbResUpIdUsuario)
-                    .addComponent(lbResUpIdHotel)
-                    .addComponent(lbResUpIdHabitacion)
-                    .addComponent(lbResUpFechaIni)
-                    .addComponent(lbResUpFechaFin))
+                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbResEliIdUsuario)
+                    .addComponent(lbResEliIdHotel)
+                    .addComponent(lbResEliIdHabitacion)
+                    .addComponent(lbResEliFechaIni)
+                    .addComponent(lbResEliFechaFin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtResUpIdUsuario)
-                    .addComponent(txtResUpIdHotel)
-                    .addComponent(txtResUpIdHabitacion)
-                    .addComponent(jdcResUpFechaIni, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(jdcResUpFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtResEliIdUsuario)
+                    .addComponent(txtResEliIdHotel)
+                    .addComponent(txtResEliIdHabitacion)
+                    .addComponent(jdcResEliFechaIni, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(jdcResEliFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(33, 33, 33))
         );
-        pnlResUpdateLayout.setVerticalGroup(
-            pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlResUpdateLayout.createSequentialGroup()
+        pnlResEliEliminarLayout.setVerticalGroup(
+            pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResEliEliminarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlResUpdateLayout.createSequentialGroup()
-                        .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtResUpIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbResUpIdUsuario))
+                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlResEliEliminarLayout.createSequentialGroup()
+                        .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtResEliIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbResEliIdUsuario))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtResUpIdHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbResUpIdHotel))
+                        .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtResEliIdHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbResEliIdHotel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtResUpIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbResUpIdHabitacion))
+                        .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtResEliIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbResEliIdHabitacion))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jdcResUpFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbResUpFechaIni))
+                        .addComponent(jdcResEliFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbResEliFechaIni))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jdcResUpFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbResUpFechaFin))
+                .addGroup(pnlResEliEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jdcResEliFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbResEliFechaFin))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -202,33 +202,33 @@ public class PnlResUpdate extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lbResUpTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbResUpTitulo.setText("Modificar Reserva");
+        lbResEliTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbResEliTitulo.setText("Eliminar Reserva");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlResEliminarLayout = new javax.swing.GroupLayout(pnlResEliminar);
+        pnlResEliminar.setLayout(pnlResEliminarLayout);
+        pnlResEliminarLayout.setHorizontalGroup(
+            pnlResEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResEliminarLayout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(pnlResUpActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(pnlResUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlResEliEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(pnlResEliminarLayout.createSequentialGroup()
                 .addGap(301, 301, 301)
-                .addComponent(lbResUpTitulo)
+                .addComponent(lbResEliTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlResEliminarLayout.setVerticalGroup(
+            pnlResEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResEliminarLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(lbResUpTitulo)
+                .addComponent(lbResEliTitulo)
                 .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnlResEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlResUpActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlResUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlResEliEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -236,11 +236,11 @@ public class PnlResUpdate extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlResEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlResEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -248,11 +248,11 @@ public class PnlResUpdate extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String formattedDate = simpleDateFormat.format(jdcResUpFechaIni.getDate());
+            String formattedDate = simpleDateFormat.format(jdcResEliFechaIni.getDate());
             Date fechaIni = Date.valueOf(formattedDate);
-            formattedDate = simpleDateFormat.format(jdcResUpFechaFin.getDate());
+            formattedDate = simpleDateFormat.format(jdcResEliFechaFin.getDate());
             Date fechaFin = Date.valueOf(formattedDate);
-            actReserva.setId_habitacion(Integer.parseInt(txtResUpIdHabitacion.getText()));
+            actReserva.setId_habitacion(Integer.parseInt(txtResEliIdHabitacion.getText()));
             actReserva.setFechaInicio(fechaIni);
             actReserva.setFechaFin(fechaFin);
             if (JOptionPane.showConfirmDialog(null,
@@ -260,11 +260,11 @@ public class PnlResUpdate extends javax.swing.JPanel {
                     "Modificar Reserva", JOptionPane.OK_CANCEL_OPTION) == 0) {
                 //JOptionPane.showMessageDialog(null, service.updateReserva(actReserva), "Alerta", JOptionPane.INFORMATION_MESSAGE);
                 actReserva = null;
-                txtResUpIdHabitacion.setText("");
-                txtResUpIdHotel.setText("");
-                txtResUpIdUsuario.setText("");
-                jdcResUpFechaFin.setDate(null);
-                jdcResUpFechaIni.setDate(null);
+                txtResEliIdHabitacion.setText("");
+                txtResEliIdHotel.setText("");
+                txtResEliIdUsuario.setText("");
+                jdcResEliFechaFin.setDate(null);
+                jdcResEliFechaIni.setDate(null);
             }
 
         } catch (Exception e) {
@@ -280,11 +280,11 @@ public class PnlResUpdate extends javax.swing.JPanel {
                 for (Reserva reserva : reservas) {
                     if (reserva.getId() == id) {
                         actReserva = reserva;
-                        txtResUpIdHabitacion.setText("" + actReserva.getId_habitacion());
-                        txtResUpIdHotel.setText("" + actReserva.getId_hotel());
-                        txtResUpIdUsuario.setText("" + actReserva.getId_persona());
-                        jdcResUpFechaFin.setDate(actReserva.getFechaFin());
-                        jdcResUpFechaIni.setDate(actReserva.getFechaInicio());
+                        txtResEliIdHabitacion.setText("" + actReserva.getId_habitacion());
+                        txtResEliIdHotel.setText("" + actReserva.getId_hotel());
+                        txtResEliIdUsuario.setText("" + actReserva.getId_persona());
+                        jdcResEliFechaFin.setDate(actReserva.getFechaFin());
+                        jdcResEliFechaIni.setDate(actReserva.getFechaInicio());
                         btnResUpActualizar.setEnabled(true);
                         return;
                     }
@@ -309,21 +309,21 @@ public class PnlResUpdate extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnResUpActualizar;
     private javax.swing.JButton btnResUpBuscar;
-    private javax.swing.JPanel jPanel1;
-    private com.toedter.calendar.JDateChooser jdcResUpFechaFin;
-    private com.toedter.calendar.JDateChooser jdcResUpFechaIni;
-    private javax.swing.JLabel lbResUpFechaFin;
-    private javax.swing.JLabel lbResUpFechaIni;
-    private javax.swing.JLabel lbResUpIdHabitacion;
-    private javax.swing.JLabel lbResUpIdHotel;
+    private com.toedter.calendar.JDateChooser jdcResEliFechaFin;
+    private com.toedter.calendar.JDateChooser jdcResEliFechaIni;
+    private javax.swing.JLabel lbResEliFechaFin;
+    private javax.swing.JLabel lbResEliFechaIni;
+    private javax.swing.JLabel lbResEliIdHabitacion;
+    private javax.swing.JLabel lbResEliIdHotel;
+    private javax.swing.JLabel lbResEliIdUsuario;
+    private javax.swing.JLabel lbResEliTitulo;
     private javax.swing.JLabel lbResUpIdReserva;
-    private javax.swing.JLabel lbResUpIdUsuario;
-    private javax.swing.JLabel lbResUpTitulo;
+    private javax.swing.JPanel pnlResEliEliminar;
+    private javax.swing.JPanel pnlResEliminar;
     private javax.swing.JPanel pnlResUpActualizar;
-    private javax.swing.JPanel pnlResUpdate;
-    private javax.swing.JTextField txtResUpIdHabitacion;
-    private javax.swing.JTextField txtResUpIdHotel;
+    private javax.swing.JTextField txtResEliIdHabitacion;
+    private javax.swing.JTextField txtResEliIdHotel;
+    private javax.swing.JTextField txtResEliIdUsuario;
     private javax.swing.JTextField txtResUpIdReserva;
-    private javax.swing.JTextField txtResUpIdUsuario;
     // End of variables declaration//GEN-END:variables
 }

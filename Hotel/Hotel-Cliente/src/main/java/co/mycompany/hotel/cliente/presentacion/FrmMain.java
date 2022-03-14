@@ -48,7 +48,7 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void ocultarMenu() {
         jmbMainControl.setVisible(false);
-        jmmMainSeccion.setVisible(false);
+        jmmMainSesion.setVisible(false);
         jmmMainAdministradores.setVisible(false);
         jmmMainHabitaciones.setVisible(false);
         jmmMainHoteles.setVisible(false);
@@ -102,11 +102,11 @@ public class FrmMain extends javax.swing.JFrame {
         jmbMainControl.setVisible(true);
         this.usuario = usuario;
         lbMainUsuario.setText(usuario);
-        lbMainLogin.setText("LogOut");
+        lbMainLogin.setText("Cerrar Sesión");
     }
 
     public void cargarAdmMaster() {
-        jmmMainSeccion.setVisible(true);
+        jmmMainSesion.setVisible(true);
         jmmMainAdministradores.setVisible(true);
         jmmMainHabitaciones.setVisible(true);
         jmmMainHoteles.setVisible(true);
@@ -114,7 +114,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     public void cargarAdmJunior() {
-        jmmMainSeccion.setVisible(true);
+        jmmMainSesion.setVisible(true);
         jmmMainHabitaciones.setVisible(true);
         jmmMainReservas.setVisible(true);
         jmiMainResEliminar.setVisible(true);
@@ -124,7 +124,7 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     public void cargarCliente() {
-        jmmMainSeccion.setVisible(true);
+        jmmMainSesion.setVisible(true);
         jmmMainReservas.setVisible(true);
         jmiMainResVisualizar.setVisible(true);
         jmmMainReservas.setVisible(true);
@@ -157,7 +157,7 @@ public class FrmMain extends javax.swing.JFrame {
         IfmMainControl = new javax.swing.JInternalFrame();
         pnlMainControl = new javax.swing.JPanel();
         jmbMainControl = new javax.swing.JMenuBar();
-        jmmMainSeccion = new javax.swing.JMenu();
+        jmmMainSesion = new javax.swing.JMenu();
         jmiMainSecInicio = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmiMainSecPerfil = new javax.swing.JMenuItem();
@@ -197,13 +197,13 @@ public class FrmMain extends javax.swing.JFrame {
 
         pnlEstado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbMainLogin.setText("Login");
+        lbMainLogin.setText("Iniciar Sesión");
         lbMainLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbMainLoginMouseClicked(evt);
             }
         });
-        pnlEstado.add(lbMainLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, 47, -1));
+        pnlEstado.add(lbMainLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, -1));
 
         lbMainUsuario.setText("Crea tu cuenta");
         lbMainUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -211,7 +211,7 @@ public class FrmMain extends javax.swing.JFrame {
                 lbMainUsuarioMouseClicked(evt);
             }
         });
-        pnlEstado.add(lbMainUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, -1, -1));
+        pnlEstado.add(lbMainUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 100, -1));
 
         IfmMainControl.setBorder(null);
         IfmMainControl.setForeground(new java.awt.Color(255, 255, 255));
@@ -226,7 +226,7 @@ public class FrmMain extends javax.swing.JFrame {
         jmbMainControl.setToolTipText("Administrar");
         jmbMainControl.setOpaque(false);
 
-        jmmMainSeccion.setText("Seccion");
+        jmmMainSesion.setText("Sesión");
 
         jmiMainSecInicio.setText("Inicio");
         jmiMainSecInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -234,8 +234,8 @@ public class FrmMain extends javax.swing.JFrame {
                 jmiMainSecInicioActionPerformed(evt);
             }
         });
-        jmmMainSeccion.add(jmiMainSecInicio);
-        jmmMainSeccion.add(jSeparator1);
+        jmmMainSesion.add(jmiMainSecInicio);
+        jmmMainSesion.add(jSeparator1);
 
         jmiMainSecPerfil.setText("Ver perfil");
         jmiMainSecPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +243,7 @@ public class FrmMain extends javax.swing.JFrame {
                 jmiMainSecPerfilActionPerformed(evt);
             }
         });
-        jmmMainSeccion.add(jmiMainSecPerfil);
+        jmmMainSesion.add(jmiMainSecPerfil);
 
         jmiMainSecModificar.setText("Modificar Perfil");
         jmiMainSecModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +251,7 @@ public class FrmMain extends javax.swing.JFrame {
                 jmiMainSecModificarActionPerformed(evt);
             }
         });
-        jmmMainSeccion.add(jmiMainSecModificar);
+        jmmMainSesion.add(jmiMainSecModificar);
 
         jmiMainSecPassword.setText("Modificar Contraseña");
         jmiMainSecPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -259,16 +259,16 @@ public class FrmMain extends javax.swing.JFrame {
                 jmiMainSecPasswordActionPerformed(evt);
             }
         });
-        jmmMainSeccion.add(jmiMainSecPassword);
-        jmmMainSeccion.add(jSeparator2);
+        jmmMainSesion.add(jmiMainSecPassword);
+        jmmMainSesion.add(jSeparator2);
 
-        jmiMainSecCerrar.setText("Cerrar Seccion");
+        jmiMainSecCerrar.setText("Cerrar Sesión");
         jmiMainSecCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiMainSecCerrarActionPerformed(evt);
             }
         });
-        jmmMainSeccion.add(jmiMainSecCerrar);
+        jmmMainSesion.add(jmiMainSecCerrar);
 
         jmiMainSecSalir.setText("Salir");
         jmiMainSecSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -276,9 +276,9 @@ public class FrmMain extends javax.swing.JFrame {
                 jmiMainSecSalirActionPerformed(evt);
             }
         });
-        jmmMainSeccion.add(jmiMainSecSalir);
+        jmmMainSesion.add(jmiMainSecSalir);
 
-        jmbMainControl.add(jmmMainSeccion);
+        jmbMainControl.add(jmmMainSesion);
 
         jmmMainHoteles.setText("Hoteles");
 
@@ -455,14 +455,14 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void lbMainLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMainLoginMouseClicked
         // TODO add your handling code here:
-        seccion();
+        sesion();
     }//GEN-LAST:event_lbMainLoginMouseClicked
 
-    private void seccion() {
-        if ("Login".equals(lbMainLogin.getText())) {
+    private void sesion() {
+        if ("Iniciar Sesión".equals(lbMainLogin.getText())) {
             cargarLogin();
         } else {
-            lbMainLogin.setText("Login");
+            lbMainLogin.setText("Iniciar Sesión");
             usuario = "";
             tipo = "Visitante";
             lbMainUsuario.setText("Crea tu cuenta");
@@ -511,7 +511,7 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void jmiMainSecCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecCerrarActionPerformed
         // TODO add your handling code here:
-        seccion();
+        sesion();
     }//GEN-LAST:event_jmiMainSecCerrarActionPerformed
 
     private void jmiMainSecInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecInicioActionPerformed
@@ -726,7 +726,7 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenu jmmMainHabitaciones;
     private javax.swing.JMenu jmmMainHoteles;
     private javax.swing.JMenu jmmMainReservas;
-    private javax.swing.JMenu jmmMainSeccion;
+    private javax.swing.JMenu jmmMainSesion;
     private javax.swing.JLabel lbMainFechaFin;
     private javax.swing.JLabel lbMainFechaIni;
     private javax.swing.JLabel lbMainLogin;
