@@ -4,17 +4,51 @@
  */
 package co.mycompany.hotel.cliente.presentacion;
 
+import co.mycompany.hotel.cliente.domain.services.HotelService;
+import co.mycompany.hotel.commons.domain.Hotel;
+import co.mycompany.hotel.commons.domain.Reserva;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jose Ricardo
  */
 public class PnlResUpdate extends javax.swing.JPanel {
 
+    private HotelService service;
+    private String usuario;
+    private ArrayList<Reserva> reservas;
+    private Reserva actReserva;
+
     /**
      * Creates new form pnlResUpdate
      */
-    public PnlResUpdate() {
+    public PnlResUpdate(String usuario) {
+        service = new HotelService();
+        this.usuario = usuario;
+        this.reservas = new ArrayList<>();
         initComponents();
+        btnResUpActualizar.setEnabled(false);
+        btnResUpBuscar.setEnabled(false);
+        cargarReservas();
+    }
+
+    private void cargarReservas() {
+        try {
+            ArrayList<Hotel> hoteles = service.getHotels(usuario);
+            if (hoteles != null) {
+                for (Hotel hotel : hoteles) {
+                    reservas.addAll(service.getReservaHotel(hotel.getId()));
+                }
+                btnResUpBuscar.setEnabled(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en la conexion");
+        }
     }
 
     /**
@@ -26,19 +60,283 @@ public class PnlResUpdate extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        pnlResUpdate = new javax.swing.JPanel();
+        txtResUpIdUsuario = new javax.swing.JTextField();
+        txtResUpIdHotel = new javax.swing.JTextField();
+        txtResUpIdHabitacion = new javax.swing.JTextField();
+        jdcResUpFechaIni = new com.toedter.calendar.JDateChooser();
+        jdcResUpFechaFin = new com.toedter.calendar.JDateChooser();
+        lbResUpIdUsuario = new javax.swing.JLabel();
+        lbResUpIdHotel = new javax.swing.JLabel();
+        lbResUpIdHabitacion = new javax.swing.JLabel();
+        lbResUpFechaIni = new javax.swing.JLabel();
+        lbResUpFechaFin = new javax.swing.JLabel();
+        pnlResUpActualizar = new javax.swing.JPanel();
+        txtResUpIdReserva = new javax.swing.JTextField();
+        lbResUpIdReserva = new javax.swing.JLabel();
+        btnResUpBuscar = new javax.swing.JButton();
+        btnResUpActualizar = new javax.swing.JButton();
+        lbResUpTitulo = new javax.swing.JLabel();
+
+        pnlResUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la reserva"));
+
+        txtResUpIdUsuario.setEditable(false);
+
+        txtResUpIdHotel.setEditable(false);
+
+        lbResUpIdUsuario.setText("id Usuario");
+
+        lbResUpIdHotel.setText("id Hotel");
+
+        lbResUpIdHabitacion.setText("id Habitacion");
+
+        lbResUpFechaIni.setText("Fecha Inicio");
+
+        lbResUpFechaFin.setText("Fecha Fin");
+
+        javax.swing.GroupLayout pnlResUpdateLayout = new javax.swing.GroupLayout(pnlResUpdate);
+        pnlResUpdate.setLayout(pnlResUpdateLayout);
+        pnlResUpdateLayout.setHorizontalGroup(
+            pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResUpdateLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbResUpIdUsuario)
+                    .addComponent(lbResUpIdHotel)
+                    .addComponent(lbResUpIdHabitacion)
+                    .addComponent(lbResUpFechaIni)
+                    .addComponent(lbResUpFechaFin))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtResUpIdUsuario)
+                    .addComponent(txtResUpIdHotel)
+                    .addComponent(txtResUpIdHabitacion)
+                    .addComponent(jdcResUpFechaIni, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(jdcResUpFechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
+        );
+        pnlResUpdateLayout.setVerticalGroup(
+            pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResUpdateLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlResUpdateLayout.createSequentialGroup()
+                        .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtResUpIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbResUpIdUsuario))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtResUpIdHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbResUpIdHotel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtResUpIdHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbResUpIdHabitacion))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdcResUpFechaIni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbResUpFechaIni))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlResUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jdcResUpFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbResUpFechaFin))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlResUpActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar y actualizar reserva"));
+
+        txtResUpIdReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtResUpIdReservaMouseClicked(evt);
+            }
+        });
+        txtResUpIdReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtResUpIdReservaActionPerformed(evt);
+            }
+        });
+
+        lbResUpIdReserva.setText("id Reserva");
+
+        btnResUpBuscar.setText("Buscar");
+        btnResUpBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResUpBuscarActionPerformed(evt);
+            }
+        });
+
+        btnResUpActualizar.setText("Actualizar");
+        btnResUpActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResUpActualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlResUpActualizarLayout = new javax.swing.GroupLayout(pnlResUpActualizar);
+        pnlResUpActualizar.setLayout(pnlResUpActualizarLayout);
+        pnlResUpActualizarLayout.setHorizontalGroup(
+            pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResUpActualizarLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(lbResUpIdReserva)
+                .addGap(18, 18, 18)
+                .addComponent(txtResUpIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addGroup(pnlResUpActualizarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnResUpActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                    .addComponent(btnResUpBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlResUpActualizarLayout.setVerticalGroup(
+            pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlResUpActualizarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlResUpActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtResUpIdReserva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbResUpIdReserva))
+                .addGap(23, 23, 23)
+                .addComponent(btnResUpBuscar)
+                .addGap(18, 18, 18)
+                .addComponent(btnResUpActualizar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        lbResUpTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbResUpTitulo.setText("Modificar Reserva");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(54, Short.MAX_VALUE)
+                .addComponent(pnlResUpActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(pnlResUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(301, 301, 301)
+                .addComponent(lbResUpTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lbResUpTitulo)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlResUpActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlResUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnResUpActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResUpActualizarActionPerformed
+        // TODO add your handling code here:
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = simpleDateFormat.format(jdcResUpFechaIni.getDate());
+            Date fechaIni = Date.valueOf(formattedDate);
+            formattedDate = simpleDateFormat.format(jdcResUpFechaFin.getDate());
+            Date fechaFin = Date.valueOf(formattedDate);
+            actReserva.setId_habitacion(Integer.parseInt(txtResUpIdHabitacion.getText()));
+            actReserva.setFechaInicio(fechaIni);
+            actReserva.setFechaFin(fechaFin);
+            if (fechaFin.before(fechaIni) || fechaIni.before(new Date(System.currentTimeMillis()))) {
+                JOptionPane.showMessageDialog(null,
+                        "Periodo de tiempo no valido", "Datos invalidos",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            if (service.getHabitacion(actReserva.getId_habitacion()).getId_hotel() != actReserva.getId_hotel()) {
+                JOptionPane.showMessageDialog(null, "La habitacion no pertecece al hotel");
+                return;
+            }
+            if (JOptionPane.showConfirmDialog(null,
+                    "Esta seguro de modificar la reserva con id " + actReserva.getId() + "? Esta opción debe acordada con Cliente",
+                    "Modificar Reserva", JOptionPane.OK_CANCEL_OPTION) == 0) {
+                JOptionPane.showMessageDialog(null, service.updateReserva(actReserva), "Alerta", JOptionPane.INFORMATION_MESSAGE);
+                actReserva = null;
+                txtResUpIdHabitacion.setText("");
+                txtResUpIdHotel.setText("");
+                txtResUpIdUsuario.setText("");
+                jdcResUpFechaFin.setDate(null);
+                jdcResUpFechaIni.setDate(null);
+                cargarReservas();
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Datos invalidos");
+        }
+    }//GEN-LAST:event_btnResUpActualizarActionPerformed
+
+    private void btnResUpBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResUpBuscarActionPerformed
+        // TODO add your handling code here:
+        if (reservas != null) {
+            try {
+                int id = Integer.parseInt(txtResUpIdReserva.getText());
+                for (Reserva reserva : reservas) {
+                    if (reserva.getId() == id) {
+                        actReserva = reserva;
+                        txtResUpIdHabitacion.setText("" + actReserva.getId_habitacion());
+                        txtResUpIdHotel.setText("" + actReserva.getId_hotel());
+                        txtResUpIdUsuario.setText("" + actReserva.getId_persona());
+                        jdcResUpFechaFin.setDate(actReserva.getFechaFin());
+                        jdcResUpFechaIni.setDate(actReserva.getFechaInicio());
+                        btnResUpActualizar.setEnabled(true);
+                        return;
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Id invalida");
+            }
+        }
+    }//GEN-LAST:event_btnResUpBuscarActionPerformed
+
+    private void txtResUpIdReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResUpIdReservaActionPerformed
+        // TODO add your handling code here:
+        btnResUpActualizar.setEnabled(false);
+    }//GEN-LAST:event_txtResUpIdReservaActionPerformed
+
+    private void txtResUpIdReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtResUpIdReservaMouseClicked
+        // TODO add your handling code here:
+        btnResUpActualizar.setEnabled(false);
+    }//GEN-LAST:event_txtResUpIdReservaMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnResUpActualizar;
+    private javax.swing.JButton btnResUpBuscar;
+    private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser jdcResUpFechaFin;
+    private com.toedter.calendar.JDateChooser jdcResUpFechaIni;
+    private javax.swing.JLabel lbResUpFechaFin;
+    private javax.swing.JLabel lbResUpFechaIni;
+    private javax.swing.JLabel lbResUpIdHabitacion;
+    private javax.swing.JLabel lbResUpIdHotel;
+    private javax.swing.JLabel lbResUpIdReserva;
+    private javax.swing.JLabel lbResUpIdUsuario;
+    private javax.swing.JLabel lbResUpTitulo;
+    private javax.swing.JPanel pnlResUpActualizar;
+    private javax.swing.JPanel pnlResUpdate;
+    private javax.swing.JTextField txtResUpIdHabitacion;
+    private javax.swing.JTextField txtResUpIdHotel;
+    private javax.swing.JTextField txtResUpIdReserva;
+    private javax.swing.JTextField txtResUpIdUsuario;
     // End of variables declaration//GEN-END:variables
 }

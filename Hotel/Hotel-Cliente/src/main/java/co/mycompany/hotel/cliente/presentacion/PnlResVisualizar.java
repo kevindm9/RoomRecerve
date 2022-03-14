@@ -8,9 +8,7 @@ import co.mycompany.hotel.cliente.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.Habitacion;
 import co.mycompany.hotel.commons.domain.Hotel;
 import co.mycompany.hotel.commons.domain.Reserva;
-import java.awt.Image;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Date;
@@ -34,7 +32,7 @@ public class PnlResVisualizar extends javax.swing.JPanel {
     public PnlResVisualizar(String usuario) {
         this.service = new HotelService();
         this.usuario = usuario;
-
+        this.reservas = new ArrayList<>(); 
         hoteles = new ArrayList<>();
         initComponents();
         this.modelo = (DefaultTableModel) tabResReservas.getModel();
@@ -73,6 +71,7 @@ public class PnlResVisualizar extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tabResReservas.getTableHeader().setReorderingAllowed(false);
         tabResReservas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabResReservasMouseClicked(evt);
@@ -80,11 +79,22 @@ public class PnlResVisualizar extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tabResReservas);
         if (tabResReservas.getColumnModel().getColumnCount() > 0) {
+            tabResReservas.getColumnModel().getColumn(0).setMinWidth(60);
             tabResReservas.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tabResReservas.getColumnModel().getColumn(0).setMaxWidth(60);
+            tabResReservas.getColumnModel().getColumn(1).setMinWidth(60);
             tabResReservas.getColumnModel().getColumn(1).setPreferredWidth(60);
+            tabResReservas.getColumnModel().getColumn(1).setMaxWidth(60);
+            tabResReservas.getColumnModel().getColumn(2).setMinWidth(60);
             tabResReservas.getColumnModel().getColumn(2).setPreferredWidth(60);
-            tabResReservas.getColumnModel().getColumn(4).setPreferredWidth(60);
-            tabResReservas.getColumnModel().getColumn(5).setPreferredWidth(60);
+            tabResReservas.getColumnModel().getColumn(2).setMaxWidth(60);
+            tabResReservas.getColumnModel().getColumn(3).setPreferredWidth(120);
+            tabResReservas.getColumnModel().getColumn(4).setMinWidth(80);
+            tabResReservas.getColumnModel().getColumn(4).setPreferredWidth(80);
+            tabResReservas.getColumnModel().getColumn(4).setMaxWidth(80);
+            tabResReservas.getColumnModel().getColumn(5).setMinWidth(80);
+            tabResReservas.getColumnModel().getColumn(5).setPreferredWidth(80);
+            tabResReservas.getColumnModel().getColumn(5).setMaxWidth(80);
         }
 
         javax.swing.GroupLayout pnlResControlLayout = new javax.swing.GroupLayout(pnlResControl);
@@ -128,7 +138,6 @@ public class PnlResVisualizar extends javax.swing.JPanel {
         hoteles = null;
         String tipo = service.getSecionTipo(usuario);
         try {
-
             if (tipo.equals("Junior")) {
                 hoteles = service.getHotels(usuario);
                 if (hoteles != null) {
@@ -136,10 +145,10 @@ public class PnlResVisualizar extends javax.swing.JPanel {
                         reservas.addAll(service.getReservaHotel(hotel.getId()));
                     }
                 }
-            } else {           
-                reservas.addAll(service.getReservaCliente(service.getPersona(usuario).getId()));
+            } else {
+                reservas = service.getReservaCliente(service.getPersona(usuario).getId());                
             }
-        } catch (Exception e) {
+        } catch (Exception e) {          
             JOptionPane.showMessageDialog(null, "No hay ninguna reserva registrada");
             return;
         }
@@ -156,13 +165,12 @@ public class PnlResVisualizar extends javax.swing.JPanel {
         dt.addColumn("Descripcion");
         dt.addColumn("Fecha Inicio");
         dt.addColumn("Fecha Fin");
-
         if (reservas != null) {
             for (int i = 0; i < reservas.size(); i++) {
                 Object fila[] = new Object[6];
                 Habitacion habitacion = service.getHabitacion(reservas.get(i).getId_habitacion());
                 String descripcion = "<html>";
-                descripcion += "<body><h3>" + habitacion.getDescripcion() + "</h3>";
+                descripcion += "<body>" + habitacion.getDescripcion() + "<br>";
                 descripcion += "--->Tipo:   " + habitacion.getTipo().toString();
                 descripcion += "<br>--->Precio: " + habitacion.getPrecio();
                 if (tipo.equals("Junior")) {
@@ -177,7 +185,7 @@ public class PnlResVisualizar extends javax.swing.JPanel {
                 fila[5] = new JLabel(reservas.get(i).getFechaFin().toString());
                 modelo.addRow(fila);
                 tabResReservas.setModel(modelo);
-                tabResReservas.setRowHeight(30);
+                tabResReservas.setRowHeight(60);
 
             }//*/
         }

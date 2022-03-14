@@ -13,7 +13,10 @@ D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlPerPassword.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\IHotelAccess.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlResUpdate.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlResVisualizar.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlPerModificar.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlPerEliminar.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\SocketHotel.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\services\HotelService.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\FrmMain.java
@@ -23,6 +26,7 @@ D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Security.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlLogin.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\Factory.java
+D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\presentacion\PnlResEliminar.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\infra\Subject.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\domain\User.java
 D:\Repositorio\LabIngSof2\Proyecto\RoomReserve\Hotel\Hotel-Cliente\src\main\java\co\mycompany\hotel\cliente\access\HotelAccessImplSockets.java

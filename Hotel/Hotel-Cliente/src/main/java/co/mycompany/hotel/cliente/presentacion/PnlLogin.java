@@ -54,7 +54,8 @@ public class PnlLogin extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lbLogTitulo.setText("Iniciar Seccion");
+        lbLogTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbLogTitulo.setText("Iniciar Sesión");
 
         lbLogUsuario.setText("Usuario");
 
@@ -124,7 +125,7 @@ public class PnlLogin extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnLogRegistrarse)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
