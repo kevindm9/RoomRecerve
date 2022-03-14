@@ -22,27 +22,26 @@ public class PnlPerModificar extends javax.swing.JPanel {
     /**
      * Creates new form PnlAdmHabAdd
      */
-    public PnlPerModificar(String usuario,String tipo) {
+    public PnlPerModificar(String usuario, String tipo) {
         service = new HotelService();
         this.usuario = usuario;
         this.tipo = tipo;
         initComponents();
+        this.persona = service.getPersona(usuario);
         cargarDatos();
-        persona = new Persona();
-        
 
     }
 
     private void cargarDatos() {
-        try { 
-            persona = service.getPersona(usuario);
-            if (persona != null) {
+        try {
+
+            if (this.persona != null) {
                 txtPerModUser.setText(usuario);
-                txtPerModDir.setText(persona.getDireccion());
-                txtPerModId.setText(""+persona.getId());
-                txtPerModNombre.setText(persona.getNombre());
-                txtPerModTel.setText(persona.getTelefono());
-                
+                txtPerModDir.setText(this.persona.getDireccion());
+                txtPerModId.setText("" + this.persona.getId());
+                txtPerModNombre.setText(this.persona.getNombre());
+                txtPerModTel.setText(this.persona.getTelefono());
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la conexion");
@@ -188,10 +187,9 @@ public class PnlPerModificar extends javax.swing.JPanel {
         persona.setDireccion(txtPerModDir.getText());
         persona.setNombre(txtPerModNombre.getText());
         persona.setTelefono(txtPerModTel.getText());
-        try{
-        JOptionPane.showMessageDialog(null, service.updatePersona(persona, tipo));
-        }
-        catch(Exception e){
+        try {
+            JOptionPane.showMessageDialog(null, service.updatePersona(persona, tipo));
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la conexion");
         }
     }//GEN-LAST:event_btnPerModActualizarActionPerformed

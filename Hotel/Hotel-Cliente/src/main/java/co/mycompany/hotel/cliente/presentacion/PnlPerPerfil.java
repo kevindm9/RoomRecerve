@@ -31,6 +31,7 @@ public class PnlPerPerfil extends javax.swing.JPanel {
     private void cargarDatos() {
         try {
             Persona persona = service.getPersona(usuario);
+            System.out.println( persona.toString());
             if (persona != null) {
                 txtPerPerUser.setText(usuario);
                 txtPerPersDir.setText(persona.getDireccion());

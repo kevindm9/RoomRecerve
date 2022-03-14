@@ -242,6 +242,11 @@ public class FrmMain extends javax.swing.JFrame {
         jmmMainSeccion.add(jmiMainSecModificar);
 
         jmiMainSecPassword.setText("Modificar Contraseña");
+        jmiMainSecPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMainSecPasswordActionPerformed(evt);
+            }
+        });
         jmmMainSeccion.add(jmiMainSecPassword);
         jmmMainSeccion.add(jSeparator2);
 
@@ -563,6 +568,15 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.repaint();
         pnlMainControl.revalidate();
     }//GEN-LAST:event_jmiMainSecModificarActionPerformed
+
+    private void jmiMainSecPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecPasswordActionPerformed
+        // TODO add your handling code here:
+        PnlPerPassword panelPerpasword = new PnlPerPassword(usuario, tipo);
+        pnlMainControl.removeAll();
+        pnlMainControl.add(panelPerpasword);
+        pnlMainControl.repaint();
+        pnlMainControl.revalidate();
+    }//GEN-LAST:event_jmiMainSecPasswordActionPerformed
 
     private void consultarHabitaciones() {
         PnlHabConsultar panelHabVista = new PnlHabConsultar(usuario);
