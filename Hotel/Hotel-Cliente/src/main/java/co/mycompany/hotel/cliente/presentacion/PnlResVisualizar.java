@@ -127,21 +127,19 @@ public class PnlResVisualizar extends javax.swing.JPanel {
 
         hoteles = null;
         String tipo = service.getSecionTipo(usuario);
-        try{
-        
-        if (tipo.equals("Junior")) {
-            hoteles = service.getHotels(usuario);
-            if (hoteles != null) {
-                for (Hotel hotel : hoteles) {
-                    reservas.addAll(service.getReserva(hotel.getId()));
+        try {
+
+            if (tipo.equals("Junior")) {
+                hoteles = service.getHotels(usuario);
+                if (hoteles != null) {
+                    for (Hotel hotel : hoteles) {
+                        reservas.addAll(service.getReservaHotel(hotel.getId()));
+                    }
                 }
+            } else {           
+                reservas.addAll(service.getReservaCliente(service.getPersona(usuario).getId()));
             }
-        }
-        else{
-            reservas.addAll(service.getReserva());
-        }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No hay ninguna reserva registrada");
             return;
         }

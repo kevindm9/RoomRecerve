@@ -124,6 +124,9 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     public void cargarCliente() {
+        jmmMainSeccion.setVisible(true);
+        jmmMainReservas.setVisible(true);
+        jmiMainResVisualizar.setVisible(true);
         jmmMainReservas.setVisible(true);
         pnlMainControl.removeAll();
         pnlMainControl.add(aux.getComponent(0));
