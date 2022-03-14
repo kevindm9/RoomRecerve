@@ -297,7 +297,7 @@ public class HotelAccessImplSockets implements IHotelAccess {
         private String updateReservaRequestJson(Reserva reserva) {
         Protocol protocol = new Protocol();
         protocol.setResource("habitacionReserva");
-        protocol.setAction("set");
+        protocol.setAction("modificar");
         protocol.addParameter("Id_reserva", Integer.toString(reserva.getId()));
         protocol.addParameter("Id_habt", Integer.toString(reserva.getId_habitacion()));
         protocol.addParameter("id_hotel", Integer.toString(reserva.getId_hotel()));
