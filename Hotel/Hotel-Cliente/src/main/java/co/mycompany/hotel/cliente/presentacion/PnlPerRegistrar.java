@@ -26,7 +26,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Jose Ricardo
  */
-public class PnlRegistrar extends javax.swing.JPanel {
+public class PnlPerRegistrar extends javax.swing.JPanel {
 
     private HotelService service;
     private String tipo;
@@ -35,7 +35,7 @@ public class PnlRegistrar extends javax.swing.JPanel {
     /**
      * Creates new form PnlAdmHabAdd
      */
-    public PnlRegistrar(FrmMain panel,String tipo) {
+    public PnlPerRegistrar(FrmMain panel,String tipo) {
         this.panel = panel;
         service = new HotelService();
         this.tipo = tipo;
