@@ -56,6 +56,9 @@ public class PnlPerRegistrar extends javax.swing.JPanel {
         btnPersonaAgregar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setOpaque(false);
+
+        bgAdmHabAdd.setOpaque(false);
         bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(570, 202));
 
         lbAdmPersNombre.setText("Nombre");

@@ -6,9 +6,12 @@ package co.mycompany.hotel.cliente.presentacion;
 
 import co.mycompany.hotel.cliente.domain.services.HotelService;
 import co.mycompany.hotel.commons.domain.Hotel;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,6 +36,21 @@ public class FrmMain extends javax.swing.JFrame {
     }
 
     private void iniciar() {
+        Image img = new ImageIcon(".\\src\\main\\java\\co\\mycompany\\hotel\\cliente\\resources\\FondoPlayita.png").getImage();
+        ImageIcon img2 = new ImageIcon(img.getScaledInstance(lbMainFondo.getWidth(), lbMainFondo.getHeight(), Image.SCALE_SMOOTH));
+        Image fondo = new ImageIcon(".\\src\\main\\java\\co\\mycompany\\hotel\\cliente\\resources\\FondoEstrella.png").getImage();
+        ImageIcon fondo2 = new ImageIcon(fondo.getScaledInstance(lbFondoInternal.getWidth(), lbFondoInternal.getHeight(), Image.SCALE_SMOOTH));
+        Image barner = new ImageIcon(".\\src\\main\\java\\co\\mycompany\\hotel\\cliente\\resources\\Barner.png").getImage();
+        ImageIcon barner2 = new ImageIcon(barner.getScaledInstance(lbBarner.getWidth(), lbBarner.getHeight(), Image.SCALE_SMOOTH));
+        Image icono = new ImageIcon(".\\src\\main\\java\\co\\mycompany\\hotel\\cliente\\resources\\icono.png").getImage();
+        ImageIcon icono2 = new ImageIcon(icono.getScaledInstance(95, 95, Image.SCALE_SMOOTH));
+        this.setIconImage(icono2.getImage());
+
+        
+        lbMainFondo.setIcon(img2);
+        lbFondoInternal.setIcon(fondo2);
+        lbBarner.setIcon(barner2);
+
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.IfmMainControl.getUI()).setNorthPane(null);
         //TipoHabitacion tipos[] = TipoHabitacion.values();
         hoteles = service.getHotels("All_Hotels");
@@ -70,9 +88,9 @@ public class FrmMain extends javax.swing.JFrame {
 
     public void cargarReserva(int id_hotel, Date fechaIni, Date fechaFin) {
         PnlUsuHabitaciones panelHabitaciones = new PnlUsuHabitaciones(this, id_hotel, usuario, fechaIni, fechaFin);
-        for(int i = 0 ; i< hoteles.size();i++){
-            if(id_hotel == hoteles.get(i).getId()){
-                cbxMainHoteles.setSelectedIndex(i+1);
+        for (int i = 0; i < hoteles.size(); i++) {
+            if (id_hotel == hoteles.get(i).getId()) {
+                cbxMainHoteles.setSelectedIndex(i + 1);
                 break;
             }
         }
@@ -154,8 +172,18 @@ public class FrmMain extends javax.swing.JFrame {
         pnlEstado = new javax.swing.JPanel();
         lbMainLogin = new javax.swing.JLabel();
         lbMainUsuario = new javax.swing.JLabel();
+        lbBarner = new javax.swing.JLabel();
+        pnlMainBusqueda = new javax.swing.JPanel();
+        btnMainBuscar = new javax.swing.JButton();
+        cbxMainHoteles = new javax.swing.JComboBox<>();
+        jdcMainFechaFin = new com.toedter.calendar.JDateChooser();
+        jdcMainFechaIni = new com.toedter.calendar.JDateChooser();
+        lbMainFechaIni = new javax.swing.JLabel();
+        lbMainFechaFin = new javax.swing.JLabel();
         IfmMainControl = new javax.swing.JInternalFrame();
         pnlMainControl = new javax.swing.JPanel();
+        pnlFondoInterno = new javax.swing.JPanel();
+        lbFondoInternal = new javax.swing.JLabel();
         jmbMainControl = new javax.swing.JMenuBar();
         jmmMainSesion = new javax.swing.JMenu();
         jmiMainSecInicio = new javax.swing.JMenuItem();
@@ -182,20 +210,15 @@ public class FrmMain extends javax.swing.JFrame {
         jmiMainResVisualizar = new javax.swing.JMenuItem();
         jmiMainResModificar = new javax.swing.JMenuItem();
         jmiMainResEliminar = new javax.swing.JMenuItem();
-        pnlMainBusqueda = new javax.swing.JPanel();
-        btnMainBuscar = new javax.swing.JButton();
-        cbxMainHoteles = new javax.swing.JComboBox<>();
-        jdcMainFechaFin = new com.toedter.calendar.JDateChooser();
-        jdcMainFechaIni = new com.toedter.calendar.JDateChooser();
-        lbMainFechaIni = new javax.swing.JLabel();
-        lbMainFechaFin = new javax.swing.JLabel();
+        lbMainFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Room Reserve Service");
         setMaximumSize(new java.awt.Dimension(2000, 2147483647));
         setPreferredSize(new java.awt.Dimension(752, 580));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlEstado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlEstado.setOpaque(false);
 
         lbMainLogin.setText("Iniciar Sesión");
         lbMainLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,7 +226,6 @@ public class FrmMain extends javax.swing.JFrame {
                 lbMainLoginMouseClicked(evt);
             }
         });
-        pnlEstado.add(lbMainLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, -1));
 
         lbMainUsuario.setText("Crea tu cuenta");
         lbMainUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -211,7 +233,59 @@ public class FrmMain extends javax.swing.JFrame {
                 lbMainUsuarioMouseClicked(evt);
             }
         });
-        pnlEstado.add(lbMainUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 100, -1));
+
+        javax.swing.GroupLayout pnlEstadoLayout = new javax.swing.GroupLayout(pnlEstado);
+        pnlEstado.setLayout(pnlEstadoLayout);
+        pnlEstadoLayout.setHorizontalGroup(
+            pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEstadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbBarner, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(184, 184, 184)
+                .addComponent(lbMainUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(lbMainLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        pnlEstadoLayout.setVerticalGroup(
+            pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEstadoLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(pnlEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbMainUsuario)
+                    .addComponent(lbMainLogin))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEstadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbBarner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(pnlEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 54));
+
+        pnlMainBusqueda.setOpaque(false);
+        pnlMainBusqueda.setPreferredSize(new java.awt.Dimension(740, 37));
+        pnlMainBusqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMainBuscar.setText("Buscar");
+        btnMainBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMainBuscarActionPerformed(evt);
+            }
+        });
+        pnlMainBusqueda.add(btnMainBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 100, -1));
+
+        cbxMainHoteles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlMainBusqueda.add(cbxMainHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
+        pnlMainBusqueda.add(jdcMainFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 120, -1));
+        pnlMainBusqueda.add(jdcMainFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 120, -1));
+
+        lbMainFechaIni.setText("Desde");
+        pnlMainBusqueda.add(lbMainFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+
+        lbMainFechaFin.setText("Hasta");
+        pnlMainBusqueda.add(lbMainFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+
+        getContentPane().add(pnlMainBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 56, 760, -1));
 
         IfmMainControl.setBorder(null);
         IfmMainControl.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,8 +294,33 @@ public class FrmMain extends javax.swing.JFrame {
         IfmMainControl.setVerifyInputWhenFocusTarget(false);
         IfmMainControl.setVisible(true);
 
+        pnlMainControl.setOpaque(false);
         pnlMainControl.setPreferredSize(new java.awt.Dimension(740, 400));
         pnlMainControl.setLayout(new java.awt.CardLayout());
+
+        pnlFondoInterno.setPreferredSize(new java.awt.Dimension(740, 400));
+
+        lbFondoInternal.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lbFondoInternal.setPreferredSize(new java.awt.Dimension(740, 400));
+
+        javax.swing.GroupLayout pnlFondoInternoLayout = new javax.swing.GroupLayout(pnlFondoInterno);
+        pnlFondoInterno.setLayout(pnlFondoInternoLayout);
+        pnlFondoInternoLayout.setHorizontalGroup(
+            pnlFondoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 761, Short.MAX_VALUE)
+            .addGroup(pnlFondoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlFondoInternoLayout.createSequentialGroup()
+                    .addComponent(lbFondoInternal, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        pnlFondoInternoLayout.setVerticalGroup(
+            pnlFondoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 413, Short.MAX_VALUE)
+            .addGroup(pnlFondoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlFondoInternoLayout.createSequentialGroup()
+                    .addComponent(lbFondoInternal, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         jmbMainControl.setToolTipText("Administrar");
         jmbMainControl.setOpaque(false);
@@ -403,57 +502,29 @@ public class FrmMain extends javax.swing.JFrame {
         IfmMainControl.getContentPane().setLayout(IfmMainControlLayout);
         IfmMainControlLayout.setHorizontalGroup(
             IfmMainControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMainControl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlMainControl, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(IfmMainControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(IfmMainControlLayout.createSequentialGroup()
+                    .addComponent(pnlFondoInterno, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         IfmMainControlLayout.setVerticalGroup(
             IfmMainControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMainControl, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+            .addGroup(IfmMainControlLayout.createSequentialGroup()
+                .addComponent(pnlMainControl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(IfmMainControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(IfmMainControlLayout.createSequentialGroup()
+                    .addComponent(pnlFondoInterno, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
-        pnlMainBusqueda.setPreferredSize(new java.awt.Dimension(740, 37));
-        pnlMainBusqueda.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(IfmMainControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 99, 760, 420));
 
-        btnMainBuscar.setText("Buscar");
-        btnMainBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMainBuscarActionPerformed(evt);
-            }
-        });
-        pnlMainBusqueda.add(btnMainBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 100, -1));
-
-        cbxMainHoteles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnlMainBusqueda.add(cbxMainHoteles, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 220, -1));
-        pnlMainBusqueda.add(jdcMainFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 120, -1));
-        pnlMainBusqueda.add(jdcMainFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 120, -1));
-
-        lbMainFechaIni.setText("Desde");
-        pnlMainBusqueda.add(lbMainFechaIni, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
-
-        lbMainFechaFin.setText("Hasta");
-        pnlMainBusqueda.add(lbMainFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IfmMainControl, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(pnlMainBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(pnlMainBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(IfmMainControl))))
-        );
+        lbMainFondo.setMaximumSize(new java.awt.Dimension(740, 560));
+        lbMainFondo.setMinimumSize(new java.awt.Dimension(740, 560));
+        lbMainFondo.setPreferredSize(new java.awt.Dimension(740, 560));
+        getContentPane().add(lbMainFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -564,25 +635,24 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void btnMainBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainBuscarActionPerformed
         // TODO add your handling code here:
-        try{
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String formattedDate = simpleDateFormat.format(jdcMainFechaIni.getDate());
-        //dccUsuHabInicio.getDateFormatString()
-        Date fechaIni = Date.valueOf(formattedDate);
-        formattedDate = simpleDateFormat.format(jdcMainFechaFin.getDate());
-        Date fechaFin = Date.valueOf(formattedDate);
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String formattedDate = simpleDateFormat.format(jdcMainFechaIni.getDate());
+            //dccUsuHabInicio.getDateFormatString()
+            Date fechaIni = Date.valueOf(formattedDate);
+            formattedDate = simpleDateFormat.format(jdcMainFechaFin.getDate());
+            Date fechaFin = Date.valueOf(formattedDate);
 
-        if (fechaFin.before(fechaIni)) {
-            JOptionPane.showMessageDialog(null,
-                    "Periodo de tiempo no valido", "Datos invalidos",
-                    JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        System.out.println(hoteles.get(cbxMainHoteles.getSelectedIndex()-1).getNombre());
-        cargarReserva(hoteles.get(cbxMainHoteles.getSelectedIndex()-1).getId(),fechaIni,fechaFin);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Seleccione primero un hotel, fecha de inicio y fecha de fin","Advertencia",JOptionPane.INFORMATION_MESSAGE);
+            if (fechaFin.before(fechaIni)) {
+                JOptionPane.showMessageDialog(null,
+                        "Periodo de tiempo no valido", "Datos invalidos",
+                        JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            System.out.println(hoteles.get(cbxMainHoteles.getSelectedIndex() - 1).getNombre());
+            cargarReserva(hoteles.get(cbxMainHoteles.getSelectedIndex() - 1).getId(), fechaIni, fechaFin);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Seleccione primero un hotel, fecha de inicio y fecha de fin", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnMainBuscarActionPerformed
 
@@ -602,7 +672,7 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.add(panelPerPerfil);
         pnlMainControl.repaint();
         pnlMainControl.revalidate();
-        
+
     }//GEN-LAST:event_jmiMainSecPerfilActionPerformed
 
     private void jmiMainSecModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainSecModificarActionPerformed
@@ -639,7 +709,7 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.add(panelaux);
         pnlMainControl.repaint();
         pnlMainControl.revalidate();
-        
+
     }//GEN-LAST:event_jmiMainResVisualizarActionPerformed
 
     private void jmiMainResModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMainResModificarActionPerformed
@@ -658,7 +728,7 @@ public class FrmMain extends javax.swing.JFrame {
         pnlMainControl.add(panelaux);
         pnlMainControl.repaint();
         pnlMainControl.revalidate();
-        
+
     }//GEN-LAST:event_jmiMainResEliminarActionPerformed
 
     private void consultarHabitaciones() {
@@ -673,7 +743,7 @@ public class FrmMain extends javax.swing.JFrame {
         this.tipo = tipo;
     }
     
-    
+   
 
     /**
      * @param args the command line arguments
@@ -742,11 +812,15 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenu jmmMainHoteles;
     private javax.swing.JMenu jmmMainReservas;
     private javax.swing.JMenu jmmMainSesion;
+    private javax.swing.JLabel lbBarner;
+    private javax.swing.JLabel lbFondoInternal;
     private javax.swing.JLabel lbMainFechaFin;
     private javax.swing.JLabel lbMainFechaIni;
+    private javax.swing.JLabel lbMainFondo;
     private javax.swing.JLabel lbMainLogin;
     private javax.swing.JLabel lbMainUsuario;
     private javax.swing.JPanel pnlEstado;
+    private javax.swing.JPanel pnlFondoInterno;
     private javax.swing.JPanel pnlMainBusqueda;
     private javax.swing.JPanel pnlMainControl;
     // End of variables declaration//GEN-END:variables

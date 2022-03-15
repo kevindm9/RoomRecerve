@@ -55,6 +55,9 @@ public class PnlPerEliminar extends javax.swing.JPanel {
         txtPerEliUser = new javax.swing.JTextField();
         lbPerEliUser = new javax.swing.JLabel();
 
+        setOpaque(false);
+
+        pnlPerEliminar.setOpaque(false);
         pnlPerEliminar.setPreferredSize(new java.awt.Dimension(570, 202));
 
         lbPerEliNombre.setText("Nombre");

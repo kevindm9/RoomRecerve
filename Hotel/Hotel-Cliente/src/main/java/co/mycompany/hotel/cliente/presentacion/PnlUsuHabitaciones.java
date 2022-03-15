@@ -62,8 +62,6 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabUsuHabitaciones = new javax.swing.JTable();
         btnUsuHabRegresar = new javax.swing.JButton();
@@ -72,9 +70,11 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         dccUsuHabFin = new com.toedter.calendar.JDateChooser();
         btnUsuHabBuscar = new javax.swing.JButton();
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setOpaque(false);
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setOpaque(false);
 
         tabUsuHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,6 +104,7 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
         });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Habitaciones por fecha"));
+        jPanel1.setOpaque(false);
 
         btnUsuHabBuscar.setText("Buscar");
         btnUsuHabBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -306,8 +307,6 @@ public class PnlUsuHabitaciones extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser dccUsuHabInicio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tabUsuHabitaciones;
     // End of variables declaration//GEN-END:variables
 }

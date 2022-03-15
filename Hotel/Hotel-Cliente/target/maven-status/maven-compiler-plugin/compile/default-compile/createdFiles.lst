@@ -26,6 +26,7 @@ co\mycompany\hotel\cliente\access\IHotelAccess.class
 co\mycompany\hotel\cliente\presentacion\FrmMain.class
 co\mycompany\hotel\cliente\presentacion\PnlResEliminar.class
 co\mycompany\hotel\cliente\presentacion\PnlUsuHabitaciones$4.class
+co\mycompany\hotel\cliente\presentacion\FrmMain$23.class
 co\mycompany\hotel\cliente\presentacion\FrmMain$13.class
 co\mycompany\hotel\cliente\presentacion\FrmMain$7.class
 co\mycompany\hotel\cliente\presentacion\Render.class

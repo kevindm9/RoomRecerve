@@ -52,7 +52,10 @@ public class PnlResVisualizar extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabResReservas = new javax.swing.JTable();
 
+        setOpaque(false);
+
         pnlResControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlResControl.setOpaque(false);
         pnlResControl.setPreferredSize(new java.awt.Dimension(700, 300));
 
         tabResReservas.setModel(new javax.swing.table.DefaultTableModel(

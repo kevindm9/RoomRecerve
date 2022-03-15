@@ -51,8 +51,13 @@ public class PnlUsuHoteles extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabUsuSucursales = new javax.swing.JTable();
 
+        setOpaque(false);
+
         pnlControl.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlControl.setOpaque(false);
         pnlControl.setPreferredSize(new java.awt.Dimension(700, 300));
+
+        jScrollPane1.setOpaque(false);
 
         tabUsuSucursales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -62,6 +67,7 @@ public class PnlUsuHoteles extends javax.swing.JPanel {
                 "Hotel", "Carateristicas"
             }
         ));
+        tabUsuSucursales.setOpaque(false);
         tabUsuSucursales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabUsuSucursalesMouseClicked(evt);

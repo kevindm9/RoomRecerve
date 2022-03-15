@@ -79,7 +79,12 @@ public class PnlResUpdate extends javax.swing.JPanel {
         btnResUpActualizar = new javax.swing.JButton();
         lbResUpTitulo = new javax.swing.JLabel();
 
+        setOpaque(false);
+
+        jPanel1.setOpaque(false);
+
         pnlResUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la reserva"));
+        pnlResUpdate.setOpaque(false);
 
         txtResUpIdUsuario.setEditable(false);
 
@@ -144,6 +149,7 @@ public class PnlResUpdate extends javax.swing.JPanel {
         );
 
         pnlResUpActualizar.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar y actualizar reserva"));
+        pnlResUpActualizar.setOpaque(false);
 
         txtResUpIdReserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -78,7 +78,12 @@ public class PnlResEliminar extends javax.swing.JPanel {
         btnResEliEliminar = new javax.swing.JButton();
         lbResEliTitulo = new javax.swing.JLabel();
 
+        setOpaque(false);
+
+        pnlResEliminar.setOpaque(false);
+
         pnlResEliDatos.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la reserva"));
+        pnlResEliDatos.setOpaque(false);
 
         txtResEliIdUsuario.setEditable(false);
 
@@ -145,6 +150,7 @@ public class PnlResEliminar extends javax.swing.JPanel {
         );
 
         pnlResEliEliminar.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar y actualizar reserva"));
+        pnlResEliEliminar.setOpaque(false);
 
         txtResEliIdReserva.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
