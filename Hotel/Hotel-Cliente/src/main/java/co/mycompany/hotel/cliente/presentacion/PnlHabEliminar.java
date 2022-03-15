@@ -62,8 +62,10 @@ public class PnlHabEliminar extends javax.swing.JPanel {
         cbxHabEliTipo = new javax.swing.JComboBox<>();
         lbHabEliTitulo = new javax.swing.JLabel();
 
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(740, 235));
 
+        pnlHabEliminar.setOpaque(false);
         pnlHabEliminar.setPreferredSize(new java.awt.Dimension(570, 202));
 
         pnlHabEliConsultar.setBorder(javax.swing.BorderFactory.createTitledBorder("Consular habitación"));

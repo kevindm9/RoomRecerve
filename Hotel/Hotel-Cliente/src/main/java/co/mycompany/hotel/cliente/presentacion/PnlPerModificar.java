@@ -72,6 +72,9 @@ public class PnlPerModificar extends javax.swing.JPanel {
         lbPerModTitulo = new javax.swing.JLabel();
         btnPerModActualizar = new javax.swing.JButton();
 
+        setOpaque(false);
+
+        pnlPerModificar.setOpaque(false);
         pnlPerModificar.setPreferredSize(new java.awt.Dimension(570, 202));
 
         lbPerModDireccion.setText("Direccion");

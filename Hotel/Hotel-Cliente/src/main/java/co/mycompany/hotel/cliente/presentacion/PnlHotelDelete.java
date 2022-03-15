@@ -44,61 +44,36 @@ public class PnlHotelDelete extends javax.swing.JPanel {
     private void initComponents() {
 
         pnlHotDelete = new javax.swing.JPanel();
+        lbHotDelTitulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lbHotDelHotelId = new javax.swing.JLabel();
+        txtHotDelHotelId = new javax.swing.JTextField();
+        btnHotDelBuscar = new javax.swing.JButton();
+        btnHotDelEliminar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        txtHotDelNombre = new javax.swing.JTextField();
+        txtHotDelDir = new javax.swing.JTextField();
+        txtHotDelCiudad = new javax.swing.JTextField();
+        txtHotDelTel = new javax.swing.JTextField();
+        txtHotDelAdmin = new javax.swing.JTextField();
         lbHotDelNombre = new javax.swing.JLabel();
         lbHotDelDireccion = new javax.swing.JLabel();
         lbHotDelCiudad = new javax.swing.JLabel();
-        txtHotDelNombre = new javax.swing.JTextField();
-        txtHotDelDir = new javax.swing.JTextField();
         lbHotDelTelefono = new javax.swing.JLabel();
-        btnHotDelEliminar = new javax.swing.JButton();
-        txtHotDelCiudad = new javax.swing.JTextField();
-        txtHotDelTel = new javax.swing.JTextField();
-        lbHotDelHotelId = new javax.swing.JLabel();
-        txtHotDelAdmin = new javax.swing.JTextField();
         lbHotDelAdmin = new javax.swing.JLabel();
-        lbHotDelTitulo = new javax.swing.JLabel();
-        txtHotDelHotelId = new javax.swing.JTextField();
-        btnHotDelBuscar = new javax.swing.JButton();
 
+        setOpaque(false);
+
+        pnlHotDelete.setOpaque(false);
         pnlHotDelete.setPreferredSize(new java.awt.Dimension(570, 202));
-
-        lbHotDelNombre.setText("Nombre");
-
-        lbHotDelDireccion.setText("Direccion");
-
-        lbHotDelCiudad.setText("Ciudad");
-
-        txtHotDelNombre.setEditable(false);
-        txtHotDelNombre.setAutoscrolls(false);
-        txtHotDelNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHotDelNombreActionPerformed(evt);
-            }
-        });
-
-        txtHotDelDir.setEditable(false);
-
-        lbHotDelTelefono.setText("Telefono");
-
-        btnHotDelEliminar.setText("Eliminar");
-        btnHotDelEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHotDelEliminarActionPerformed(evt);
-            }
-        });
-
-        txtHotDelCiudad.setEditable(false);
-
-        txtHotDelTel.setEditable(false);
-
-        lbHotDelHotelId.setText("Id del Hotel");
-
-        txtHotDelAdmin.setEditable(false);
-
-        lbHotDelAdmin.setText("Administrador");
 
         lbHotDelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbHotDelTitulo.setText("Eliminar Hotel");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Hotel"));
+        jPanel1.setOpaque(false);
+
+        lbHotDelHotelId.setText("Id del Hotel");
 
         txtHotDelHotelId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,34 +88,132 @@ public class PnlHotelDelete extends javax.swing.JPanel {
             }
         });
 
+        btnHotDelEliminar.setText("Eliminar");
+        btnHotDelEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHotDelEliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbHotDelHotelId)
+                    .addComponent(txtHotDelHotelId)
+                    .addComponent(btnHotDelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHotDelEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbHotDelHotelId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtHotDelHotelId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
+                    .addComponent(btnHotDelBuscar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(btnHotDelEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Hotel a remover"));
+        jPanel2.setOpaque(false);
+
+        txtHotDelNombre.setEditable(false);
+        txtHotDelNombre.setAutoscrolls(false);
+        txtHotDelNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHotDelNombreActionPerformed(evt);
+            }
+        });
+
+        txtHotDelDir.setEditable(false);
+
+        txtHotDelCiudad.setEditable(false);
+
+        txtHotDelTel.setEditable(false);
+
+        txtHotDelAdmin.setEditable(false);
+
+        lbHotDelNombre.setText("Nombre");
+
+        lbHotDelDireccion.setText("Direccion");
+
+        lbHotDelCiudad.setText("Ciudad");
+
+        lbHotDelTelefono.setText("Telefono");
+
+        lbHotDelAdmin.setText("Administrador");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbHotDelTelefono)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbHotDelAdmin, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbHotDelCiudad)
+                            .addComponent(lbHotDelDireccion)
+                            .addComponent(lbHotDelNombre))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHotDelAdmin)
+                            .addComponent(txtHotDelNombre)
+                            .addComponent(txtHotDelDir)
+                            .addComponent(txtHotDelCiudad)
+                            .addComponent(txtHotDelTel, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(21, 21, 21))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHotDelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbHotDelNombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHotDelDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbHotDelDireccion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHotDelCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbHotDelCiudad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHotDelTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbHotDelTelefono))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHotDelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbHotDelAdmin))
+                .addGap(21, 21, 21))
+        );
+
         javax.swing.GroupLayout pnlHotDeleteLayout = new javax.swing.GroupLayout(pnlHotDelete);
         pnlHotDelete.setLayout(pnlHotDeleteLayout);
         pnlHotDeleteLayout.setHorizontalGroup(
             pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHotDeleteLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbHotDelCiudad)
-                    .addComponent(lbHotDelTelefono)
-                    .addComponent(lbHotDelDireccion)
-                    .addComponent(lbHotDelNombre)
-                    .addComponent(lbHotDelAdmin))
-                .addGap(28, 28, 28)
-                .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtHotDelAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                    .addComponent(txtHotDelNombre)
-                    .addComponent(txtHotDelDir)
-                    .addComponent(txtHotDelCiudad)
-                    .addComponent(txtHotDelTel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnHotDelEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbHotDelHotelId)
-                    .addComponent(txtHotDelHotelId)
-                    .addComponent(btnHotDelBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(71, 71, 71))
+                .addGap(99, 99, 99)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
             .addGroup(pnlHotDeleteLayout.createSequentialGroup()
-                .addGap(229, 229, 229)
+                .addGap(319, 319, 319)
                 .addComponent(lbHotDelTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -149,45 +222,20 @@ public class PnlHotelDelete extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHotDeleteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbHotDelTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHotDeleteLayout.createSequentialGroup()
-                        .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtHotDelNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbHotDelNombre)
-                            .addComponent(lbHotDelHotelId))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtHotDelDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lbHotDelDireccion))
-                            .addComponent(txtHotDelHotelId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbHotDelCiudad)
-                            .addComponent(txtHotDelCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnHotDelBuscar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlHotDeleteLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnHotDelEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlHotDeleteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbHotDelTelefono)
-                            .addComponent(txtHotDelTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtHotDelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbHotDelAdmin))))
-                .addGap(42, 42, 42))
+                .addGap(10, 10, 10)
+                .addGroup(pnlHotDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlHotDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlHotDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,6 +312,8 @@ public class PnlHotelDelete extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHotDelBuscar;
     private javax.swing.JButton btnHotDelEliminar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbHotDelAdmin;
     private javax.swing.JLabel lbHotDelCiudad;
     private javax.swing.JLabel lbHotDelDireccion;

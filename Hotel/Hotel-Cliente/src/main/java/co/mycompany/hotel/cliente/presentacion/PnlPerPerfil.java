@@ -66,6 +66,9 @@ public class PnlPerPerfil extends javax.swing.JPanel {
         lbAdmPersUser = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setOpaque(false);
+
+        bgAdmHabAdd.setOpaque(false);
         bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(570, 202));
 
         lbAdmPersDireccion.setText("Direccion");

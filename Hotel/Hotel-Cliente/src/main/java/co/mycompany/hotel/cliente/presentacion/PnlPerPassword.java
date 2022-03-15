@@ -48,8 +48,14 @@ public class PnlPerPassword extends javax.swing.JPanel {
         txtPerModRepetir = new javax.swing.JPasswordField();
         btnPerModCambiar = new javax.swing.JButton();
 
+        setOpaque(false);
+
+        pnlPerPassword.setOpaque(false);
+
         lbPerPasTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbPerPasTitulo.setText("Cambiar Contraseña");
+
+        jPanel1.setOpaque(false);
 
         lbPerModPassword.setText("Contraseña Actual");
 

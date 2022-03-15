@@ -43,6 +43,9 @@ public class PnlLogin extends javax.swing.JPanel {
         txtLogPassword = new javax.swing.JPasswordField();
         btnLogIniciar = new javax.swing.JButton();
 
+        setOpaque(false);
+
+        pnlLogLogin.setOpaque(false);
         pnlLogLogin.setPreferredSize(new java.awt.Dimension(700, 300));
 
         btnLogRegistrarse.setText("Registrarse");
@@ -53,6 +56,7 @@ public class PnlLogin extends javax.swing.JPanel {
         });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setOpaque(false);
 
         lbLogTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbLogTitulo.setText("Iniciar Sesión");

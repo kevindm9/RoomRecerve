@@ -68,6 +68,8 @@ public class PnlHabAdd extends javax.swing.JPanel {
         lbAdmHabPrecio = new javax.swing.JLabel();
         lbAdmHabDescripcion = new javax.swing.JLabel();
 
+        setOpaque(false);
+
         bgAdmHabAdd.setOpaque(false);
         bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(740, 202));
 

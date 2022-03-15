@@ -66,8 +66,10 @@ public class PnlHabModificar extends javax.swing.JPanel {
         txtAdmHabFoto = new javax.swing.JTextField();
         lbHabMod = new javax.swing.JLabel();
 
+        setOpaque(false);
         setPreferredSize(new java.awt.Dimension(740, 235));
 
+        bgAdmHabAdd.setOpaque(false);
         bgAdmHabAdd.setPreferredSize(new java.awt.Dimension(570, 202));
 
         pnlHabModConsultar.setBorder(javax.swing.BorderFactory.createTitledBorder("Consular habitación"));
@@ -226,7 +228,7 @@ public class PnlHabModificar extends javax.swing.JPanel {
                         .addComponent(pnlHabModConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAdmHabModificar)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -237,7 +239,7 @@ public class PnlHabModificar extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+            .addComponent(bgAdmHabAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
